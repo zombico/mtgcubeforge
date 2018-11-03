@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/', require('./routes/index').router);
+app.use('/healthcheck', require('./routes/index').router);
 app.use('/login', require('./routes/login').router);
 app.use('/books', require('./routes/books').router);
 
