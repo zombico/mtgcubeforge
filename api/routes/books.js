@@ -25,7 +25,7 @@ router.route('/:id')
     const book = books.filter((b) => b.id === Number(id)).pop();
 
     if (!book) {
-      res.statusCode(404);
+      return res.status(404).send({ data: [] });
     }
 
     res.json({ data: [ book ] });
@@ -37,7 +37,7 @@ router.route('/:id')
     const book = books.filter((b) => b.id === Number(id)).pop();
 
     if (!book) {
-      res.statusCode(404);
+      return res.status(404).send({ data: [] });
     }
 
     book.name = name || book.name;
