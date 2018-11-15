@@ -27,7 +27,9 @@ class CubeBuilder extends Component {
     return (
       <div>
         <SearchCard />
-        <MixedSpreadView cubeContents={this.state.cubeContents}/>
+        <div className="mixedspread-view">
+          <MixedSpreadView cubeContents={this.state.cubeContents}/>
+        </div>
       </div>
     )
   }

@@ -201,9 +201,7 @@ class SearchCard extends Component {
     return (
       <div className="searchbar">  
         <div className="leftside">
-        <form onSubmit={this.handleAdd}>
-          <button>Add</button>
-        </form>
+        
         
         { card.layout === "normal" &&
           <img alt="" className="preview-img-med" src={card.imgmd} />
@@ -231,23 +229,28 @@ class SearchCard extends Component {
             value={searchTerm} onChange={this.handleChange}
             onKeyDown={(e) => this.firstSearch(e)}
           />
-          {  
-            suggestions.length !==0 && searchTerm.length > 2 ? suggestions.map((card, index) => 
-            
-            <button 
-              onKeyDown={(e) => this.moveKey(e)}
-              ref={index === 0 && this.firstResult } 
-              id={"searchresult"+index}  key={index} 
-              className="searchbar__autoresult" 
-              onMouseEnter={() => this.getCard(card)}
-              onFocus={() => this.getCard(card)} 
-              onClick={() => this.closeSuggestions(card)}
-            >
-                {card}
-            </button>
-            ) : '' 
-          }        
+            <div className="searchbar__resultbox">
+            {  
+              suggestions.length !==0 && searchTerm.length > 2 ? suggestions.map((card, index) => 
+              
+              <button 
+                onKeyDown={(e) => this.moveKey(e)}
+                ref={index === 0 && this.firstResult } 
+                id={"searchresult"+index}  key={index} 
+                className="searchbar__autoresult" 
+                onMouseEnter={() => this.getCard(card)}
+                onFocus={() => this.getCard(card)} 
+                onClick={() => this.closeSuggestions(card)}
+              >
+                  {card}
+              </button>
+              ) : '' 
+            }  
+            </div>      
           </div>
+          <form onSubmit={this.handleAdd}>
+          <button>Add</button>
+        </form>
         </div>
       </div>
     )

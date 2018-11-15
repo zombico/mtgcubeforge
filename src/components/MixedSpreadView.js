@@ -1,21 +1,12 @@
-import React, { Component } from 'react';
-
-// class MixedSpreadView extends Component {
-// render() {
-//   return (
-//     <div>
-
-//     </div>
-//   )
-// }
-// }
-
+import React from 'react';
 
 const MixedSpreadView = (props) => {
   console.log(props.cubeContents.data)
   if (props.cubeContents.data ) {
     const view = props.cubeContents.data.map((card => 
-      <div>{card.name}</div>
+      
+      <img className="mixedspread-view__img" src={card.imgsm} alt={card.name}/>
+      
     ))
     return view
   } else {return ''}

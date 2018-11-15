@@ -48,7 +48,7 @@
 .tempmain {
   height: 800px;
   display: flex;
-  margin-top: 200px;
+  margin-top: 20px;
 }
 .leftside {
   width: 600px;
@@ -70,7 +70,14 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-  
+  }
+  &__resultbox {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    position: fixed;
+    top: 42px;
+    width: 100%
   }
   &__input {
     margin-bottom: 3px;
@@ -83,6 +90,7 @@
     border: none;
     margin-top: 1px;
     text-align: left;
+    z-index: 2;
     
     &:hover, &:focus {
       background: #cfcfcf;
@@ -91,12 +99,18 @@
   }
 }
 
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.mixedspread-view {
+  &__img {
+    border-radius: 8px;
+    position: relative;
+    margin-left: -100px;
+    &:first-child {
+      margin-left: 0px;
+    }
+    &:hover {
+      border: 1px solid #777777;
+    }
   }
 }
+
+
