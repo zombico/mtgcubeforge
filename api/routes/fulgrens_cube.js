@@ -8,23 +8,14 @@ const router = express.Router();
 
 const { SECRET: secret } = require('../utils/constants');
 
-// const books = [
-//   { id: 1, name: 'Harry Potter and the Sorcerer\'s Stone', author: 'J.K. Rowling' },
-//   { id: 2, name: 'Harry Potter and the Chamber of Secrets', author: 'J.K. Rowling' },
-//   { id: 3, name: 'Harry Potter and the Prisoner of Azkaban', author: 'J.K. Rowling' },
-//   { id: 4, name: 'Harry Potter and the Goblet of Fire', author: 'J.K. Rowling' },
-//   { id: 5, name: 'Harry Potter and the Order of the Phoenix', author: 'J.K. Rowling' },
-//   { id: 6, name: 'Harry Potter and the Half-Blood Prince', author: 'J.K. Rowling' },
-//   { id: 7, name: 'Harry Potter and the Deathly Hallows', author: 'J.K. Rowling' },
-// ];
 
 const cubeContents = [
-  { name: "Thoughtseize", type: "Sorcery", layout: "normal", imgmd: ""},
-  { name: "Preordain", type: "Sorcery", layout: "normal", imgmd: ""},
-  { name: "Lightning Bolt", type: "Instant", layout: "normal", imgmd: ""},
-  { name: "Swords to Plowshares", type: "Instant", layout: "normal", imgmd: ""},
-  { name: "Noble Heirarch", type: "Creature", layout: "normal", imgmd: ""},
-  { name: "Mox Opal", type: "Artifact", layout: "normal", imgmd: ""},
+  { name: "Thoughtseize", type: "Sorcery", layout: "normal", imgmd:"https://img.scryfall.com/cards/normal/en/ima/110.jpg?1530592140"},
+  { name: "Preordain", type: "Sorcery", layout: "normal", imgmd:"https://img.scryfall.com/cards/normal/en/c15/101.jpg?1532086511"},
+  { name: "Lightning Bolt", type: "Instant", layout: "normal", imgmd: "https://img.scryfall.com/cards/normal/en/a25/141.jpg?1521727517"},
+  { name: "Swords to Plowshares", type: "Instant", layout: "normal", imgmd:"https://img.scryfall.com/cards/normal/en/bbd/110.jpg?1529061986"},
+  { name: "Noble Heirarch", type: "Creature", layout: "normal", imgmd:"https://img.scryfall.com/cards/normal/front/f/f/ff782973-e33c-4edd-bbd7-5c8dc8d59554.jpg?1541423177"},
+  { name: "Mox Opal", type: "Artifact", layout: "normal", imgmd:"https://img.scryfall.com/cards/normal/en/mm2/223.jpg?1517813031"},
 ]
 
 // router.route('/:id')
