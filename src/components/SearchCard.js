@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Forge from './ForgeCardObject';
+import axios from "axios";
 
 class SearchCard extends Component {
   
@@ -16,6 +17,7 @@ class SearchCard extends Component {
     this.focusCard = this.focusCard.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getCard = this.getCard.bind(this);
+    this.addCard = this.addCard.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.autoComplete = this.autoComplete.bind(this);
     this.checkIfOne = this.checkIfOne.bind(this);
@@ -114,9 +116,21 @@ class SearchCard extends Component {
     });
   }
 
+  addCard = async () => {
+    try {
+      await axios.post('/fulgrens_cube', {
+        newCard: this.state.stateReqstCard
+      })
+      this.props.loadCube()
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
   handleAdd(event) {
     event.preventDefault();
     this.focusCard();
+    this.addCard();
   }
 
   handleChange(event) {
@@ -247,10 +261,14 @@ class SearchCard extends Component {
               ) : '' 
             }  
             </div>      
+            <div className="searchbar__buttonpanel">
+              <form onSubmit={this.handleAdd}>
+              <button>Add</button>
+              </form>
+            </div>
           </div>
-          <form onSubmit={this.handleAdd}>
-          <button>Add</button>
-        </form>
+            
+            
         </div>
       </div>
     )

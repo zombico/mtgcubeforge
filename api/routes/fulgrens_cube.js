@@ -48,23 +48,15 @@ const cubeContents = [
 
 router.route('/')
   .get((req, res, next) => {
-    res.json({ data: cubeContents });
+    res.json({ data: cubeContents })
   })
-  .post(jwt({ secret }), (req, res, next) => {
-    const { body } = req;
-    const { name, author } = body;
+  .post((req, res) => {
 
-    const id = Math.max(...cubeContents.map((b) => b.id)) + 1;
-
-    const card = {
-      id,
-      name,
-      imgmd,
-      imgsm
-    };
-
-    cubeContents.push(card);
-    res.json({ data: [{ id }] });
-  });
+    const newCard = req.body.newCard
+    cubeContents.push(newCard)
+    res.status(201).send({
+      data: [newCard]
+    })
+  })
 
 exports.router = router;

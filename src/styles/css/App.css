@@ -52,32 +52,33 @@
   margin-top: 20px;
 }
 
-.leftside {
-  width: 600px;
-}
-
-.rightside {
-  width: 600px;
-}
-
 .searchbar {
   display: flex;
   justify-content: center;
   flex-direction: row;
   max-width: 900px;
 }
+.searchbar .leftside {
+  width: 700px;
+}
+.searchbar .rightside {
+  width: 700px;
+}
 .searchbar__menu {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: column;
+  height: 420px;
+  max-width: 400px;
 }
 .searchbar__resultbox {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  position: fixed;
+  position: absolute;
   top: 42px;
   width: 100%;
+  max-width: 400px;
 }
 .searchbar__input {
   margin-bottom: 3px;
@@ -106,6 +107,7 @@
 }
 .mixedspread-view__img:hover {
   border: 1px solid #777777;
+  z-index: 2;
 }
 
 /*# sourceMappingURL=App.css.map */

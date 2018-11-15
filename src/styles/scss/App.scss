@@ -50,12 +50,7 @@
   display: flex;
   margin-top: 20px;
 }
-.leftside {
-  width: 600px;
-}
-.rightside {
-  width: 600px;
-}
+
 
 .layout-container {
 
@@ -66,18 +61,31 @@
   justify-content: center;
   flex-direction: row;
   max-width: 900px;
+  .leftside {
+    width: 700px;
+  }
+  .rightside {
+    width: 700px;
+    
+  }
+  &__buttonpanel {
+    // align-self: flex-end;
+  }
   &__menu {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: column;
+    height: 420px;
+    max-width: 400px;
   }
   &__resultbox {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    position: fixed;
+    position: absolute;
     top: 42px;
-    width: 100%
+    width: 100%;
+    max-width: 400px;
   }
   &__input {
     margin-bottom: 3px;
@@ -109,6 +117,7 @@
     }
     &:hover {
       border: 1px solid #777777;
+      z-index: 2;
     }
   }
 }

@@ -10,10 +10,14 @@ class CubeBuilder extends Component {
       cubeContents : [],
       hasError: false
     }
-    
+  this.loadCube = this.loadCube.bind(this);  
   }
   
-  async componentDidMount () {
+  componentWillMount() {
+    this.loadCube();
+  }
+
+  async loadCube() {
     try {
       const response = await axios.get('/fulgrens_cube')
       this.setState({ cubeContents: response.data })
@@ -22,13 +26,15 @@ class CubeBuilder extends Component {
       this.setState({ hasError: true })
     }
   }
+  
+  
 
   render() {
     return (
       <div>
-        <SearchCard />
+        <SearchCard loadCube={() => this.loadCube()} />
         <div className="mixedspread-view">
-          <MixedSpreadView cubeContents={this.state.cubeContents}/>
+          <MixedSpreadView cubeContents={this.state.cubeContents}  />
         </div>
       </div>
     )
