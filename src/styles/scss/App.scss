@@ -108,13 +108,12 @@
 }
 
 .mixedspread-view {
+  max-width: 900px;
   &__img {
     border-radius: 8px;
     position: relative;
     margin-left: -100px;
-    &:first-child {
-      margin-left: 0px;
-    }
+
     &:hover {
       border: 1px solid #777777;
       z-index: 2;

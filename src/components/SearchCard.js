@@ -214,29 +214,8 @@ class SearchCard extends Component {
     
     return (
       <div className="searchbar">  
+        
         <div className="leftside">
-        
-        
-        { card.layout === "normal" &&
-          <img alt="" className="preview-img-med" src={card.imgmd} />
-        }
-        { card.aftermath &&
-          <img alt="" className="preview-img-med aftermath" src={card.imgmd} />
-        }
-        { card.layout === "split" && !card.aftermath &&
-          <img alt="" className="preview-img-med split" src={card.imgmd} />
-        }
-        { card.layout === "flip" &&
-          <img alt="" className="preview-img-med flip" src={card.imgmd} />
-        }
-        { card.layout === "transform" && 
-        <div className="searchbar__images">
-          <img alt="" className="preview-img-med dfc" src={card.imgmd} /> 
-          <img alt="" className="preview-img-med dfc" src={card.imgmdFlip} /> 
-        </div> 
-        }
-        </div>
-        <div className="rightside">
           <div className="searchbar__menu">
           
           <input className="searchbar__input" type="text" id="searchcard"
@@ -269,6 +248,28 @@ class SearchCard extends Component {
           </div>
             
             
+        </div>
+        <div className="rightside">
+        
+        
+        { card.layout === "normal" &&
+          <img alt="" className="preview-img-med" src={card.imgmd} />
+        }
+        { card.aftermath &&
+          <img alt="" className="preview-img-med aftermath" src={card.imgmd} />
+        }
+        { card.layout === "split" && !card.aftermath &&
+          <img alt="" className="preview-img-med split" src={card.imgmd} />
+        }
+        { card.layout === "flip" &&
+          <img alt="" className="preview-img-med flip" src={card.imgmd} />
+        }
+        { card.layout === "transform" && 
+        <div className="searchbar__images">
+          <img alt="" className="preview-img-med dfc" src={card.imgmd} /> 
+          <img alt="" className="preview-img-med dfc" src={card.imgmdFlip} /> 
+        </div> 
+        }
         </div>
       </div>
     )
