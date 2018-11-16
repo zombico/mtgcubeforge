@@ -4,16 +4,18 @@ const Forge = (reqst) => {
   
   // basic search case
   if(reqst.layout ==="normal" || reqst.layout ==="saga") {
-  reqstCard.name = reqst.name;
-  reqstCard.type = reqst.type_line;
-  reqstCard.text = reqst.oracle_text;
-  reqstCard.layout = "normal";
-  reqstCard.imgsm = reqst.image_uris.small;
-  reqstCard.imgmd = reqst.image_uris.normal;  
+    reqstCard.id = reqst.id;
+    reqstCard.name = reqst.name;
+    reqstCard.type = reqst.type_line;
+    reqstCard.text = reqst.oracle_text;
+    reqstCard.layout = "normal";
+    reqstCard.imgsm = reqst.image_uris.small;
+    reqstCard.imgmd = reqst.image_uris.normal;  
   }
 
   // split card case
   if(reqst.layout ==="split") {
+    reqstCard.id = reqst.id;
     reqstCard.name = reqst.card_faces[0].name;
     reqstCard.nameFlip = reqst.card_faces[1].name
     reqstCard.type = reqst.card_faces[0].type_line;
@@ -30,6 +32,7 @@ const Forge = (reqst) => {
 
   // case for double faced cards
   if (reqst.layout === "transform") {
+    reqstCard.id = reqst.id;
     reqstCard.name = reqst.card_faces[0].name;
     reqstCard.nameFlip = reqst.card_faces[1].name
     reqstCard.type = reqst.card_faces[0].type_line;
@@ -45,6 +48,7 @@ const Forge = (reqst) => {
 
   // case for flip cards
   if (reqst.layout === "flip") {
+    reqstCard.id = reqst.id;
     reqstCard.name = reqst.card_faces[0].name;
     reqstCard.nameFlip = reqst.card_faces[1].name
     reqstCard.type = reqst.card_faces[0].type_line;

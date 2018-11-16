@@ -49,15 +49,14 @@
 .tempmain {
   height: 800px;
   display: flex;
-  margin-top: 200px;
+  margin-top: 20px;
 }
 
-.leftside {
-  width: 600px;
-}
-
-.rightside {
-  width: 600px;
+.btn-overlay {
+  z-index: 3;
+  position: absolute;
+  margin-top: 45px;
+  margin-left: 100px;
 }
 
 .searchbar {
@@ -66,10 +65,27 @@
   flex-direction: row;
   max-width: 900px;
 }
+.searchbar .leftside {
+  width: 700px;
+}
+.searchbar .rightside {
+  width: 700px;
+}
 .searchbar__menu {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 420px;
+  max-width: 450px;
+}
+.searchbar__resultbox {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  position: absolute;
+  top: 42px;
+  width: 100%;
+  max-width: 450px;
 }
 .searchbar__input {
   margin-bottom: 3px;
@@ -82,18 +98,31 @@
   border: none;
   margin-top: 1px;
   text-align: left;
+  z-index: 2;
 }
 .searchbar__autoresult:hover, .searchbar__autoresult:focus {
   background: #cfcfcf;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tooltipzoom {
+  position: absolute;
+  margin: 40px 0 0 -120px;
+  z-index: 2;
+  max-width: 220px;
+  border-radius: 12px;
+  box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
+}
+
+.mixedspread-view {
+  max-width: 900px;
+}
+.mixedspread-view__img {
+  border-radius: 8px;
+  position: relative;
+  margin-left: -100px;
+}
+.mixedspread-view__img:hover {
+  border: 1px solid white;
 }
 
 /*# sourceMappingURL=index.css.map */

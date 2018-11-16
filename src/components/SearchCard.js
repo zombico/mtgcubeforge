@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Forge from './ForgeCardObject';
+import axios from "axios";
 
 class SearchCard extends Component {
   
@@ -16,6 +17,7 @@ class SearchCard extends Component {
     this.focusCard = this.focusCard.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getCard = this.getCard.bind(this);
+    this.addCard = this.addCard.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.autoComplete = this.autoComplete.bind(this);
     this.checkIfOne = this.checkIfOne.bind(this);
@@ -65,7 +67,7 @@ class SearchCard extends Component {
           else return "butts"
         })
         const cleanArray = searchArrayOnly.filter(name => name !== "butts").sort()
-        console.log(cleanArray)
+        // console.log(cleanArray)
         this.setState({ autoQueryOut: cleanArray })
         if (cleanArray.length === 1) {
           this.getCard(cleanArray[0]);        
@@ -114,9 +116,21 @@ class SearchCard extends Component {
     });
   }
 
+  addCard = async () => {
+    try {
+      await axios.post('/fulgrens_cube', {
+        newCard: this.state.stateReqstCard
+      })
+      this.props.loadCube()
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
   handleAdd(event) {
     event.preventDefault();
     this.focusCard();
+    this.addCard();
   }
 
   handleChange(event) {
@@ -132,7 +146,7 @@ class SearchCard extends Component {
     const cardList = this.state.autoQueryOut;
     const searchOrder = cardList.length + 1
     const searchRank = this.state.currentSearchRank +1
-    console.log(searchOrder, searchRank)
+    // console.log(searchOrder, searchRank)
     const onLastResult = searchOrder - searchRank === 1 ? true : false
     const onFirstResult = searchOrder - searchRank === searchOrder ? true : false
 
@@ -140,7 +154,7 @@ class SearchCard extends Component {
     if (e.key === "ArrowDown" && !onLastResult ) {
       e.preventDefault();
       const newRank = searchRank
-      console.log(newRank)
+      // console.log(newRank)
       this.setState({currentSearchRank: newRank}, () => {
       const searchIndex = this.state.currentSearchRank;
       document.getElementById(`searchresult${searchIndex}`).focus()
@@ -148,13 +162,11 @@ class SearchCard extends Component {
     // stop thing from breaking when getting to last
     } else if (e.key === "ArrowDown" && onLastResult) {
       e.preventDefault();
-      console.log('last')
     }
 
     // focus on correct index when pressing up key
     else if ( e.key === "ArrowUp" && !onFirstResult ) {
       e.preventDefault();
-      console.log('i pressed up')
       const newRank = this.state.currentSearchRank - 1
       this.setState({currentSearchRank: newRank})
       const searchIndex = this.state.currentSearchRank;
@@ -200,10 +212,43 @@ class SearchCard extends Component {
     
     return (
       <div className="searchbar">  
+        
         <div className="leftside">
-        <form onSubmit={this.handleAdd}>
-          <button>Add</button>
-        </form>
+          <div className="searchbar__menu">
+          
+          <input className="searchbar__input" type="text" id="searchcard"
+            value={searchTerm} onChange={this.handleChange}
+            onKeyDown={(e) => this.firstSearch(e)}
+          />
+            <div className="searchbar__resultbox">
+            {  
+              suggestions.length !==0 && searchTerm.length > 2 ? suggestions.map((card, index) => 
+              
+              <button 
+                onKeyDown={(e) => this.moveKey(e)}
+                ref={index === 0 && this.firstResult } 
+                id={"searchresult"+index}  key={index} 
+                className="searchbar__autoresult" 
+                onMouseEnter={() => this.getCard(card)}
+                onFocus={() => this.getCard(card)} 
+                onClick={() => this.closeSuggestions(card)}
+              >
+                  {card}
+              </button>
+              ) : '' 
+            }  
+            </div>      
+            <div className="searchbar__buttonpanel">
+              <form onSubmit={this.handleAdd}>
+              <button>Add</button>
+              </form>
+            </div>
+          </div>
+            
+            
+        </div>
+        <div className="rightside">
+        
         
         { card.layout === "normal" &&
           <img alt="" className="preview-img-med" src={card.imgmd} />
@@ -223,31 +268,6 @@ class SearchCard extends Component {
           <img alt="" className="preview-img-med dfc" src={card.imgmdFlip} /> 
         </div> 
         }
-        </div>
-        <div className="rightside">
-          <div className="searchbar__menu">
-          
-          <input className="searchbar__input" type="text" id="searchcard"
-            value={searchTerm} onChange={this.handleChange}
-            onKeyDown={(e) => this.firstSearch(e)}
-          />
-          {  
-            suggestions.length !==0 && searchTerm.length > 2 ? suggestions.map((card, index) => 
-            
-            <button 
-              onKeyDown={(e) => this.moveKey(e)}
-              ref={index === 0 && this.firstResult } 
-              id={"searchresult"+index}  key={index} 
-              className="searchbar__autoresult" 
-              onMouseEnter={() => this.getCard(card)}
-              onFocus={() => this.getCard(card)} 
-              onClick={() => this.closeSuggestions(card)}
-            >
-                {card}
-            </button>
-            ) : '' 
-          }        
-          </div>
         </div>
       </div>
     )
