@@ -52,6 +52,13 @@
   margin-top: 20px;
 }
 
+.btn-overlay {
+  z-index: 3;
+  position: absolute;
+  margin-top: 45px;
+  margin-left: 100px;
+}
+
 .searchbar {
   display: flex;
   justify-content: center;
@@ -69,7 +76,7 @@
   justify-content: space-between;
   flex-direction: column;
   height: 420px;
-  max-width: 400px;
+  max-width: 450px;
 }
 .searchbar__resultbox {
   display: flex;
@@ -78,7 +85,7 @@
   position: absolute;
   top: 42px;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
 }
 .searchbar__input {
   margin-bottom: 3px;
@@ -97,17 +104,25 @@
   background: #cfcfcf;
 }
 
+.tooltipzoom {
+  position: absolute;
+  margin: 40px 0 0 -120px;
+  z-index: 2;
+  max-width: 220px;
+  border-radius: 12px;
+  box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
+}
+
+.mixedspread-view {
+  max-width: 900px;
+}
 .mixedspread-view__img {
   border-radius: 8px;
   position: relative;
   margin-left: -100px;
 }
-.mixedspread-view__img:first-child {
-  margin-left: 0px;
-}
 .mixedspread-view__img:hover {
-  border: 1px solid #777777;
-  z-index: 2;
+  border: 1px solid white;
 }
 
 /*# sourceMappingURL=App.css.map */

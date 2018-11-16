@@ -67,7 +67,7 @@ class SearchCard extends Component {
           else return "butts"
         })
         const cleanArray = searchArrayOnly.filter(name => name !== "butts").sort()
-        console.log(cleanArray)
+        // console.log(cleanArray)
         this.setState({ autoQueryOut: cleanArray })
         if (cleanArray.length === 1) {
           this.getCard(cleanArray[0]);        
@@ -146,7 +146,7 @@ class SearchCard extends Component {
     const cardList = this.state.autoQueryOut;
     const searchOrder = cardList.length + 1
     const searchRank = this.state.currentSearchRank +1
-    console.log(searchOrder, searchRank)
+    // console.log(searchOrder, searchRank)
     const onLastResult = searchOrder - searchRank === 1 ? true : false
     const onFirstResult = searchOrder - searchRank === searchOrder ? true : false
 
@@ -154,7 +154,7 @@ class SearchCard extends Component {
     if (e.key === "ArrowDown" && !onLastResult ) {
       e.preventDefault();
       const newRank = searchRank
-      console.log(newRank)
+      // console.log(newRank)
       this.setState({currentSearchRank: newRank}, () => {
       const searchIndex = this.state.currentSearchRank;
       document.getElementById(`searchresult${searchIndex}`).focus()
@@ -162,13 +162,11 @@ class SearchCard extends Component {
     // stop thing from breaking when getting to last
     } else if (e.key === "ArrowDown" && onLastResult) {
       e.preventDefault();
-      console.log('last')
     }
 
     // focus on correct index when pressing up key
     else if ( e.key === "ArrowUp" && !onFirstResult ) {
       e.preventDefault();
-      console.log('i pressed up')
       const newRank = this.state.currentSearchRank - 1
       this.setState({currentSearchRank: newRank})
       const searchIndex = this.state.currentSearchRank;
