@@ -4,28 +4,58 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .tempmain {
+  background-color: #282c34;
   height: 800px;
+  padding-top: 20px;
+}
+
+.preview-img-med {
+  border-radius: 16px;
+  max-width: 300px;
+}
+.preview-img-med.dfc {
+  max-width: 250px;
+  max-height: 348px;
+}
+.preview-img-med.split {
+  transform: rotate(90deg);
+}
+.preview-img-med.aftermath {
+  transition: 0.5s;
+}
+.preview-img-med.aftermath:hover {
+  transform: rotate(-90deg);
+}
+.preview-img-med.flip {
+  transition: 0.5s;
+}
+.preview-img-med.flip:hover {
+  transform: rotate(-180deg);
+}
+
+.cubebuilder {
+  width: 100%;
   display: flex;
-  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .btn-overlay {
   z-index: 3;
-  position: relative;
-  top: 40px;
-  left: 220px;
+  position: absolute;
+  margin-top: 75px;
+  margin-left: 100px;
 }
-.btn-overlay .on-list {
+
+.btn-onlist {
   z-index: 3;
   position: relative;
   top: 40px;
@@ -46,19 +76,17 @@
 }
 .searchbar__menu {
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
   height: 420px;
   max-width: 450px;
 }
 .searchbar__resultbox {
   display: flex;
-  justify-content: space-around;
   flex-direction: column;
-  position: absolute;
   top: 42px;
   width: 100%;
   max-width: 450px;
+  flex: 1;
 }
 .searchbar__input {
   margin-bottom: 3px;
@@ -91,6 +119,7 @@
 
 .mixedspread-view {
   max-width: 900px;
+  width: 100%;
 }
 .mixedspread-view__img {
   border-radius: 8px;
@@ -102,6 +131,7 @@
 }
 
 .dynamiclist {
+  color: white;
   text-align: left;
   font-size: 12px;
 }

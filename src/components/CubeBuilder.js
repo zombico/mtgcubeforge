@@ -31,7 +31,7 @@ class CubeBuilder extends Component {
 
   render() {
     return (
-      <div>
+      <div className="cubebuilder">
         <SearchCard loadCube={() => this.loadCube()} />
         <div className="mixedspread-view">
           <MixedSpreadView 
