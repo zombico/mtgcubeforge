@@ -33,6 +33,7 @@ class CubeBuilder extends Component {
     return (
       <div className="cubebuilder">
         <SearchCard loadCube={() => this.loadCube()} />
+        <div className="spacer300" />
         <div className="mixedspread-view">
           <MixedSpreadView 
             cubeContents={this.state.cubeContents}  

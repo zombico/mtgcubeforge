@@ -62,30 +62,44 @@
   left: 220px;
 }
 
+.spacer300 {
+  height: 300px;
+}
+
 .searchbar {
   display: flex;
   justify-content: center;
-  flex-direction: row;
-  max-width: 900px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
+  position: sticky;
+  top: 40px;
 }
 .searchbar .leftside {
   width: 700px;
 }
 .searchbar .rightside {
-  width: 700px;
+  align-self: flex-end;
+  width: 400px;
+  position: fixed;
+  top: 65px;
+}
+.searchbar .topside {
+  width: 100%;
 }
 .searchbar__menu {
   display: flex;
   flex-direction: column;
-  height: 420px;
-  max-width: 450px;
+  max-width: 350px;
 }
 .searchbar__resultbox {
   display: flex;
   flex-direction: column;
-  top: 42px;
+  position: absolute;
+  top: 22px;
   width: 100%;
-  max-width: 450px;
+  max-width: 350px;
   flex: 1;
 }
 .searchbar__input {
@@ -97,7 +111,6 @@
 .searchbar__autoresult {
   background: white;
   border: none;
-  margin-top: 1px;
   text-align: left;
   z-index: 2;
 }
