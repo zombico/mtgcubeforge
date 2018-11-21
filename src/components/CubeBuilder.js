@@ -8,7 +8,8 @@ class CubeBuilder extends Component {
     super();
     this.state = {
       cubeContents : [],
-      hasError: false
+      hasError: false,
+      viewType: "list"
     }
   this.loadCube = this.loadCube.bind(this);  
   }
@@ -38,6 +39,7 @@ class CubeBuilder extends Component {
           <MixedSpreadView 
             cubeContents={this.state.cubeContents}  
             loadCube={() => this.loadCube()}
+            viewType={this.state.viewType}
             />
         </div>
       </div>

@@ -13,7 +13,7 @@
 
 .tempmain {
   background-color: #282c34;
-  height: 800px;
+  height: 1800px;
   padding-top: 20px;
 }
 
@@ -58,7 +58,7 @@
 .btn-onlist {
   z-index: 3;
   position: relative;
-  top: 40px;
+  top: 0px;
   left: 220px;
 }
 
@@ -127,7 +127,7 @@
   box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
 }
 .tooltipzoom.onlist {
-  margin: 10px 0 0 0;
+  margin: -100px 0 0 0;
 }
 
 .mixedspread-view {
@@ -144,9 +144,14 @@
 }
 
 .dynamiclist {
+  display: flex;
+  flex-direction: column;
+}
+.dynamiclist__entry {
   color: white;
   text-align: left;
   font-size: 12px;
+  width: 160px;
 }
 
 /*# sourceMappingURL=index.css.map */

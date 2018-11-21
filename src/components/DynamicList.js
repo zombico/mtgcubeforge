@@ -30,7 +30,7 @@ class DynamicList extends Component {
     const showingToolTip = this.state.showingToolTip
     return (
       <>
-      <div className="dynamiclist" 
+      <span className="dynamiclist__entry" 
         onMouseEnter={(evt) => this.handleHoverIn(evt)}
         onMouseLeave={(evt) => this.handleHoverOut(evt)}
         >{this.props.name}
@@ -49,7 +49,7 @@ class DynamicList extends Component {
         > wat </button>
         </>  
       }
-      </div>
+      </span>
       </>
     )
   }
