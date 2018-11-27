@@ -3,20 +3,20 @@
 }
 
 .App-header {
+  // background: #8392AF;
   background-color: #282c34;
-  // min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  text-align: right;
   font-size: calc(10px + 2vmin);
-  
+  position: sticky;
+  top: 0px;
+  padding-bottom: 10px;
+  padding: 5px 20px 10px 0px;
 }
 
 .tempmain {
-  background-color: #282c34;
-  height: 1800px;
-  padding-top: 20px;
+  // background-color: #282c34;
+  height: 800px;
+  
 }
 
 .preview-img-med {
@@ -72,10 +72,13 @@
   justify-content: center;
   flex-direction: column;
   flex-wrap: wrap;
-  max-width: 1200px;
+  align-items: center;
   width: 100%;
   position: sticky;
   top: 40px;
+  // background: #8392AF;
+  background-color: #282c34;
+  padding-left: 20px;
   .leftside {
     width: 700px;
   }
@@ -84,9 +87,11 @@
     width: 400px;
     position: fixed;
     top: 65px;
+    right: 0;
   }
   .topside {
     width: 100%;
+    max-width: 900px;
   }
   .cardinfoside {
 
@@ -99,18 +104,34 @@
     flex-direction: column;
     // height: 420px;
     max-width: 350px;
+    padding: 10px 0;
   }
   &__resultbox {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 22px;
+    top: 10px;
+    margin-top: 38px;
     width: 100%;
     max-width: 350px;
     flex: 1;
+    box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
   }
   &__input {
     margin-bottom: 3px;
+    background: transparent;
+    // border-top: none;
+    // border-right: none;
+    // border-left: none;
+    // border-bottom: 3px solid #6153FB;
+    border: none;
+    padding: 4px 8px;
+    // color: white;
+    font-size: 20px;
+    // &:focus{
+      background: white;
+      color: black;
+    // }
   }
   &__images {
     display: flex;
@@ -160,10 +181,10 @@
   display: flex;
   flex-direction: column;
   &__entry{
-    color: white;
+    // color: white;
     text-align: left;
     font-size: 12px;
-    width: 160px;
+    width: 200px;
   }
   
 }

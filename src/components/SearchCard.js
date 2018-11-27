@@ -219,6 +219,11 @@ class SearchCard extends Component {
             value={searchTerm} onChange={this.handleChange}
             onKeyDown={(e) => this.firstSearch(e)}
           />
+          <div className="searchbar__buttonpanel">
+          <form onSubmit={this.handleAdd}>
+            <button>Add</button>
+          </form>
+        </div>
             <div className="searchbar__resultbox">
             {  
               suggestions.length !==0 && searchTerm.length > 2 ? suggestions.map((card, index) => 
@@ -236,8 +241,9 @@ class SearchCard extends Component {
               </button>
               ) : '' 
             }  
-            </div>      
             
+            </div>      
+              
           </div>
             
             
@@ -263,11 +269,7 @@ class SearchCard extends Component {
           <img alt="" className="preview-img-med dfc" src={card.imgmdFlip} /> 
         </div> 
         }
-        <div className="searchbar__buttonpanel">
-              <form onSubmit={this.handleAdd}>
-              <button>Add</button>
-              </form>
-            </div>
+        
         </div>
       </div>
     )
