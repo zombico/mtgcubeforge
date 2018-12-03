@@ -1,13 +1,13 @@
 import React from 'react';
 import DynamicCard from './DynamicCard';
-import DynamicList from './DynamicList';
+import DynamicListItem  from './DynamicListItem';
 
 const MixedSpreadView = (props) => {
   if (props.cubeContents.data && props.viewType === "list") {
     const view = props.cubeContents.data.map((card => 
       <>
-      <div className="dynamiclist">
-      <DynamicList 
+      <div className="dynamiclistitem">
+      <DynamicListItem 
         name={card.name} 
         tooltip={card.imgmd} 
         id={card.id} 

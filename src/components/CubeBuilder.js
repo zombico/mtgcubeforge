@@ -9,7 +9,7 @@ class CubeBuilder extends Component {
     this.state = {
       cubeContents : [],
       hasError: false,
-      viewType: "list"
+      viewType: "card"
     }
   this.loadCube = this.loadCube.bind(this);  
   }

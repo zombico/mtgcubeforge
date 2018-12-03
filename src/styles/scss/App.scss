@@ -3,7 +3,6 @@
 }
 
 .App-header {
-  // background: #8392AF;
   background-color: #282c34;
   text-align: right;
   font-size: calc(10px + 2vmin);
@@ -14,8 +13,6 @@
 }
 
 .tempmain {
-  // background-color: #282c34;
-  height: 800px;
   
 }
 
@@ -79,6 +76,7 @@
   // background: #8392AF;
   background-color: #282c34;
   padding-left: 20px;
+  z-index: 1;
   .leftside {
     width: 700px;
   }
@@ -86,7 +84,7 @@
     align-self: flex-end;
     width: 400px;
     position: fixed;
-    top: 65px;
+    top: 100px;
     right: 0;
   }
   .topside {
@@ -96,8 +94,14 @@
   .cardinfoside {
 
   }
-  &__buttonpanel {
-    // align-self: flex-end;
+  &__buildcontrols {
+    align-self: flex-end;
+    margin-bottom: -40px;
+    &__container {
+      display: flex;
+      justify-content: flex-end;
+      max-width: 600px;
+    }
   }
   &__menu {
     display: flex;
@@ -111,27 +115,20 @@
     flex-direction: column;
     position: absolute;
     top: 10px;
-    margin-top: 38px;
+    margin-top: 15px;
     width: 100%;
     max-width: 350px;
     flex: 1;
-    box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
+    box-shadow: 3px 5px 9px 0px rgba(0, 0, 0, 0.45);
   }
   &__input {
     margin-bottom: 3px;
     background: transparent;
-    // border-top: none;
-    // border-right: none;
-    // border-left: none;
-    // border-bottom: 3px solid #6153FB;
     border: none;
     padding: 4px 8px;
-    // color: white;
     font-size: 20px;
-    // &:focus{
-      background: white;
-      color: black;
-    // }
+    background: white;
+    color: black;
   }
   &__images {
     display: flex;
@@ -141,6 +138,7 @@
     border: none;
     text-align: left;
     z-index: 2;
+    padding-bottom: 5px;
     
     &:hover, &:focus {
       background: #cfcfcf;
@@ -177,7 +175,7 @@
   }
 }
 
-.dynamiclist {
+.dynamiclistitem {
   display: flex;
   flex-direction: column;
   &__entry{
@@ -189,3 +187,6 @@
   
 }
 
+#addtocube {
+  tabindex: 1;
+}
