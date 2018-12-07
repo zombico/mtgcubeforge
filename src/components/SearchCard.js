@@ -250,7 +250,7 @@ class SearchCard extends Component {
             </div>      
           </div>            
         </div>
-        { this.state.stateReqstCard != '' && <div className="rightside">
+        { this.state.stateReqstCard !== '' && <div className="rightside">
         
         { card.layout === "normal" &&
           <img alt="" className="preview-img-med" src={card.imgmd} />

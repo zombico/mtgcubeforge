@@ -9,7 +9,7 @@ class TooltipPanel extends Component {
 
   }
   render() {
-    const controls = this.state
+    // const controls = this.state
     return (
       <div className="searchbar__buildcontrols">
         <div className="searchbar__buildcontrols__container">

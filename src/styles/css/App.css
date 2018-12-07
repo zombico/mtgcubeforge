@@ -35,9 +35,6 @@
 
 .cubebuilder {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .btn-overlay {
@@ -151,9 +148,40 @@
   margin: -100px 0 0 0;
 }
 
+.dynamiccard {
+  margin-top: -180px;
+}
+.dynamiccard__container {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.dynamiccard__tooltip {
+  position: absolute;
+  margin: -20px 0 0 -40px;
+  z-index: 2;
+  max-width: 220px;
+  border-radius: 12px;
+  box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
+}
+.dynamiccard__button {
+  z-index: 3;
+  position: absolute;
+  margin-top: 0px;
+  margin-left: 190px;
+}
+
 .mixedspread-view {
-  max-width: 930px;
-  width: 100%;
+  height: 700px;
+  display: flex;
+  align-content: flex-start;
+}
+.mixedspread-view__img2 {
+  border-radius: 8px;
+}
+.mixedspread-view__img2-hovered {
+  margin-left: -10px;
 }
 .mixedspread-view__img {
   border-radius: 8px;

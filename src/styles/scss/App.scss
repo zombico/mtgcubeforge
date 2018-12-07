@@ -43,10 +43,11 @@
 
 .cubebuilder {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
 }
+
 
 .btn-overlay {
   z-index: 3;
@@ -165,10 +166,46 @@
   }
 }
 
+.dynamiccard {
+  margin-top: -180px;
+  
+  &__container {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  &__tooltip {
+    position: absolute;
+    margin: -20px 0 0 -40px;
+    z-index: 2;
+    max-width: 220px;
+    border-radius: 12px;
+    box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
+  }  
+  &__button {
+    z-index: 3;
+    position: absolute;
+    margin-top: 0px;
+    margin-left: 190px;
+  }
+}
+
 
 .mixedspread-view {
-  max-width: 930px;
-  width: 100%;
+  height: 700px;
+  // width: 100%;
+  display: flex;
+  align-content: flex-start;
+  // flex-direction: column;
+  // flex-wrap: wrap;
+  &__img2 {
+    border-radius: 8px;
+    &-hovered {
+      margin-left: -10px;
+      // background: black;
+    }
+  }
   &__img {
     border-radius: 8px;
     position: relative;
