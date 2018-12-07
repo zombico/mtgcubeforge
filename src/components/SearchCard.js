@@ -99,7 +99,6 @@ class SearchCard extends Component {
     this.setState({
       stateReqstCard: reqstCard,
     })
-    
   }
 
   closeSuggestions(card) {
@@ -107,6 +106,7 @@ class SearchCard extends Component {
       autoQueryOut: [],
       searchTerm: card
     })
+    document.getElementById('addtocube').focus()
   }
 
   checkIfOne(array, searchTerm) {
@@ -250,7 +250,7 @@ class SearchCard extends Component {
             </div>      
           </div>            
         </div>
-        <div className="rightside">
+        { this.state.stateReqstCard != '' && <div className="rightside">
         
         { card.layout === "normal" &&
           <img alt="" className="preview-img-med" src={card.imgmd} />
@@ -272,6 +272,7 @@ class SearchCard extends Component {
         }
         
         </div>
+      }
       </div>
     )
   }
