@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Forge from './ForgeCardObject';
+import BuildControls from './BuildControls';
 import axios from "axios";
 
 class SearchCard extends Component {
@@ -22,6 +23,7 @@ class SearchCard extends Component {
     this.autoComplete = this.autoComplete.bind(this);
     this.checkIfOne = this.checkIfOne.bind(this);
     this.closeSuggestions = this.closeSuggestions.bind(this);
+    this.clearSearch = this.clearSearch.bind(this);
 
     this.moveKey = this.moveKey.bind(this);
     this.firstSearch = this.firstSearch.bind(this);
@@ -67,7 +69,6 @@ class SearchCard extends Component {
           else return "butts"
         })
         const cleanArray = searchArrayOnly.filter(name => name !== "butts").sort()
-        // console.log(cleanArray)
         this.setState({ autoQueryOut: cleanArray })
         if (cleanArray.length === 1) {
           this.getCard(cleanArray[0]);        
@@ -105,6 +106,7 @@ class SearchCard extends Component {
       autoQueryOut: [],
       searchTerm: card
     })
+    document.getElementById('addtocube').focus()
   }
 
   checkIfOne(array, searchTerm) {
@@ -122,9 +124,15 @@ class SearchCard extends Component {
         newCard: this.state.stateReqstCard
       })
       this.props.loadCube()
+      this.clearSearch()
     } catch(e) {
       console.log(e)
     }
+  }
+
+  clearSearch() {
+    this.setState({ searchTerm: '', stateReqstCard: '' })
+    document.getElementById('searchcard').focus()
   }
 
   handleAdd(event) {
@@ -213,13 +221,15 @@ class SearchCard extends Component {
     return (
       <div className="searchbar">  
         
-        <div className="leftside">
+        <div className="topside">
+        <BuildControls handleAdd={this.handleAdd}/>    
           <div className="searchbar__menu">
           
           <input className="searchbar__input" type="text" id="searchcard"
             value={searchTerm} onChange={this.handleChange}
             onKeyDown={(e) => this.firstSearch(e)}
           />
+          
             <div className="searchbar__resultbox">
             {  
               suggestions.length !==0 && searchTerm.length > 2 ? suggestions.map((card, index) => 
@@ -238,17 +248,9 @@ class SearchCard extends Component {
               ) : '' 
             }  
             </div>      
-            <div className="searchbar__buttonpanel">
-              <form onSubmit={this.handleAdd}>
-              <button>Add</button>
-              </form>
-            </div>
-          </div>
-            
-            
+          </div>            
         </div>
-        <div className="rightside">
-        
+        { this.state.stateReqstCard != '' && <div className="rightside">
         
         { card.layout === "normal" &&
           <img alt="" className="preview-img-med" src={card.imgmd} />
@@ -268,7 +270,9 @@ class SearchCard extends Component {
           <img alt="" className="preview-img-med dfc" src={card.imgmdFlip} /> 
         </div> 
         }
+        
         </div>
+      }
       </div>
     )
   }

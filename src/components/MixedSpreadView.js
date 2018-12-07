@@ -1,30 +1,36 @@
 import React from 'react';
-// import DynamicCard from './DynamicCard';
-import DynamicList from './DynamicList';
+import DynamicCard from './DynamicCard';
+import DynamicListItem  from './DynamicListItem';
 
 const MixedSpreadView = (props) => {
-  console.log(props.cubeContents.data)
-  if (props.cubeContents.data ) {
+  if (props.cubeContents.data && props.viewType === "list") {
     const view = props.cubeContents.data.map((card => 
-      
-      // <img className="mixedspread-view__img" src={card.imgsm} alt={card.name}/>
       <>
-      {/* <DynamicCard 
-        src={card.imgsm} alt={card.name} 
-        tooltip={card.imgmd} 
-        id={card.id} 
-        loadCube={() => props.loadCube()}
-        /> */}
-      <DynamicList 
+      <div className="dynamiclistitem">
+      <DynamicListItem 
         name={card.name} 
         tooltip={card.imgmd} 
         id={card.id} 
         loadCube={() => props.loadCube()}
-        />
+      />
+      </div>
       </>
+    )) 
+  return view } 
+  
+  else if (props.cubeContents.data && props.viewType === "card") {
+    const view = props.cubeContents.data.map((card => 
+    <DynamicCard 
+      src={card.imgsm} alt={card.name} 
+      tooltip={card.imgmd} 
+      id={card.id} 
+      loadCube={() => props.loadCube()}
+    />
     ))
-    return view
-  } else {return ''}
+  return view } 
+  
+  else {return ''}  
+  
 
   
 }

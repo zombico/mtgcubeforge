@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import TooltipPanel from "./TooltipPanel";
 
-class DynamicList extends Component {
+class DynamicListItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,7 +31,7 @@ class DynamicList extends Component {
     const showingToolTip = this.state.showingToolTip
     return (
       <>
-      <div className="dynamiclist" 
+      <span className="dynamiclistitem__entry" 
         onMouseEnter={(evt) => this.handleHoverIn(evt)}
         onMouseLeave={(evt) => this.handleHoverOut(evt)}
         >{this.props.name}
@@ -42,17 +43,13 @@ class DynamicList extends Component {
         onMouseEnter={(evt) => this.handleHoverIn(evt)}
         onMouseLeave={(evt) => this.handleHoverOut(evt)}
         />
-        <button className="btn-onlist" 
-          onClick={() => this.removeCard(this.props.id)}
-          onMouseEnter={(evt) => this.handleHoverIn(evt)}
-          onMouseLeave={(evt) => this.handleHoverOut(evt)}
-        > wat </button>
+        <TooltipPanel />
         </>  
       }
-      </div>
+      </span>
       </>
     )
   }
 }
 
-export default DynamicList;
+export default DynamicListItem;
