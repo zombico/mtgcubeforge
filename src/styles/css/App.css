@@ -19,12 +19,14 @@
 }
 .preview-img-med.split {
   transform: rotate(90deg);
+  margin-left: 30px;
 }
 .preview-img-med.aftermath {
   transition: 0.5s;
 }
 .preview-img-med.aftermath:hover {
   transform: rotate(-90deg);
+  margin-left: 30px;
 }
 .preview-img-med.flip {
   transition: 0.5s;
@@ -95,6 +97,10 @@
   justify-content: flex-end;
   max-width: 450px;
 }
+.searchbar__buildcontrols-shim {
+  padding: 7px;
+  visibility: hidden;
+}
 .searchbar__menu {
   display: flex;
   flex-direction: column;
@@ -150,9 +156,10 @@
 
 .dynamiccard {
   margin-top: -180px;
+  margin-right: 10px;
 }
 .dynamiccard__container {
-  height: 300px;
+  height: 900px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -165,15 +172,19 @@
   border-radius: 12px;
   box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
 }
-.dynamiccard__button {
-  z-index: 3;
+.dynamiccard__buttonpanel {
+  z-index: 1;
   position: absolute;
-  margin-top: 0px;
-  margin-left: 190px;
+  margin-top: -190px;
+  height: 100px;
+  margin-left: 334px;
+  padding: 10px 10px 10px 10px;
+  background: grey;
 }
 
 .mixedspread-view {
   height: 700px;
+  padding: 20px;
   display: flex;
   align-content: flex-start;
 }
@@ -181,7 +192,7 @@
   border-radius: 8px;
 }
 .mixedspread-view__img2-hovered {
-  margin-left: -10px;
+  margin-left: 10px;
 }
 .mixedspread-view__img {
   border-radius: 8px;

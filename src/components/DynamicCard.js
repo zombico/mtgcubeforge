@@ -50,11 +50,16 @@ class DynamicCard extends Component {
         onMouseEnter={(evt) => this.handleHoverIn(evt)}
         onMouseLeave={(evt) => this.handleHoverOut(evt)}
         />
-        <button className="dynamiccard__button" 
-          onClick={() => this.removeCard(this.props.id)}
+        <div className="dynamiccard__buttonpanel"
           onMouseEnter={(evt) => this.handleHoverIn(evt)}
           onMouseLeave={(evt) => this.handleHoverOut(evt)}
-        > wat </button>
+          >
+          <button className="dynamiccard__button" 
+            onClick={() => this.removeCard(this.props.id)}
+            onMouseEnter={(evt) => this.handleHoverIn(evt)}
+            onMouseLeave={(evt) => this.handleHoverOut(evt)}
+          > Remove </button>
+        </div>
         </>  
       }
       </div>

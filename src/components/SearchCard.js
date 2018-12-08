@@ -222,7 +222,7 @@ class SearchCard extends Component {
       <div className="searchbar">  
         
         <div className="topside">
-        <BuildControls handleAdd={this.handleAdd}/>    
+        <BuildControls handleAdd={this.handleAdd} stateReqstCard={this.state.stateReqstCard}/>    
           <div className="searchbar__menu">
           
           <input className="searchbar__input" type="text" id="searchcard"
