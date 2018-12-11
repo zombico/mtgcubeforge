@@ -13,7 +13,7 @@ const cubeSchema = new Schema({
     unique: true,
   },
   contents: {
-    type: Object,
+    type: Array,
     required: true
   }
 })
