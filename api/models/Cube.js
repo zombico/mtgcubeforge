@@ -18,6 +18,4 @@ const cubeSchema = new Schema({
   }
 })
 
-module.exports = {
-  Cube: mongoose.model('Cube', cubeSchema)
-}
+module.exports = mongoose.model('Cube', cubeSchema)
