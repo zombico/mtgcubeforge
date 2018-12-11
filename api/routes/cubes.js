@@ -6,34 +6,29 @@ const Cube = require('../models/Cube')
 
 router.get('/', async (req, res, next) => {
   try {
-
     const docs = await Cube.find()
-
     res.status(200).send({
       data: docs
     })
   } catch(e) {
-
     next(e)
   }
 })
 
 
 router.get('/:cube_id', async (req, res, next) => {
-  
   const cubeId = req.params.cube_id
-  
   try {
-    const doc = await Cube.findById(cubeId)
-  
+    const doc = await Cube.findById(cubeId)  
     res.status(200).send({
       data: [doc]
     })
-  } catch (e) {
-  
+  } catch (e) {  
     next(e)
   }
 })
 
+
+router.post('/:cube_id/:')
 
 exports.router = router;

@@ -3,6 +3,7 @@ import DynamicCard from './DynamicCard';
 import DynamicListItem  from './DynamicListItem';
 
 const MixedSpreadView = (props) => {
+  console.log(props)
   if (props.cubeContents.data && props.viewType === "list") {
     const view = props.cubeContents.data.map((card => 
       <>
@@ -18,9 +19,11 @@ const MixedSpreadView = (props) => {
     )) 
   return view } 
   
-  else if (props.cubeContents.data && props.viewType === "card") {
-    const view = props.cubeContents.data.map((card => 
-    <DynamicCard 
+  else if (props.cubeContents && props.viewType === "card") {
+    
+    const view = props.cubeContents.map((card => 
+    <DynamicCard
+      cubeId={props.cubeId}
       src={card.imgsm} alt={card.name} 
       tooltip={card.imgmd} 
       id={card.id} 

@@ -14,7 +14,7 @@ class DynamicCard extends Component {
 
   removeCard = async id => {
     try {
-      await axios.delete(`/fulgrens_cube/${id}`)
+      await axios.delete(`/cubes/${this.props.cubeId}/${id}`)
       this.props.loadCube()
     } catch (e){
       console.log(e)
