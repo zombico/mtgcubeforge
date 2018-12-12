@@ -121,10 +121,7 @@ class SearchCard extends Component {
 
   addCard = async () => {
     try {
-      // await axios.post('/fulgrens_cube', {
-      await axios.post(`/cubes/${this.state.cubeId}/`, {
-        newCard: this.state.stateReqstCard
-      })
+      await axios.patch(`cubes/${this.state.cubeId}/add`, this.state.stateReqstCard)
       this.props.loadCube()
       this.clearSearch()
     } catch(e) {
