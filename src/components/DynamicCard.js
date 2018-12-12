@@ -12,9 +12,11 @@ class DynamicCard extends Component {
     this.removeCard = this.removeCard.bind(this)
   }
 
-  removeCard = async id => {
+  removeCard = async () => {
+    const remove = {}
+    remove.id = this.props.id
     try {
-      await axios.delete(`/cubes/${this.props.cubeId}/${id}`)
+      await axios.patch(`/cubes/${this.props.cubeId}/remove`, remove)
       this.props.loadCube()
     } catch (e){
       console.log(e)
@@ -46,7 +48,8 @@ class DynamicCard extends Component {
         <>
         <img className="dynamiccard__tooltip" 
         src={this.props.tooltip} 
-        alt={this.props.name} 
+        alt={this.props.name}
+        id={this.props.id} 
         onMouseEnter={(evt) => this.handleHoverIn(evt)}
         onMouseLeave={(evt) => this.handleHoverOut(evt)}
         />
@@ -55,7 +58,7 @@ class DynamicCard extends Component {
           onMouseLeave={(evt) => this.handleHoverOut(evt)}
           >
           <button className="dynamiccard__button" 
-            onClick={() => this.removeCard(this.props.id)}
+            onClick={() => this.removeCard()}
             onMouseEnter={(evt) => this.handleHoverIn(evt)}
             onMouseLeave={(evt) => this.handleHoverOut(evt)}
           > Remove </button>
