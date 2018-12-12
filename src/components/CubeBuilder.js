@@ -7,7 +7,7 @@ class CubeBuilder extends Component {
   constructor() {
     super();
     this.state = {
-      cubeId: '5c0f38ac68bb7161dbef3607',
+      cubeId: '5c10203a6e73dd66c3963513',
       cubeContents : [],
       hasError: false,
       viewType: "card"
@@ -22,7 +22,7 @@ class CubeBuilder extends Component {
   async loadCube() {
     try {
       const response = await axios.get(`/cubes/${this.state.cubeId}`)
-      this.setState({ cubeContents: response.data.data[0].contents })
+      this.setState({ cubeContents: response.data.data[0]})
     } catch (error) {
       console.log(error)
       this.setState({ hasError: true })
@@ -34,7 +34,10 @@ class CubeBuilder extends Component {
   render() {
     return (
       <div className="cubebuilder">
-        <SearchCard loadCube={() => this.loadCube()} />
+        <SearchCard 
+          loadCube={() => this.loadCube()} 
+          cubeId={this.state.cubeId}
+          />
         <div className="spacer300" />
         <div className="mixedspread-view">
           <MixedSpreadView 

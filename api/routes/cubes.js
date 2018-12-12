@@ -19,7 +19,8 @@ router.get('/', async (req, res, next) => {
 router.get('/:cube_id', async (req, res, next) => {
   const cubeId = req.params.cube_id
   try {
-    const doc = await Cube.findById(cubeId)  
+    const raw = await Cube.findById(cubeId)  
+    const doc = raw.contents
     res.status(200).send({
       data: [doc]
     })
@@ -28,7 +29,30 @@ router.get('/:cube_id', async (req, res, next) => {
   }
 })
 
+// router.delete('/:cube_id', async (req, res, next) => {
+//   const cubeId = req.params.cube_id
+//   try {
+//     const doc = await Cube.findOneAndRemove(cubeId)
+//     res.status(202).send({
+//       data: [doc]
+//     })
+//   } catch(e) {
+//     next(e)
+//   }
+// })
 
-router.post('/:cube_id/:')
+router.patch('/:cube_id/:card_id', async (req, res, next) => {
+  const cubeId = req.params.cube_id
+  const cardId = req.params.card_id
+  try {
+    const cube = await Cube.findById(cubeId)
+    const doc = await cube.contents.findOneAndRemove(cardId)
+    res.status(202).send({
+      data: [doc]
+    })
+  } catch(e) {
+    next(e)
+  }
+})
 
 exports.router = router;
