@@ -4,8 +4,7 @@ const Schema = mongoose.Schema
 const cubeSchema = new Schema({
   name: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   userId: {
     type: String,

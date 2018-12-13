@@ -7,7 +7,7 @@ class CubeBuilder extends Component {
   constructor() {
     super();
     this.state = {
-      cubeId: '5c1158698b427f6fe6220542',
+      cubeId: '5c11bfd9038a4b77a778a197',
       cubeContents : [],
       hasError: false,
       viewType: "card"

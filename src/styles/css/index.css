@@ -1,3 +1,7 @@
+.App {
+  background: #D9D9D9;
+}
+
 .App-header {
   background-color: #282c34;
   text-align: right;
@@ -5,7 +9,7 @@
   position: sticky;
   top: 0px;
   padding-bottom: 10px;
-  padding: 5px 20px 10px 0px;
+  padding: 5px 40px 10px 0px;
   width: 100%;
 }
 
@@ -80,7 +84,7 @@
   padding-top: 40px;
   width: 600px;
   position: fixed;
-  top: 86px;
+  top: 88px;
   right: 0;
   background: rgba(0, 0, 0, 0.75);
 }
@@ -96,6 +100,10 @@
   display: flex;
   justify-content: flex-end;
   max-width: 450px;
+}
+.searchbar__buildcontrols-shim {
+  padding: 7px;
+  visibility: hidden;
 }
 .searchbar__menu {
   display: flex;
@@ -155,10 +163,11 @@
   margin-right: 10px;
 }
 .dynamiccard__container {
-  height: 300px;
+  height: 900px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  padding-left: 40px;
 }
 .dynamiccard__tooltip {
   position: absolute;

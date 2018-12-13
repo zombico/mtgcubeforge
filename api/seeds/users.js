@@ -5,12 +5,16 @@ const User = require('../models/User')
 const users = []
 
 const fulgren = new User({
-  name: 'Fulgren'
+  name: 'Fulgren',
+  email: 'mrdude@gmail.com',
+  password: 'bananas'
 })
 users.push(fulgren)
 
 const kosaku = new User({
-  name: 'Kosaku'
+  name: 'Kosaku',
+  email: 'msdude@gmail.com',
+  password: 'apples'
 })
 users.push(kosaku)
 

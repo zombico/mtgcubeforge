@@ -12,15 +12,18 @@ const truncateDatabase = async () => {
 }
 
 const makeSeeds = async () => {
-  // connect to our mongo database
+  
   await mongoose.connect(uri)
   // delete all old data in the database
   await truncateDatabase()
-  // save all our users into the database
+  
   await Promise.all(users.map(user => user.save()))
-  // save our seeded post into the database
+  const docs = await User.find({})
+  // turn on Fulgren's cube
+  cubes[0].userId = docs[0]._id
+  
   await Promise.all(cubes.map(cube => cube.save()))
-  // that's it! close the connection
+  
   mongoose.connection.close()
 }
 
