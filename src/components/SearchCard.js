@@ -107,7 +107,7 @@ class SearchCard extends Component {
       autoQueryOut: [],
       searchTerm: card
     })
-    document.getElementById('addtocube').focus()
+    this.state.stateReqstCard && document.getElementById('addtocube').focus({preventScroll: true})
   }
 
   checkIfOne(array, searchTerm) {
@@ -138,6 +138,7 @@ class SearchCard extends Component {
     event.preventDefault();
     this.focusCard();
     this.addCard();
+    document.getElementById('newcardholder').focus()
   }
 
   handleChange(event) {

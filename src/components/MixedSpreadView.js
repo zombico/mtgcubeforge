@@ -30,9 +30,12 @@ const MixedSpreadView = (props) => {
       loadCube={() => props.loadCube()}
     />
     ))
-  return <div className="dynamiccard__container">{view}</div> } 
+  return <div className="dynamiccard__container">
+            {view}
+            <button id="newcardholder" />
+          </div> } 
   
-  else {return ''}  
+  else { return '' }  
   
 
   
