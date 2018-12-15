@@ -4,8 +4,7 @@ const Schema = mongoose.Schema
 const cubeSchema = new Schema({
   name: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   userId: {
     type: String,
@@ -13,11 +12,9 @@ const cubeSchema = new Schema({
     unique: true,
   },
   contents: {
-    type: Object,
+    type: Array,
     required: true
   }
 })
 
-module.exports = {
-  Cube: mongoose.model('Cube', cubeSchema)
-}
+module.exports = mongoose.model('Cube', cubeSchema)

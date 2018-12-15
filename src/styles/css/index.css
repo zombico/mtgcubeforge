@@ -1,3 +1,7 @@
+.App {
+  background: #D9D9D9;
+}
+
 .App-header {
   background-color: #282c34;
   text-align: right;
@@ -5,8 +9,15 @@
   position: sticky;
   top: 0px;
   padding-bottom: 10px;
-  padding: 5px 20px 10px 0px;
+  padding: 5px 40px 10px 0px;
   width: 100%;
+}
+
+#newcardholder {
+  height: 10px;
+  width: 10px;
+  background: transparent;
+  border: none;
 }
 
 .preview-img-med {
@@ -80,7 +91,7 @@
   padding-top: 40px;
   width: 600px;
   position: fixed;
-  top: 86px;
+  top: 88px;
   right: 0;
   background: rgba(0, 0, 0, 0.75);
 }
@@ -96,6 +107,10 @@
   display: flex;
   justify-content: flex-end;
   max-width: 450px;
+}
+.searchbar__buildcontrols-shim {
+  padding: 7px;
+  visibility: hidden;
 }
 .searchbar__menu {
   display: flex;
@@ -155,10 +170,11 @@
   margin-right: 10px;
 }
 .dynamiccard__container {
-  height: 300px;
+  height: 900px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  padding-left: 40px;
 }
 .dynamiccard__tooltip {
   position: absolute;
@@ -173,7 +189,7 @@
   position: absolute;
   margin-top: -190px;
   height: 100px;
-  margin-left: 334px;
+  margin-left: 314px;
   padding: 10px 10px 10px 10px;
   background: grey;
 }
@@ -188,7 +204,7 @@
   border-radius: 8px;
 }
 .mixedspread-view__img2-hovered {
-  margin-left: 10px;
+  margin-left: -10px;
 }
 .mixedspread-view__img {
   border-radius: 8px;

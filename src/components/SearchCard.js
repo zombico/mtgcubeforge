@@ -5,9 +5,10 @@ import axios from "axios";
 
 class SearchCard extends Component {
   
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      cubeId: props.cubeId,
       searchTerm: '',
       tempCard: '',
       stateReqstCard: '',
@@ -106,7 +107,7 @@ class SearchCard extends Component {
       autoQueryOut: [],
       searchTerm: card
     })
-    document.getElementById('addtocube').focus()
+    this.state.stateReqstCard && document.getElementById('addtocube').focus({preventScroll: true})
   }
 
   checkIfOne(array, searchTerm) {
@@ -120,9 +121,7 @@ class SearchCard extends Component {
 
   addCard = async () => {
     try {
-      await axios.post('/fulgrens_cube', {
-        newCard: this.state.stateReqstCard
-      })
+      await axios.patch(`cubes/${this.state.cubeId}/add`, this.state.stateReqstCard)
       this.props.loadCube()
       this.clearSearch()
     } catch(e) {
@@ -139,6 +138,7 @@ class SearchCard extends Component {
     event.preventDefault();
     this.focusCard();
     this.addCard();
+    document.getElementById('newcardholder').focus()
   }
 
   handleChange(event) {

@@ -18,6 +18,13 @@
   
 }
 
+#newcardholder {
+  height: 10px;
+  width: 10px;
+  background: transparent;
+  border: none;
+}
+
 .preview-img-med {
   border-radius: 16px;
   max-width: 260px;
@@ -199,7 +206,7 @@
     position: absolute;
     margin-top: -190px;
     height: 100px;
-    margin-left: 334px;
+    margin-left: 314px;
     padding: 10px 10px 10px 10px;
     background: grey;
   }
@@ -215,7 +222,7 @@
   &__img2 {
     border-radius: 8px;
     &-hovered {
-      margin-left: 10px;
+      margin-left: -10px;
       // background: black;
     }
   }
