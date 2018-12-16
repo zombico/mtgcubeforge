@@ -3,6 +3,7 @@ import axios from "axios";
 import './styles/css/App.css';
 // import SearchCard from './components/SearchCard';
 import Login from './components/Login';
+import Logout from './components/Logout';
 import CubeBuilder from './components/CubeBuilder';
 import { getToken } from './services/tokenService'
 
@@ -12,13 +13,11 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // When the app loads, try and get the current user
     this.getCurrentUser()
   }
   getCurrentUser = async () => {
-    // 1. Try and retrieve the user's token
     const token = getToken()
-    // 2. If they have a token, make a request to /user/current for their user details
+    console.log(token)
     if(token) {
       try {
         const res = await axios.get('/user/current', {
@@ -27,6 +26,7 @@ class App extends Component {
           }
         })
         // 4. If a successful response returns, store the user in state.
+        console.log(res.data)
         this.setUser(res.data)
       } catch(e) {
         console.log(e)
@@ -44,6 +44,7 @@ class App extends Component {
         
         <header className="App-header">hello</header>
         <Login />
+        <Logout setUser={this.setUser} />
         <div class="tempmain"> <CubeBuilder /> </div>
           
         

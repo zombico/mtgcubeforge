@@ -11,7 +11,7 @@ const create = user => {
       id
     }
   }
-  console.log(payload)
+  console.log(payload, 'im the payload')
   // generate token and sign it with our secret
   return jwt.sign(payload, SECRET)
 }
