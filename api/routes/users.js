@@ -2,8 +2,6 @@ const express = require('express')
 const Router = express.Router
 const router = Router()
 const User = require('../models/User')
-const user = require('../middleware/user')
-const auth = require('../middleware/auth')
 
 // GET /users
 router.get('/', async (req, res, next) => {
@@ -22,6 +20,7 @@ router.get('/', async (req, res, next) => {
 
 // GET /users/:user_id
 router.get('/:user_id', async (req, res, next) => {
+  console.log('user id')
   // 1. Get the user id out of the params
   const userId = req.params.user_id
   // 2. Look up a user by that ID
@@ -35,11 +34,6 @@ router.get('/:user_id', async (req, res, next) => {
     // 4. If we don't, handle the error
     next(e)
   }
-})
-
-router.get('/me', auth, user, async (req, res, next) => {
-   
-  res.status(200).send({ data: [req.user] })
 })
 
 // Export router so that it is available to our server

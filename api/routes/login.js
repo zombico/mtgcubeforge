@@ -19,7 +19,7 @@ router.post('/', async (req, res, next) => {
         // generate a token if there is a match
         const token = tokenService.create(user)
     
-        res.status(200).send({ data: [token] })
+        res.status(200).send({ token })
       } else {
         next(new Error('unauthorized'))
       }

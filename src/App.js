@@ -21,14 +21,14 @@ class App extends Component {
     console.log(token)
     if(token) {
       try {
-        const res = await axios.get('/users/me', {
+        const res = await axios.get('/myaccount', {
           headers: {
             Authorization: `Bearer ${token}`
           }
         })
         // 4. If a successful response returns, store the user in state.
         console.log(res.data)
-        this.setUser(res.data)
+        this.setUser(res.data.data[0].name)
       } catch(e) {
         console.log(e)
       }
