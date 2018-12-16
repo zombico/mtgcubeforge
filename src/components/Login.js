@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { setToken } from "../services/tokenService";
+
 class Login extends Component {
   state = {
     email: "",
     password: ""
-  };
-
+  }
+  
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -17,8 +18,10 @@ class Login extends Component {
     // 1. POST to /auth/login, passing in the email and password in the body
     try {
       const res = await axios.post('/login', { email, password })
-      const token = res.data.token
+      const token = res.data.data[0]
       setToken(token)
+      
+      this.props.getCurrentUser()
     } catch(e) {
       console.error(e)
     }

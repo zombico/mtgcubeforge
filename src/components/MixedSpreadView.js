@@ -3,7 +3,6 @@ import DynamicCard from './DynamicCard';
 import DynamicListItem  from './DynamicListItem';
 
 const MixedSpreadView = (props) => {
-  console.log(props)
   if (props.cubeContents.data && props.viewType === "list") {
     const view = props.cubeContents.data.map((card => 
       <>

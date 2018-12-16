@@ -16,11 +16,12 @@ class App extends Component {
     this.getCurrentUser()
   }
   getCurrentUser = async () => {
+    
     const token = getToken()
     console.log(token)
     if(token) {
       try {
-        const res = await axios.get('/user/current', {
+        const res = await axios.get('/users/me', {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -35,7 +36,6 @@ class App extends Component {
     // 3. Pass the token as an Authorization Header    
   };
   setUser = user => {
-    // Set the current user into state.
     this.setState({ user });
 };
   render() {
@@ -43,7 +43,7 @@ class App extends Component {
       <div className="App">
         
         <header className="App-header">hello</header>
-        <Login />
+        <Login getCurrentUser={() => this.getCurrentUser()} />
         <Logout setUser={this.setUser} />
         <div class="tempmain"> <CubeBuilder /> </div>
           
