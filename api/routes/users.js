@@ -20,6 +20,7 @@ router.get('/', async (req, res, next) => {
 
 // GET /users/:user_id
 router.get('/:user_id', async (req, res, next) => {
+  console.log('user id')
   // 1. Get the user id out of the params
   const userId = req.params.user_id
   // 2. Look up a user by that ID
