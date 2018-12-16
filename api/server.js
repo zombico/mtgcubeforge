@@ -1,5 +1,6 @@
 'use strict';
 
+const path = require('path')
 const bodyParser = require('body-parser');
 const express = require('express');
 
@@ -16,6 +17,14 @@ app.use('/myaccount', require('./routes/myaccount').router);
 app.use('/users', require('./routes/users').router);
 app.use('/cubes', require('./routes/cubes').router);
 app.use('/newcube', require('./routes/newcube').router);
+app.use('/', express.static(
+  path.join(__dirname, '../build'))
+)
+
+// if the user visist a url that we do not have a defined route for, send them to index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 app.use((err, req, res, next) => {
   if (err.name === 'UnauthorizedError') {
