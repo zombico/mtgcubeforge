@@ -24,7 +24,8 @@
     "server": "nodemon ./index.js --ignore src/",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "sass:compile": "sass --watch src/styles/scss:src/styles/css",
-    "seed": "node api/seeds/index.js"
+    "seed": "node api/seeds/index.js",
+    "heroku-postbuild": "cd src && npm install --only=dev && npm install && npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
