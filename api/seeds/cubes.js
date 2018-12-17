@@ -2,9 +2,9 @@ const Cube = require('../models/Cube')
 
 const cubes = []
 
-const fulgrenscube = new Cube({
-  name: 'Modern High Powered',
-  userId: '',
+const koichiscube = new Cube({
+  cubename: 'Modern High Powered',
+  username: 'koichi',
   contents: [
     { name: "Thoughtseize", type: "Sorcery", layout: "normal", id:"310a1c46-8331-4a09-9fcb-d942f8102364", imgmd:"https://img.scryfall.com/cards/normal/en/ima/110.jpg?1530592140", imgsm:"https://img.scryfall.com/cards/small/en/ima/110.jpg?1530592140"},
     { name: "Preordain", type: "Sorcery", layout: "normal", id:"78d22ece-0cb1-4faf-a871-995449c1a41f", imgmd:"https://img.scryfall.com/cards/normal/en/c15/101.jpg?1532086511", imgsm:"https://img.scryfall.com/cards/small/en/c15/101.jpg?1532086511"},
@@ -15,6 +15,6 @@ const fulgrenscube = new Cube({
   ]
 })
 
-cubes.push(fulgrenscube)
+cubes.push(koichiscube)
 
 module.exports = cubes

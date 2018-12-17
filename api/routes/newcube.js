@@ -3,9 +3,9 @@ const router = express.Router();
 const Cube = require('../models/Cube');
 
 router.post('/', async (req, res, next) => {
-  const { name, userId } = req.body
+  const { username, cubename } = req.body
   const contents = []
-  const newcube = new Cube({ name, userId, contents })
+  const newcube = new Cube({ username, cubename, contents })
 
   try {
     const doc = await newcube.save()

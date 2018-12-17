@@ -19,8 +19,8 @@ const makeSeeds = async () => {
   await Promise.all(users.map(user => user.save()))
   const docs = await User.find({})
   
-  // turn on Fulgren's cube
-  cubes[0].userId = docs[0]._id
+  // turn on Koichi's cube
+  cubes[0].username = docs[0].name
   
   await Promise.all(cubes.map(cube => cube.save()))
   

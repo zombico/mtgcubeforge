@@ -2,14 +2,13 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const cubeSchema = new Schema({
-  name: {
+  cubename: {
     type: String,
     required: true
   },
-  userId: {
+  username: {
     type: String,
     required: true,
-    unique: true,
   },
   contents: {
     type: Array,

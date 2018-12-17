@@ -39,13 +39,14 @@ class App extends Component {
     this.setState({ user });
 };
   render() {
+    const user = this.state.user || 'Hello'
     return (
       <div className="App">
         
-        <header className="App-header">hello</header>
+        <header className="App-header">{user}</header>
         <Login getCurrentUser={() => this.getCurrentUser()} />
         <Logout setUser={this.setUser} />
-        <div class="tempmain"> <CubeBuilder /> </div>
+        <div className="tempmain"> <CubeBuilder /> </div>
           
         
       </div>
