@@ -53,9 +53,13 @@ class App extends Component {
         
         
         <Router>
-          <>
-          
-          <Route path ="/"
+          <>          
+          <Route exact path="/cubebuilder"
+            render={() => (
+              <div className="tempmain"> <CubeBuilder user={this.state.user} /> </div>
+            )}
+          />
+          <Route exact path ="/"
             render={() => (
               this.state.user ?
               <Dashboard user={this.state.user} setUser={this.setUser} /> 
@@ -72,11 +76,7 @@ class App extends Component {
                   <Login getCurrentUser={this.getCurrentUser}/>
               )}
             />
-          <Route exact path="/cubebuilder"
-            render={() => (
-              <div className="tempmain"> <CubeBuilder user={this.state.user} /> </div>
-            )}
-          />
+          
           </>
         </Router>  
         

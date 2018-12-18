@@ -19,10 +19,16 @@ class Dashboard extends Component {
       console.log(e)
     }
   }
-  
+
   render() {
+    const cubes = this.state.cubes
     return (
       <div>Dashboard
+        {
+          cubes.map(cube => (
+            <li>{cube.cubename}</li>
+          ))
+        }
         <Logout setUser={this.props.setUser} />
       </div>
     )
