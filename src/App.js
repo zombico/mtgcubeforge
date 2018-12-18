@@ -39,7 +39,7 @@ class App extends Component {
     this.setState({ user });
 };
   render() {
-    const user = this.state.user || 'Hello'
+    const user = this.state.user || 'Create Account' 
     return (
       <div className="App">
         
