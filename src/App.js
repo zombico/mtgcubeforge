@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect
+} from "react-router-dom"
 import axios from "axios";
 import './styles/css/App.css';
 // import SearchCard from './components/SearchCard';
@@ -46,8 +51,13 @@ class App extends Component {
         <header className="App-header">{user}</header>
         <Login getCurrentUser={() => this.getCurrentUser()} />
         <Logout setUser={this.setUser} />
-        <div className="tempmain"> <CubeBuilder /> </div>
-          
+        <Router>
+          <Route exact path="/cubebuilder"
+            render={() => (
+              <div className="tempmain"> <CubeBuilder user={this.state.user} /> </div>
+            )}
+          />
+        </Router>  
         
       </div>
     );
