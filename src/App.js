@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
+  Link,
   Redirect
 } from "react-router-dom"
 import axios from "axios";
@@ -46,20 +47,13 @@ class App extends Component {
     this.setState({ user });
 };
   render() {
-    const user = this.state.user || 'Create Account' 
+    
     return (
       <div className="App">
-        
-        <header className="App-header">{user}</header>
-        
-        
         <Router>
           <>          
-          {/* <Route exact path="/cubebuilder"
-            render={() => (
-              <div className="tempmain"> <CubeBuilder user={this.state.user} /> </div>
-            )}
-          /> */}
+
+          
           <Route exact path ="/dashboard"
             render={() => (
               this.state.user ?

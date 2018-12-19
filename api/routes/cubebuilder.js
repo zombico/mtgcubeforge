@@ -40,4 +40,20 @@ router.patch('/cubes/:cube_id/remove', async (req, res, next) => {
   }
 })
 
+router.post('/newcube', async (req, res, next) => {
+  const { username, cubename } = req.body
+  const contents = []
+  const newcube = new Cube({ username, cubename, contents })
+
+  try {
+    const doc = await newcube.save()
+      res.status(200).send({
+        data: [doc]
+      })
+  } catch(e) {
+    console.log(e)
+    next(e)
+  }
+})
+
 exports.router = router;
