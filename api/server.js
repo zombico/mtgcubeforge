@@ -15,6 +15,7 @@ app.use('/login', require('./routes/login').router);
 app.use('/myaccount', require('./routes/myaccount').router);
 app.use('/users', require('./routes/users').router);
 app.use('/cubes', require('./routes/cubes').router);
+app.use('/cubebuilder', require('./routes/cubebuilder').router);
 app.use('/newcube', require('./routes/newcube').router);
 app.use('/', express.static(
   path.join(__dirname, '../build'))

@@ -54,11 +54,11 @@ class App extends Component {
         
         <Router>
           <>          
-          <Route exact path="/cubebuilder"
+          {/* <Route exact path="/cubebuilder"
             render={() => (
               <div className="tempmain"> <CubeBuilder user={this.state.user} /> </div>
             )}
-          />
+          /> */}
           <Route exact path ="/"
             render={() => (
               this.state.user ?

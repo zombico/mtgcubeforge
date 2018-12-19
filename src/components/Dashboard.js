@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Logout from './Logout'
+import { BrowserRouter as Router, Route,  Link } from "react-router-dom"
 import axios from "axios";
+import Logout from './Logout'
+import CubeBuilder from './CubeBuilder';
 
 class Dashboard extends Component {  
   state={
@@ -23,14 +25,26 @@ class Dashboard extends Component {
   render() {
     const cubes = this.state.cubes
     return (
+      <Router>
       <div>Dashboard
         {
           cubes.map(cube => (
-            <li>{cube.cubename}</li>
+            <>
+            <Route path={`/cubebuilder/${cube._id}`}
+              render={() => (
+                <>
+                <CubeBuilder cubeid={cube._id}/>
+                
+                </>
+              )}
+            />
+            <li><Link to={`/cubebuilder/${cube._id}`}>{cube.cubename}</Link></li>
+            </>
           ))
         }
         <Logout setUser={this.props.setUser} />
       </div>
+      </Router>
     )
   
   }
