@@ -8,9 +8,10 @@ import axios from "axios";
 import './styles/css/App.css';
 // import SearchCard from './components/SearchCard';
 import Login from './components/Login';
-import Logout from './components/Logout';
+import Signup from './components/Signup';
+
 import Dashboard from './components/Dashboard';
-import CubeBuilder from './components/CubeBuilder';
+
 import { getToken } from './services/tokenService'
 
 class App extends Component {
@@ -59,7 +60,7 @@ class App extends Component {
               <div className="tempmain"> <CubeBuilder user={this.state.user} /> </div>
             )}
           /> */}
-          <Route exact path ="/"
+          <Route exact path ="/dashboard"
             render={() => (
               this.state.user ?
               <Dashboard user={this.state.user} setUser={this.setUser} /> 
@@ -68,15 +69,20 @@ class App extends Component {
             )}
           />
           <Route
-              path="/login"
-              render={() => (
-                this.state.user ?
-                  <Redirect to="/" />
-                :
-                  <Login getCurrentUser={this.getCurrentUser}/>
-              )}
-            />
-          
+            path="/login"
+            render={() => (
+              this.state.user ?
+                <Redirect to="/dashboard" />
+              :
+                <Login getCurrentUser={this.getCurrentUser}/>
+            )}
+          />
+          <Route
+            path="/signup"
+            render={() => (
+              <Signup getCurrentUser={this.getCurrentUser}/>
+            )}
+          />
           </>
         </Router>  
         

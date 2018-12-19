@@ -225,7 +225,8 @@ class SearchCard extends Component {
         <BuildControls handleAdd={this.handleAdd} stateReqstCard={this.state.stateReqstCard}/>    
           <div className="searchbar__menu">
           
-          <input className="searchbar__input" type="text" id="searchcard"
+          <input className="searchbar__input" type="text" id="searchcard" 
+            placeholder="search card"
             value={searchTerm} onChange={this.handleChange}
             onKeyDown={(e) => this.firstSearch(e)}
           />

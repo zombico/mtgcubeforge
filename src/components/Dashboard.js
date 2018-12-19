@@ -6,10 +6,16 @@ import CubeBuilder from './CubeBuilder';
 
 class Dashboard extends Component {  
   state={
-    cubes: []
+    cubes: [],
+    isBuilderLive: false
   }
   componentDidMount() {
     this.getusercubes()
+    this.setState({ isBuilderLive: false })
+  }
+
+  setBuilderLive = () => {
+    this.setState({ isBuilderLive: true })
   }
 
   getusercubes = async () => {
@@ -24,21 +30,23 @@ class Dashboard extends Component {
 
   render() {
     const cubes = this.state.cubes
+    const show = !this.state.isBuilderLive
     return (
       <Router>
-      <div>Dashboard
+      <div>
+        <h1 className={show ? "" : "hidden"}>Dashboard</h1>
         {
           cubes.map(cube => (
             <>
-            <Route path={`/cubebuilder/${cube._id}`}
+            <Route exact path={`/cubebuilder/${cube._id}`}
               render={() => (
                 <>
-                <CubeBuilder cubeid={cube._id}/>
+                <CubeBuilder cubeid={cube._id} setBuilderLive={this.setBuilderLive}/>
                 
                 </>
               )}
             />
-            <li><Link to={`/cubebuilder/${cube._id}`}>{cube.cubename}</Link></li>
+            <li className={show ? "" : "hidden"} ><Link to={`/cubebuilder/${cube._id}`}>{cube.cubename}</Link></li>
             </>
           ))
         }

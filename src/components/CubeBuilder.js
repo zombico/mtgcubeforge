@@ -17,7 +17,7 @@ class CubeBuilder extends Component {
   
   async componentWillMount() {
     console.log(this.props)
-    
+    this.props.setBuilderLive()
     await this.setState({ cubeId: this.props.cubeid })
     this.loadCube();
   }

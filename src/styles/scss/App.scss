@@ -241,6 +241,10 @@
   }
 }
 
+.hidden {
+  display: none;
+}
+
 .dynamiclistitem {
   display: flex;
   flex-direction: column;
@@ -253,9 +257,12 @@
   
 }
 
-#addtocube {
+.addtocube {
   padding: 7px;
   &:focus {
     border: 3px solid blue;
+  }
+  &.disabled {
+    
   }
 }
