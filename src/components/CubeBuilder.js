@@ -4,10 +4,10 @@ import MixedSpreadView from './MixedSpreadView';
 import axios from "axios";
 
 class CubeBuilder extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      cubeId: '5c11bfd9038a4b77a778a197',
+      cubeId: 'banana',
       cubeContents : [],
       hasError: false,
       viewType: "card"
@@ -15,7 +15,10 @@ class CubeBuilder extends Component {
   this.loadCube = this.loadCube.bind(this);  
   }
   
-  componentWillMount() {
+  async componentWillMount() {
+    console.log(this.props)
+    this.props.setBuilderLive()
+    await this.setState({ cubeId: this.props.cubeid })
     this.loadCube();
   }
 

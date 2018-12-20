@@ -7,7 +7,6 @@ module.exports = async (req, res, next) => {
     const doc = await User.findById(id)
       // if we find the user
     if(doc) {
-      
       req.user = doc
       next()
     } else {

@@ -15,6 +15,18 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/:username/all', async (req, res, next) => {
+  const username = req.params.username
+  try {
+    const cubesmade = await Cube.find({ username })
+    const doc = cubesmade
+    res.status(200).send({
+      data: [doc]
+    })
+  } catch (e) {
+    next(e)
+  }
+})
 
 router.get('/:cube_id', async (req, res, next) => {
   const cubeId = req.params.cube_id

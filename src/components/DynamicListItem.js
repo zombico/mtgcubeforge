@@ -13,14 +13,15 @@ class DynamicListItem extends Component {
     this.removeCard = this.removeCard.bind(this)
   }
 
-  removeCard = async id => {
-    try {
-      await axios.delete(`/fulgrens_cube/${id}`)
-      this.props.loadCube()
-    } catch (e){
-      console.log(e)
-    }
-  }
+  // Refactor for new pathing logic
+  // removeCard = async id => {
+  //   try {
+  //     await axios.delete(`/${id}`)
+  //     this.props.loadCube()
+  //   } catch (e){
+  //     console.log(e)
+  //   }
+  // }
   handleHoverIn(evt) {
     this.setState({ showingToolTip: true })
   }

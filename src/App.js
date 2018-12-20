@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom"
 import axios from "axios";
 import './styles/css/App.css';
 // import SearchCard from './components/SearchCard';
 import Login from './components/Login';
-import Logout from './components/Logout';
-import CubeBuilder from './components/CubeBuilder';
+import Signup from './components/Signup';
+
+import Dashboard from './components/Dashboard';
+
 import { getToken } from './services/tokenService'
 
 class App extends Component {
@@ -39,14 +47,38 @@ class App extends Component {
     this.setState({ user });
 };
   render() {
+    
     return (
       <div className="App">
-        
-        <header className="App-header">hello</header>
-        <Login getCurrentUser={() => this.getCurrentUser()} />
-        <Logout setUser={this.setUser} />
-        <div class="tempmain"> <CubeBuilder /> </div>
+        <Router>
+          <>          
+
           
+          <Route exact path ="/dashboard"
+            render={() => (
+              this.state.user ?
+              <Dashboard user={this.state.user} setUser={this.setUser} /> 
+              :
+              <Redirect to="/login" />
+            )}
+          />
+          <Route
+            path="/login"
+            render={() => (
+              this.state.user ?
+                <Redirect to="/dashboard" />
+              :
+                <Login getCurrentUser={this.getCurrentUser}/>
+            )}
+          />
+          <Route
+            path="/signup"
+            render={() => (
+              <Signup getCurrentUser={this.getCurrentUser}/>
+            )}
+          />
+          </>
+        </Router>  
         
       </div>
     );

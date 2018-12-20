@@ -4,6 +4,13 @@ const User = require('../models/User')
 // Create an array to store our fake users
 const users = []
 
+const koichi = new User({
+  name: 'koichi',
+  email: 'koichi@speedwagon.io',
+  password: 'act3'
+})
+users.push(koichi)
+
 const fulgren = new User({
   name: 'Fulgren',
   email: 'mrdude@gmail.com',
@@ -11,11 +18,6 @@ const fulgren = new User({
 })
 users.push(fulgren)
 
-const kosaku = new User({
-  name: 'Kosaku',
-  email: 'msdude@gmail.com',
-  password: 'apples'
-})
-users.push(kosaku)
+
 
 module.exports = users

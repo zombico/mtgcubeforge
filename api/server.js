@@ -10,13 +10,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/healthcheck', require('./routes/index').router);
-app.use('/fulgrens_cube', require('./routes/fulgrens_cube').router);
 app.use('/signup', require('./routes/signup').router);
 app.use('/login', require('./routes/login').router);
 app.use('/myaccount', require('./routes/myaccount').router);
 app.use('/users', require('./routes/users').router);
 app.use('/cubes', require('./routes/cubes').router);
-app.use('/newcube', require('./routes/newcube').router);
+app.use('/cubebuilder', require('./routes/cubebuilder').router);
 app.use('/', express.static(
   path.join(__dirname, '../build'))
 )

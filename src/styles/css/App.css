@@ -167,7 +167,7 @@
 
 .dynamiccard {
   margin-top: -180px;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 .dynamiccard__container {
   height: 900px;
@@ -215,6 +215,10 @@
   border: 1px solid white;
 }
 
+.hidden {
+  display: none;
+}
+
 .dynamiclistitem {
   display: flex;
   flex-direction: column;
@@ -225,10 +229,10 @@
   width: 200px;
 }
 
-#addtocube {
+.addtocube {
   padding: 7px;
 }
-#addtocube:focus {
+.addtocube:focus {
   border: 3px solid blue;
 }
 
