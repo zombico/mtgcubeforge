@@ -10,8 +10,9 @@ import './styles/css/App.css';
 // import SearchCard from './components/SearchCard';
 import Login from './components/Login';
 import Signup from './components/Signup';
-
+import CubeBuilder from './components/CubeBuilder';
 import Dashboard from './components/Dashboard';
+import HomePage from './components/HomePage';
 
 import { getToken } from './services/tokenService'
 
@@ -52,9 +53,25 @@ class App extends Component {
       <div className="App">
         <Router>
           <>          
-
-          
-          <Route exact path ="/dashboard"
+          <Route 
+            path="/"
+            render={() => <Redirect to="/home" /> }
+          />
+          <Route 
+            path ="/home"
+            render={() => <HomePage /> }
+          />
+          <Route 
+            path="/cubebuilder"
+            render={(props) => {  
+              
+              return (
+                this.state.user ? <CubeBuilder {...props} /> : <Redirect to="/signup" /> 
+              )
+             }}
+          />
+          <Route 
+            exact path ="/dashboard"
             render={() => (
               this.state.user ?
               <Dashboard user={this.state.user} setUser={this.setUser} /> 
@@ -74,6 +91,9 @@ class App extends Component {
           <Route
             path="/signup"
             render={() => (
+              this.state.user ?
+                <Redirect to="/dashboard" />
+              :
               <Signup getCurrentUser={this.getCurrentUser}/>
             )}
           />
