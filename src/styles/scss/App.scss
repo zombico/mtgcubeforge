@@ -1,6 +1,6 @@
 .App {
   // text-align: center;
-  background: #D9D9D9
+  // background: #D9D9D9
 }
 
 .App-header {
@@ -15,7 +15,8 @@
 }
 
 .tempmain {
-  
+  background: #D9D9D9;
+  min-height: 100vh;
 }
 
 #newcardholder {
@@ -241,20 +242,19 @@
   }
 }
 
-.hidden {
-  display: none;
+.homepage {
+  text-align: center;
+  height: 100vh;
 }
 
 .dynamiclistitem {
   display: flex;
   flex-direction: column;
   &__entry{
-    // color: white;
     text-align: left;
     font-size: 12px;
     width: 200px;
-  }
-  
+  }  
 }
 
 .addtocube {
@@ -265,4 +265,77 @@
   &.disabled {
     
   }
+}
+
+.modal__overlay {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.68);
+}
+.modal__buttonpanel {
+  display: flex;
+  justify-content: flex-end;
+}
+.modal__newcube {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: white;
+  box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
+  padding: 20px;
+  transform: translate(-50%, -50%);  
+  max-width: 400px;
+  width: 100%;
+  z-index: 3;
+}
+
+
+
+// functionally named css
+.hidden {
+  display: none;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.buttonblue {
+  background: #1a73e8;
+  padding: 10px;
+  width: 100%;
+  max-width: 160px;
+  margin-bottom: 16px;
+  border-radius: 2px;
+  a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+  }
+  &:hover {
+    background: #145BB8;
+  }
+}
+
+.vertical-buttonpanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// headers and fonts
+
+h1 {
+  font-family: 'PT Serif', serif;
+  font-weight: 700;
+}
+h2 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
+  font-size: 1.4em;
 }
