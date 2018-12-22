@@ -42,20 +42,19 @@ router.get('/:cube_id', async (req, res, next) => {
   }
 })
 
-// router.delete('/delete', async (req, res, next) => {
-//   const cubeId = req.params.id
-//   console.log(req.params, 'I am deleting')
-//   try {
-//     const cube = await Cube.findByIdAndDelete({ "_id": cubeId })
-    
-//     const doc = cube
-//     res.status(202).send({
-//       data: [doc]
-//     })
-//   } catch(e) {
-//     next(e)
-//   }
-// })
+router.delete('/:cubeId/delete', async (req, res, next) => {
+  const cubeId = req.params.cubeId
+  try {    
+    const cube = await Cube.findByIdAndDelete({ "_id": cubeId })
+    cube.save()
+    const doc = cube
+    res.status(202).send({
+      data: [doc]
+    })
+  } catch(e) {
+    next(e)
+  }
+})
 
 router.patch('/:cube_id/add', async (req, res, next) => {
   const cubeId = req.params.cube_id

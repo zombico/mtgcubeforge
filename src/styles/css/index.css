@@ -1,7 +1,3 @@
-.App {
-  background: #D9D9D9;
-}
-
 .App-header {
   background-color: #282c34;
   text-align: right;
@@ -11,6 +7,11 @@
   padding-bottom: 10px;
   padding: 5px 40px 10px 0px;
   width: 100%;
+}
+
+.tempmain {
+  background: #D9D9D9;
+  min-height: 100vh;
 }
 
 #newcardholder {
@@ -215,8 +216,9 @@
   border: 1px solid white;
 }
 
-.hidden {
-  display: none;
+.homepage {
+  text-align: center;
+  height: 100vh;
 }
 
 .dynamiclistitem {
@@ -245,6 +247,11 @@
   background: rgba(0, 0, 0, 0.68);
 }
 
+.modal__buttonpanel {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .modal__newcube {
   position: absolute;
   top: 50%;
@@ -256,6 +263,49 @@
   max-width: 400px;
   width: 100%;
   z-index: 3;
+}
+
+.hidden {
+  display: none;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.buttonblue {
+  background: #1a73e8;
+  padding: 10px;
+  width: 100%;
+  max-width: 160px;
+  margin-bottom: 16px;
+  border-radius: 2px;
+}
+.buttonblue a {
+  text-decoration: none;
+  color: white;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+}
+.buttonblue:hover {
+  background: #145BB8;
+}
+
+.vertical-buttonpanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  font-size: 1.4em;
 }
 
 /*# sourceMappingURL=index.css.map */

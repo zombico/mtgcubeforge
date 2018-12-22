@@ -8,7 +8,7 @@ import ModalNewCube from './ModalNewCube'
 class Dashboard extends Component {  
   state={
     cubes: [],
-    
+    editMode: false,
     showNewCubeModal: false
   }
   componentDidMount() {
@@ -34,17 +34,45 @@ class Dashboard extends Component {
     }
   }
 
+  switchEdit = () => {
+    if (!this.state.editMode) {
+      this.setState({ editMode: true })
+    }
+    else this.setState({ editMode: false })
+    
+  }
+
+  deleteCube = async (e, cubeid) => {
+    console.log(e, cubeid)
+    try {
+      const response = await axios.delete(`/cubes/${cubeid}/delete`, {cubeid})
+      console.log(response)
+      this.getusercubes()
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
   render() {
     const user = this.props.user || 'Create Account' 
     const cubes = this.state.cubes
     const newcubemodal = this.state.showNewCubeModal
-    
+    const oneditmode = this.state.editMode
 
 
     const cubelist = cubes.map(cube => {
       return (
         <div>
-          <li><Link to={`/cubebuilder/${cube._id}`}>{cube.cubename}</Link></li>
+          <li>
+            <Link to={`/cubebuilder/${cube._id}`}>{cube.cubename}</Link>
+            { oneditmode && 
+              <input type="submit" 
+                value="Delete" 
+                cubeid={cube._id}
+                onClick={(e) => this.deleteCube(e, cube._id)}
+              /> 
+            }
+          </li>
         </div>
       )
       
@@ -52,7 +80,7 @@ class Dashboard extends Component {
 
     return (
       
-      <div>
+      <div className="tempmain">
         <header className="App-header">{user}</header>
         <h1 >Dashboard</h1>
         {!newcubemodal && <button onClick={this.showNewCubeModal}>Create New Cube</button>}
@@ -62,8 +90,22 @@ class Dashboard extends Component {
         <ul>
           {cubelist}
         </ul>
-
-        <Logout setUser={this.props.setUser} />
+        { !oneditmode ?
+          <input 
+            type="submit" 
+            value="Manage Cubes" 
+            onClick={this.switchEdit}
+          /> 
+          :
+          <input 
+            type="submit" 
+            value="Back" 
+            onClick={this.switchEdit}
+          />
+        }
+        <div>
+          <Logout setUser={this.props.setUser} />
+        </div>
         
       </div>
       

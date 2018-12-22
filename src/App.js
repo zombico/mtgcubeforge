@@ -76,7 +76,7 @@ class App extends Component {
               this.state.user ?
               <Dashboard user={this.state.user} setUser={this.setUser} /> 
               :
-              <Redirect to="/login" />
+              <Redirect to="/home" />
             )}
           />
           <Route

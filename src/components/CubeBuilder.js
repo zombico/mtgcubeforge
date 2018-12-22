@@ -44,7 +44,7 @@ class CubeBuilder extends Component {
 
   render() {
     return (
-      <div className="cubebuilder">
+      <div className="tempmain">
       <div className="App-header">
         <Link to="/dashboard">Return to Dashboard</Link> 
       </div>
