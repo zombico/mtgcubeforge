@@ -1,3 +1,8 @@
+.App {
+  background-color: ghostwhite;
+  color: darkslategray;
+}
+
 .App-header {
   background-color: #282c34;
   text-align: right;
@@ -218,7 +223,7 @@
 
 .homepage {
   text-align: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .dynamiclistitem {
@@ -273,28 +278,38 @@
   width: 100%;
 }
 
+.heromid {
+  max-width: 300px;
+}
+
 .buttonblue {
-  background: #1a73e8;
+  background: steelblue;
   padding: 10px;
   width: 100%;
   max-width: 160px;
   margin-bottom: 16px;
   border-radius: 2px;
-}
-.buttonblue a {
   text-decoration: none;
   color: white;
   font-family: "Nunito", sans-serif;
   font-weight: 400;
 }
 .buttonblue:hover {
-  background: #145BB8;
+  background: lightsteelblue;
 }
 
 .vertical-buttonpanel {
+  margin-top: 30px;
+  margin-bottom: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.splashheader {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-size: 2.4em;
 }
 
 h1 {
@@ -306,6 +321,12 @@ h2 {
   font-family: "Nunito", sans-serif;
   font-weight: 300;
   font-size: 1.4em;
+}
+
+p {
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  font-size: 1em;
 }
 
 /*# sourceMappingURL=index.css.map */
