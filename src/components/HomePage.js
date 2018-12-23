@@ -5,17 +5,13 @@ class HomePage extends Component {
     return (
       <div className="homepage">
       <div className="App-header"></div>
-        <h1>MtG CubeForge</h1>
+        <h1 className="splashheader">MTG CubeForge</h1>
         <h2>Build and manage your Magic: the Gathering cubes</h2>
-        <div className="vertical-buttonpanel">
-          <div className="buttonblue">
-            <Link to="/signup">Create an account</Link>
-          </div>
-          <div className="buttonblue">
-            <Link to="/login">Log In</Link>
-          </div>
+        <img src="/heroimg.svg" className="heromid" />
+        <div className="vertical-buttonpanel">          
+          <Link className="buttonblue" to="/signup">Create an account</Link>
+          <Link className="buttonblue" to="/login">Log In</Link>          
         </div>
-        <div class="spacer300" />
         <p>Built with React JS, Node, Express, MongoDB and the Scryfall API</p>
       </div>
     )
