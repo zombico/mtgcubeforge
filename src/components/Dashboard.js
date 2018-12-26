@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom"
 import axios from "axios";
 import Logout from './Logout'
-import CubeBuilder from './CubeBuilder';
 import ModalNewCube from './ModalNewCube'
 
 class Dashboard extends Component {  
@@ -64,7 +63,7 @@ class Dashboard extends Component {
       return (
         <div>
           <li>
-            <Link to={`/cubebuilder/${cube._id}`}>{cube.cubename}</Link>
+            <Link to={`/cubebuilder/${cube._id}`}>{cube.cubename}</Link>      
             { oneditmode && 
               <input type="submit" 
                 value="Delete" 

@@ -27,6 +27,7 @@ const MixedSpreadView = (props) => {
       tooltip={card.imgmd} 
       id={card.id} 
       loadCube={() => props.loadCube()}
+      hasControls={props.hasControls}
     />
     ))
   return <div className="dynamiccard__container">

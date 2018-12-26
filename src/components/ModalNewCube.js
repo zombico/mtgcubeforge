@@ -42,9 +42,10 @@ class ModalNewCube extends Component {
                   name="cubename"
                   id="new-cube-button"
                   placeholder="ie: Old-school 1993"
+                  className="fullwidth" 
                 />
                 <div className="modal__buttonpanel">
-                  <input className="fullwidth" type="submit" value="Create new Cube" />
+                  <input type="submit" value="Create new Cube" />
                   <input type="submit" value="Cancel" onClick={this.props.hideNewCubeModal} />
                 </div>
               </form>
