@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route,  Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCube } from '@fortawesome/free-solid-svg-icons'
-// import { faCube } from '@fontawesome/pro-solid-svg-icons'
+
 class HomePage extends Component {
   render() {
     return (
