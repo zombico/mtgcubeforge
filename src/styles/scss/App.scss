@@ -1,6 +1,6 @@
 .App {
- background-color: ghostwhite;
- color: darkslategray;
+  background-color: darkslategray;
+  color: azure;
 }
 
 .App-header {
@@ -14,9 +14,43 @@
   width: 100%;
 }
 
+.view-header {
+  padding-left: 10vh;
+}
+
 .tempmain {
-  background: #D9D9D9;
   min-height: 100vh;
+}
+
+.gateway {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: auto;
+  padding: 20px;
+  margin-top: 40px;
+  &-label {
+    padding: 12px 0 3px 0;
+    font-family: 'Nunito', sans-serif;
+  }
+  &-input {
+    background: transparent;
+    font-size: 1em;
+    padding: 6px;
+    border: 1px solid cadetblue;
+    color: ghostwhite;
+    &:focus {
+      background: white;
+      color: darkslategray;
+    }
+  }
+}
+
+.dashboard {
+  a {
+    color: cyan;
+    text-decoration: none;
+  }
 }
 
 #newcardholder {
@@ -219,6 +253,9 @@
   padding: 20px;
   display: flex;
   align-content: flex-start;
+  &__header {
+    
+  }
   
   &__img2 {
     border-radius: 8px;
@@ -267,6 +304,8 @@
   }
 }
 
+// modals
+
 .modal__overlay {
   z-index: 1;
   position: fixed;
@@ -300,6 +339,10 @@
   display: none;
 }
 
+.centerizer {
+  text-align: center;
+}
+
 .fullwidth {
   width: 100%;
 }
@@ -308,19 +351,28 @@
   max-width: 300px;
 }
 
-.buttonblue {
-  background: steelblue;
+.pushtop30 {
+  margin-top: 30px;
+}
+
+// buttons 
+.buttonprimary {
+  background: darkcyan;
+  border: none;
   padding: 10px;
   width: 100%;
   max-width: 160px;
   margin-bottom: 16px;
-  border-radius: 2px;  
+  border-radius: 4px;  
   text-decoration: none;
-  color: white;
+  color: ghostwhite;
+  font-size: 1em;
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
   &:hover {
-    background: lightsteelblue;
+    background: cadetblue;
+    transition: 99ms;
+    cursor: pointer;
   }
 }
 
@@ -335,13 +387,15 @@
 // headers and fonts
 
 .splashheader {
-  font-family: 'PT Serif', serif;
-  font-weight: 700;
-  font-size: 2.4em;
+  // font-family: 'PT Serif', serif;
+  // font-weight: 700;
+  font-family: 'Major Mono Display', monospace;
+  font-size: 2.8em;
+  color: aquamarine;
 }
 
 h1 {
-  font-family: 'PT Serif', serif;
+  font-family: 'PT Serif', serif;  
   font-weight: 700;
 }
 h2 {

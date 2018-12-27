@@ -30,13 +30,9 @@ class DynamicCard extends Component {
   }
   render() {
     const showingToolTip = this.state.showingToolTip
+    const hasControls = this.props.hasControls
     return (
       <>
-      {/* <img className="mixedspread-view__img" 
-        src={this.props.src} alt={this.props.name} 
-        onMouseEnter={(evt) => this.handleHoverIn(evt)}
-        onMouseLeave={(evt) => this.handleHoverOut(evt)}
-      /> */}
       <div className="dynamiccard">
         <img className={showingToolTip ? "mixedspread-view__img2-hovered" :"mixedspread-view__img2" }
           src={this.props.src} alt={this.props.name} 
@@ -53,16 +49,19 @@ class DynamicCard extends Component {
         onMouseEnter={(evt) => this.handleHoverIn(evt)}
         onMouseLeave={(evt) => this.handleHoverOut(evt)}
         />
-        <div className="dynamiccard__buttonpanel"
-          onMouseEnter={(evt) => this.handleHoverIn(evt)}
-          onMouseLeave={(evt) => this.handleHoverOut(evt)}
-          >
-          <button className="dynamiccard__button" 
-            onClick={() => this.removeCard()}
+        { hasControls &&
+          <div className="dynamiccard__buttonpanel"
             onMouseEnter={(evt) => this.handleHoverIn(evt)}
             onMouseLeave={(evt) => this.handleHoverOut(evt)}
-          > Remove </button>
+          >
+          <button className="dynamiccard__button" 
+          onClick={() => this.removeCard()}
+          onMouseEnter={(evt) => this.handleHoverIn(evt)}
+          onMouseLeave={(evt) => this.handleHoverOut(evt)}
+          > Remove 
+          </button>
         </div>
+        }
         </>  
       }
       </div>

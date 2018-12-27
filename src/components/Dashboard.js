@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom"
 import axios from "axios";
 import Logout from './Logout'
-import CubeBuilder from './CubeBuilder';
 import ModalNewCube from './ModalNewCube'
 
 class Dashboard extends Component {  
@@ -64,7 +63,7 @@ class Dashboard extends Component {
       return (
         <div>
           <li>
-            <Link to={`/cubebuilder/${cube._id}`}>{cube.cubename}</Link>
+            <Link to={`/cubebuilder/${cube._id}`}>{cube.cubename}</Link>      
             { oneditmode && 
               <input type="submit" 
                 value="Delete" 
@@ -81,32 +80,33 @@ class Dashboard extends Component {
     return (
       
       <div className="tempmain">
-        <header className="App-header">{user}</header>
-        <h1 >Dashboard</h1>
-        {!newcubemodal && <button onClick={this.showNewCubeModal}>Create New Cube</button>}
-        { newcubemodal && 
-          <ModalNewCube user={user} getusercubes={this.getusercubes} hideNewCubeModal={this.hideNewCubeModal} />
-        }
-        <ul>
-          {cubelist}
-        </ul>
-        { !oneditmode ?
-          <input 
-            type="submit" 
-            value="Manage Cubes" 
-            onClick={this.switchEdit}
-          /> 
-          :
-          <input 
-            type="submit" 
-            value="Back" 
-            onClick={this.switchEdit}
-          />
-        }
-        <div>
-          <Logout setUser={this.props.setUser} />
+        <div className="dashboard">
+          <header className="App-header">{user}</header>
+          <h1 >Dashboard</h1>
+          {!newcubemodal && <button onClick={this.showNewCubeModal}>Create New Cube</button>}
+          { newcubemodal && 
+            <ModalNewCube user={user} getusercubes={this.getusercubes} hideNewCubeModal={this.hideNewCubeModal} />
+          }
+          <ul>
+            {cubelist}
+          </ul>
+          { !oneditmode ?
+            <input 
+              type="submit" 
+              value="Manage Cubes" 
+              onClick={this.switchEdit}
+            /> 
+            :
+            <input 
+              type="submit" 
+              value="Back" 
+              onClick={this.switchEdit}
+            />
+          }
+          <div>
+            <Logout setUser={this.props.setUser} />
+          </div>
         </div>
-        
       </div>
       
     )

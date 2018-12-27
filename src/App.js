@@ -11,6 +11,7 @@ import './styles/css/App.css';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import CubeBuilder from './components/CubeBuilder';
+import CubeViewer from './components/CubeViewer';
 import Dashboard from './components/Dashboard';
 import HomePage from './components/HomePage';
 
@@ -52,24 +53,40 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <>          
+          <>        
+          <Route
+            path="/cubeviewer"
+            render={(props) => {                
+              return (
+                <CubeViewer {...props} />  
+              )
+            }}
+          />  
           <Route 
-            path="/"
+            exact path="/"
             render={() => <Redirect to="/home" /> }
           />
           <Route 
             path ="/home"
-            render={() => <HomePage /> }
+            render={() => (
+              this.state.user ?
+              <Redirect to="/dashboard" />
+              :
+              <HomePage />
+              ) }
+          />
+          <Route 
+            path="/view"
           />
           <Route 
             path="/cubebuilder"
-            render={(props) => {  
-              
+            render={(props) => {                
               return (
                 this.state.user ? <CubeBuilder {...props} /> : <Redirect to="/signup" /> 
               )
              }}
           />
+          
           <Route 
             exact path ="/dashboard"
             render={() => (
@@ -85,7 +102,7 @@ class App extends Component {
               this.state.user ?
                 <Redirect to="/dashboard" />
               :
-                <Login getCurrentUser={this.getCurrentUser}/>
+                <Login />
             )}
           />
           <Route

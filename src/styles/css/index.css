@@ -1,6 +1,6 @@
 .App {
-  background-color: ghostwhite;
-  color: darkslategray;
+  background-color: darkslategray;
+  color: azure;
 }
 
 .App-header {
@@ -14,9 +14,41 @@
   width: 100%;
 }
 
+.view-header {
+  padding-left: 10vh;
+}
+
 .tempmain {
-  background: #D9D9D9;
   min-height: 100vh;
+}
+
+.gateway {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: auto;
+  padding: 20px;
+  margin-top: 40px;
+}
+.gateway-label {
+  padding: 12px 0 3px 0;
+  font-family: "Nunito", sans-serif;
+}
+.gateway-input {
+  background: transparent;
+  font-size: 1em;
+  padding: 6px;
+  border: 1px solid cadetblue;
+  color: ghostwhite;
+}
+.gateway-input:focus {
+  background: white;
+  color: darkslategray;
+}
+
+.dashboard a {
+  color: cyan;
+  text-decoration: none;
 }
 
 #newcardholder {
@@ -274,6 +306,10 @@
   display: none;
 }
 
+.centerizer {
+  text-align: center;
+}
+
 .fullwidth {
   width: 100%;
 }
@@ -282,20 +318,28 @@
   max-width: 300px;
 }
 
-.buttonblue {
-  background: steelblue;
+.pushtop30 {
+  margin-top: 30px;
+}
+
+.buttonprimary {
+  background: darkcyan;
+  border: none;
   padding: 10px;
   width: 100%;
   max-width: 160px;
   margin-bottom: 16px;
-  border-radius: 2px;
+  border-radius: 4px;
   text-decoration: none;
-  color: white;
+  color: ghostwhite;
+  font-size: 1em;
   font-family: "Nunito", sans-serif;
   font-weight: 400;
 }
-.buttonblue:hover {
-  background: lightsteelblue;
+.buttonprimary:hover {
+  background: cadetblue;
+  transition: 99ms;
+  cursor: pointer;
 }
 
 .vertical-buttonpanel {
@@ -307,9 +351,9 @@
 }
 
 .splashheader {
-  font-family: "PT Serif", serif;
-  font-weight: 700;
-  font-size: 2.4em;
+  font-family: "Major Mono Display", monospace;
+  font-size: 2.8em;
+  color: aquamarine;
 }
 
 h1 {
