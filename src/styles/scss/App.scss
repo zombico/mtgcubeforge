@@ -46,6 +46,13 @@
   }
 }
 
+.dashboard {
+  a {
+    color: cyan;
+    text-decoration: none;
+  }
+}
+
 #newcardholder {
   height: 10px;
   width: 10px;
@@ -351,6 +358,7 @@
 // buttons 
 .buttonprimary {
   background: darkcyan;
+  border: none;
   padding: 10px;
   width: 100%;
   max-width: 160px;

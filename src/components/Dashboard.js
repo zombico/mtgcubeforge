@@ -80,32 +80,33 @@ class Dashboard extends Component {
     return (
       
       <div className="tempmain">
-        <header className="App-header">{user}</header>
-        <h1 >Dashboard</h1>
-        {!newcubemodal && <button onClick={this.showNewCubeModal}>Create New Cube</button>}
-        { newcubemodal && 
-          <ModalNewCube user={user} getusercubes={this.getusercubes} hideNewCubeModal={this.hideNewCubeModal} />
-        }
-        <ul>
-          {cubelist}
-        </ul>
-        { !oneditmode ?
-          <input 
-            type="submit" 
-            value="Manage Cubes" 
-            onClick={this.switchEdit}
-          /> 
-          :
-          <input 
-            type="submit" 
-            value="Back" 
-            onClick={this.switchEdit}
-          />
-        }
-        <div>
-          <Logout setUser={this.props.setUser} />
+        <div className="dashboard">
+          <header className="App-header">{user}</header>
+          <h1 >Dashboard</h1>
+          {!newcubemodal && <button onClick={this.showNewCubeModal}>Create New Cube</button>}
+          { newcubemodal && 
+            <ModalNewCube user={user} getusercubes={this.getusercubes} hideNewCubeModal={this.hideNewCubeModal} />
+          }
+          <ul>
+            {cubelist}
+          </ul>
+          { !oneditmode ?
+            <input 
+              type="submit" 
+              value="Manage Cubes" 
+              onClick={this.switchEdit}
+            /> 
+            :
+            <input 
+              type="submit" 
+              value="Back" 
+              onClick={this.switchEdit}
+            />
+          }
+          <div>
+            <Logout setUser={this.props.setUser} />
+          </div>
         </div>
-        
       </div>
       
     )
