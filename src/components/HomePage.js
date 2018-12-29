@@ -8,9 +8,9 @@ class HomePage extends Component {
     return (
       <div className="homepage">
       <div className="App-header"></div>
-        <h1 className="splashheader">MtG cubeforGe</h1>
+        <h1 className="splashheader">MtG cubeforGe <FontAwesomeIcon icon={faCube} /></h1> 
         <h2>Build and manage your Magic: the Gathering cubes</h2>
-        <FontAwesomeIcon icon={faCube} />
+        
         
         <img src="/heroimg.svg" className="heromid" />
         <div className="vertical-buttonpanel">          
@@ -19,8 +19,8 @@ class HomePage extends Component {
         </div>
         <p>Built with React JS, Node, Express, and MongoDB</p>
         <p>
-          View project on <a href="https://github.com/zombico/mtgcubeforge">Github</a>.
-          Card data sourced from the <a href="https://scryfall.com/">Scryfall API</a>.
+          View project on <a className="homepage__link" href="https://github.com/zombico/mtgcubeforge">Github</a>.
+          Card data sourced from the <a className="homepage__link" href="https://scryfall.com/">Scryfall API</a>.
         </p>
         <p>2018 Franz Ombico</p>
       </div>

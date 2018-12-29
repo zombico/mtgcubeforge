@@ -46,9 +46,20 @@
   color: darkslategray;
 }
 
+.dashboard {
+  margin: auto;
+  max-width: 800px;
+}
 .dashboard a {
-  color: cyan;
+  color: ghostwhite;
   text-decoration: none;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  font-size: 1.2em;
+}
+.dashboard a:hover {
+  color: cyan;
+  text-decoration: underline;
 }
 
 #newcardholder {
@@ -100,10 +111,6 @@
   position: relative;
   top: 0px;
   left: 220px;
-}
-
-.spacer300 {
-  height: 300px;
 }
 
 .searchbar {
@@ -242,6 +249,7 @@
   border-radius: 8px;
 }
 .mixedspread-view__img2-hovered {
+  border-radius: 8px;
   margin-left: -10px;
 }
 .mixedspread-view__img {
@@ -256,6 +264,9 @@
 .homepage {
   text-align: center;
   min-height: 100vh;
+}
+.homepage__link {
+  color: cyan;
 }
 
 .dynamiclistitem {
@@ -302,12 +313,44 @@
   z-index: 3;
 }
 
+.cubelist {
+  list-style-type: none;
+  padding: 5px;
+  border-bottom: 1px solid lightblue;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.cubelist__container {
+  margin-top: 20px;
+  margin-bottom: 80px;
+  max-width: 400px;
+  padding: 20px;
+  background: lightslategray;
+}
+
+.tooltip {
+  position: absolute;
+  margin-top: -50px;
+  margin-left: 30px;
+  color: darkslategray;
+  background: cornsilk;
+  padding: 8px;
+  font-size: 0.6em;
+  box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
+}
+
 .hidden {
   display: none;
 }
 
 .centerizer {
   text-align: center;
+}
+
+.zeromarginpad {
+  margin: 0;
+  padding: 0;
 }
 
 .fullwidth {
@@ -320,6 +363,14 @@
 
 .pushtop30 {
   margin-top: 30px;
+}
+
+.spacer100 {
+  height: 100px;
+}
+
+.spacer300 {
+  height: 300px;
 }
 
 .buttonprimary {
@@ -357,8 +408,8 @@
 }
 
 h1 {
-  font-family: "PT Serif", serif;
-  font-weight: 700;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
 }
 
 h2 {

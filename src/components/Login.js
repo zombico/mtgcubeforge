@@ -71,10 +71,7 @@ class Login extends Component {
           </div>
         </form>
         }  
-        {
-          this.state.submitted && 
-          <Redirect to="/dashboard"/>
-        }
+        
         
       </div>
     );

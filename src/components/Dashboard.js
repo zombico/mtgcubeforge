@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom"
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShare, faCube, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import Logout from './Logout'
+import ToolTip from './ToolTip'
 import ModalNewCube from './ModalNewCube'
 
 class Dashboard extends Component {  
@@ -60,19 +63,27 @@ class Dashboard extends Component {
 
 
     const cubelist = cubes.map(cube => {
-      return (
-        <div>
-          <li>
-            <Link to={`/cubebuilder/${cube._id}`}>{cube.cubename}</Link>      
-            { oneditmode && 
-              <input type="submit" 
-                value="Delete" 
-                cubeid={cube._id}
-                onClick={(e) => this.deleteCube(e, cube._id)}
-              /> 
+      return (        
+        <li className="cubelist">
+          <Link to={`/cubebuilder/${cube._id}`}>{cube.cubename}</Link> 
+          <Link to={`/cubeviewer/${cube._id}`} target="_blank">
+            { !oneditmode &&
+              <ToolTip 
+              text="View cube in new window" 
+              icon={<FontAwesomeIcon icon={faShare} /> }
+            />
             }
-          </li>
-        </div>
+            
+          </Link>  
+                
+          { oneditmode && 
+            <FontAwesomeIcon icon={faTrashAlt} 
+              cubeid={cube._id}
+              onClick={(e) => this.deleteCube(e, cube._id)}
+              className="icon icon-trash"
+            />
+          }
+        </li>        
       )
       
     })
@@ -80,31 +91,40 @@ class Dashboard extends Component {
     return (
       
       <div className="tempmain">
-        <div className="dashboard">
-          <header className="App-header">{user}</header>
+        <header className="App-header">{user}</header>
+        <div className="dashboard">          
           <h1 >Dashboard</h1>
-          {!newcubemodal && <button onClick={this.showNewCubeModal}>Create New Cube</button>}
-          { newcubemodal && 
-            <ModalNewCube user={user} getusercubes={this.getusercubes} hideNewCubeModal={this.hideNewCubeModal} />
+          <div className="dashboard__panel">
+          { !oneditmode &&
+          <button className="buttonprimary" onClick={this.showNewCubeModal}>Create New Cube</button> 
           }
-          <ul>
-            {cubelist}
-          </ul>
           { !oneditmode ?
             <input 
+              className="buttontransparent"
               type="submit" 
               value="Manage Cubes" 
               onClick={this.switchEdit}
             /> 
             :
             <input 
+              className="buttontransparent"
               type="submit" 
               value="Back" 
               onClick={this.switchEdit}
             />
           }
+          </div> 
+          { newcubemodal && 
+            <ModalNewCube user={user} getusercubes={this.getusercubes} hideNewCubeModal={this.hideNewCubeModal} />
+          }
+          
+          <ul className="cubelist__container">
+          <h2 className="cubelist__header"><FontAwesomeIcon icon={faCube} /> Edit Cubes</h2>
+            {cubelist}
+          </ul>
+          
           <div>
-            <Logout setUser={this.props.setUser} />
+            <Logout setUser={this.props.setUser}  />
           </div>
         </div>
       </div>
