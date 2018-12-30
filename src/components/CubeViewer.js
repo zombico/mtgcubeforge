@@ -51,7 +51,6 @@ class CubeViewer extends Component {
           <h1>{this.state.cubename}</h1>
           <h2>Built by {this.state.username}</h2>
         </div>
-        <div className="spacer300" />
         <div className="mixedspread-view">
           <MixedSpreadView 
             cubeContents={this.state.cubeContents}  

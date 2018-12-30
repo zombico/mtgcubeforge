@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 class DynamicCard extends Component {
   constructor(props) {
@@ -54,12 +56,14 @@ class DynamicCard extends Component {
             onMouseEnter={(evt) => this.handleHoverIn(evt)}
             onMouseLeave={(evt) => this.handleHoverOut(evt)}
           >
-          <button className="dynamiccard__button" 
-          onClick={() => this.removeCard()}
-          onMouseEnter={(evt) => this.handleHoverIn(evt)}
-          onMouseLeave={(evt) => this.handleHoverOut(evt)}
-          > Remove 
-          </button>
+           
+          <FontAwesomeIcon icon={faTrashAlt} 
+            className="icon icon-trash"
+            onClick={() => this.removeCard()}
+            onMouseEnter={(evt) => this.handleHoverIn(evt)}
+            onMouseLeave={(evt) => this.handleHoverOut(evt)}
+            />
+          
         </div>
         }
         </>  

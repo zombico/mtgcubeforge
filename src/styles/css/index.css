@@ -50,6 +50,12 @@
   margin: auto;
   max-width: 800px;
 }
+.dashboard__panel {
+  display: flex;
+  max-width: 330px;
+  justify-content: space-between;
+  margin-top: 40px;
+}
 .dashboard a {
   color: ghostwhite;
   text-decoration: none;
@@ -280,10 +286,13 @@
 }
 
 .addtocube {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
   padding: 7px;
+  color: darkslategrey;
 }
 .addtocube:focus {
-  border: 3px solid blue;
+  border: 3px solid azure;
 }
 .modal__overlay {
   z-index: 1;
@@ -292,7 +301,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.68);
+  background: rgba(0, 0, 0, 0.28);
 }
 
 .modal__buttonpanel {
@@ -315,29 +324,38 @@
 
 .cubelist {
   list-style-type: none;
-  padding: 5px;
-  border-bottom: 1px solid lightblue;
+  padding: 5px 15px 5px 5px;
+  border-bottom: 1px solid lightslategray;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+}
+.cubelist:last-child {
+  border-bottom: none;
+}
+.cubelist__header {
+  font-weight: 700;
+  color: powderblue;
+  padding: 0 0 20px 0;
+  margin: 0;
 }
 .cubelist__container {
   margin-top: 20px;
   margin-bottom: 80px;
   max-width: 400px;
-  padding: 20px;
-  background: lightslategray;
+  padding: 20px 0 20px 20px;
+  border: 1px solid lightslategray;
 }
 
 .tooltip {
   position: absolute;
   margin-top: -50px;
-  margin-left: 30px;
+  margin-left: 27px;
   color: darkslategray;
-  background: cornsilk;
+  background: azure;
   padding: 8px;
   font-size: 0.6em;
-  box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 3px 25px -2px rgba(0, 0, 0, 0.75);
 }
 
 .hidden {
@@ -393,12 +411,43 @@
   cursor: pointer;
 }
 
+.buttontransparent {
+  background: transparent;
+  border: 1px solid ghostwhite;
+  color: ghostwhite;
+  padding: 9px;
+  width: 100%;
+  max-width: 160px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 1em;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+}
+.buttontransparent:hover {
+  background: cadetblue;
+  border: 1px solid cadetblue;
+  transition: 99ms;
+  cursor: pointer;
+}
+
 .vertical-buttonpanel {
   margin-top: 30px;
   margin-bottom: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.icon {
+  cursor: pointer;
+}
+.icon.icon-trash {
+  color: darkgrey;
+}
+.icon.icon-trash:hover {
+  color: cadetblue;
 }
 
 .splashheader {
@@ -409,7 +458,8 @@
 
 h1 {
   font-family: "Nunito", sans-serif;
-  font-weight: 300;
+  font-weight: 700;
+  color: powderblue;
 }
 
 h2 {

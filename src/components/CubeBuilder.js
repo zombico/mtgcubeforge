@@ -52,16 +52,18 @@ class CubeBuilder extends Component {
           loadCube={() => this.loadCube()} 
           cubeId={this.state.cubeId}
           />
-        <h1>{this.state.cubename}</h1>
-        <div className="spacer300" />
+        <div className="view-header"><h1>{this.state.cubename}</h1></div>
         <div className="mixedspread-view">
-          <MixedSpreadView 
+          { this.state.cubeContents.length > 0 ? 
+            <MixedSpreadView 
             cubeContents={this.state.cubeContents}  
             loadCube={() => this.loadCube()}
             viewType={this.state.viewType}
             cubeId={this.state.cubeId}
             hasControls={true}
-          />
+          /> :
+          <p className="mixedspread-view__emptymsg">Use the search bar to find cards to add to your cube</p>
+          }
         </div>
       </div>
     )

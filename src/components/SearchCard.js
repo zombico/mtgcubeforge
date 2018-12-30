@@ -86,9 +86,9 @@ class SearchCard extends Component {
     .then(res => res.json())
     .then(result => {  
       this.setState({
-        tempCard: result,
-        
-      }) })
+        tempCard: result        
+      }) 
+    })
     .then(() => {
       this.focusCard()
     })
@@ -120,7 +120,10 @@ class SearchCard extends Component {
   }
 
   addCard = async () => {
-    try {
+    const layout = this.state.tempCard.layout;
+    if (layout === "emblem" || layout === "vanguard") {
+      this.clearSearch()
+    } else try {
       await axios.patch(`cubes/${this.state.cubeId}/add`, this.state.stateReqstCard)
       this.props.loadCube()
       this.clearSearch()
@@ -137,8 +140,7 @@ class SearchCard extends Component {
   handleAdd(event) {
     event.preventDefault();
     this.focusCard();
-    this.addCard();
-    document.getElementById('newcardholder').focus()
+    this.addCard();    
   }
 
   handleChange(event) {

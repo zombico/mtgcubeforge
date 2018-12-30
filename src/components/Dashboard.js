@@ -64,7 +64,7 @@ class Dashboard extends Component {
 
     const cubelist = cubes.map(cube => {
       return (        
-        <li className="cubelist">
+        <li className="cubelist" key={cube._id}>
           <Link to={`/cubebuilder/${cube._id}`}>{cube.cubename}</Link> 
           <Link to={`/cubeviewer/${cube._id}`} target="_blank">
             { !oneditmode &&
