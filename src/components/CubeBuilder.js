@@ -10,7 +10,7 @@ class CubeBuilder extends Component {
     this.state = {
       cubeId: 'banana',
       cubename: 'bread',
-      cubeContents : [],
+      cubeContents: [],
       hasError: false,
       viewType: "card"
     }
@@ -33,12 +33,13 @@ class CubeBuilder extends Component {
       this.setState({ 
         cubeContents: response.data.data[0].contents,
         cubename: response.data.data[0].cubename
-      })
+      })      
     } catch (error) {
       console.log(error)
       this.setState({ hasError: true })
     }
   }
+
   
   
 
@@ -52,7 +53,7 @@ class CubeBuilder extends Component {
           loadCube={() => this.loadCube()} 
           cubeId={this.state.cubeId}
           />
-        <div className="view-header"><h1>{this.state.cubename}</h1></div>
+        <div className="view-header"><h1>{this.state.cubename}</h1></div>        
         <div className="mixedspread-view">
           { this.state.cubeContents.length > 0 ? 
             <MixedSpreadView 

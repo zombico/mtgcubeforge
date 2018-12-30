@@ -121,7 +121,7 @@ class SearchCard extends Component {
 
   addCard = async () => {
     const layout = this.state.tempCard.layout;
-    if (layout === "emblem" || layout === "vanguard") {
+    if (layout === "emblem" || layout === "vanguard" || layout === "planar" ) {
       this.clearSearch()
     } else try {
       await axios.patch(`cubes/${this.state.cubeId}/add`, this.state.stateReqstCard)

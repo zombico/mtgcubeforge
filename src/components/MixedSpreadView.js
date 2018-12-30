@@ -19,10 +19,10 @@ const MixedSpreadView = (props) => {
   return view } 
   
   else if (props.cubeContents && props.viewType === "card") {
-    
+    console.log(props.cubeContents)
     const view = props.cubeContents.map((card => 
     <DynamicCard
-      key={card.id}
+      
       cubeId={props.cubeId}
       src={card.imgsm} alt={card.name} 
       tooltip={card.imgmd} 
@@ -45,79 +45,86 @@ const MixedSpreadView = (props) => {
     
 
 
-  return <div className="dynamiccard__container">
-            { multicolor.length > 0 && 
-            <>
-            <h2 className="dynamiccard__header">Multicolor</h2> 
-            <div className="dynamiccard__color multi" id="multisection">                                
-              {multicolor}
-              <button className="newcardholder" id="newcardholdermulti" />
+  return <div className="dynamiccard__container">            
+            
+            <div className={multicolor.length > 0 ? '' : "hidden"}>
+              <div id="multicolorsection" className="dynamiccard__color-spacer" />
+              <h2 className="dynamiccard__header"  id="multisection">Multicolor</h2> 
+              <div className="dynamiccard__color multi">                                
+                {multicolor}
+                <button className="newcardholder" id="newcardholdermulti" />
+              </div>
             </div>
-            </>
-            }
-            { blue.length > 0 && 
-            <>
-            <h2 className="dynamiccard__header">Blue</h2> 
-            <div className="dynamiccard__color" id="bluesection">                                
-              {blue}
-              <button className="newcardholder" id="newcardholderblue" />
+                        
+            <div className={blue.length > 0 ? '' : "hidden"}>
+              <div id="bluesection" className="dynamiccard__color-spacer"/>
+              <h2 className="dynamiccard__header" id="bluesection">Blue</h2> 
+              <div className="dynamiccard__color" >                                
+                {blue}
+                <button className="newcardholder" id="newcardholderblue" />
+              </div>
             </div>
-            </>
-            }
-            { black.length > 0 && 
-            <>
-            <h2 className="dynamiccard__header">Black</h2> 
-            <div className="dynamiccard__color" id="blacksection">            
-              {black}
-              <button className="newcardholder" id="newcardholderblack" />
+            
+            
+            <div className={black.length > 0 ? '' : "hidden"}>
+              <div id="blacksection" className="dynamiccard__color-spacer"/>
+              <h2 className="dynamiccard__header" >Black</h2> 
+              <div className="dynamiccard__color" >            
+                {black}
+                <button className="newcardholder" id="newcardholderblack" />
+              </div>
             </div>
-            </>
-            }
-            { white.length > 0 && 
-            <>
-            <h2 className="dynamiccard__header">White</h2> 
-            <div className="dynamiccard__color" id="whitesection">                                
-              {white}
-              <button className="newcardholder" id="newcardholderwhite" />
+            
+            
+            <div className={white.length > 0 ? '' : "hidden"}>
+              <div id="whitesection" className="dynamiccard__color-spacer"/>
+              <h2 className="dynamiccard__header" id="whitesection">White</h2> 
+              <div className="dynamiccard__color" >                                
+                {white}
+                <button className="newcardholder" id="newcardholderwhite" />
+              </div>
             </div>
-            </>
-            }
-            { red.length > 0 && 
-            <>
-            <h2 className="dynamiccard__header">Red</h2> 
-            <div className="dynamiccard__color" id="redsection">                                
-              {red}
-              <button className="newcardholder" id="newcardholderred" />
+            
+            
+            <div className={red.length > 0 ? '' : "hidden"}>
+              <div id="redsection" className="dynamiccard__color-spacer"/>
+              <h2 className="dynamiccard__header" id="redsection">Red</h2> 
+              <div className="dynamiccard__color" >                                
+                {red}
+                <button className="newcardholder" id="newcardholderred" />
+              </div>
             </div>
-            </>
-            }
-            { green.length > 0 && 
-            <>
-            <h2 className="dynamiccard__header">Green</h2>
-            <div className="dynamiccard__color" id="greensection">                                
-              {green}
-              <button className="newcardholder" id="newcardholdergreen" />
+            
+            
+            <div className={green.length > 0 ? '' : "hidden"}>
+              <div id="greensection" className="dynamiccard__color-spacer"/>
+              <h2 className="dynamiccard__header" id="greensection">Green</h2>
+              <div className="dynamiccard__color" >                                
+                {green}
+                <button className="newcardholder" id="newcardholdergreen" />
+              </div>
             </div>
-            </>
-            }
-            { colorless.length > 0 && 
-            <>
-            <h2 className="dynamiccard__header">Colorless</h2> 
-            <div className="dynamiccard__color" id="colorlesssection">                                
-              {colorless}                        
-              <button className="newcardholder" id="newcardholdercolorless" />
+            
+            
+            <div className={colorless.length > 0 ? '' : "hidden"}>
+              <div id="colorlesssection" className="dynamiccard__color-spacer"/>
+              <h2 className="dynamiccard__header" id="colorlesssection">Colorless</h2> 
+              <div className="dynamiccard__color" >                                
+                {colorless}                        
+                <button className="newcardholder" id="newcardholdercolorless" />
+              </div>
             </div>
-            </>
-            }
-            { land.length > 0 && 
-            <>
-            <h2 className="dynamiccard__header">Land</h2> 
-            <div className="dynamiccard__color" id="landsection">                                
-              {land}
-              <button className="newcardholder" id="newcardholderland" />
+            
+            
+            <div className={land.length > 0 ? '' : "hidden"}>
+              <div id="landsection" className="dynamiccard__color-spacer"/>
+              <h2 className="dynamiccard__header" id="landsection">Land</h2> 
+              <div className="dynamiccard__color" >                                
+                {land}
+                <button className="newcardholder" id="newcardholderland" />
+              </div>
             </div>
-            </>
-            }
+            
 
           </div>  } 
   
