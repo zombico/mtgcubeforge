@@ -160,7 +160,34 @@ body {
 .searchbar__buildcontrols__container {
   display: flex;
   justify-content: flex-end;
-  max-width: 460px;
+  max-width: 980px;
+}
+.searchbar__buildcontrols__mainbutton {
+  align-self: flex-end;
+}
+.searchbar__buildcontrols__label {
+  align-self: center;
+  margin-left: 60px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+}
+.searchbar__buildcontrols__shortcut {
+  display: flex;
+  align-items: center;
+}
+.searchbar__buildcontrols__shortcut a {
+  color: powderblue;
+  padding-left: 10px;
+  font-family: "Nunito", sans-serif;
+  text-decoration: none;
+}
+.searchbar__buildcontrols__shortcut a:hover {
+  color: cyan;
+  text-decoration: underline;
+}
+.searchbar__buildcontrols__shortcut a:active {
+  color: darkslateblue;
+  text-decoration: underline;
 }
 .searchbar__buildcontrols-shim {
   padding: 7px;
