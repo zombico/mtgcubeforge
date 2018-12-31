@@ -72,6 +72,24 @@ router.patch('/:cube_id/add', async (req, res, next) => {
   }
 })
 
+router.patch('/:cube_id/overwrite', async (req, res, next) => {
+  const cubeId = req.params.cube_id
+  const overwrite = req.body.contents
+  
+  try {
+    const cube = await Cube.findById(cubeId)
+    cube.contents = overwrite
+    cube.save()
+    const doc = cube
+    res.status(200).send({
+      data: [doc]
+    })
+  } catch(e) {
+    next(e)
+  }
+})
+
+
 router.patch('/:cube_id/remove', async (req, res, next) => {
   const cubeId = req.params.cube_id
   const cardObject = req.body
