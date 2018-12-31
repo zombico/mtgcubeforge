@@ -59,9 +59,7 @@ class DynamicCard extends Component {
            
           <FontAwesomeIcon icon={faTrashAlt} 
             className="icon icon-trash"
-            onClick={() => this.removeCard()}
-            onMouseEnter={(evt) => this.handleHoverIn(evt)}
-            onMouseLeave={(evt) => this.handleHoverOut(evt)}
+            onClick={() => this.removeCard()}            
             />
           
         </div>
