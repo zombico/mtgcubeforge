@@ -305,7 +305,7 @@ body {
   padding-top: 0px;
 }
 .dynamiccard__color.multi {
-  max-height: 150px;
+  max-height: 240px;
 }
 .dynamiccard__buttonpanel {
   z-index: 1;
