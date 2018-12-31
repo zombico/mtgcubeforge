@@ -51,7 +51,7 @@ class CubeBuilder extends Component {
   render() {
     return (
       <div className="tempmain">
-      <div className="App-header">      
+      <div className="App-header">             
         <Link to="/dashboard" className="App-header__builder">
           <FontAwesomeIcon icon={faUser} />
           <span className="App-header__builder-user">{this.state.username}</span>
@@ -61,8 +61,11 @@ class CubeBuilder extends Component {
           loadCube={() => this.loadCube()} 
           cubeId={this.state.cubeId}
           />
-        <div className="view-header" ><h1  id="multicolorsection"><FontAwesomeIcon icon={faCube} /> {this.state.cubename}</h1></div>        
-        <div className="mixedspread-view">
+        <div className="view-header" >
+          <h1 ><FontAwesomeIcon icon={faCube} /> {this.state.cubename}</h1>
+          <h2 className="view-header__count" id="multicolorsection">{this.state.cubeContents.length} cards</h2>
+        </div>        
+        <div className="mixedspread-view" >
           { this.state.cubeContents.length > 0 ? 
             <MixedSpreadView 
             cubeContents={this.state.cubeContents}  
