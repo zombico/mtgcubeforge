@@ -25,7 +25,7 @@ class SearchCard extends Component {
     this.checkIfOne = this.checkIfOne.bind(this);
     this.closeSuggestions = this.closeSuggestions.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
-
+    this.newcardShortcut = this.newcardShortcut.bind(this);
     this.moveKey = this.moveKey.bind(this);
     this.firstSearch = this.firstSearch.bind(this);
     this.firstResult = React.createRef();    
@@ -86,9 +86,9 @@ class SearchCard extends Component {
     .then(res => res.json())
     .then(result => {  
       this.setState({
-        tempCard: result,
-        
-      }) })
+        tempCard: result        
+      }) 
+    })
     .then(() => {
       this.focusCard()
     })
@@ -120,7 +120,10 @@ class SearchCard extends Component {
   }
 
   addCard = async () => {
-    try {
+    const layout = this.state.tempCard.layout;
+    if (layout === "emblem" || layout === "vanguard" || layout === "planar" ) {
+      this.clearSearch()
+    } else try {
       await axios.patch(`cubes/${this.state.cubeId}/add`, this.state.stateReqstCard)
       this.props.loadCube()
       this.clearSearch()
@@ -134,11 +137,36 @@ class SearchCard extends Component {
     document.getElementById('searchcard').focus()
   }
 
+  newcardShortcut = () => {    
+    const colors = this.state.stateReqstCard.colors
+    const type = this.state.stateReqstCard.type
+
+    if (colors.length > 1) {
+      return document.getElementById(`multicolorsection`).scrollIntoView();
+    } else if (colors[0] === 'B' && colors.length === 1) {
+      return document.getElementById(`blacksection`).scrollIntoView();
+    } else if (colors[0] === 'U' && colors.length === 1) {
+      return document.getElementById(`bluesection`).scrollIntoView();
+    } else if (colors[0] === 'R' && colors.length === 1) {
+      return document.getElementById(`redsection`).scrollIntoView();
+    } else if (colors[0] === 'W' && colors.length === 1) {
+      return document.getElementById(`whitesection`).scrollIntoView();
+    } else if (colors[0] === 'G' && colors.length === 1) {
+      return document.getElementById(`greensection`).scrollIntoView();
+    } else if (colors.length === 0 && type != "Land") {
+      return document.getElementById(`colorlesssection`).scrollIntoView();
+    } else if (colors.length === 0 && type === "Land") {
+      return document.getElementById(`landsection`).scrollIntoView();
+    }
+
+    
+  }
+
   handleAdd(event) {
     event.preventDefault();
     this.focusCard();
-    this.addCard();
-    document.getElementById('newcardholder').focus()
+    this.addCard();    
+    this.newcardShortcut();
   }
 
   handleChange(event) {
