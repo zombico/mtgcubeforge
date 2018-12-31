@@ -8,14 +8,25 @@ body {
 }
 
 .App-header {
+  display: flex;
   background-color: #282c34;
-  text-align: right;
+  justify-content: flex-end;
   font-size: calc(10px + 2vmin);
   position: sticky;
   top: 0px;
   padding-bottom: 10px;
   padding: 5px 40px 10px 0px;
   width: 100%;
+}
+.App-header__builder {
+  text-decoration: none;
+  padding: 5px 15px 5px 0;
+  color: ghostwhite;
+  font-size: 0.8em;
+}
+.App-header__builder-user {
+  font-family: "Nunito", sans-serif;
+  padding-left: 10px;
 }
 
 .view-header {
@@ -155,7 +166,7 @@ body {
 }
 .searchbar__buildcontrols {
   align-self: flex-end;
-  margin-bottom: -40px;
+  margin-bottom: -43px;
 }
 .searchbar__buildcontrols__container {
   display: flex;
@@ -168,21 +179,26 @@ body {
 .searchbar__buildcontrols__label {
   align-self: center;
   margin-left: 60px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
 }
 .searchbar__buildcontrols__shortcut {
   display: flex;
   align-items: center;
 }
 .searchbar__buildcontrols__shortcut a {
-  color: darkslateblue;
+  color: powderblue;
   padding-left: 10px;
   font-family: "Nunito", sans-serif;
+  text-decoration: none;
 }
 .searchbar__buildcontrols__shortcut a:hover {
   color: cyan;
+  text-decoration: underline;
 }
 .searchbar__buildcontrols__shortcut a:active {
-  color: ghostwhite;
+  color: darkslateblue;
+  text-decoration: underline;
 }
 .searchbar__buildcontrols-shim {
   padding: 7px;
@@ -198,7 +214,7 @@ body {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 10px;
+  top: 14px;
   margin-top: 25px;
   width: 100%;
   max-width: 350px;
@@ -212,18 +228,22 @@ body {
   border: none;
   padding: 4px 8px;
   font-size: 20px;
-  background: white;
+  background: ghostwhite;
   color: black;
+  font-family: "Nunito", sans-serif;
 }
 .searchbar__images {
   display: flex;
 }
 .searchbar__autoresult {
-  background: white;
+  background: ghostwhite;
   border: none;
   text-align: left;
   z-index: 2;
-  padding-bottom: 5px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  font-family: "Nunito", sans-serif;
+  border-bottom: 1px solid lavender;
 }
 .searchbar__autoresult:hover, .searchbar__autoresult:focus {
   background: #cfcfcf;

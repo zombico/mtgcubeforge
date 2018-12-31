@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom"
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShare, faCube, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faShare, faCube, faTrashAlt, faUser } from '@fortawesome/free-solid-svg-icons'
 import Logout from './Logout'
 import ToolTip from './ToolTip'
 import ModalNewCube from './ModalNewCube'
@@ -91,7 +91,12 @@ class Dashboard extends Component {
     return (
       
       <div className="tempmain">
-        <header className="App-header">{user}</header>
+        <header className="App-header">
+          <Link to="/dashboard" className="App-header__builder">
+            <FontAwesomeIcon icon={faUser} />
+            <span className="App-header__builder-user">{user}</span>
+          </Link> 
+        </header>
         <div className="dashboard">          
           <h1 >Dashboard</h1>
           <div className="dashboard__panel">

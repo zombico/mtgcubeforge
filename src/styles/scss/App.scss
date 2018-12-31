@@ -1,20 +1,30 @@
 body {
   background: darkslategray;
 }
-.App {
-  background-color: darkslategray;
+.App {  
   color: azure;
 }
 
 .App-header {
+  display: flex;
   background-color: #282c34;
-  text-align: right;
+  justify-content: flex-end;
   font-size: calc(10px + 2vmin);
   position: sticky;
   top: 0px;
   padding-bottom: 10px;
-  padding: 5px 40px 10px 0px;
+  padding: 5px 40px 2px 0px;
   width: 100%;
+  &__builder {
+    text-decoration: none;
+    padding: 5px 15px 5px 0;
+    color: lavender;
+    font-size: .7em;
+    &-user {
+      font-family: 'Nunito', sans-serif;
+      padding-left: 10px;
+    }
+  }
 }
 
 .view-header {
@@ -161,11 +171,11 @@ body {
   }
   &__buildcontrols {
     align-self: flex-end;
-    margin-bottom: -40px;
+    margin-bottom: -43px;
     &__container {
       display: flex;
       justify-content: flex-end;
-      max-width: 980px;
+      max-width: 1020px;
     }
     &__mainbutton {
       align-self: flex-end;
@@ -214,7 +224,7 @@ body {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 10px;
+    top: 14px;
     margin-top: 25px;
     width: 100%;
     max-width: 350px;
@@ -228,18 +238,22 @@ body {
     border: none;
     padding: 4px 8px;
     font-size: 20px;
-    background: rgba(255, 255, 255, 1);
+    background: ghostwhite;
     color: black;
+    font-family: 'Nunito', sans-serif;
   }
   &__images {
     display: flex;
   }
   &__autoresult {
-    background: white;
+    background: ghostwhite;
     border: none;
     text-align: left;
     z-index: 2;
-    padding-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    font-family: 'Nunito', sans-serif;
+    border-bottom: 1px solid lavender;
     
     &:hover, &:focus {
       background: #cfcfcf;
@@ -286,6 +300,9 @@ body {
       height: 10px;
       width: 10px;
       padding-top: 60px;
+      &.top {
+        padding-top: 0px;
+      }
     }
     &.multi {
       max-height: 150px;
@@ -373,6 +390,7 @@ body {
     color: darkgrey;  
     background: slategray;
     border: none;
+    cursor: no-drop;
   }
 }
 
@@ -415,8 +433,8 @@ body {
     border-bottom: none;
   }
   &__header {
-    font-weight: 700;
-    color: powderblue;
+    font-weight: 400;
+    color: honeydew;
     padding: 0 0 20px 0;
     margin: 0;
   }
@@ -548,7 +566,7 @@ body {
 h1 {
   font-family: 'Nunito', sans-serif;
   font-weight: 700;
-  color: powderblue;
+  color: honeydew;
 }
 h2 {
   font-family: 'Nunito', sans-serif;

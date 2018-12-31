@@ -48,8 +48,8 @@ const MixedSpreadView = (props) => {
   return <div className="dynamiccard__container">            
             
             <div className={multicolor.length > 0 ? '' : "hidden"}>
-              <div id="multicolorsection" className="dynamiccard__color-spacer" />
-              <h2 className="dynamiccard__header"  id="multisection">Multicolor</h2> 
+              <div id="multicolorsection" className="dynamiccard__color-spacer top" />
+              <h2 className="dynamiccard__header"  >Multicolor</h2> 
               <div className="dynamiccard__color multi">                                
                 {multicolor}
                 <button className="newcardholder" id="newcardholdermulti" />
