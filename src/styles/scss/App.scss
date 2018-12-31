@@ -160,7 +160,7 @@ body {
     position: fixed;
     top: 88px;
     right: 0;
-    background: rgba(0, 0, 0, 0.75);
+    background: lightslategray;
   }
   .topside {
     width: 100%;
@@ -322,7 +322,7 @@ body {
 
 
 .mixedspread-view {
-  padding: 20px;
+  padding: 20px 20px 250px 20px;
   display: flex;
   align-content: flex-start;
   &__header {

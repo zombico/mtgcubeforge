@@ -49,16 +49,16 @@ const MixedSpreadView = (props) => {
             
             <div className={multicolor.length > 0 ? '' : "hidden"}>
               <div id="multicolorsection" className="dynamiccard__color-spacer top" />
-              <h2 className="dynamiccard__header"  >Multicolor</h2> 
+              <h2 className="dynamiccard__header"  >Multicolor <span>- {multicolor.length}</span> </h2>
               <div className="dynamiccard__color multi">                                
                 {multicolor}
-                <button className="newcardholder" id="newcardholdermulti" />
+                <button className="newcardholder" id="newcardholdermulticolor" />
               </div>
             </div>
                         
             <div className={blue.length > 0 ? '' : "hidden"}>
               <div id="bluesection" className="dynamiccard__color-spacer"/>
-              <h2 className="dynamiccard__header" id="bluesection">Blue</h2> 
+              <h2 className="dynamiccard__header" id="bluesection">Blue <span>- {blue.length}</span> </h2> 
               <div className="dynamiccard__color" >                                
                 {blue}
                 <button className="newcardholder" id="newcardholderblue" />
@@ -68,7 +68,7 @@ const MixedSpreadView = (props) => {
             
             <div className={black.length > 0 ? '' : "hidden"}>
               <div id="blacksection" className="dynamiccard__color-spacer"/>
-              <h2 className="dynamiccard__header" >Black</h2> 
+              <h2 className="dynamiccard__header" >Black <span>- {black.length}</span></h2> 
               <div className="dynamiccard__color" >            
                 {black}
                 <button className="newcardholder" id="newcardholderblack" />
@@ -78,7 +78,7 @@ const MixedSpreadView = (props) => {
             
             <div className={white.length > 0 ? '' : "hidden"}>
               <div id="whitesection" className="dynamiccard__color-spacer"/>
-              <h2 className="dynamiccard__header" id="whitesection">White</h2> 
+              <h2 className="dynamiccard__header">White <span>- {white.length}</span></h2> 
               <div className="dynamiccard__color" >                                
                 {white}
                 <button className="newcardholder" id="newcardholderwhite" />
@@ -88,7 +88,7 @@ const MixedSpreadView = (props) => {
             
             <div className={red.length > 0 ? '' : "hidden"}>
               <div id="redsection" className="dynamiccard__color-spacer"/>
-              <h2 className="dynamiccard__header" id="redsection">Red</h2> 
+              <h2 className="dynamiccard__header">Red <span>- {red.length}</span></h2> 
               <div className="dynamiccard__color" >                                
                 {red}
                 <button className="newcardholder" id="newcardholderred" />
@@ -98,7 +98,7 @@ const MixedSpreadView = (props) => {
             
             <div className={green.length > 0 ? '' : "hidden"}>
               <div id="greensection" className="dynamiccard__color-spacer"/>
-              <h2 className="dynamiccard__header" id="greensection">Green</h2>
+              <h2 className="dynamiccard__header">Green <span>- {green.length}</span></h2>
               <div className="dynamiccard__color" >                                
                 {green}
                 <button className="newcardholder" id="newcardholdergreen" />
@@ -108,7 +108,7 @@ const MixedSpreadView = (props) => {
             
             <div className={colorless.length > 0 ? '' : "hidden"}>
               <div id="colorlesssection" className="dynamiccard__color-spacer"/>
-              <h2 className="dynamiccard__header" id="colorlesssection">Colorless</h2> 
+              <h2 className="dynamiccard__header">Colorless <span>- {colorless.length}</span></h2> 
               <div className="dynamiccard__color" >                                
                 {colorless}                        
                 <button className="newcardholder" id="newcardholdercolorless" />
@@ -118,7 +118,7 @@ const MixedSpreadView = (props) => {
             
             <div className={land.length > 0 ? '' : "hidden"}>
               <div id="landsection" className="dynamiccard__color-spacer"/>
-              <h2 className="dynamiccard__header" id="landsection">Land</h2> 
+              <h2 className="dynamiccard__header">Land <span>- {land.length}</span></h2> 
               <div className="dynamiccard__color" >                                
                 {land}
                 <button className="newcardholder" id="newcardholderland" />
