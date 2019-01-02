@@ -105,7 +105,7 @@ body {
 
 .preview-img-med {
   border-radius: 16px;
-  max-width: 260px;
+  max-height: 400px;
 }
 .preview-img-med.dfc {
   max-width: 250px;
@@ -164,6 +164,7 @@ body {
   width: 700px;
 }
 .searchbar .rightside {
+  display: flex;
   align-self: flex-end;
   padding-left: 40px;
   padding-bottom: 40px;
