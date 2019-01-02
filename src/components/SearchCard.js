@@ -107,7 +107,7 @@ class SearchCard extends Component {
       autoQueryOut: [],
       searchTerm: card
     })
-    this.state.stateReqstCard && document.getElementById('addtocube').focus({preventScroll: true})
+    this.props.hasControls && this.state.stateReqstCard && document.getElementById('addtocube').focus({preventScroll: true})
   }
 
   checkIfOne(array, searchTerm) {
@@ -250,7 +250,12 @@ class SearchCard extends Component {
       <div className="searchbar">  
         
         <div className="topside">
-        <BuildControls handleAdd={this.handleAdd} stateReqstCard={this.state.stateReqstCard}/>    
+        <BuildControls 
+          handleAdd={this.handleAdd} 
+          stateReqstCard={this.state.stateReqstCard}
+          hasControls={this.props.hasControls}
+        
+        />    
           <div className="searchbar__menu">
           
           <input className="searchbar__input" type="text" id="searchcard" 

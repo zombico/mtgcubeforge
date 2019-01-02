@@ -60,7 +60,8 @@ class CubeBuilder extends Component {
         <SearchCard 
           loadCube={() => this.loadCube()} 
           cubeId={this.state.cubeId}
-          />
+          hasControls={true}
+        />
         <div className="view-header" >
           <h1 ><FontAwesomeIcon icon={faCube} /> {this.state.cubename}</h1>
           <h2 className="view-header__count" id="multicolorsection">{this.state.cubeContents.length} cards</h2>

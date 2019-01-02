@@ -12,7 +12,6 @@ body {
   font-size: calc(10px + 2vmin);
   position: sticky;
   top: 0px;
-  padding-bottom: 10px;
   padding: 5px 40px 2px 0px;
   width: 100%;
   &__builder {
@@ -24,6 +23,9 @@ body {
       font-family: 'Nunito', sans-serif;
       padding-left: 10px;
     }
+  }
+  > a {
+   text-decoration: none;    
   }
 }
 
@@ -394,6 +396,7 @@ body {
   color: ghostwhite;
   border-radius: 3px;
   border: none;
+  text-decoration: none;
   cursor: pointer;
   &:hover {
    background: slateblue; 
@@ -612,18 +615,28 @@ body {
   color: aquamarine;
 }
 
+.smallheader {
+  font-family: 'Major Mono Display', monospace;
+  font-size: 0.8em;
+  color: aquamarine;
+  margin: 12px;
+  &:hover {
+    color: cyan;
+  }
+}
+
 h1 {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   font-weight: 700;
   color: honeydew;
 }
 h2 {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 300;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400;
   font-size: 1.4em;
 }
 p {
   font-family: 'Nunito', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1em;
 }
