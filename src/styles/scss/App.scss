@@ -176,6 +176,10 @@ body {
     top: 88px;
     right: 0;
     background: lightslategray;
+    &-displayleft {
+      display: flex;
+      flex-direction: column;
+    }
   }
   .topside {
     width: 100%;
@@ -410,6 +414,9 @@ body {
     background: slategray;
     border: none;
     cursor: no-drop;
+  }
+  &.inoverlay {
+    margin-top: 18px;
   }
 }
 

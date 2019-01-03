@@ -142,21 +142,21 @@ class SearchCard extends Component {
     const type = this.state.stateReqstCard.type
 
     if (colors.length > 1) {
-      return document.getElementById(`multicolorsection`).scrollIntoView();
+      return document.getElementById(`Multicolorsection`).scrollIntoView();
     } else if (colors[0] === 'B' && colors.length === 1) {
-      return document.getElementById(`blacksection`).scrollIntoView();
+      return document.getElementById(`Blacksection`).scrollIntoView();
     } else if (colors[0] === 'U' && colors.length === 1) {
-      return document.getElementById(`bluesection`).scrollIntoView();
+      return document.getElementById(`Bluesection`).scrollIntoView();
     } else if (colors[0] === 'R' && colors.length === 1) {
-      return document.getElementById(`redsection`).scrollIntoView();
+      return document.getElementById(`Redsection`).scrollIntoView();
     } else if (colors[0] === 'W' && colors.length === 1) {
-      return document.getElementById(`whitesection`).scrollIntoView();
+      return document.getElementById(`Whitesection`).scrollIntoView();
     } else if (colors[0] === 'G' && colors.length === 1) {
-      return document.getElementById(`greensection`).scrollIntoView();
+      return document.getElementById(`Greensection`).scrollIntoView();
     } else if (colors.length === 0 && type != "Land") {
-      return document.getElementById(`colorlesssection`).scrollIntoView();
+      return document.getElementById(`Colorlesssection`).scrollIntoView();
     } else if (colors.length === 0 && type === "Land") {
-      return document.getElementById(`landsection`).scrollIntoView();
+      return document.getElementById(`Landsection`).scrollIntoView();
     }
 
     
@@ -284,27 +284,36 @@ class SearchCard extends Component {
             </div>      
           </div>            
         </div>
-        { this.state.stateReqstCard !== '' && <div className="rightside">
-        
-        { card.layout === "normal" &&
-          <img alt="" className="preview-img-med" src={card.imgmd} />
-        }
-        { card.aftermath &&
-          <img alt="" className="preview-img-med aftermath" src={card.imgmd} />
-        }
-        { card.layout === "split" && !card.aftermath &&
-          <img alt="" className="preview-img-med split" src={card.imgmd} />
-        }
-        { card.layout === "flip" &&
-          <img alt="" className="preview-img-med flip" src={card.imgmd} />
-        }
-        { card.layout === "transform" && 
-        <div className="searchbar__images">
-          <img alt="" className="preview-img-med dfc" src={card.imgmd} /> 
-          <img alt="" className="preview-img-med dfc" src={card.imgmdFlip} /> 
-        </div> 
-        }
-        
+        { this.state.stateReqstCard !== '' && 
+        <div className="rightside">
+          <div className="rightside-displayleft">
+            { card.layout === "normal" &&
+              <img alt="" className="preview-img-med" src={card.imgmd} />
+            }
+            { card.aftermath &&
+              <img alt="" className="preview-img-med aftermath" src={card.imgmd} />
+            }
+            { card.layout === "split" && !card.aftermath &&
+              <img alt="" className="preview-img-med split" src={card.imgmd} />
+            }
+            { card.layout === "flip" &&
+              <img alt="" className="preview-img-med flip" src={card.imgmd} />
+            }
+            { card.layout === "transform" && 
+            <div className="searchbar__images">
+              <img alt="" className="preview-img-med dfc" src={card.imgmd} /> 
+              <img alt="" className="preview-img-med dfc" src={card.imgmdFlip} /> 
+            </div> 
+            }
+            { this.props.hasControls &&
+            <button
+              className="addtocube inoverlay"
+              onClick={this.handleAdd}
+            >
+            Add to Cube
+            </button>
+            }
+          </div>
         </div>
       }
       </div>

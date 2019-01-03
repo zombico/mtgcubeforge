@@ -175,6 +175,10 @@ body {
   right: 0;
   background: lightslategray;
 }
+.searchbar .rightside-displayleft {
+  display: flex;
+  flex-direction: column;
+}
 .searchbar .topside {
   width: 100%;
 }
@@ -387,6 +391,9 @@ body {
   background: slategray;
   border: none;
   cursor: no-drop;
+}
+.addtocube.inoverlay {
+  margin-top: 18px;
 }
 
 .modal__overlay {
