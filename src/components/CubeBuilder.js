@@ -66,18 +66,15 @@ class CubeBuilder extends Component {
           <h1 ><FontAwesomeIcon icon={faCube} /> {this.state.cubename}</h1>
           <h2 className="view-header__count" id="multicolorsection">{this.state.cubeContents.length} cards</h2>
         </div>        
-        <div className="mixedspread-view" >
-          { this.state.cubeContents.length > 0 ? 
-            <MixedSpreadView 
+        <div className="mixedspread-view" >          
+          <MixedSpreadView 
             cubeContents={this.state.cubeContents}  
             loadCube={() => this.loadCube()}
             viewType={this.state.viewType}
             cubeId={this.state.cubeId}
             hasControls={true}
             sort={'alphabetic'}
-          /> :
-          <p className="mixedspread-view__emptymsg">Use the search bar to find cards to add to your cube</p>
-          }
+          />                     
         </div>
       </div>
     )

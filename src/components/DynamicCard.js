@@ -37,7 +37,7 @@ class DynamicCard extends Component {
       <>
       <div className="dynamiccard">
         <img className={showingToolTip ? "mixedspread-view__img2-hovered" :"mixedspread-view__img2" }
-          src={this.props.src} alt={this.props.name} 
+          src={this.props.src} name={this.props.name} 
           onMouseEnter={(evt) => this.handleHoverIn(evt)}
           onMouseLeave={(evt) => this.handleHoverOut(evt)}
         />
@@ -46,7 +46,7 @@ class DynamicCard extends Component {
         <>
         <img className="dynamiccard__tooltip" 
         src={this.props.tooltip} 
-        alt={this.props.name}
+        name={this.props.name}
         id={this.props.id} 
         onMouseEnter={(evt) => this.handleHoverIn(evt)}
         onMouseLeave={(evt) => this.handleHoverOut(evt)}

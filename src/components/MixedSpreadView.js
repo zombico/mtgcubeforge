@@ -25,11 +25,15 @@ const MixedSpreadView = (props) => {
 
     <DynamicCard      
       cubeId={props.cubeId}
-      src={card.imgsm} alt={card.name} 
+      name={card.name} 
+      src={card.imgsm} 
       tooltip={card.imgmd} 
       colors={card.colors}
       type={card.type}
       id={card.id} 
+      oracleid={card.oracleid}
+      cmc={card.cmc}
+      manacost={card.manacost}
       loadCube={() => props.loadCube()}
       hasControls={props.hasControls}      
     />
@@ -48,7 +52,7 @@ const MixedSpreadView = (props) => {
 
     const colorSection = (color, colorstring) => (
       <div className={color.length > 0 ? '' : "hidden"}>
-        <div id={`${colorstring}section`} className="dynamiccard__color-spacer" />
+        <div className="dynamiccard__color-focuser" />
         <h2 className="dynamiccard__header"  >{colorstring} <span>- {color.length}</span> </h2>
         <div className={colorstring === 'Multicolor' ? "dynamiccard__color multi" : "dynamiccard__color"}>                                
           {color}
@@ -60,16 +64,25 @@ const MixedSpreadView = (props) => {
 
   return <div className="dynamiccard__container">            
             
-            
+            <div id="Multicolorsection" className="dynamiccard__color-spacer" />
             {colorSection(multicolor, 'Multicolor')}
+            <div id="Bluesection" className="dynamiccard__color-spacer" />
             {colorSection(blue, 'Blue')}
+            <div id="Blacksection" className="dynamiccard__color-spacer" />
             {colorSection(black, 'Black')}
+            <div id="Whitesection" className="dynamiccard__color-spacer" />
             {colorSection(white, 'White')}
+            <div id="Redsection" className="dynamiccard__color-spacer" />
             {colorSection(red, 'Red')}
+            <div id="Greensection" className="dynamiccard__color-spacer" />
             {colorSection(green, 'Green')}
+            <div id="Colorlesssection" className="dynamiccard__color-spacer" />
             {colorSection(colorless, 'Colorless')}
+            <div id="Landsection" className="dynamiccard__color-spacer" />
             {colorSection(land, 'Land')}
                        
+            { props.cubeContents.length === 0 && 
+            <p className="mixedspread-view__emptymsg">Use the search bar to find cards to add to your cube</p>}
           </div>  } 
   
   else { return '' }  
