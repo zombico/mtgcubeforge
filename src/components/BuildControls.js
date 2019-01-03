@@ -24,14 +24,14 @@ class BuildControls extends Component {
           
           <div className="searchbar__buildcontrols__shortcut" >
             <div className="searchbar__buildcontrols__label">Jump to</div>
-            <a href="/#" onClick={(e) => this.colorShortcut('multicolor', e)}>Multicolor</a>
-            <a href="/#" onClick={(e) => this.colorShortcut('blue', e)}>Blue</a>
-            <a href="/#" onClick={(e) => this.colorShortcut('black', e)}>Black</a>
-            <a href="/#" onClick={(e) => this.colorShortcut('white', e)}>White</a>
-            <a href="/#" onClick={(e) => this.colorShortcut('red', e)}>Red</a>
-            <a href="/#" onClick={(e) => this.colorShortcut('green', e)}>Green</a>
-            <a href="/#" onClick={(e) => this.colorShortcut('colorless', e)}>Colorless</a>
-            <a href="/#" onClick={(e) => this.colorShortcut('land', e)}>Land</a>
+            <a href="/#" onClick={(e) => this.colorShortcut('Multicolor', e)}>Multicolor</a>
+            <a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>Blue</a>
+            <a href="/#" onClick={(e) => this.colorShortcut('Black', e)}>Black</a>
+            <a href="/#" onClick={(e) => this.colorShortcut('White', e)}>White</a>
+            <a href="/#" onClick={(e) => this.colorShortcut('Red', e)}>Red</a>
+            <a href="/#" onClick={(e) => this.colorShortcut('Green', e)}>Green</a>
+            <a href="/#" onClick={(e) => this.colorShortcut('Colorless', e)}>Colorless</a>
+            <a href="/#" onClick={(e) => this.colorShortcut('Land', e)}>Land</a>
           </div>  
         </div>
         
