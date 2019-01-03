@@ -74,6 +74,7 @@ class CubeBuilder extends Component {
             viewType={this.state.viewType}
             cubeId={this.state.cubeId}
             hasControls={true}
+            sort={'alphabetic'}
           /> :
           <p className="mixedspread-view__emptymsg">Use the search bar to find cards to add to your cube</p>
           }

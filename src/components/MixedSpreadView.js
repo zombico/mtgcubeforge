@@ -22,8 +22,8 @@ const MixedSpreadView = (props) => {
   if (props.cubeContents && props.viewType === "card") {
     console.log(props.cubeContents)
     const view = props.cubeContents.map((card => 
-    <DynamicCard
-      
+
+    <DynamicCard      
       cubeId={props.cubeId}
       src={card.imgsm} alt={card.name} 
       tooltip={card.imgmd} 
@@ -44,30 +44,24 @@ const MixedSpreadView = (props) => {
     const colorless = view.filter(card => card.props.colors.length === 0 && !card.props.type.includes("Land"))
     const land = view.filter(card => card.props.colors.length === 0 && card.props.type.includes("Land"))
     
-    AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land)
+    props.sort === 'alphabetic' && AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
 
     const colorSection = (color, colorstring) => (
       <div className={color.length > 0 ? '' : "hidden"}>
         <div id={`${colorstring}section`} className="dynamiccard__color-spacer" />
         <h2 className="dynamiccard__header"  >{colorstring} <span>- {color.length}</span> </h2>
-        <div className="dynamiccard__color">                                
+        <div className={colorstring === 'Multicolor' ? "dynamiccard__color multi" : "dynamiccard__color"}>                                
           {color}
           <button className="newcardholder" id={`newcardholder${colorstring}`} />
         </div>
       </div>
     )
 
+
   return <div className="dynamiccard__container">            
             
-            <div className={multicolor.length > 0 ? '' : "hidden"}>
-              <div id="Multicolorsection" className="dynamiccard__color-spacer top" />
-              <h2 className="dynamiccard__header"  >Multicolor <span>- {multicolor.length}</span> </h2>
-              <div className="dynamiccard__color multi">                                
-                {multicolor}
-                <button className="newcardholder" id="newcardholdermulticolor" />
-              </div>
-            </div>
-
+            
+            {colorSection(multicolor, 'Multicolor')}
             {colorSection(blue, 'Blue')}
             {colorSection(black, 'Black')}
             {colorSection(white, 'White')}

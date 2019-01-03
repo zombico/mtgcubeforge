@@ -70,6 +70,7 @@ class CubeViewer extends Component {
             viewType={this.state.viewType}
             cubeId={this.state.cubeId}
             hasControls={false}
+            sort={'alphabetic'}
           />
         </div>
       </div>
