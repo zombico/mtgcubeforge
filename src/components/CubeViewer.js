@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route,  Link } from "react-router-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCube } from '@fortawesome/free-solid-svg-icons'
+import Logo from './buttons/Logo'
 import MixedSpreadView from './MixedSpreadView';
 import SearchCard from './SearchCard'
 import axios from "axios";
@@ -50,9 +49,9 @@ class CubeViewer extends Component {
     return (
       <div className="tempmain">
       <div className="App-header">
-        <Link to="/">
-        <h3 className="smallheader">MtG cubeforGe <FontAwesomeIcon icon={faCube} /></h3> 
-        </Link>
+    
+        <Logo />
+
       </div>      
       <SearchCard 
           loadCube={() => this.loadCube()} 

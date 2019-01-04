@@ -9,7 +9,7 @@ body {
 .App-header {
   display: flex;
   background-color: #282c34;
-  justify-content: flex-end;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   position: sticky;
   top: 0px;
@@ -76,7 +76,7 @@ body {
 
 .dashboard {
   margin: auto;
-  max-width: 800px;
+  max-width: 1200px;
 }
 .dashboard__panel {
   display: flex;
@@ -607,9 +607,10 @@ body {
 
 .smallheader {
   font-family: "Major Mono Display", monospace;
-  font-size: 0.7em;
+  font-size: 0.6em;
   color: aquamarine;
   margin: 8px;
+  padding-bottom: 2px;
 }
 .smallheader:hover {
   color: cyan;

@@ -30,7 +30,7 @@ class SearchCard extends Component {
     this.handleAdd = this.handleAdd.bind(this);
     this.autoComplete = this.autoComplete.bind(this);
     this.checkIfOne = this.checkIfOne.bind(this);
-    this.closeSuggestions = this.closeSuggestions.bind(this);
+    this.handleListSelect = this.handleListSelect.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
     this.newcardShortcut = this.newcardShortcut.bind(this);
     this.moveKey = this.moveKey.bind(this);
@@ -134,9 +134,8 @@ class SearchCard extends Component {
     })
   }
 
-  closeSuggestions(card) {
-    this.setState({
-      autoQueryOut: [],
+  handleListSelect(card) {
+    this.setState({      
       searchTerm: card
     })
     this.props.hasControls && this.state.stateReqstCard && document.getElementById('addtocube').focus({preventScroll: true})
@@ -173,7 +172,6 @@ class SearchCard extends Component {
   newcardShortcut = () => {    
     const colors = this.state.stateReqstCard.colors
     const type = this.state.stateReqstCard.type
-
     if (colors.length > 1) {
       return document.getElementById(`Multicolorsection`).scrollIntoView();
     } else if (colors[0] === 'B' && colors.length === 1) {
@@ -190,7 +188,7 @@ class SearchCard extends Component {
       return document.getElementById(`Colorlesssection`).scrollIntoView();
     } else if (colors.length === 0 && type === "Land") {
       return document.getElementById(`Landsection`).scrollIntoView();
-    }
+    } 
 
     
   }
@@ -198,7 +196,7 @@ class SearchCard extends Component {
   handleAdd(event) {
     event.preventDefault();
     this.focusCard();
-    this.addCard();    
+    this.addCard();      
     this.newcardShortcut();
   }
 
@@ -287,8 +285,7 @@ class SearchCard extends Component {
         <BuildControls 
           handleAdd={this.handleAdd} 
           stateReqstCard={this.state.stateReqstCard}
-          hasControls={this.props.hasControls}
-        
+          hasControls={this.props.hasControls}          
         />    
           <div className="searchbar__menu">
           
@@ -306,10 +303,9 @@ class SearchCard extends Component {
                 onKeyDown={(e) => this.moveKey(e)}
                 ref={index === 0 && this.firstResult } 
                 id={"searchresult"+index}  key={index} 
-                className="searchbar__autoresult" 
-                onMouseEnter={() => this.getCard(card)}
+                className="searchbar__autoresult"                 
                 onFocus={() => this.getCard(card)} 
-                onClick={() => this.closeSuggestions(card)}
+                onClick={() => this.handleListSelect(card)}
               >
                   {card}
               </button>

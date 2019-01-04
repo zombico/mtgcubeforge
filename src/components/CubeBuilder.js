@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route,  Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faCube } from '@fortawesome/free-solid-svg-icons'
+import Logo from './buttons/Logo'
 import SearchCard from './SearchCard';
 import ToolTip from './ToolTip';
 import MixedSpreadView from './MixedSpreadView';
@@ -51,7 +52,8 @@ class CubeBuilder extends Component {
   render() {
     return (
       <div className="tempmain">
-      <div className="App-header">             
+      <div className="App-header">
+        <Logo />
         <Link to="/dashboard" className="App-header__builder">
           <FontAwesomeIcon icon={faUser} />
           <span className="App-header__builder-user">{this.state.username}</span>
