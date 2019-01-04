@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import Forge from './ForgeCardObject';
 import BuildControls from './BuildControls';
+// import GetVersions from './operations/GetVersions';
 import axios from "axios";
 
 class SearchCard extends Component {
@@ -14,11 +17,15 @@ class SearchCard extends Component {
       stateReqstCard: '',
       autoQueryIn: '',
       autoQueryOut: '',
-      currentSearchRank: -1
+      currentSearchRank: -1,
+      versions: [],
+      currentVersion: ''
     }
     this.focusCard = this.focusCard.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getCard = this.getCard.bind(this);
+    this.getVersions = this.getVersions.bind(this);
+    this.changeVersion = this.changeVersion.bind(this);
     this.addCard = this.addCard.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.autoComplete = this.autoComplete.bind(this);
@@ -92,11 +99,36 @@ class SearchCard extends Component {
     .then(() => {
       this.focusCard()
     })
+    
     .catch(error => console.error('Error', error))
+  }
+
+  getVersions(oracleId) {
+    fetch(`https://api.scryfall.com/cards/search?order=released&q=oracleid%3A${oracleId}&unique=prints`, {
+      })
+      .then(res => res.json())
+      .then(result => {  
+        this.setState({
+          versions: result.data        
+        }) 
+    })
+    .catch(error => console.error('Error', error))
+  }
+
+  changeVersion = (version) => {
+    // return Forge(version)
+   console.log(version)
+   const newVersion = Forge(version)
+   console.log(newVersion)
+   this.setState({
+    stateReqstCard: newVersion,
+  })
+    
   }
 
   focusCard() {
     const reqstCard = Forge(this.state.tempCard);
+    this.getVersions(reqstCard.oracleid)
     this.setState({
       stateReqstCard: reqstCard,
     })
@@ -108,6 +140,7 @@ class SearchCard extends Component {
       searchTerm: card
     })
     this.props.hasControls && this.state.stateReqstCard && document.getElementById('addtocube').focus({preventScroll: true})
+    this.focusCard()
   }
 
   checkIfOne(array, searchTerm) {
@@ -245,6 +278,7 @@ class SearchCard extends Component {
     const card = this.state.stateReqstCard
     const suggestions = this.state.autoQueryOut;
     const searchTerm = this.state.searchTerm;
+    const versions = this.state.versions
     
     return (
       <div className="searchbar">  
@@ -314,6 +348,24 @@ class SearchCard extends Component {
             </button>
             }
           </div>
+          <div className="rightside-displayright">
+            <div>
+            {versions.length > 0 && versions.map((version) => 
+               <div onClick={() => this.changeVersion(version)} >{version.set_name}</div>
+            )}
+            </div>
+            {/* <GetVersions 
+              oracleid={this.state.stateReqstCard.oracleid}
+              versions={this.state.versions}
+              current={this.state.stateReqstCard.set}
+              // changeVersion={this.changeVersion}
+            />   */}
+          </div>
+          <FontAwesomeIcon 
+            icon={faTimes} 
+            onClick={this.clearSearch}
+            className="rightside-closeicon"
+          />
         </div>
       }
       </div>

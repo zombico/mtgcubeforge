@@ -180,6 +180,16 @@ body {
       display: flex;
       flex-direction: column;
     }
+    &-closeicon {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+      color: gainsboro;
+    }
+    &-displayright {
+      
+    }
   }
   .topside {
     width: 100%;
