@@ -116,14 +116,14 @@ class SearchCard extends Component {
   }
 
   changeVersion = (version) => {
-    // return Forge(version)
-   console.log(version)
-   const newVersion = Forge(version)
-   console.log(newVersion)
-   this.setState({
-    stateReqstCard: newVersion,
-  })
-    
+
+   if (version.layout !== "emblem" && version.layout !== "vanguard" && version.layout !== "planar") {
+    const newVersion = Forge(version)
+    this.setState({
+      stateReqstCard: newVersion,
+    })    
+   }
+       
   }
 
   focusCard() {
@@ -339,7 +339,7 @@ class SearchCard extends Component {
               <img alt="" className="preview-img-med dfc" src={card.imgmdFlip} /> 
             </div> 
             }
-            { this.props.hasControls &&
+            { this.props.hasControls && versions &&
             <button
               className="addtocube inoverlay"
               onClick={this.handleAdd}
@@ -350,16 +350,14 @@ class SearchCard extends Component {
           </div>
           <div className="rightside-displayright">
             <div>
-            {versions.length > 0 && versions.map((version) => 
-               <div onClick={() => this.changeVersion(version)} >{version.set_name}</div>
+            { versions && versions.map((version) =>               
+              <div 
+                onClick={() => this.changeVersion(version)} 
+                className={this.state.stateReqstCard.set === version.set_name ? 'active' : ''}
+              >{version.set_name}</div>                           
             )}
             </div>
-            {/* <GetVersions 
-              oracleid={this.state.stateReqstCard.oracleid}
-              versions={this.state.versions}
-              current={this.state.stateReqstCard.set}
-              // changeVersion={this.changeVersion}
-            />   */}
+
           </div>
           <FontAwesomeIcon 
             icon={faTimes} 
