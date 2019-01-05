@@ -99,7 +99,7 @@ class Dashboard extends Component {
           </Link>
         </header>
         <div className="dashboard">          
-          <h1 >Dashboard</h1>
+          <h1 >Welcome, {user}</h1>
           <div className="dashboard__panel">
           { !oneditmode &&
           <button className="buttonprimary" onClick={this.showNewCubeModal}>Create New Cube</button> 

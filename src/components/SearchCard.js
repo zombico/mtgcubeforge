@@ -19,12 +19,14 @@ class SearchCard extends Component {
       autoQueryOut: '',
       currentSearchRank: -1,
       versions: [],
-      currentVersion: ''
+      currentVersion: '',
+      versionChangerActive: false
     }
     this.focusCard = this.focusCard.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getCard = this.getCard.bind(this);
     this.getVersions = this.getVersions.bind(this);
+    this.toggleVersionChanger = this.toggleVersionChanger.bind(this);
     this.changeVersion = this.changeVersion.bind(this);
     this.addCard = this.addCard.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -126,11 +128,16 @@ class SearchCard extends Component {
        
   }
 
+  toggleVersionChanger = () => {
+    this.setState({ versionChangerActive: true})
+  }
+
   focusCard() {
     const reqstCard = Forge(this.state.tempCard);
     this.getVersions(reqstCard.oracleid)
     this.setState({
       stateReqstCard: reqstCard,
+      versionChangerActive: false
     })
   }
 
@@ -276,7 +283,8 @@ class SearchCard extends Component {
     const card = this.state.stateReqstCard
     const suggestions = this.state.autoQueryOut;
     const searchTerm = this.state.searchTerm;
-    const versions = this.state.versions
+    const versions = this.state.versions;
+    const versionChangerActive = this.state.versionChangerActive;
     
     return (
       <div className="searchbar">  
@@ -335,24 +343,37 @@ class SearchCard extends Component {
               <img alt="" className="preview-img-med dfc" src={card.imgmdFlip} /> 
             </div> 
             }
+            { versions &&
+            <button
+              className="addtocube inoverlay changeEdition"    
+              onClick={this.toggleVersionChanger}          
+            >
+            Change Edition
+            </button>
+            }
             { this.props.hasControls && versions &&
             <button
               className="addtocube inoverlay"
               onClick={this.handleAdd}
             >
             Add to Cube
-            </button>
+            </button>            
             }
+            
+            
           </div>
           <div className="rightside-displayright">
-            <div>
-            { versions && versions.map((version) =>               
-              <div 
-                onClick={() => this.changeVersion(version)} 
-                className={this.state.stateReqstCard.set === version.set_name ? 'active' : ''}
-              >{version.set_name}</div>                           
-            )}
-            </div>
+            { versionChangerActive &&
+              <div className="versionchanger">
+              { versions && versions.map((version) =>               
+                <div
+                  key={version.id} 
+                  onClick={() => this.changeVersion(version)} 
+                  className={this.state.stateReqstCard.id === version.id ? 'container active' : 'container idle' }
+                >{version.set_name}</div>                           
+              )}
+              </div>
+            }
 
           </div>
           <FontAwesomeIcon 
