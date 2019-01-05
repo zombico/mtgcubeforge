@@ -6,6 +6,7 @@ import {
 } from "react-router-dom"
 import axios from "axios";
 import { setToken } from "../services/tokenService";
+import Logo from './buttons/Logo'
 
 class Signup extends Component {
   state = {
@@ -51,7 +52,7 @@ class Signup extends Component {
     if (!this.state.isDone ) {
     return (
       <div className="tempmain">
-      <div className="App-header"/>   
+      <div className="App-header" ><Logo /></div> 
         <form onSubmit={this.handleSubmit}>
             <div className="gateway">
               <label className="gateway-label" htmlFor="signup-email">Email </label>

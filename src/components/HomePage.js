@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route,  Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCube } from '@fortawesome/free-solid-svg-icons'
+import Logo from './buttons/Logo'
 
 class HomePage extends Component {
   render() {
     return (
       <div className="homepage">
-      <div className="App-header"></div>
-        <h1 className="splashheader">MtG cubeforGe <FontAwesomeIcon icon={faCube} /></h1> 
+      <div className="App-header"><Logo /></div>
+        <h1 className="splashheader"><FontAwesomeIcon icon={faCube} /> MtGcubeforGe</h1> 
         <h2>Build and manage your Magic: the Gathering cubes</h2>
         
         

@@ -8,7 +8,7 @@ body {
 .App-header {
   display: flex;
   background-color: #282c34;
-  justify-content: flex-end;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   position: sticky;
   top: 0px;
@@ -75,7 +75,7 @@ body {
 
 .dashboard {
   margin: auto;
-  max-width: 800px;
+  max-width: 1200px;
   &__panel {
     display: flex;
     max-width: 330px;
@@ -175,10 +175,21 @@ body {
     position: fixed;
     top: 88px;
     right: 0;
-    background: lightslategray;
+    background: ghostwhite;
     &-displayleft {
       display: flex;
       flex-direction: column;
+    }
+    &-closeicon {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+      color: darkslategray;
+    }
+    &-displayright {
+      width: 100%;
+      max-width: 270px;      
     }
   }
   .topside {
@@ -397,6 +408,8 @@ body {
   }  
 }
 
+
+
 .addtocube {
   font-family: 'Nunito', sans-serif;
   font-weight: 700;
@@ -419,6 +432,15 @@ body {
   }
   &.inoverlay {
     margin-top: 18px;
+    &:last-child {
+      margin-top: 9px;
+    }
+  }
+  &.changeEdition {
+    background: dodgerblue;
+    &:hover {
+      background: royalblue;
+    }
   }
 }
 
@@ -443,7 +465,7 @@ body {
   flex-direction: column;
   color: darkslategray;
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 50%;
   background: ghostwhite;
   border-radius: 6px;
@@ -506,6 +528,21 @@ body {
   box-shadow: 3px 3px 25px -2px rgba(0,0,0,0.75);
 }
 
+.versionchanger {
+  overflow-y: auto;
+  max-height: 60vh;
+  color: lightslategray;
+  font-family: 'Nunito', sans-serif;
+  padding: 12px;
+  > .container {
+    padding: 3px 6px;
+    border-bottom: 1px solid lavender;
+    &.active {
+      background: lavender;
+    }
+  }
+  
+}
 
 // functionally named css
 .hidden {
@@ -631,9 +668,10 @@ body {
 
 .smallheader {
   font-family: 'Major Mono Display', monospace;
-  font-size: 0.7em;
+  font-size: 0.6em;
   color: aquamarine;
   margin: 8px;
+  padding-bottom: 2px;
   &:hover {
     color: cyan;
   }

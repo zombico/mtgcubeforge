@@ -12,9 +12,10 @@ const Forge = (reqst) => {
     reqstCard.layout = "normal";
     reqstCard.imgsm = reqst.image_uris.small;
     reqstCard.imgmd = reqst.image_uris.normal;
-    reqstCard.oracleid = reqst.oracleid;
+    reqstCard.oracleid = reqst.oracle_id;
     reqstCard.cmc = reqst.cmc;
     reqstCard.manacost = reqst.mana_cost;  
+    reqstCard.set = reqst.set_name;
   }
 
   // split card case
@@ -30,9 +31,10 @@ const Forge = (reqst) => {
     reqstCard.layout = reqst.layout;
     reqstCard.imgsm = reqst.image_uris.small;
     reqstCard.imgmd = reqst.image_uris.normal;  
-    reqstCard.oracleid = reqst.oracleid;
+    reqstCard.oracleid = reqst.oracle_id;
     reqstCard.cmc = reqst.cmc;
     reqstCard.manacost = reqst.mana_cost;
+    reqstCard.set = reqst.set_name;
     const aftermath = reqst.set.includes("akh") || reqst.set.includes("hou") ? true : false;
     reqstCard.aftermath = aftermath;
     // console.log(reqst.set)
@@ -51,9 +53,10 @@ const Forge = (reqst) => {
     reqstCard.layout = reqst.layout;
     reqstCard.imgsm = reqst.card_faces[0].image_uris.small;
     reqstCard.imgmd = reqst.card_faces[0].image_uris.normal
-    reqstCard.oracleid = reqst.oracleid;
+    reqstCard.oracleid = reqst.oracle_id;
     reqstCard.cmc = reqst.cmc;
     reqstCard.manacost = reqst.mana_cost;
+    reqstCard.set = reqst.set_name;
     reqstCard.imgsmFlip = reqst.card_faces[1].image_uris.small;
     reqstCard.imgmdFlip = reqst.card_faces[1].image_uris.normal    
   }
@@ -71,9 +74,10 @@ const Forge = (reqst) => {
     reqstCard.layout = reqst.layout;
     reqstCard.imgsm = reqst.image_uris.small;
     reqstCard.imgmd = reqst.image_uris.normal;
-    reqstCard.oracleid = reqst.oracleid;
+    reqstCard.oracleid = reqst.oracle_id;
     reqstCard.cmc = reqst.cmc;
     reqstCard.manacost = reqst.mana_cost;
+    reqstCard.set = reqst.set_name;
   }
   
   return reqstCard

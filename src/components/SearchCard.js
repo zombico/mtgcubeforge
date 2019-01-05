@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import Forge from './ForgeCardObject';
 import BuildControls from './BuildControls';
+// import GetVersions from './operations/GetVersions';
 import axios from "axios";
 
 class SearchCard extends Component {
@@ -14,16 +17,22 @@ class SearchCard extends Component {
       stateReqstCard: '',
       autoQueryIn: '',
       autoQueryOut: '',
-      currentSearchRank: -1
+      currentSearchRank: -1,
+      versions: [],
+      currentVersion: '',
+      versionChangerActive: false
     }
     this.focusCard = this.focusCard.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getCard = this.getCard.bind(this);
+    this.getVersions = this.getVersions.bind(this);
+    this.toggleVersionChanger = this.toggleVersionChanger.bind(this);
+    this.changeVersion = this.changeVersion.bind(this);
     this.addCard = this.addCard.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.autoComplete = this.autoComplete.bind(this);
     this.checkIfOne = this.checkIfOne.bind(this);
-    this.closeSuggestions = this.closeSuggestions.bind(this);
+    this.handleListSelect = this.handleListSelect.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
     this.newcardShortcut = this.newcardShortcut.bind(this);
     this.moveKey = this.moveKey.bind(this);
@@ -92,22 +101,52 @@ class SearchCard extends Component {
     .then(() => {
       this.focusCard()
     })
+    
     .catch(error => console.error('Error', error))
+  }
+
+  getVersions(oracleId) {
+    fetch(`https://api.scryfall.com/cards/search?order=released&q=oracleid%3A${oracleId}&unique=prints`, {
+      })
+      .then(res => res.json())
+      .then(result => {  
+        this.setState({
+          versions: result.data        
+        }) 
+    })
+    .catch(error => console.error('Error', error))
+  }
+
+  changeVersion = (version) => {
+
+   if (version.layout !== "emblem" && version.layout !== "vanguard" && version.layout !== "planar") {
+    const newVersion = Forge(version)
+    this.setState({
+      stateReqstCard: newVersion,
+    })    
+   }
+       
+  }
+
+  toggleVersionChanger = () => {
+    this.setState({ versionChangerActive: true})
   }
 
   focusCard() {
     const reqstCard = Forge(this.state.tempCard);
+    this.getVersions(reqstCard.oracleid)
     this.setState({
       stateReqstCard: reqstCard,
+      versionChangerActive: false
     })
   }
 
-  closeSuggestions(card) {
-    this.setState({
-      autoQueryOut: [],
+  handleListSelect(card) {
+    this.setState({      
       searchTerm: card
     })
     this.props.hasControls && this.state.stateReqstCard && document.getElementById('addtocube').focus({preventScroll: true})
+    this.focusCard()
   }
 
   checkIfOne(array, searchTerm) {
@@ -140,7 +179,6 @@ class SearchCard extends Component {
   newcardShortcut = () => {    
     const colors = this.state.stateReqstCard.colors
     const type = this.state.stateReqstCard.type
-
     if (colors.length > 1) {
       return document.getElementById(`Multicolorsection`).scrollIntoView();
     } else if (colors[0] === 'B' && colors.length === 1) {
@@ -157,7 +195,7 @@ class SearchCard extends Component {
       return document.getElementById(`Colorlesssection`).scrollIntoView();
     } else if (colors.length === 0 && type === "Land") {
       return document.getElementById(`Landsection`).scrollIntoView();
-    }
+    } 
 
     
   }
@@ -165,7 +203,7 @@ class SearchCard extends Component {
   handleAdd(event) {
     event.preventDefault();
     this.focusCard();
-    this.addCard();    
+    this.addCard();      
     this.newcardShortcut();
   }
 
@@ -245,6 +283,8 @@ class SearchCard extends Component {
     const card = this.state.stateReqstCard
     const suggestions = this.state.autoQueryOut;
     const searchTerm = this.state.searchTerm;
+    const versions = this.state.versions;
+    const versionChangerActive = this.state.versionChangerActive;
     
     return (
       <div className="searchbar">  
@@ -253,8 +293,7 @@ class SearchCard extends Component {
         <BuildControls 
           handleAdd={this.handleAdd} 
           stateReqstCard={this.state.stateReqstCard}
-          hasControls={this.props.hasControls}
-        
+          hasControls={this.props.hasControls}          
         />    
           <div className="searchbar__menu">
           
@@ -272,10 +311,9 @@ class SearchCard extends Component {
                 onKeyDown={(e) => this.moveKey(e)}
                 ref={index === 0 && this.firstResult } 
                 id={"searchresult"+index}  key={index} 
-                className="searchbar__autoresult" 
-                onMouseEnter={() => this.getCard(card)}
+                className="searchbar__autoresult"                 
                 onFocus={() => this.getCard(card)} 
-                onClick={() => this.closeSuggestions(card)}
+                onClick={() => this.handleListSelect(card)}
               >
                   {card}
               </button>
@@ -305,15 +343,44 @@ class SearchCard extends Component {
               <img alt="" className="preview-img-med dfc" src={card.imgmdFlip} /> 
             </div> 
             }
-            { this.props.hasControls &&
+            { versions &&
+            <button
+              className="addtocube inoverlay changeEdition"    
+              onClick={this.toggleVersionChanger}          
+            >
+            Change Edition
+            </button>
+            }
+            { this.props.hasControls && versions &&
             <button
               className="addtocube inoverlay"
               onClick={this.handleAdd}
             >
             Add to Cube
-            </button>
+            </button>            
             }
+            
+            
           </div>
+          <div className="rightside-displayright">
+            { versionChangerActive &&
+              <div className="versionchanger">
+              { versions && versions.map((version) =>               
+                <div
+                  key={version.id} 
+                  onClick={() => this.changeVersion(version)} 
+                  className={this.state.stateReqstCard.id === version.id ? 'container active' : 'container idle' }
+                >{version.set_name}</div>                           
+              )}
+              </div>
+            }
+
+          </div>
+          <FontAwesomeIcon 
+            icon={faTimes} 
+            onClick={this.clearSearch}
+            className="rightside-closeicon"
+          />
         </div>
       }
       </div>

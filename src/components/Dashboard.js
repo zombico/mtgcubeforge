@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom"
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShare, faCube, faTrashAlt, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faShare, faCube, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import Logout from './Logout'
 import ToolTip from './ToolTip'
 import ModalNewCube from './ModalNewCube'
@@ -94,13 +94,12 @@ class Dashboard extends Component {
       
       <div className="tempmain">
         <header className="App-header">
-          <Link to="/dashboard" className="App-header__builder">
-            <FontAwesomeIcon icon={faUser} />
-            <span className="App-header__builder-user">{user}</span>
-          </Link> 
+          <Link to="/">
+          <h3 className="smallheader"> <FontAwesomeIcon icon={faCube} /> MtGcubeforGe </h3> 
+          </Link>
         </header>
         <div className="dashboard">          
-          <h1 >Dashboard</h1>
+          <h1 >Welcome, {user}</h1>
           <div className="dashboard__panel">
           { !oneditmode &&
           <button className="buttonprimary" onClick={this.showNewCubeModal}>Create New Cube</button> 
