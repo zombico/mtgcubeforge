@@ -102,7 +102,7 @@ class App extends Component {
               this.state.user ?
                 <Redirect to="/dashboard" />
               :
-                <Login />
+                <Login getCurrentUser={this.getCurrentUser} />
             )}
           />
           <Route

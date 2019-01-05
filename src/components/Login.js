@@ -27,7 +27,7 @@ class Login extends Component {
       const res = await axios.post('/login', { email, password })
       const token = res.data.token
       await setToken(token)
-      this.setState({ submitted: true })
+      this.props.getCurrentUser()      
       
     } catch(e) {
       console.error(e)
