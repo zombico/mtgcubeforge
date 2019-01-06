@@ -3,7 +3,7 @@ const Forge = (reqst) => {
   // left.side reqstCard is mine, reqst right.side is scryfall's
   
   // basic search case
-  if(reqst.layout ==="normal" || reqst.layout ==="saga" || reqst.layout==="leveler") {
+  if(reqst.layout ==="normal" || reqst.layout ==="saga" || reqst.layout==="leveler" || reqst.layout==="meld") {
     reqstCard.id = reqst.id;
     reqstCard.name = reqst.name;
     reqstCard.colors = reqst.colors;
@@ -60,6 +60,7 @@ const Forge = (reqst) => {
     reqstCard.imgsmFlip = reqst.card_faces[1].image_uris.small;
     reqstCard.imgmdFlip = reqst.card_faces[1].image_uris.normal    
   }
+  
 
   // case for flip cards
   if (reqst.layout === "flip") {

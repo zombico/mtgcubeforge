@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt, faSyncAlt, faCreditCard } from '@fortawesome/free-solid-svg-icons'
+import ScryfallLogo from './buttons/ScryfallLogo'
 
 class DynamicCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showingToolTip: false
+      showingToolTip: false,
+      showFront: true
     }
     this.handleHoverIn = this.handleHoverIn.bind(this)
     this.handleHoverOut = this.handleHoverOut.bind(this)
     this.removeCard = this.removeCard.bind(this)
+    this.flipCard = this.flipCard.bind(this)
   }
 
+  flipCard = () => {
+    if(this.state.showFront) {
+      this.setState({ showFront: false })
+    } else this.setState({ showFront: true })
+  }
   removeCard = async () => {
     const remove = {}
     remove.id = this.props.id
@@ -33,6 +41,8 @@ class DynamicCard extends Component {
   render() {
     const showingToolTip = this.state.showingToolTip
     const hasControls = this.props.hasControls
+    const showFront = this.state.showFront
+    const hasBack = this.props.imgmdFlip
     return (
       <>
       <div className="dynamiccard">
@@ -42,30 +52,37 @@ class DynamicCard extends Component {
           onMouseLeave={(evt) => this.handleHoverOut(evt)}
         />
       
-      {showingToolTip && 
-        <>
-        <img className="dynamiccard__tooltip" 
-        src={this.props.tooltip} 
-        name={this.props.name}
-        id={this.props.id} 
-        onMouseEnter={(evt) => this.handleHoverIn(evt)}
-        onMouseLeave={(evt) => this.handleHoverOut(evt)}
-        />
-        { hasControls &&
-          <div className="dynamiccard__buttonpanel"
-            onMouseEnter={(evt) => this.handleHoverIn(evt)}
-            onMouseLeave={(evt) => this.handleHoverOut(evt)}
-          >
-           
-          <FontAwesomeIcon icon={faTrashAlt} 
-            className="icon icon-trash"
-            onClick={() => this.removeCard()}            
-            />
+        {showingToolTip && 
+          <>
+          <img className="dynamiccard__tooltip" 
+          src={showFront ? this.props.tooltip : this.props.imgmdFlip} 
+          name={this.props.name}
+          id={this.props.id} 
+          onMouseEnter={(evt) => this.handleHoverIn(evt)}
+          onMouseLeave={(evt) => this.handleHoverOut(evt)}
+          />
           
-        </div>
+            <div className="dynamiccard__buttonpanel"
+              onMouseEnter={(evt) => this.handleHoverIn(evt)}
+              onMouseLeave={(evt) => this.handleHoverOut(evt)}
+            >
+            { hasControls && 
+              <FontAwesomeIcon icon={faTrashAlt} 
+              className="icon icon-panel"
+              onClick={() => this.removeCard()}            
+              />
+            }           
+            { hasBack &&  
+              <FontAwesomeIcon icon={faSyncAlt}
+                className="icon icon-panel"
+                onClick={() => this.flipCard()}
+              />
+            }
+            <ScryfallLogo id={this.props.id}/>
+          </div>
+          
+          </>  
         }
-        </>  
-      }
       </div>
       </>
     )

@@ -13,12 +13,12 @@ body {
   font-size: calc(10px + 2vmin);
   position: sticky;
   top: 0px;
-  padding: 5px 40px 2px 0px;
+  padding: 5px 40px 4px 30px;
   width: 100%;
 }
 .App-header__builder {
   text-decoration: none;
-  padding: 5px 15px 5px 0;
+  padding: 5px 45px 5px 0;
   color: lavender;
   font-size: 0.7em;
 }
@@ -77,6 +77,7 @@ body {
 .dashboard {
   margin: auto;
   max-width: 1200px;
+  padding-left: 21px;
 }
 .dashboard__panel {
   display: flex;
@@ -174,6 +175,9 @@ body {
   top: 88px;
   right: 0;
   background: ghostwhite;
+}
+.searchbar .rightside-iconpanel {
+  color: darkslateblue;
 }
 .searchbar .rightside-displayleft {
   display: flex;
@@ -328,9 +332,11 @@ body {
   max-height: 240px;
 }
 .dynamiccard__buttonpanel {
+  display: flex;
+  flex-direction: column;
   z-index: 1;
   position: absolute;
-  margin-top: -190px;
+  margin-top: -220px;
   height: 100px;
   margin-left: 314px;
   padding: 15px 15px 0 15px;
@@ -502,18 +508,25 @@ body {
 }
 
 .versionchanger {
+  background: white;
   overflow-y: auto;
   max-height: 60vh;
-  color: lightslategray;
+  color: slategray;
   font-family: "Nunito", sans-serif;
-  padding: 12px;
+  margin-left: 12px;
 }
 .versionchanger > .container {
   padding: 3px 6px;
   border-bottom: 1px solid lavender;
+  font-size: 0.9em;
+  cursor: pointer;
 }
 .versionchanger > .container.active {
-  background: lavender;
+  background: slategray;
+  color: white;
+}
+.versionchanger > .container:last-child {
+  border-bottom: none;
 }
 
 .hidden {
@@ -620,11 +633,12 @@ body {
 .icon {
   cursor: pointer;
 }
-.icon.icon-trash {
-  color: darkgrey;
+.icon.icon-panel {
+  color: darkslateblue;
+  padding-bottom: 12px;
 }
-.icon.icon-trash:hover {
-  color: cadetblue;
+.icon.icon-panel:hover {
+  color: slateblue;
 }
 
 .splashheader {
@@ -636,12 +650,12 @@ body {
 .smallheader {
   font-family: "Major Mono Display", monospace;
   font-size: 0.6em;
-  color: aquamarine;
+  color: slategray;
   margin: 8px;
   padding-bottom: 2px;
 }
 .smallheader:hover {
-  color: cyan;
+  color: cadetblue;
 }
 
 h1 {

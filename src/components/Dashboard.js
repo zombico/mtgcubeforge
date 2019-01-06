@@ -71,7 +71,7 @@ class Dashboard extends Component {
           
             { !oneditmode &&
               <ToolTip 
-              text="View cube in new window" 
+              text="Share as Read-only" 
               icon={<FontAwesomeIcon icon={faShare} /> }
             />
             }
@@ -101,14 +101,14 @@ class Dashboard extends Component {
         <div className="dashboard">          
           <h1 >Welcome, {user}</h1>
           <div className="dashboard__panel">
-          { !oneditmode &&
+          
           <button className="buttonprimary" onClick={this.showNewCubeModal}>Create New Cube</button> 
-          }
+          
           { !oneditmode ?
             <input 
               className="buttontransparent"
               type="submit" 
-              value="Manage Cubes" 
+              value="Delete Cube" 
               onClick={this.switchEdit}
             /> 
             :
@@ -125,7 +125,7 @@ class Dashboard extends Component {
           }
           
           <ul className="cubelist__container">
-          <h2 className="cubelist__header"><FontAwesomeIcon icon={faCube} /> Edit Cubes</h2>
+          <h2 className="cubelist__header"><FontAwesomeIcon icon={faCube} /> Manage Cubes</h2>
             {cubelist}
           </ul>
           

@@ -26,8 +26,11 @@ const MixedSpreadView = (props) => {
     <DynamicCard      
       cubeId={props.cubeId}
       name={card.name} 
-      src={card.imgsm} 
+      nameFlip={card.nameFlip}
+      src={card.imgsm}
+      imgsmFlip={card.imgsmFlip} 
       tooltip={card.imgmd} 
+      imgmdFlip={card.imgmdFlip}
       colors={card.colors}
       type={card.type}
       id={card.id} 

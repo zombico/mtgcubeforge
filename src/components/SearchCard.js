@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faSyncAlt } from '@fortawesome/free-solid-svg-icons'
 import Forge from './ForgeCardObject';
 import BuildControls from './BuildControls';
 // import GetVersions from './operations/GetVersions';
@@ -20,7 +20,8 @@ class SearchCard extends Component {
       currentSearchRank: -1,
       versions: [],
       currentVersion: '',
-      versionChangerActive: false
+      versionChangerActive: false,
+      showFront: true
     }
     this.focusCard = this.focusCard.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -38,6 +39,7 @@ class SearchCard extends Component {
     this.moveKey = this.moveKey.bind(this);
     this.firstSearch = this.firstSearch.bind(this);
     this.firstResult = React.createRef();    
+    this.flipCard = this.flipCard.bind(this)
   }
 
   
@@ -137,7 +139,8 @@ class SearchCard extends Component {
     this.getVersions(reqstCard.oracleid)
     this.setState({
       stateReqstCard: reqstCard,
-      versionChangerActive: false
+      versionChangerActive: false,
+      showFront: true
     })
   }
 
@@ -278,12 +281,19 @@ class SearchCard extends Component {
     }
     
   }
+
+  flipCard = () => {
+    if(this.state.showFront) {
+      this.setState({ showFront: false })
+    } else this.setState({ showFront: true })
+  }
   
   render() {
     const card = this.state.stateReqstCard
     const suggestions = this.state.autoQueryOut;
     const searchTerm = this.state.searchTerm;
     const versions = this.state.versions;
+    const showFront = this.state.showFront
     const versionChangerActive = this.state.versionChangerActive;
     
     return (
@@ -323,7 +333,7 @@ class SearchCard extends Component {
           </div>            
         </div>
         { this.state.stateReqstCard !== '' && 
-        <div className="rightside">
+        <div className="rightside">           
           <div className="rightside-displayleft">
             { card.layout === "normal" &&
               <img alt="" className="preview-img-med" src={card.imgmd} />
@@ -339,9 +349,18 @@ class SearchCard extends Component {
             }
             { card.layout === "transform" && 
             <div className="searchbar__images">
-              <img alt="" className="preview-img-med dfc" src={card.imgmd} /> 
-              <img alt="" className="preview-img-med dfc" src={card.imgmdFlip} /> 
+              {/* <img alt="" className="preview-img-med dfc" src={card.imgmd} /> 
+              <img alt="" className="preview-img-med dfc" src={card.imgmdFlip} />  */}
+              <img alt="" className="preview-img-med" src={showFront ? card.imgmd : card.imgmdFlip} /> 
             </div> 
+            }
+            { card.layout === "transform" && 
+            <button
+             className="addtocube inoverlay changeEdition"    
+             onClick={this.flipCard}          
+            >
+              See reverse side <FontAwesomeIcon icon={faSyncAlt} />
+            </button> 
             }
             { versions &&
             <button
