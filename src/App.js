@@ -27,8 +27,7 @@ class App extends Component {
   }
   getCurrentUser = async () => {
     
-    const token = getToken()
-    console.log(token)
+    const token = getToken()    
     if(token) {
       try {
         const res = await axios.get('/myaccount', {
@@ -36,8 +35,7 @@ class App extends Component {
             Authorization: `Bearer ${token}`
           }
         })
-        // 4. If a successful response returns, store the user in state.
-        console.log(res.data)
+        // 4. If a successful response returns, store the user in state.        
         this.setUser(res.data.data[0].name)
       } catch(e) {
         console.log(e)

@@ -23,7 +23,6 @@ class CubeBuilder extends Component {
   }
   
   async componentWillMount() {
-    console.log(this.props)
     const cubeId = this.props.location.pathname.split('/')[2]
     
     
@@ -34,7 +33,6 @@ class CubeBuilder extends Component {
   async loadCube() {
     try {
       const response = await axios.get(`/cubes/${this.state.cubeId}`)
-      console.log(response)
       this.setState({ 
         cubeContents: response.data.data[0].contents,
         cubename: response.data.data[0].cubename,

@@ -19,8 +19,7 @@ const MixedSpreadView = (props) => {
   //   )) 
   // return view } 
   
-  if (props.cubeContents && props.viewType === "card") {
-    console.log(props.cubeContents)
+  if (props.cubeContents && props.viewType === "card") {    
     const view = props.cubeContents.map((card => 
 
     <DynamicCard      

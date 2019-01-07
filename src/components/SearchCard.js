@@ -131,7 +131,9 @@ class SearchCard extends Component {
   }
 
   toggleVersionChanger = () => {
-    this.setState({ versionChangerActive: true})
+    if(this.state.versionChangerActive) {
+      this.setState({ versionChangerActive: false})  
+    } else this.setState({ versionChangerActive: true})
   }
 
   focusCard() {
@@ -348,10 +350,8 @@ class SearchCard extends Component {
               <img alt="" className="preview-img-med flip" src={card.imgmd} />
             }
             { card.layout === "transform" && 
-            <div className="searchbar__images">
-              {/* <img alt="" className="preview-img-med dfc" src={card.imgmd} /> 
-              <img alt="" className="preview-img-med dfc" src={card.imgmdFlip} />  */}
-              <img alt="" className="preview-img-med" src={showFront ? card.imgmd : card.imgmdFlip} /> 
+            <div className="searchbar__images">              
+              <img alt="" className="preview-img-med" src={showFront ? card.imgmd : card.imgmdFlip} />                        
             </div> 
             }
             { card.layout === "transform" && 
@@ -362,13 +362,13 @@ class SearchCard extends Component {
               See reverse side <FontAwesomeIcon icon={faSyncAlt} />
             </button> 
             }
-            { versions &&
-            <button
-              className="addtocube inoverlay changeEdition"    
-              onClick={this.toggleVersionChanger}          
-            >
-            Change Edition
-            </button>
+            { versions && versions.length > 1 && 
+              <button
+                className="addtocube inoverlay changeEdition"    
+                onClick={this.toggleVersionChanger}          
+              >
+              {versionChangerActive ? "Back" :"Change Edition"}
+              </button>
             }
             { this.props.hasControls && versions &&
             <button
@@ -383,7 +383,10 @@ class SearchCard extends Component {
           </div>
           <div className="rightside-displayright">
             { versionChangerActive &&
+            <div className="versionchanger-box">
+              <div className="versionchanger-label">Select version</div>
               <div className="versionchanger">
+              
               { versions && versions.map((version) =>               
                 <div
                   key={version.id} 
@@ -392,6 +395,7 @@ class SearchCard extends Component {
                 >{version.set_name}</div>                           
               )}
               </div>
+            </div>
             }
 
           </div>

@@ -105,11 +105,8 @@ body {
 
 .preview-img-med {
   border-radius: 16px;
-  max-height: 400px;
-  &.dfc {
-    max-width: 250px;
-    max-height: 348px;
-  }
+  max-height: 360px;
+  box-shadow: 1px 7px 19px -3px rgba(0, 0, 0, 0.75);
   &.split {
     transform: rotate(90deg);
     margin-left: 30px;
@@ -169,14 +166,14 @@ body {
   .rightside {
     display: flex;
     align-self: flex-end;
-    padding-left: 40px;
-    padding-bottom: 40px;
-    padding-top: 40px;
-    width: 600px;
+    padding: 40px;
+    max-width: 600px; 
     position: fixed;
     top: 88px;
-    right: 0;
+    right: 21px;
     background: ghostwhite;
+    box-shadow: 3px 5px 9px 0px rgba(0, 0, 0, 0.45);
+    border-radius: 6px;
     &-iconpanel {
       color: darkslateblue;
     }
@@ -324,11 +321,12 @@ body {
     max-width: 220px;
     border-radius: 12px;
     box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
+    transition: 0.5s;
     &.rotated {
-      transform: rotate(90deg) translate(-36px, 42px);
+      transform: rotate(90deg) translate(-36px, 42px);      
     }
     &.aftermath {
-      transform: rotate(270deg) translate(36px, -42px);
+      transform: rotate(-90deg) translate(36px, -42px);
     }
   }  
   &__color {
@@ -353,6 +351,7 @@ body {
   &__buttonpanel {
     display: flex;
     flex-direction: column;
+    align-items: center;
     z-index: 1;
     position: absolute;
     margin-top: -220px;
@@ -361,7 +360,7 @@ body {
     padding: 15px 15px 0 15px;
     background: ghostwhite;
     // background: gainsboro;
-    border-right: 6px solid slategray;
+    border-right: 6px solid slateblue;
     border-radius: 3px;
     box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
   }
@@ -541,21 +540,38 @@ body {
 }
 
 .versionchanger {
-  background: white;
   overflow-y: auto;
   max-height: 60vh;
-  color: slategray;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   margin-left: 12px;
-  // padding: 6px;
+  border-left: 1px solid darkslategray;
+  border-right: 1px solid darkslategray;
+  border-bottom: 9px solid #282c34;
+  border-radius: 0 0 3px 3px;
+  &-box {
+    min-width: 270px;
+  }
+  &-label {
+    margin: 0 0 0px 12px;
+    padding: 4px 9px;
+    color: white;
+    font-family: "Nunito", sans-serif;
+    font-weight: 800;
+    background: #282c34;
+    border-radius: 4px 4px 0px 0px;
+  }
   > .container {
-    padding: 3px 6px;
+    padding: 3px 9px;
     border-bottom: 1px solid lavender;
-    font-size: .9em;
+    font-size: .75em;
+    color: darkslategray;
     cursor: pointer;
+    // &:nth-of-type(even) {
+    //   background: lavender;
+    // }
     &.active {
-      background: slategray;
-      color: white;
+      background: slateblue;
+      color: ghostwhite;      
     }
     &:last-child {
       border-bottom: none;
@@ -675,9 +691,12 @@ body {
   cursor: pointer;
   &.icon-panel {
     color: darkslateblue;
-    padding-bottom: 12px;
+    padding-bottom: 15px;
     &:hover {
       color: slateblue;
+    }
+    &:active {
+      color: lightslategray;
     }
   }
 }

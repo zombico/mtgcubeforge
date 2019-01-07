@@ -106,11 +106,8 @@ body {
 
 .preview-img-med {
   border-radius: 16px;
-  max-height: 400px;
-}
-.preview-img-med.dfc {
-  max-width: 250px;
-  max-height: 348px;
+  max-height: 360px;
+  box-shadow: 1px 7px 19px -3px rgba(0, 0, 0, 0.75);
 }
 .preview-img-med.split {
   transform: rotate(90deg);
@@ -167,14 +164,14 @@ body {
 .searchbar .rightside {
   display: flex;
   align-self: flex-end;
-  padding-left: 40px;
-  padding-bottom: 40px;
-  padding-top: 40px;
-  width: 600px;
+  padding: 40px;
+  max-width: 600px;
   position: fixed;
   top: 88px;
-  right: 0;
+  right: 21px;
   background: ghostwhite;
+  box-shadow: 3px 5px 9px 0px rgba(0, 0, 0, 0.45);
+  border-radius: 6px;
 }
 .searchbar .rightside-iconpanel {
   color: darkslateblue;
@@ -311,12 +308,13 @@ body {
   max-width: 220px;
   border-radius: 12px;
   box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
+  transition: 0.5s;
 }
 .dynamiccard__tooltip.rotated {
   transform: rotate(90deg) translate(-36px, 42px);
 }
 .dynamiccard__tooltip.aftermath {
-  transform: rotate(270deg) translate(36px, -42px);
+  transform: rotate(-90deg) translate(36px, -42px);
 }
 .dynamiccard__color {
   max-height: 300px;
@@ -340,6 +338,7 @@ body {
 .dynamiccard__buttonpanel {
   display: flex;
   flex-direction: column;
+  align-items: center;
   z-index: 1;
   position: absolute;
   margin-top: -220px;
@@ -347,7 +346,7 @@ body {
   margin-left: 314px;
   padding: 15px 15px 0 15px;
   background: ghostwhite;
-  border-right: 6px solid slategray;
+  border-right: 6px solid slateblue;
   border-radius: 3px;
   box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
 }
@@ -514,22 +513,37 @@ body {
 }
 
 .versionchanger {
-  background: white;
   overflow-y: auto;
   max-height: 60vh;
-  color: slategray;
   font-family: "Nunito", sans-serif;
   margin-left: 12px;
+  border-left: 1px solid darkslategray;
+  border-right: 1px solid darkslategray;
+  border-bottom: 9px solid #282c34;
+  border-radius: 0 0 3px 3px;
+}
+.versionchanger-box {
+  min-width: 270px;
+}
+.versionchanger-label {
+  margin: 0 0 0px 12px;
+  padding: 4px 9px;
+  color: white;
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  background: #282c34;
+  border-radius: 4px 4px 0px 0px;
 }
 .versionchanger > .container {
-  padding: 3px 6px;
+  padding: 3px 9px;
   border-bottom: 1px solid lavender;
-  font-size: 0.9em;
+  font-size: 0.75em;
+  color: darkslategray;
   cursor: pointer;
 }
 .versionchanger > .container.active {
-  background: slategray;
-  color: white;
+  background: slateblue;
+  color: ghostwhite;
 }
 .versionchanger > .container:last-child {
   border-bottom: none;
@@ -645,10 +659,13 @@ body {
 }
 .icon.icon-panel {
   color: darkslateblue;
-  padding-bottom: 12px;
+  padding-bottom: 15px;
 }
 .icon.icon-panel:hover {
   color: slateblue;
+}
+.icon.icon-panel:active {
+  color: lightslategray;
 }
 
 .splashheader {

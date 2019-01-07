@@ -71,7 +71,7 @@ class Dashboard extends Component {
           
             { !oneditmode &&
               <ToolTip 
-              text="Share as view-only" 
+              text="Open in new tab as view-only" 
               icon={<FontAwesomeIcon icon={faShare} /> }
             />
             }
