@@ -37,6 +37,8 @@ const MixedSpreadView = (props) => {
       oracleid={card.oracleid}
       cmc={card.cmc}
       manacost={card.manacost}
+      layout={card.layout}
+      aftermath={card.aftermath}
       loadCube={() => props.loadCube()}
       hasControls={props.hasControls}      
     />
