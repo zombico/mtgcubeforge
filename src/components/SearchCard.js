@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faSyncAlt } from '@fortawesome/free-solid-svg-icons'
 import Forge from './ForgeCardObject';
 import BuildControls from './BuildControls';
+import ToolTip from './ToolTip';
 // import GetVersions from './operations/GetVersions';
 import axios from "axios";
 
@@ -141,7 +142,7 @@ class SearchCard extends Component {
     this.getVersions(reqstCard.oracleid)
     this.setState({
       stateReqstCard: reqstCard,
-      versionChangerActive: false,
+      // versionChangerActive: false,
       showFront: true
     })
   }
@@ -367,7 +368,7 @@ class SearchCard extends Component {
                 className="addtocube inoverlay changeEdition"    
                 onClick={this.toggleVersionChanger}          
               >
-              {versionChangerActive ? "Back" :"Change Edition"}
+              {versionChangerActive ? "Hide editions" :"Change edition"}
               </button>
             }
             { this.props.hasControls && versions &&
@@ -384,7 +385,7 @@ class SearchCard extends Component {
           <div className="rightside-displayright">
             { versionChangerActive &&
             <div className="versionchanger-box">
-              <div className="versionchanger-label">Select version</div>
+              <div className="versionchanger-label">Available versions</div>
               <div className="versionchanger">
               
               { versions && versions.map((version) =>               
@@ -399,11 +400,19 @@ class SearchCard extends Component {
             }
 
           </div>
-          <FontAwesomeIcon 
+          { versionChangerActive &&
+           <ToolTip 
+           text="Clear Search" 
+           icon={ 
+            <FontAwesomeIcon 
             icon={faTimes} 
             onClick={this.clearSearch}
             className="rightside-closeicon"
           />
+           }
+         />
+          
+          }
         </div>
       }
       </div>

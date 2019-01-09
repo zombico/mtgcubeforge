@@ -106,10 +106,14 @@ body {
 .preview-img-med {
   border-radius: 16px;
   max-height: 360px;
+  margin-bottom: 9px;
+  margin-top: -39px;
+  margin-left: -27px;
+  margin-right: -27px;
   box-shadow: 1px 7px 19px -3px rgba(0, 0, 0, 0.75);
   &.split {
     transform: rotate(90deg);
-    margin-left: 30px;
+    margin-right: 21px;
   }
   &.aftermath {
     transition: 0.5s;
@@ -164,33 +168,40 @@ body {
     width: 700px;
   }
   .rightside {
+    z-index: 2;
     display: flex;
     align-self: flex-end;
-    padding: 40px;
+    padding: 0 15px 30px 15px;
     max-width: 600px; 
     position: fixed;
-    top: 88px;
-    right: 21px;
+    // top: 99px;
+    // right: 21px;
+    right: 12vh;
+    top: 15vh;
     background: ghostwhite;
     box-shadow: 3px 5px 9px 0px rgba(0, 0, 0, 0.45);
     border-radius: 6px;
+    border-top: 27px solid darkslateblue;
+    // border-bottom: 12px solid #282c34;
     &-iconpanel {
       color: darkslateblue;
     }
     &-displayleft {
       display: flex;
       flex-direction: column;
+      // border: 1px solid black;
+      // padding: 3px 0 3px 3px;
     }
     &-closeicon {
       position: absolute;
       right: 10px;
-      top: 10px;
+      top: -21px;
       cursor: pointer;
-      color: darkslategray;
+      color: whitesmoke;
     }
     &-displayright {
       width: 100%;
-      max-width: 270px;      
+      max-width: 270px;          
     }
   }
   .topside {
@@ -357,10 +368,9 @@ body {
     margin-top: -220px;
     height: 100px;
     margin-left: 314px;
-    padding: 15px 15px 0 15px;
-    background: ghostwhite;
-    // background: gainsboro;
-    border-right: 6px solid slateblue;
+    padding: 9px 9px 0 9px;
+    background: ghostwhite;    
+    border-right: 6px solid lightslategray;
     border-radius: 3px;
     box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
   }
@@ -442,15 +452,19 @@ body {
     cursor: no-drop;
   }
   &.inoverlay {
-    margin-top: 18px;
-    &:last-child {
-      margin-top: 9px;
-    }
+    margin: 7px 6px 0px 6px;    
   }
-  &.changeEdition {
-    background: dodgerblue;
+  &.changeEdition {    
+    background: transparent;
+    color: darkslateblue;    
+    border: 1px solid darkslateblue;
     &:hover {
-      background: royalblue;
+      background: darkslateblue;
+      color: ghostwhite;    
+    }
+    &:active {
+      background: slateblue;
+      color: ghostwhite;    
     }
   }
 }
@@ -542,36 +556,38 @@ body {
 .versionchanger {
   overflow-y: auto;
   max-height: 60vh;
-  font-family: "Nunito", sans-serif;
-  margin-left: 12px;
-  border-left: 1px solid darkslategray;
-  border-right: 1px solid darkslategray;
-  border-bottom: 9px solid #282c34;
-  border-radius: 0 0 3px 3px;
+  // font-family: "Nunito", sans-serif;  
+  border-left: 1px solid lightslategray;
+  border-right: 1px solid lightslategray;
+  border-bottom: 3px solid #282c34;
+  // border-radius: 0 0 3px 0px;
   &-box {
-    min-width: 270px;
+    min-width: 232px;
+    margin-top: 36px;
+    margin-left: 27px;  
   }
   &-label {
-    margin: 0 0 0px 12px;
-    padding: 4px 9px;
+    margin: 0 0 0px 0px;
+    padding: 3px 6px;
     color: white;
     font-family: "Nunito", sans-serif;
-    font-weight: 800;
+    font-size: .75em;
     background: #282c34;
-    border-radius: 4px 4px 0px 0px;
+    // border-radius: 0px 4px 0px 0px;  
   }
   > .container {
-    padding: 3px 9px;
+    padding: 3px 6px;
     border-bottom: 1px solid lavender;
-    font-size: .75em;
+    font-size: .7em;
     color: darkslategray;
+    background: white;
     cursor: pointer;
     // &:nth-of-type(even) {
     //   background: lavender;
     // }
     &.active {
-      background: slateblue;
-      color: ghostwhite;      
+      background: lavender;
+      font-weight: 700;
     }
     &:last-child {
       border-bottom: none;
