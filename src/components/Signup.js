@@ -42,11 +42,14 @@ class Signup extends Component {
   render() {
     if(this.state.isDone) {
     return(
-      <>
-      <h1>Your account has been created.</h1>
-      <h2>Time to forge some cubes</h2>
-      <Link to="/login"><a>Log in for the first time</a></Link>
-      </>
+      <div className="tempmain">
+        <div className="App-header" ><Logo /></div> 
+        <div className="homepage">
+          <h1>Your account has been created. <br/>Time to forge some cubes!</h1>          
+          <div className="spacer5" />
+          <Link className="buttontransparent" to="/login"><a>Log in for the first time</a></Link>
+        </div>        
+      </div>
     )
     }
     if (!this.state.isDone ) {

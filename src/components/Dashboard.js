@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShare, faCube, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import Logo from './buttons/Logo'
 import Logout from './Logout'
 import ToolTip from './ToolTip'
 import ModalNewCube from './ModalNewCube'
@@ -94,9 +95,7 @@ class Dashboard extends Component {
       
       <div className="tempmain">
         <header className="App-header">
-          <Link to="/">
-          <h3 className="smallheader"> <FontAwesomeIcon icon={faCube} /> MtGcubeforGe </h3> 
-          </Link>
+          <Logo />
         </header>
         <div className="dashboard">          
           <h1 >Welcome, {user}</h1>

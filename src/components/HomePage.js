@@ -15,15 +15,16 @@ class HomePage extends Component {
         
         <img src="/heroimg.svg" className="heromid" />
         <div className="vertical-buttonpanel">          
+          <Link className="buttontransparent home" to="/login">Log In</Link>   
           <Link className="buttonprimary" to="/signup">Create account</Link>
-          <Link className="buttonprimary" to="/login">Log In</Link>          
+                 
         </div>
         <p>Built with React JS, Node, Express, and MongoDB</p>
         <p>
           View project on <a className="homepage__link" href="https://github.com/zombico/mtgcubeforge">Github</a>.
           Card data sourced from the <a className="homepage__link" href="https://scryfall.com/">Scryfall API</a>.
         </p>
-        <p>2018 Franz Ombico</p>
+        <p>2019 Franz Ombico</p>
       </div>
     )
   }
