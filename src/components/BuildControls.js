@@ -10,16 +10,23 @@ class BuildControls extends Component {
     return (
       <div className="searchbar__buildcontrols">
         <div className="searchbar__buildcontrols__container">
+        
         {
           this.props.hasControls ?
+            <>
             <form className="searchbar__buildcontrols__mainbutton" onSubmit={this.props.handleAdd}>            
             {this.props.stateReqstCard && <button className="addtocube" id="addtocube">Add to Cube</button> }
             {!this.props.stateReqstCard && <button className="searchbar__buildcontrols-shim">hi</button>}
-            {!this.props.stateReqstCard && <button disabled className="addtocube disabled">Add to Cube</button> }          
+            {!this.props.stateReqstCard && <button disabled className="addtocube disabled">Add to Cube</button> } 
+                 
             </form> 
+            <button className="addtocube transparent" onClick={this.props.clearSearch}>Clear Search</button>    
+            </>
             :
+            <>
             <Link className="addtocube" to="/signup">Build a Cube</Link>
-
+            <button className="addtocube transparent" onClick={this.props.clearSearch}>Clear Search</button>
+            </>
         }
           
           <div className="searchbar__buildcontrols__shortcut" >

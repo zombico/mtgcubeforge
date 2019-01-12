@@ -1,11 +1,12 @@
 body {
-  background: darkslategray;
+  background: whitesmoke;
 }
 .App {  
-  color: azure;
+  // color: azure;
 }
 
 .App-header {
+  z-index: 3;
   display: flex;
   background-color: #282c34;
   justify-content: space-between;
@@ -41,7 +42,7 @@ body {
 .view-header {
   padding-left: 8vh;
   &__count {
-    color: cadetblue;
+    // color: cadetblue;
   }
 }
 
@@ -61,14 +62,15 @@ body {
     font-family: 'Nunito', sans-serif;
   }
   &-input {
+    font-family: 'Nunito', sans-serif;
     background: transparent;
     font-size: 1em;
     padding: 6px;
-    border: 1px solid cadetblue;
-    color: ghostwhite;
+    border: 1px solid slategray;
+    border-radius: 3px;
     &:focus {
-      background: white;
-      color: darkslategray;
+      // background: white;
+      // color: darkslategray;
     }
   }
 }
@@ -84,13 +86,13 @@ body {
     margin-top: 40px;
   }
   a {
-    color: ghostwhite;
+    // color: ghostwhite;
     text-decoration: none;
     font-family: 'Nunito', sans-serif;
     font-weight: 300;
     font-size: 1.2em;
     &:hover {
-      color: cyan;
+      // color: cyan;
       text-decoration: underline;
     }
   }
@@ -107,10 +109,11 @@ body {
   border-radius: 16px;
   max-height: 360px;
   margin-bottom: 9px;
-  margin-top: -39px;
-  margin-left: -27px;
-  margin-right: -27px;
-  box-shadow: 1px 7px 19px -3px rgba(0, 0, 0, 0.75);
+  margin-top: 9px;
+  // margin-top: -39px;
+  // margin-left: -27px;
+  // margin-right: -27px;
+  // box-shadow: 1px 7px 19px -3px rgba(0, 0, 0, 0.75);
   &.split {
     transform: rotate(90deg);
     margin-right: 21px;
@@ -163,7 +166,7 @@ body {
   // background: #8392AF;
   background-color: #282c34;
   padding-left: 40px;
-  z-index: 1;
+  z-index: 3;
   .leftside {
     width: 700px;
   }
@@ -173,9 +176,7 @@ body {
     align-self: flex-end;
     padding: 0 15px 30px 15px;
     max-width: 600px; 
-    position: fixed;
-    // top: 99px;
-    // right: 21px;
+    position: fixed;    
     right: 12vh;
     top: 15vh;
     background: ghostwhite;
@@ -227,6 +228,7 @@ body {
       margin-left: 60px;
       font-family: 'Nunito', sans-serif;
       font-weight: 700;
+      color: slategray;
     }
     &__shortcut {
       display: flex;
@@ -259,17 +261,17 @@ body {
     display: flex;
     flex-direction: column;
     // height: 420px;
-    max-width: 350px;
+    max-width: 240px;
     padding: 10px 0;
   }
   &__resultbox {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 14px;
-    margin-top: 25px;
+    top: 9px;
+    margin-top: 30px;
     width: 100%;
-    max-width: 350px;
+    max-width: 240px;
     flex: 1;
     box-shadow: 3px 5px 9px 0px rgba(0, 0, 0, 0.45);
   }
@@ -279,10 +281,10 @@ body {
     background: transparent;
     border: none;
     padding: 4px 8px;
-    font-size: 20px;
+    font-size: 1.2em;
     background: ghostwhite;
     color: black;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
   }
   &__images {
     display: flex;
@@ -327,7 +329,7 @@ body {
   }
   &__tooltip {
     position: absolute;
-    margin: -20px 0 0 -40px;
+    margin: -20px 0 0 -81px;
     z-index: 2;
     max-width: 220px;
     border-radius: 12px;
@@ -338,6 +340,13 @@ body {
     }
     &.aftermath {
       transform: rotate(-90deg) translate(36px, -42px);
+    }
+    &.latestpinned {
+      z-index: 3;
+    }
+    &.samplehand {
+      margin-left: -118px;
+      margin-top: 99px;
     }
   }  
   &__color {
@@ -365,14 +374,20 @@ body {
     align-items: center;
     z-index: 1;
     position: absolute;
-    margin-top: -220px;
-    height: 100px;
-    margin-left: 314px;
-    padding: 9px 9px 0 9px;
+    margin-top: -225px;    
+    margin-left: 271px;    
+    padding: 15px 15px 15px 15px;
     background: ghostwhite;    
-    border-right: 6px solid lightslategray;
+    // border: 1px solid #282c34;
+    border-top: 1px solid slateblue;
+    border-bottom: 1px solid slateblue;
+    border-right: 6px solid slateblue;
     border-radius: 3px;
-    box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
+    // box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
+    &.samplehand {
+      margin-top: -83px;
+      margin-left: 246px;
+    }
   }
 }
 
@@ -391,6 +406,7 @@ body {
   }
   &__img2 {
     border-radius: 8px;
+    transition: 60ms;
     &-hovered {
       border-radius: 8px;
       margin-left: -10px;
@@ -415,7 +431,7 @@ body {
   text-align: center;
   min-height: 100vh;
   &__link {
-    color: cyan;
+    color: darkslateblue;
   }
 }
 
@@ -441,6 +457,8 @@ body {
   border-radius: 3px;
   border: none;
   text-decoration: none;
+  margin-left: 9px;
+  
   cursor: pointer;
   &:hover {
    background: slateblue; 
@@ -455,7 +473,7 @@ body {
     margin: 7px 6px 0px 6px;    
   }
   &.changeEdition {    
-    background: transparent;
+    background: ghostwhite;
     color: darkslateblue;    
     border: 1px solid darkslateblue;
     &:hover {
@@ -467,18 +485,28 @@ body {
       color: ghostwhite;    
     }
   }
+  &.transparent {
+    border: 1px solid slategray;
+    color: slategray;
+    background: transparent;    
+    transition: 66ms;
+    &:hover {
+      border-color: lavender;
+      color: lavender;
+    }
+  }
 }
 
 // modals
 
 .modal__overlay {
-  z-index: 1;
+  z-index: 3;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.28);
+  background: rgba(0, 0, 0, 0.68);
 }
 .modal__buttonpanel {
   display: flex;
@@ -514,7 +542,38 @@ body {
     font-size: 1em;
     margin-top: 10px;
   }
+  &.samplehand {
+    display: flex;
+    max-width: 810px;
+    width: 100%;
+    top: 50%;
+  }
 }
+
+
+.samplehand {
+  &-element-container {
+    margin-left: -102px;    
+    &:hover {
+      margin-top: -21px;
+    }
+    
+  }
+  &-img {
+    border-radius: 8px;  
+  }
+  &-container {
+    display: flex;
+    margin-left: 102px;    
+    margin-top: 12px;
+  }
+  & .buttonpanel {
+
+  }
+}
+
+
+
 
 .cubelist {
   list-style-type: none;
@@ -528,7 +587,7 @@ body {
   }
   &__header {
     font-weight: 400;
-    color: honeydew;
+    // color: honeydew;
     padding: 0 0 20px 0;
     margin: 0;
   }
@@ -562,18 +621,18 @@ body {
   border-bottom: 3px solid #282c34;
   // border-radius: 0 0 3px 0px;
   &-box {
-    min-width: 232px;
+    min-width: 202px;
     margin-top: 36px;
-    margin-left: 27px;  
+    // margin-left: 27px;  
   }
   &-label {
     margin: 0 0 0px 0px;
-    padding: 3px 6px;
+    padding: 9px 6px;
     color: white;
-    font-family: "Nunito", sans-serif;
-    font-size: .75em;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 0.9em;
     background: #282c34;
-    // border-radius: 0px 4px 0px 0px;  
+    border-radius: 0px 4px 0px 0px;  
   }
   > .container {
     padding: 3px 6px;
@@ -586,7 +645,7 @@ body {
     //   background: lavender;
     // }
     &.active {
-      background: lavender;
+      background: aquamarine;
       font-weight: 700;
     }
     &:last-child {
@@ -603,6 +662,10 @@ body {
 
 .centerizer {
   text-align: center;
+}
+
+.lineright {
+  text-align: right;
 }
 
 .mirror {
@@ -625,15 +688,18 @@ body {
   margin-top: 30px;
 }
 
-.spacer100 {
-  height: 100px;
+
+.spacer5 {
+  height: 5vh;
 }
 .spacer300 {
   height: 300px;
 }
 
+
+
 // buttons 
-.buttonprimary {
+.buttonsecondary {
   background: darkcyan;
   border: none;
   padding: 10px;
@@ -653,12 +719,12 @@ body {
   }
 }
 
-.buttonsecondary {
+.buttonprimary {
   background: darkslateblue;
   border: none;
-  padding: 5px;
+  padding: 9px;
   width: 100%;
-  max-width: 120px;  
+  max-width: 160px;  
   border-radius: 4px;  
   text-decoration: none;
   color: ghostwhite;
@@ -670,27 +736,35 @@ body {
     transition: 99ms;
     cursor: pointer;
   }
+  
 }
 
 .buttontransparent {
   background: transparent;
-  border: 1px solid ghostwhite;
-  color: ghostwhite;
+  border: 1px solid darkslateblue;
+  color: darkslateblue;
   padding: 9px;
   width: 100%;
-  max-width: 160px;
-  margin-bottom: 16px;
+  max-width: 160px;  
   border-radius: 4px;  
   text-decoration: none;
   font-size: 1em;
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
   &:hover {
-    background: cadetblue;
-    border: 1px solid cadetblue;
-    transition: 99ms;
+    background: darkslateblue;
+    // border: 1px solid ghostwhite;
+    color: ghostwhite;
+    transition: 60ms;
     cursor: pointer;
   }
+  &:active{
+    background: slateblue;
+    color: ghostwhite;
+  }
+  &.home {
+    margin-bottom: 12px; 
+   }
 }
 
 .vertical-buttonpanel {
@@ -715,6 +789,13 @@ body {
       color: lightslategray;
     }
   }
+  &.unpinned {
+    transform: rotate(45deg);
+    margin-left: -9px;
+  }
+  &.pinned {
+    color: slateblue !important;
+  }
 }
 
 // headers and fonts
@@ -722,7 +803,7 @@ body {
 .splashheader {
   font-family: 'Major Mono Display', monospace;
   font-size: 2.8em;
-  color: aquamarine;
+  color: darkslateblue;
 }
 
 .smallheader {
@@ -734,15 +815,20 @@ body {
   &:hover {
     color: cadetblue;
   }
+  &.friend {
+    font-size: .6em;
+    color: slateblue;
+    margin-left: -10px;
+  }
 }
 
 h1 {
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 700;
-  color: honeydew;
+  // color: honeydew;
 }
 h2 {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-weight: 400;
   font-size: 1.4em;
 }

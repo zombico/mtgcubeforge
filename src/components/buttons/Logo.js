@@ -7,7 +7,7 @@ class Logo extends Component {
   render() {
     return (      
       <Link to="/">
-      <h3 className="smallheader"> <FontAwesomeIcon icon={faCube} /> MtGcubeforGe </h3> 
+      <h3 className="smallheader"> <FontAwesomeIcon icon={faCube} /> MtGcubeforGe <span className="smallheader friend">beta</span></h3> 
       </Link>              
     )
   }

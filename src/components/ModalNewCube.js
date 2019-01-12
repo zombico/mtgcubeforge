@@ -47,6 +47,7 @@ class ModalNewCube extends Component {
                   id="new-cube-button"
                   placeholder="ie: Old-school 1993"
                   className="modal__newcube-input fullwidth" 
+                  autoComplete="off"
                 />
                 <div className="modal__buttonpanel">
                   <input className="buttonsecondary" type="submit" value="Confirm" />            

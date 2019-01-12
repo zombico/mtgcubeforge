@@ -178,8 +178,12 @@ class SearchCard extends Component {
   }
 
   clearSearch() {
-    this.setState({ searchTerm: '', stateReqstCard: '' })
-    document.getElementById('searchcard').focus()
+    
+    if(this.state.searchTerm.length > 0) {
+      this.setState({ searchTerm: '', stateReqstCard: '' })
+      document.getElementById('searchcard').focus()
+    }
+    
   }
 
   newcardShortcut = () => {    
@@ -211,6 +215,7 @@ class SearchCard extends Component {
     this.focusCard();
     this.addCard();      
     this.newcardShortcut();
+    // this.clearSearch();
   }
 
   handleChange(event) {
@@ -306,7 +311,8 @@ class SearchCard extends Component {
         <BuildControls 
           handleAdd={this.handleAdd} 
           stateReqstCard={this.state.stateReqstCard}
-          hasControls={this.props.hasControls}          
+          hasControls={this.props.hasControls}        
+          clearSearch={this.clearSearch}  
         />    
           <div className="searchbar__menu">
           
@@ -314,6 +320,7 @@ class SearchCard extends Component {
             placeholder="search card"
             value={searchTerm} onChange={this.handleChange}
             onKeyDown={(e) => this.firstSearch(e)}
+            autoComplete="off" 
           />
           
             <div className="searchbar__resultbox">
@@ -400,7 +407,7 @@ class SearchCard extends Component {
             }
 
           </div>
-          { versionChangerActive &&
+          
            <ToolTip 
            text="Clear Search" 
            icon={ 
@@ -412,7 +419,7 @@ class SearchCard extends Component {
            }
          />
           
-          }
+          
         </div>
       }
       </div>

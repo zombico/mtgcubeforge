@@ -1,12 +1,9 @@
 body {
-  background: darkslategray;
-}
-
-.App {
-  color: azure;
+  background: whitesmoke;
 }
 
 .App-header {
+  z-index: 3;
   display: flex;
   background-color: #282c34;
   justify-content: space-between;
@@ -42,10 +39,6 @@ body {
 .view-header {
   padding-left: 8vh;
 }
-.view-header__count {
-  color: cadetblue;
-}
-
 .tempmain {
   min-height: 100vh;
 }
@@ -63,17 +56,13 @@ body {
   font-family: "Nunito", sans-serif;
 }
 .gateway-input {
+  font-family: "Nunito", sans-serif;
   background: transparent;
   font-size: 1em;
   padding: 6px;
-  border: 1px solid cadetblue;
-  color: ghostwhite;
+  border: 1px solid slategray;
+  border-radius: 3px;
 }
-.gateway-input:focus {
-  background: white;
-  color: darkslategray;
-}
-
 .dashboard {
   margin: auto;
   max-width: 1200px;
@@ -86,14 +75,12 @@ body {
   margin-top: 40px;
 }
 .dashboard a {
-  color: ghostwhite;
   text-decoration: none;
   font-family: "Nunito", sans-serif;
   font-weight: 300;
   font-size: 1.2em;
 }
 .dashboard a:hover {
-  color: cyan;
   text-decoration: underline;
 }
 
@@ -108,10 +95,7 @@ body {
   border-radius: 16px;
   max-height: 360px;
   margin-bottom: 9px;
-  margin-top: -39px;
-  margin-left: -27px;
-  margin-right: -27px;
-  box-shadow: 1px 7px 19px -3px rgba(0, 0, 0, 0.75);
+  margin-top: 9px;
 }
 .preview-img-med.split {
   transform: rotate(90deg);
@@ -160,7 +144,7 @@ body {
   top: 40px;
   background-color: #282c34;
   padding-left: 40px;
-  z-index: 1;
+  z-index: 3;
 }
 .searchbar .leftside {
   width: 700px;
@@ -217,6 +201,7 @@ body {
   margin-left: 60px;
   font-family: "Nunito", sans-serif;
   font-weight: 700;
+  color: slategray;
 }
 .searchbar__buildcontrols__shortcut {
   display: flex;
@@ -243,17 +228,17 @@ body {
 .searchbar__menu {
   display: flex;
   flex-direction: column;
-  max-width: 350px;
+  max-width: 240px;
   padding: 10px 0;
 }
 .searchbar__resultbox {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 14px;
-  margin-top: 25px;
+  top: 9px;
+  margin-top: 30px;
   width: 100%;
-  max-width: 350px;
+  max-width: 240px;
   flex: 1;
   box-shadow: 3px 5px 9px 0px rgba(0, 0, 0, 0.45);
 }
@@ -263,10 +248,10 @@ body {
   background: transparent;
   border: none;
   padding: 4px 8px;
-  font-size: 20px;
+  font-size: 1.2em;
   background: ghostwhite;
   color: black;
-  font-family: "Nunito", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 .searchbar__images {
   display: flex;
@@ -309,7 +294,7 @@ body {
 }
 .dynamiccard__tooltip {
   position: absolute;
-  margin: -20px 0 0 -40px;
+  margin: -20px 0 0 -81px;
   z-index: 2;
   max-width: 220px;
   border-radius: 12px;
@@ -321,6 +306,13 @@ body {
 }
 .dynamiccard__tooltip.aftermath {
   transform: rotate(-90deg) translate(36px, -42px);
+}
+.dynamiccard__tooltip.latestpinned {
+  z-index: 3;
+}
+.dynamiccard__tooltip.samplehand {
+  margin-left: -118px;
+  margin-top: 99px;
 }
 .dynamiccard__color {
   max-height: 300px;
@@ -347,14 +339,18 @@ body {
   align-items: center;
   z-index: 1;
   position: absolute;
-  margin-top: -220px;
-  height: 100px;
-  margin-left: 314px;
-  padding: 9px 9px 0 9px;
+  margin-top: -225px;
+  margin-left: 271px;
+  padding: 15px 15px 15px 15px;
   background: ghostwhite;
-  border-right: 6px solid lightslategray;
+  border-top: 1px solid slateblue;
+  border-bottom: 1px solid slateblue;
+  border-right: 6px solid slateblue;
   border-radius: 3px;
-  box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
+}
+.dynamiccard__buttonpanel.samplehand {
+  margin-top: -83px;
+  margin-left: 246px;
 }
 
 .mixedspread-view {
@@ -369,6 +365,7 @@ body {
 }
 .mixedspread-view__img2 {
   border-radius: 8px;
+  transition: 60ms;
 }
 .mixedspread-view__img2-hovered {
   border-radius: 8px;
@@ -388,7 +385,7 @@ body {
   min-height: 100vh;
 }
 .homepage__link {
-  color: cyan;
+  color: darkslateblue;
 }
 
 .dynamiclistitem {
@@ -411,6 +408,7 @@ body {
   border-radius: 3px;
   border: none;
   text-decoration: none;
+  margin-left: 9px;
   cursor: pointer;
 }
 .addtocube:hover {
@@ -426,7 +424,7 @@ body {
   margin: 7px 6px 0px 6px;
 }
 .addtocube.changeEdition {
-  background: transparent;
+  background: ghostwhite;
   color: darkslateblue;
   border: 1px solid darkslateblue;
 }
@@ -438,15 +436,25 @@ body {
   background: slateblue;
   color: ghostwhite;
 }
+.addtocube.transparent {
+  border: 1px solid slategray;
+  color: slategray;
+  background: transparent;
+  transition: 66ms;
+}
+.addtocube.transparent:hover {
+  border-color: lavender;
+  color: lavender;
+}
 
 .modal__overlay {
-  z-index: 1;
+  z-index: 3;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.28);
+  background: rgba(0, 0, 0, 0.68);
 }
 
 .modal__buttonpanel {
@@ -485,7 +493,27 @@ body {
   font-size: 1em;
   margin-top: 10px;
 }
+.modal__newcube.samplehand {
+  display: flex;
+  max-width: 810px;
+  width: 100%;
+  top: 50%;
+}
 
+.samplehand-element-container {
+  margin-left: -102px;
+}
+.samplehand-element-container:hover {
+  margin-top: -21px;
+}
+.samplehand-img {
+  border-radius: 8px;
+}
+.samplehand-container {
+  display: flex;
+  margin-left: 102px;
+  margin-top: 12px;
+}
 .cubelist {
   list-style-type: none;
   padding: 5px 15px 5px 5px;
@@ -499,7 +527,6 @@ body {
 }
 .cubelist__header {
   font-weight: 400;
-  color: honeydew;
   padding: 0 0 20px 0;
   margin: 0;
 }
@@ -530,17 +557,17 @@ body {
   border-bottom: 3px solid #282c34;
 }
 .versionchanger-box {
-  min-width: 232px;
+  min-width: 202px;
   margin-top: 36px;
-  margin-left: 27px;
 }
 .versionchanger-label {
   margin: 0 0 0px 0px;
-  padding: 3px 6px;
+  padding: 9px 6px;
   color: white;
-  font-family: "Nunito", sans-serif;
-  font-size: 0.75em;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 0.9em;
   background: #282c34;
+  border-radius: 0px 4px 0px 0px;
 }
 .versionchanger > .container {
   padding: 3px 6px;
@@ -551,7 +578,7 @@ body {
   cursor: pointer;
 }
 .versionchanger > .container.active {
-  background: lavender;
+  background: aquamarine;
   font-weight: 700;
 }
 .versionchanger > .container:last-child {
@@ -564,6 +591,10 @@ body {
 
 .centerizer {
   text-align: center;
+}
+
+.lineright {
+  text-align: right;
 }
 
 .mirror {
@@ -587,15 +618,15 @@ body {
   margin-top: 30px;
 }
 
-.spacer100 {
-  height: 100px;
+.spacer5 {
+  height: 5vh;
 }
 
 .spacer300 {
   height: 300px;
 }
 
-.buttonprimary {
+.buttonsecondary {
   background: darkcyan;
   border: none;
   padding: 10px;
@@ -609,18 +640,18 @@ body {
   font-family: "Nunito", sans-serif;
   font-weight: 400;
 }
-.buttonprimary:hover {
+.buttonsecondary:hover {
   background: cadetblue;
   transition: 99ms;
   cursor: pointer;
 }
 
-.buttonsecondary {
+.buttonprimary {
   background: darkslateblue;
   border: none;
-  padding: 5px;
+  padding: 9px;
   width: 100%;
-  max-width: 120px;
+  max-width: 160px;
   border-radius: 4px;
   text-decoration: none;
   color: ghostwhite;
@@ -628,7 +659,7 @@ body {
   font-family: "Nunito", sans-serif;
   font-weight: 400;
 }
-.buttonsecondary:hover {
+.buttonprimary:hover {
   background: slateblue;
   transition: 99ms;
   cursor: pointer;
@@ -636,12 +667,11 @@ body {
 
 .buttontransparent {
   background: transparent;
-  border: 1px solid ghostwhite;
-  color: ghostwhite;
+  border: 1px solid darkslateblue;
+  color: darkslateblue;
   padding: 9px;
   width: 100%;
   max-width: 160px;
-  margin-bottom: 16px;
   border-radius: 4px;
   text-decoration: none;
   font-size: 1em;
@@ -649,10 +679,17 @@ body {
   font-weight: 400;
 }
 .buttontransparent:hover {
-  background: cadetblue;
-  border: 1px solid cadetblue;
-  transition: 99ms;
+  background: darkslateblue;
+  color: ghostwhite;
+  transition: 60ms;
   cursor: pointer;
+}
+.buttontransparent:active {
+  background: slateblue;
+  color: ghostwhite;
+}
+.buttontransparent.home {
+  margin-bottom: 12px;
 }
 
 .vertical-buttonpanel {
@@ -676,11 +713,18 @@ body {
 .icon.icon-panel:active {
   color: lightslategray;
 }
+.icon.unpinned {
+  transform: rotate(45deg);
+  margin-left: -9px;
+}
+.icon.pinned {
+  color: slateblue !important;
+}
 
 .splashheader {
   font-family: "Major Mono Display", monospace;
   font-size: 2.8em;
-  color: aquamarine;
+  color: darkslateblue;
 }
 
 .smallheader {
@@ -693,15 +737,19 @@ body {
 .smallheader:hover {
   color: cadetblue;
 }
+.smallheader.friend {
+  font-size: 0.6em;
+  color: slateblue;
+  margin-left: -10px;
+}
 
 h1 {
   font-family: "Nunito Sans", sans-serif;
   font-weight: 700;
-  color: honeydew;
 }
 
 h2 {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Nunito", sans-serif;
   font-weight: 400;
   font-size: 1.4em;
 }
