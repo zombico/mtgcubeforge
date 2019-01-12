@@ -1,5 +1,5 @@
 body {
-  background: ghostwhite;
+  background: whitesmoke;
 }
 
 .App-header {
@@ -95,9 +95,7 @@ body {
   border-radius: 16px;
   max-height: 360px;
   margin-bottom: 9px;
-  margin-top: -39px;
-  margin-left: -27px;
-  margin-right: -27px;
+  margin-top: 9px;
 }
 .preview-img-med.split {
   transform: rotate(90deg);
@@ -160,7 +158,7 @@ body {
   position: fixed;
   right: 12vh;
   top: 15vh;
-  background: whitesmoke;
+  background: ghostwhite;
   box-shadow: 3px 5px 9px 0px rgba(0, 0, 0, 0.45);
   border-radius: 6px;
   border-top: 27px solid darkslateblue;
@@ -230,17 +228,17 @@ body {
 .searchbar__menu {
   display: flex;
   flex-direction: column;
-  max-width: 350px;
+  max-width: 240px;
   padding: 10px 0;
 }
 .searchbar__resultbox {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 14px;
-  margin-top: 25px;
+  top: 9px;
+  margin-top: 30px;
   width: 100%;
-  max-width: 350px;
+  max-width: 240px;
   flex: 1;
   box-shadow: 3px 5px 9px 0px rgba(0, 0, 0, 0.45);
 }
@@ -250,10 +248,10 @@ body {
   background: transparent;
   border: none;
   padding: 4px 8px;
-  font-size: 20px;
+  font-size: 1.2em;
   background: ghostwhite;
   color: black;
-  font-family: "Nunito", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 .searchbar__images {
   display: flex;
@@ -296,7 +294,7 @@ body {
 }
 .dynamiccard__tooltip {
   position: absolute;
-  margin: -20px 0 0 -40px;
+  margin: -20px 0 0 -81px;
   z-index: 2;
   max-width: 220px;
   border-radius: 12px;
@@ -308,6 +306,13 @@ body {
 }
 .dynamiccard__tooltip.aftermath {
   transform: rotate(-90deg) translate(36px, -42px);
+}
+.dynamiccard__tooltip.latestpinned {
+  z-index: 3;
+}
+.dynamiccard__tooltip.samplehand {
+  margin-left: -118px;
+  margin-top: 99px;
 }
 .dynamiccard__color {
   max-height: 300px;
@@ -332,15 +337,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 2;
+  z-index: 1;
   position: absolute;
   margin-top: -225px;
-  height: 100px;
-  margin-left: 315px;
+  margin-left: 271px;
   padding: 15px 15px 15px 15px;
-  background: whitesmoke;
-  border: 1px solid #282c34;
+  background: ghostwhite;
+  border-top: 1px solid slateblue;
+  border-bottom: 1px solid slateblue;
+  border-right: 6px solid slateblue;
   border-radius: 3px;
+}
+.dynamiccard__buttonpanel.samplehand {
+  margin-top: -83px;
+  margin-left: 246px;
 }
 
 .mixedspread-view {
@@ -398,6 +408,7 @@ body {
   border-radius: 3px;
   border: none;
   text-decoration: none;
+  margin-left: 9px;
   cursor: pointer;
 }
 .addtocube:hover {
@@ -413,7 +424,7 @@ body {
   margin: 7px 6px 0px 6px;
 }
 .addtocube.changeEdition {
-  background: transparent;
+  background: ghostwhite;
   color: darkslateblue;
   border: 1px solid darkslateblue;
 }
@@ -425,15 +436,25 @@ body {
   background: slateblue;
   color: ghostwhite;
 }
+.addtocube.transparent {
+  border: 1px solid slategray;
+  color: slategray;
+  background: transparent;
+  transition: 66ms;
+}
+.addtocube.transparent:hover {
+  border-color: lavender;
+  color: lavender;
+}
 
 .modal__overlay {
-  z-index: 1;
+  z-index: 3;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.28);
+  background: rgba(0, 0, 0, 0.68);
 }
 
 .modal__buttonpanel {
@@ -472,7 +493,27 @@ body {
   font-size: 1em;
   margin-top: 10px;
 }
+.modal__newcube.samplehand {
+  display: flex;
+  max-width: 810px;
+  width: 100%;
+  top: 50%;
+}
 
+.samplehand-element-container {
+  margin-left: -102px;
+}
+.samplehand-element-container:hover {
+  margin-top: -21px;
+}
+.samplehand-img {
+  border-radius: 8px;
+}
+.samplehand-container {
+  display: flex;
+  margin-left: 102px;
+  margin-top: 12px;
+}
 .cubelist {
   list-style-type: none;
   padding: 5px 15px 5px 5px;
@@ -518,7 +559,6 @@ body {
 .versionchanger-box {
   min-width: 202px;
   margin-top: 36px;
-  margin-left: 27px;
 }
 .versionchanger-label {
   margin: 0 0 0px 0px;
@@ -538,7 +578,7 @@ body {
   cursor: pointer;
 }
 .versionchanger > .container.active {
-  background: lavender;
+  background: aquamarine;
   font-weight: 700;
 }
 .versionchanger > .container:last-child {
@@ -551,6 +591,10 @@ body {
 
 .centerizer {
   text-align: center;
+}
+
+.lineright {
+  text-align: right;
 }
 
 .mirror {
@@ -669,9 +713,12 @@ body {
 .icon.icon-panel:active {
   color: lightslategray;
 }
-.icon.pinned {
+.icon.unpinned {
   transform: rotate(45deg);
   margin-left: -9px;
+}
+.icon.pinned {
+  color: slateblue !important;
 }
 
 .splashheader {

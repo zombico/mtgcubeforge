@@ -103,10 +103,12 @@ class DynamicCard extends Component {
               onMouseEnter={(evt) => this.handleHoverIn(evt)}
               onMouseLeave={(evt) => this.handleHoverOut(evt)}
             >
+            
              <FontAwesomeIcon icon={faThumbtack}
                 className={!pinned ? "icon icon-panel unpinned" : "icon icon-panel unpinned pinned"}
                 onClick={() => this.pinCard()}
               />     
+            
             { hasBack &&  
               <FontAwesomeIcon icon={faSyncAlt}
                 className="icon icon-panel"

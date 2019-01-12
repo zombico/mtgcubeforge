@@ -124,7 +124,7 @@ class Dashboard extends Component {
           }
           
           <ul className="cubelist__container">
-          <h2 className="cubelist__header"><FontAwesomeIcon icon={faCube} /> Manage Cubes</h2>
+          <h2 className="cubelist__header">Your Cubes</h2>
             {cubelist}
           </ul>
           
