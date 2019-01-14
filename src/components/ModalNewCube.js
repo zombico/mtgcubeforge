@@ -20,7 +20,7 @@ class ModalNewCube extends Component {
     const username = this.props.user 
     try {
       const res = await axios.post('/cubebuilder/newcube', { cubename, username })
-      console.log(res.data.data[0]._id)
+      // console.log(res.data.data[0]._id)
       this.setState({ isSubmitted: true, cubeId: res.data.data[0]._id })
       this.props.getusercubes()
       

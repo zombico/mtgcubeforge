@@ -9,7 +9,7 @@ body {
   z-index: 3;
   display: flex;
   background-color: #282c34;
-  justify-content: space-between;
+  justify-content: flex-end;
   font-size: calc(10px + 2vmin);
   position: sticky;
   top: 0px;
@@ -396,6 +396,7 @@ body {
   padding: 20px 20px 250px 20px;
   display: flex;
   align-content: flex-start;
+  background: gainsboro;
   &__header {
     
   }
@@ -532,6 +533,9 @@ body {
     font-family: 'Nunito', sans-serif;
     font-weight: 700;    
     font-size: 1.4em;
+    display: flex;
+    justify-content: space-between;
+    max-width: 180px;
   }
   &-closeicon {
     align-self: flex-end;
@@ -547,6 +551,13 @@ body {
     max-width: 810px;
     width: 100%;
     top: 50%;
+  }
+  &.massupload {
+    top: 50%;
+  }
+  #massupload {
+    height: 300px;
+    margin-top: 21px;
   }
 }
 
@@ -810,7 +821,7 @@ body {
   font-family: 'Major Mono Display', monospace;
   font-size: 0.6em;
   color: slategray;
-  margin: 8px;
+  margin-right: 3vw;
   padding-bottom: 2px;
   &:hover {
     color: cadetblue;

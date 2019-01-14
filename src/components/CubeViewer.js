@@ -11,11 +11,11 @@ class CubeViewer extends Component {
     super(props);
     this.state = {
       cubeId: 'banana',
-      cubename: 'bread',
+      cubename: 'Sorry, that cube is missing',
       cubeContents : [],
       hasError: false,
       viewType: "card",
-      username: "",
+      username: "Planar Void",
       toggleSampleHandModal: false
     }
   this.loadCube = this.loadCube.bind(this);  
@@ -74,7 +74,7 @@ class CubeViewer extends Component {
           <h2>Built by {this.state.username}</h2>
           { minLengthMet && 
               <button className="buttontransparent" onClick={(e) => this.toggleSampleHandModal(e)}>
-                View Sample Pack
+                Sample Pack
               </button>
           }
         </div>

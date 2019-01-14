@@ -6,6 +6,7 @@ import Logo from './buttons/Logo'
 import SearchCard from './SearchCard';
 import ToolTip from './ToolTip';
 import MixedSpreadView from './MixedSpreadView';
+import ModalMassUpload from './ModalMassUpload';
 import axios from "axios";
 
 class CubeBuilder extends Component {
@@ -13,13 +14,15 @@ class CubeBuilder extends Component {
     super(props);
     this.state = {
       cubeId: 'banana',
-      cubename: 'bread',
+      cubename: 'Sorry wrong cube',
       cubeContents: [],
       hasError: false,
       viewType: "card",
-      username: ""
+      username: "",
+      showMassUpload: false
     }
   this.loadCube = this.loadCube.bind(this);  
+  this.toggleMassUploadModal = this.toggleMassUploadModal.bind(this);
   }
   
   async componentWillMount() {
@@ -31,6 +34,7 @@ class CubeBuilder extends Component {
   }
 
   async loadCube() {
+    console.log('cube loaded')
     try {
       const response = await axios.get(`/cubes/${this.state.cubeId}`)
       this.setState({ 
@@ -45,17 +49,24 @@ class CubeBuilder extends Component {
   }
 
   
-  
+  toggleMassUploadModal = () => {
+   
+    if (this.state.showMassUpload === false) {
+      this.setState({ showMassUpload: true })
+    } else this.setState({ showMassUpload: false })
+    this.loadCube()
+  }
 
   render() {
+    const showMassUpload = this.state.showMassUpload
     return (
       <div className="tempmain">
       <div className="App-header">
         <Logo />
-        <Link to="/dashboard" className="App-header__builder">
+        {/* <Link to="/dashboard" className="App-header__builder">
           <FontAwesomeIcon icon={faUser} />
           <span className="App-header__builder-user">{this.state.username}</span>
-        </Link> 
+        </Link>  */}
       </div>
         <SearchCard 
           loadCube={() => this.loadCube()} 
@@ -65,6 +76,13 @@ class CubeBuilder extends Component {
         <div className="view-header" >
           <h1 ><FontAwesomeIcon icon={faCube} /> {this.state.cubename}</h1>
           <h2 className="view-header__count" id="multicolorsection">{this.state.cubeContents.length} cards</h2>
+          <button className="buttontransparent" onClick={this.toggleMassUploadModal}>Upload List</button>
+        {showMassUpload && 
+        <ModalMassUpload 
+          cubeId={this.state.cubeId} 
+          close={this.toggleMassUploadModal}
+          loadCube={() => this.loadCube()} 
+        /> }
         </div>        
         <div className="mixedspread-view" >          
           <MixedSpreadView 

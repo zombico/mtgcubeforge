@@ -13,7 +13,7 @@ class ToolTip extends Component {
   render() {
     
     return (
-      <div
+      <span
         onMouseEnter={(evt) => this.handleHoverIn(evt)}
         onMouseLeave={(evt) => this.handleHoverOut(evt)}
       >
@@ -23,7 +23,7 @@ class ToolTip extends Component {
           </div>
           }
         
-      </div>
+      </span>
     )
   }
 }
