@@ -54,17 +54,19 @@ const MixedSpreadView = (props) => {
     
     props.sort === 'alphabetic' && AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
 
+    const containerClass = view.length > 500 ? "dynamiccard__color large" : "dynamiccard__color"
     const colorSection = (color, colorstring) => (
       <div className={color.length > 0 ? '' : "hidden"}>
         <div className="dynamiccard__color-focuser" />
         <h2 className="dynamiccard__header"  >{colorstring} <span>- {color.length}</span> </h2>
-        <div className={colorstring === 'Multicolor' ? "dynamiccard__color multi" : "dynamiccard__color"}>                                
+        <div className={containerClass}>                                
           {color}
           <button className="newcardholder" id={`newcardholder${colorstring}`} />
         </div>
       </div>
     )
 
+    
 
   return <div className="dynamiccard__container">            
             

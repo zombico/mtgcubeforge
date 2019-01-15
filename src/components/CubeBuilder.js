@@ -14,7 +14,7 @@ class CubeBuilder extends Component {
     super(props);
     this.state = {
       cubeId: 'banana',
-      cubename: 'Sorry wrong cube',
+      cubename: 'Loading cube...',
       cubeContents: [],
       hasError: false,
       viewType: "card",

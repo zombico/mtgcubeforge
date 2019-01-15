@@ -9,9 +9,9 @@ body {
   z-index: 3;
   display: flex;
   background-color: #282c34;
-  justify-content: flex-end;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
-  position: sticky;
+  // position: sticky;
   top: 0px;
   padding: 5px 40px 4px 30px;
   width: 100%;
@@ -161,11 +161,12 @@ body {
   flex-wrap: wrap;
   align-items: center;
   width: 100%;
+  position: -webkit-sticky;
   position: sticky;
-  top: 40px;
-  // background: #8392AF;
+  top: 0px;
   background-color: #282c34;
   padding-left: 40px;
+  padding-top: 12px;
   z-index: 3;
   .leftside {
     width: 700px;
@@ -320,7 +321,7 @@ body {
 
 .dynamiccard {
   margin-top: -180px;
-  margin-right: 20px;
+  margin-right: 39px;
   &__container {
     padding-left: 40px;
   }
@@ -366,6 +367,9 @@ body {
     }
     &.multi {
       max-height: 240px;
+    }
+    &.large {
+      max-height: 420px;
     }
   }
   &__buttonpanel {
@@ -519,7 +523,7 @@ body {
   flex-direction: column;
   color: darkslategray;
   position: absolute;
-  top: 20%;
+  top: 42%;
   left: 50%;
   background: ghostwhite;
   border-radius: 6px;
@@ -822,6 +826,7 @@ body {
   font-size: 0.6em;
   color: slategray;
   margin-right: 3vw;
+  margin-top: 1vh;
   padding-bottom: 2px;
   &:hover {
     color: cadetblue;

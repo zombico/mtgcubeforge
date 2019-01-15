@@ -4,6 +4,7 @@ import { faTimes, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 import Forge from './ForgeCardObject';
 import axios from 'axios'
 import ToolTip from './ToolTip';
+import ListLoadAnimation from './ListLoadAnimation'
 
 class ModalMassUpload extends Component {
   state = {
@@ -19,71 +20,44 @@ class ModalMassUpload extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  makeArray(string, e) {
-    e.preventDefault()
-    // console.log(string)
+  async makeArray(string, e) {
+    e.preventDefault()    
     const array = string.split(/\n/) 
     console.log(array)
-    this.setState({ searchTerm: array })    
+    this.setState({ searchTerm: array })
 
-    array.forEach(element => {
-      element.length > 0 && this.getCard(element)      
+    await array.forEach(element => {
+      element.length > 0 && setTimeout(this.getCard(element), 300)
     })
-    this.props.loadCube()
+    this.setState({ isSubmitted: true })    
   } 
 
+  reset = () => {
+    this.setState({ cubecontents: '', isSubmitted: false })
+  }
 
-
-  async getCard(card) {
+  getCard(card) {
     fetch(`https://api.scryfall.com/cards/named?exact=${card}`, {
     })
     .then(res => res.json())
-    .then(result => {  
-      this.setState({
-        tempCard: result        
-      }) 
-      const newCard = Forge(this.state.tempCard)
-        this.setState({
-        stateReqstCard: newCard,
-      })  
-      const layout = this.state.tempCard.layout;
-    if (layout === "emblem" || layout === "vanguard" || layout === "planar" ) {
-      return console.log('error')
-    } else try {
-       axios.patch(`cubes/${this.props.cubeId}/add`, this.state.stateReqstCard)
-      
-      
-    } catch(e) {
-      console.log(e)
-    }
+    .then(result => {        
+      const newCard = Forge(result)
+      this.setState({ stateReqstCard: newCard })  
+      const layout = this.state.stateReqstCard.layout
+      if (layout === "emblem" || layout === "vanguard" || layout === "planar" ) {
+        return console.log('error')
+      } else try {
+        axios.patch(`cubes/${this.props.cubeId}/add`, this.state.stateReqstCard)            
+      } catch(e) {
+        console.log(e)
+      }
     })
-    .then(await this.props.loadCube())   
+
     .catch(error => console.error('Error', error))    
   }
 
-  // getCard2 = async (card) => {
-  //   try {
-  //     await axios.get(`https://api.scryfall.com/cards/named?exact=${card}`)
-  //   } catch(e) {
-  //     console.log(e)
-  //   }
-    
-  // }
-
-  // addCard = async () => {
-  //   const layout = this.state.tempCard.layout;
-    // if (layout === "emblem" || layout === "vanguard" || layout === "planar" ) {
-    //   return console.log('error')
-  //   } else try {
-  //     await axios.patch(`cubes/${this.props.cubeId}/add`, this.state.stateReqstCard)
-  //     // this.props.loadCube()
-      
-  //   } catch(e) {
-  //     console.log(e)
-  //   }
-  // }
-
   render() {    
+    const submitted = this.state.isSubmitted
       return (
         <div className="modal__overlay">
           <div className="modal__newcube massupload"> 
@@ -91,7 +65,7 @@ class ModalMassUpload extends Component {
             onClick={this.props.close}
             className="modal__newcube-closeicon"
            />         
-
+          { !submitted &&
               <form onSubmit={(e) => this.makeArray(this.state.cubecontents, e)}>                      
                 <label htmlFor="new-cube-button" className="modal__newcube-title">
                   Paste card list 
@@ -107,16 +81,24 @@ class ModalMassUpload extends Component {
                   onChange={this.handleChange}
                   name="cubecontents"
                   id="massupload"
-                  placeholder="E.g.: &#10;Ponder&#10;Lightning Helix&#10;Verdant Catacombs&#10;Mirror Entity"
+                  placeholder="E.g.&#10;Ponder&#10;Lightning Helix&#10;Verdant Catacombs&#10;Mirror Entity"
                   className="modal__newcube-input fullwidth" 
                   autoComplete="off"
                 />
           
                 <div className="modal__buttonpanel">
-                  <input className="buttonsecondary" type="submit" value="Upload List" />            
+                  <input className="buttonprimary" type="submit" value="Upload List" />   
+                  <input className="buttontransparent" type="button" value="Return to Cube" onClick={this.props.close} />            
                 </div>
               </form>
-              
+          }
+          { submitted && 
+              <ListLoadAnimation 
+                close={this.props.close} 
+                length={this.state.searchTerm.length}
+                reset={this.reset}
+              />
+          }
           </div>
         </div>
       )}
