@@ -39,6 +39,7 @@ class DynamicCard extends Component {
   }
 
   removeCard = async () => {
+    this.setState({ pinned: false })
     const remove = {}
     remove.id = this.props.id
     try {

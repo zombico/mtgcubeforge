@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
@@ -50,11 +50,11 @@ class ModalNewCube extends Component {
                   autoComplete="off"
                 />
                 <div className="modal__buttonpanel">
-                  <input className="buttonsecondary" type="submit" value="Confirm" />            
+                  <input className="buttonsecondary" type="submit" value="Start Building" />            
                 </div>
               </form>
               :
-              <Link className="startbuild" to={`/cubebuilder/${this.state.cubeId}`}>Start Building</Link>
+              <Redirect to={`/cubebuilder/${this.state.cubeId}`} />
             }
           </div>
         </div>

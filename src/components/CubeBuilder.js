@@ -34,7 +34,6 @@ class CubeBuilder extends Component {
   }
 
   async loadCube() {
-    console.log('cube loaded')
     try {
       const response = await axios.get(`/cubes/${this.state.cubeId}`)
       this.setState({ 

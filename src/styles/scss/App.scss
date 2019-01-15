@@ -270,7 +270,7 @@ body {
     flex-direction: column;
     position: absolute;
     top: 9px;
-    margin-top: 30px;
+    margin-top: 42px;
     width: 100%;
     max-width: 240px;
     flex: 1;
@@ -369,7 +369,7 @@ body {
       max-height: 240px;
     }
     &.large {
-      max-height: 420px;
+      max-height: 510px;
     }
   }
   &__buttonpanel {
@@ -539,7 +539,15 @@ body {
     font-size: 1.4em;
     display: flex;
     justify-content: space-between;
-    max-width: 180px;
+    &.icon {
+      max-width: 180px;
+    }    
+  }
+  &-subtitle {
+    font-family: 'Nunito', sans-serif;
+    font-size: .9em;
+    margin: auto;
+    max-width: 300px;
   }
   &-closeicon {
     align-self: flex-end;
@@ -562,6 +570,11 @@ body {
   #massupload {
     height: 300px;
     margin-top: 21px;
+  }
+  &-statusicon {
+    padding: 3.5vh;
+    font-size: 2em;
+    text-align: center;
   }
 }
 
@@ -679,6 +692,18 @@ body {
   text-align: center;
 }
 
+
+.loading-spinner {
+  animation: rotate 1.5s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
 .lineright {
   text-align: right;
 }
@@ -717,20 +742,32 @@ body {
 .buttonsecondary {
   background: darkcyan;
   border: none;
-  padding: 10px;
+  padding: 6px;
   width: 100%;
-  max-width: 160px;
-  margin-bottom: 16px;
+  max-width: 120px;
+  margin-left: 12px;
   border-radius: 4px;  
   text-decoration: none;
   color: ghostwhite;
-  font-size: 1em;
+  font-size: .9em;
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
   &:hover {
-    background: cadetblue;
+    background: lightseagreen;
     transition: 99ms;
     cursor: pointer;
+  }
+  &.transparent {
+    border: 1px solid darkcyan;
+    color: darkcyan;
+    background: transparent;
+    &:hover {
+      border: 1px solid transparent;
+      background: lightseagreen;
+      color: ghostwhite;
+      transition: 99ms;
+      cursor: pointer;
+    }
   }
 }
 
@@ -767,7 +804,8 @@ body {
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
   &:hover {
-    background: darkslateblue;
+    background: slateblue;
+    border: 1px solid transparent;
     // border: 1px solid ghostwhite;
     color: ghostwhite;
     transition: 60ms;

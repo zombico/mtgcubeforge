@@ -61,21 +61,18 @@ class ModalMassUpload extends Component {
       return (
         <div className="modal__overlay">
           <div className="modal__newcube massupload"> 
-           <FontAwesomeIcon icon={faTimes} 
-            onClick={this.props.close}
-            className="modal__newcube-closeicon"
-           />         
+           
           { !submitted &&
               <form onSubmit={(e) => this.makeArray(this.state.cubecontents, e)}>                      
-                <label htmlFor="new-cube-button" className="modal__newcube-title">
+                <label htmlFor="new-cube-button" className="modal__newcube-title icon">
                   Paste card list 
                   <ToolTip
                   className="banana"
                     icon={<FontAwesomeIcon icon={faQuestionCircle} />}
-                    text="Do not separate card names with commas."
+                    text="Add as many cards as you need - even the entire list. "
                   />
                 </label>
-                <div>Card names must be separated by a new line </div>
+                <div>Each name must be separated by a new line</div>
                 <textarea
                   type="text"
                   onChange={this.handleChange}
@@ -87,12 +84,12 @@ class ModalMassUpload extends Component {
                 />
           
                 <div className="modal__buttonpanel">
-                  <input className="buttonprimary" type="submit" value="Upload List" />   
-                  <input className="buttontransparent" type="button" value="Return to Cube" onClick={this.props.close} />            
+                  <input className="buttonsecondary" type="submit" value="Upload List" />   
+                  <input className="buttonsecondary transparent" type="button" value="Return to Cube" onClick={this.props.close} />            
                 </div>
               </form>
           }
-          { submitted && 
+          { submitted &&               
               <ListLoadAnimation 
                 close={this.props.close} 
                 length={this.state.searchTerm.length}
