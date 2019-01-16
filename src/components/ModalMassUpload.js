@@ -41,13 +41,13 @@ class ModalMassUpload extends Component {
     })
     .then(res => res.json())
     .then(result => {        
-      const newCard = Forge(result)
+      const newCard = result.id && Forge(result)      
       this.setState({ stateReqstCard: newCard })  
       const layout = this.state.stateReqstCard.layout
       if (layout === "emblem" || layout === "vanguard" || layout === "planar" ) {
         return console.log('error')
       } else try {
-        axios.patch(`cubes/${this.props.cubeId}/add`, this.state.stateReqstCard)            
+        this.state.stateReqstCard && axios.patch(`cubes/${this.props.cubeId}/add`, this.state.stateReqstCard)            
       } catch(e) {
         console.log(e)
       }
@@ -69,7 +69,7 @@ class ModalMassUpload extends Component {
                   <ToolTip
                   className="banana"
                     icon={<FontAwesomeIcon icon={faQuestionCircle} />}
-                    text="Add as many cards as you need - even the entire list. "
+                    text="Add as many cards as you need - even your entire list. Cards with more than one side only need one name for entry."
                   />
                 </label>
                 <div>Each name must be separated by a new line</div>
