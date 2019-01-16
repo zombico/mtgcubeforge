@@ -11,27 +11,31 @@ class HomePage extends Component {
       <div className="homepage">
       <div className="App-header"><Logo /></div>
       <h1 className="splashheader"><FontAwesomeIcon icon={faCube} /> MtGcubeforGe</h1> 
-      <h2>See and build your Magic cubes in a new way. </h2>   
+      <h2>The best tool to view and build your Magic cubes. </h2>   
+      <br/>
       <ul className="pitch">
       <li className="pitch__bullet">
-        <FontAwesomeIcon icon={faUserCheck} /> 
+        <FontAwesomeIcon icon={faUserCheck} className="pitch__icon" /> 
           <p>Free to sign up and use!</p>
         </li>
         <li className="pitch__bullet">
-          <FontAwesomeIcon icon={faSearch} /> 
+          <FontAwesomeIcon icon={faSearch} className="pitch__icon" /> 
           <p>Search all existing Magic cards, with high resolution images for available editions</p>
         </li>
         <li className="pitch__bullet">
-          <FontAwesomeIcon icon={faListUl} /> 
+          <FontAwesomeIcon icon={faListUl} className="pitch__icon" /> 
           <p>Easy upload, copy paste your list. (Editions will be automatically chosen).</p>
         </li>
         
       </ul>
-      {/* <div className="heroimg" /> */}
+      
         
         
-        
-        <h2>First time here?  <Link to="/cubeviewer/5c2a6f9d7e19a100246a38e4"> Check out my cube!</Link> </h2>   
+        <div className="spacer5" />
+        <h3>First time here?  <Link to="/cubeviewer/5c2a6f9d7e19a100246a38e4"> Check out my cube!</Link> </h3>   
+        <a href="https://magic.wizards.com/en/articles/archive/how-build/building-your-first-cube-2016-05-19" target="_blank">
+        <h3>Learn how to build a cube!</h3>
+        </a>
         <div className="vertical-buttonpanel">          
           <Link className="buttontransparent home" to="/login">Log In</Link>   
           <Link className="buttonprimary" to="/signup">Create account</Link>                 

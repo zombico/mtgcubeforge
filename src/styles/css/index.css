@@ -4,13 +4,30 @@ body {
 
 .footer {
   background: #282c34;
+  margin-top: 6vh;
   padding-top: 3vh;
   padding-bottom: 3vh;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer p {
+  color: dimgray;
+  max-width: 800px;
 }
 .footer-nav {
   display: flex;
   justify-content: space-evenly;
+  width: 100%;
+  max-width: 40vw;
+}
+.footer-nav a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.App {
+  font-family: "Nunito", sans-serif;
 }
 
 .App-header {
@@ -616,6 +633,7 @@ body {
   max-width: 720px;
   display: flex;
   margin: auto;
+  border-radius: 6px;
   align-items: flex-start;
   justify-content: space-evenly;
   padding: 24px 12px;
@@ -623,6 +641,10 @@ body {
 }
 .pitch__bullet {
   max-width: 201px;
+  min-height: 150px;
+  border-left: 1px solid;
+  padding-left: 2vw;
+  padding-right: 2vw;
 }
 
 .versionchanger {

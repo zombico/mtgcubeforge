@@ -4,13 +4,34 @@ body {
 
 .footer {
   background: #282c34;
+  margin-top: 6vh;
   padding-top: 3vh;
   padding-bottom: 3vh;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer p {
+  color: dimgray;
+  max-width: 800px;
+  font-size: 0.9em;
+  padding: 3px 12px;
+  margin: 0;
 }
 .footer-nav {
   display: flex;
   justify-content: space-evenly;
+  margin-bottom: 3vh;
+  width: 100%;
+  max-width: 40vw;
+}
+.footer-nav a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.App {
+  font-family: "Nunito", sans-serif;
 }
 
 .App-header {
@@ -383,9 +404,11 @@ body {
 }
 .mixedspread-view__img2 {
   border-radius: 8px;
-  transition: 60ms;
 }
-.mixedspread-view__img2-hovered {
+.mixedspread-view__img2.hovered {
+  margin-left: -10px;
+}
+.mixedspread-view__img2:hover {
   border-radius: 8px;
   margin-left: -10px;
 }
@@ -608,21 +631,33 @@ body {
   background: azure;
   padding: 8px;
   font-size: 0.6em;
-  box-shadow: 3px 3px 25px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 3px 12px -2px rgba(0, 0, 0, 0.75);
 }
 
 .pitch {
-  background: lightgray;
+  background: white;
   max-width: 720px;
   display: flex;
   margin: auto;
+  border-radius: 6px;
   align-items: flex-start;
   justify-content: space-evenly;
   padding: 24px 12px;
   list-style-type: none;
+  box-shadow: 0px 3px 12px -2px rgba(0, 0, 0, 0.75);
 }
 .pitch__bullet {
   max-width: 201px;
+  min-height: 150px;
+  border-left: 1px solid darkslateblue;
+  padding: 0 2vw;
+  color: darkslategray;
+}
+.pitch__bullet:first-child {
+  border-left: none;
+}
+.pitch__icon {
+  color: slateblue;
 }
 
 .versionchanger {
@@ -829,6 +864,7 @@ body {
 .smallheader {
   font-family: "Major Mono Display", monospace;
   font-size: 0.6em;
+  font-weight: 700;
   color: slategray;
   margin-right: 1vw;
   margin-top: 1vh;
@@ -853,6 +889,11 @@ h2 {
   font-family: "Nunito", sans-serif;
   font-weight: 400;
   font-size: 1.4em;
+}
+
+h3 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
 }
 
 p {
