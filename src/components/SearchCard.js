@@ -223,7 +223,7 @@ class SearchCard extends Component {
     this.setState({
       searchTerm: newStroke
     })
-    this.autoComplete(newStroke)
+    setTimeout(this.autoComplete(newStroke), 300)
   }
 
 

@@ -4,8 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faCube } from '@fortawesome/free-solid-svg-icons'
 import Logo from './buttons/Logo'
 import SearchCard from './SearchCard';
-import ToolTip from './ToolTip';
+import StatusLight from './buttons/StatusLight'
 import MixedSpreadView from './MixedSpreadView';
+import ModalMassUpload from './ModalMassUpload';
+import ModalSampleHand from './ModalSampleHand'
 import axios from "axios";
 
 class CubeBuilder extends Component {
@@ -13,13 +15,16 @@ class CubeBuilder extends Component {
     super(props);
     this.state = {
       cubeId: 'banana',
-      cubename: 'bread',
+      cubename: 'Loading cube...',
       cubeContents: [],
       hasError: false,
       viewType: "card",
-      username: ""
+      username: "",
+      showMassUpload: false,
+      toggleSampleHandModal: false
     }
   this.loadCube = this.loadCube.bind(this);  
+  this.toggleMassUploadModal = this.toggleMassUploadModal.bind(this);
   }
   
   async componentWillMount() {
@@ -44,18 +49,34 @@ class CubeBuilder extends Component {
     }
   }
 
+  toggleSampleHandModal = () => {
+    if(this.state.toggleSampleHandModal === false) {
+      this.setState({ toggleSampleHandModal: true})
+    } else this.setState({ toggleSampleHandModal: false})
+    
+  }
   
-  
+  toggleMassUploadModal = () => {
+   
+    if (this.state.showMassUpload === false) {
+      this.setState({ showMassUpload: true })
+    } else this.setState({ showMassUpload: false })
+    this.loadCube()
+  }
 
   render() {
+    const showMassUpload = this.state.showMassUpload
+    const sampleHand = this.state.toggleSampleHandModal 
+    const minLengthMet = this.state.cubeContents.length > 15
     return (
       <div className="tempmain">
       <div className="App-header">
         <Logo />
-        <Link to="/dashboard" className="App-header__builder">
+        <StatusLight text="Now editing" />
+        {/* <Link to="/dashboard" className="App-header__builder">
           <FontAwesomeIcon icon={faUser} />
           <span className="App-header__builder-user">{this.state.username}</span>
-        </Link> 
+        </Link>  */}
       </div>
         <SearchCard 
           loadCube={() => this.loadCube()} 
@@ -65,6 +86,25 @@ class CubeBuilder extends Component {
         <div className="view-header" >
           <h1 ><FontAwesomeIcon icon={faCube} /> {this.state.cubename}</h1>
           <h2 className="view-header__count" id="multicolorsection">{this.state.cubeContents.length} cards</h2>
+          <div className="dashboard__panel">
+          <button className="buttonprimary" onClick={this.toggleMassUploadModal}>Upload List</button>
+          { minLengthMet && 
+              <button className="buttontransparent" onClick={(e) => this.toggleSampleHandModal(e)}>
+                Sample Pack
+              </button>
+          }
+          </div>
+        {sampleHand && 
+        <ModalSampleHand 
+          close={this.toggleSampleHandModal} 
+          cubeContents={this.state.cubeContents}
+        />}  
+        {showMassUpload && 
+        <ModalMassUpload 
+          cubeId={this.state.cubeId} 
+          close={this.toggleMassUploadModal}
+          loadCube={() => this.loadCube()} 
+        /> }
         </div>        
         <div className="mixedspread-view" >          
           <MixedSpreadView 
