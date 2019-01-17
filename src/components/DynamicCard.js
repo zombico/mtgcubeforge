@@ -39,7 +39,6 @@ class DynamicCard extends Component {
   }
 
   removeCard = async () => {
-    this.setState({ pinned: false })
     const remove = {}
     remove.id = this.props.id
     try {
@@ -66,15 +65,15 @@ class DynamicCard extends Component {
     const rotated = this.state.rotated
     const split = this.props.layout === 'split'
     const pinned = this.state.pinned
-
+    const hoverEnabled = this.props.hoverEnabled
 
     return (
       <>
       <div className="dynamiccard">
-        <img className={pinned ? "mixedspread-view__img2 hovered" :"mixedspread-view__img2" }
+        <img className={showingToolTip ? "mixedspread-view__img2 hovered" :"mixedspread-view__img2" }
           src={this.props.src} name={this.props.name} 
-          onMouseEnter={(evt) => this.handleHoverIn(evt)}
-          onMouseLeave={(evt) => this.handleHoverOut(evt)}
+          onMouseEnter={hoverEnabled ? (evt) => this.handleHoverIn(evt) : ""}
+          onMouseLeave={hoverEnabled ? (evt) => this.handleHoverOut(evt) : ""}
           onClick={() => this.pinCard()}
         />
       

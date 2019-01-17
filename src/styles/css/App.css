@@ -334,7 +334,6 @@ body {
   max-width: 220px;
   border-radius: 12px;
   box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
-  transition: 0.5s;
 }
 .dynamiccard__tooltip.rotated {
   transform: rotate(90deg) translate(-36px, 42px);
@@ -404,6 +403,7 @@ body {
 }
 .mixedspread-view__img2 {
   border-radius: 8px;
+  transition: 60ms;
 }
 .mixedspread-view__img2.hovered {
   margin-left: -10px;

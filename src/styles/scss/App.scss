@@ -370,7 +370,7 @@ body {
     max-width: 220px;
     border-radius: 12px;
     box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
-    transition: 0.5s;
+    // transition: 0.5s;
     &.rotated {
       transform: rotate(90deg) translate(-36px, 42px);      
     }
@@ -446,7 +446,7 @@ body {
   }
   &__img2 {
     border-radius: 8px;
-    // transition: 60ms;
+    transition: 60ms;
     &.hovered {
       margin-left: -10px;
       
