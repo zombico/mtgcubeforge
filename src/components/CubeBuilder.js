@@ -70,7 +70,7 @@ class CubeBuilder extends Component {
     const minLengthMet = this.state.cubeContents.length > 15
     return (
       <div className="tempmain">
-      <div className="App-header">
+      <div className="App-header" id="viewsettings">
         <Logo />
         <StatusLight text="Now editing" />
         {/* <Link to="/dashboard" className="App-header__builder">
@@ -81,7 +81,7 @@ class CubeBuilder extends Component {
         <SearchCard 
           loadCube={() => this.loadCube()} 
           cubeId={this.state.cubeId}
-          hasControls={true}
+          hasControls={true} 
         />
         <div className="view-header" >
           <h1 ><FontAwesomeIcon icon={faCube} /> {this.state.cubename}</h1>

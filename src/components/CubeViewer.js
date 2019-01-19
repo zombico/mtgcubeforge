@@ -56,10 +56,10 @@ class CubeViewer extends Component {
   render() {
     const sampleHand = this.state.toggleSampleHandModal 
     const minLengthMet = this.state.cubeContents.length > 15
-    console.log(minLengthMet)
+    
     return (
       <div className="tempmain">
-      <div className="App-header">
+      <div className="App-header"  id="viewsettings">
     
         <Logo />
 
@@ -67,7 +67,7 @@ class CubeViewer extends Component {
       <SearchCard 
           loadCube={() => this.loadCube()} 
           cubeId={this.state.cubeId}
-          hasControls={false}
+          hasControls={false}          
         />
         <div className="view-header">
           <h1>{this.state.cubename}</h1>

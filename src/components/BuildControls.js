@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCog } from '@fortawesome/free-solid-svg-icons'
+
 class BuildControls extends Component {
   colorShortcut(color, e) {
     e.preventDefault()
     document.getElementById(`${color}section`).scrollIntoView();
+  }
+  toTop(e) {
+    e.preventDefault()
+    document.getElementById("viewsettings").scrollIntoView();
   }
   
   render() {
@@ -13,7 +20,7 @@ class BuildControls extends Component {
         
         {
           this.props.hasControls ?
-            <>
+            <div className="searchbar__buildcontrols__panel">
             <form className="searchbar__buildcontrols__mainbutton" onSubmit={this.props.handleAdd}>            
             {this.props.stateReqstCard && <button className="addtocube" id="addtocube">Add to Cube</button> }
             {!this.props.stateReqstCard && <button className="searchbar__buildcontrols-shim">hi</button>}
@@ -21,25 +28,28 @@ class BuildControls extends Component {
                  
             </form> 
             <button className="addtocube transparent" onClick={this.props.clearSearch}>Clear Search</button>    
-            </>
+            </div>
             :
-            <>
+            <div className="searchbar__buildcontrols__panel">
             <Link className="addtocube" to="/signup">Build a Cube</Link>
             <button className="addtocube transparent" onClick={this.props.clearSearch}>Clear Search</button>
-            </>
+            </div>
         }
           
-          <div className="searchbar__buildcontrols__shortcut" >
-            <div className="searchbar__buildcontrols__label">Jump to</div>
-            <a href="/#" onClick={(e) => this.colorShortcut('Multicolor', e)}>Multicolor</a>
-            <a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>Blue</a>
-            <a href="/#" onClick={(e) => this.colorShortcut('Black', e)}>Black</a>
-            <a href="/#" onClick={(e) => this.colorShortcut('White', e)}>White</a>
-            <a href="/#" onClick={(e) => this.colorShortcut('Red', e)}>Red</a>
-            <a href="/#" onClick={(e) => this.colorShortcut('Green', e)}>Green</a>
-            <a href="/#" onClick={(e) => this.colorShortcut('Colorless', e)}>Colorless</a>
-            <a href="/#" onClick={(e) => this.colorShortcut('Land', e)}>Land</a>
-          </div>  
+          <nav className="searchbar__buildcontrols__shortcut-container">
+            {/* <ol className="searchbar__buildcontrols__label"> */}
+            <ol className="searchbar__buildcontrols__shortcut">
+            <li><a href="/#" onClick={(e) => this.toTop(e)}><FontAwesomeIcon icon={faCog} /> </a></li>
+            <li><a href="/#" onClick={(e) => this.colorShortcut('Multicolor', e)}>Multicolor</a></li>
+            <li><a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>Blue</a></li>
+            <li><a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>Black</a></li>
+            <li><a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>White</a></li>
+            <li><a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>Red</a></li>
+            <li><a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>Green</a></li>
+            <li><a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>Colorless</a></li>
+            <li><a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>Land</a></li>
+            </ol>
+          </nav>  
         </div>
         
       </div>

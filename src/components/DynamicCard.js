@@ -19,6 +19,7 @@ class DynamicCard extends Component {
     this.flipCard = this.flipCard.bind(this)
     this.rotateCard = this.rotateCard.bind(this)
     this.pinCard = this.pinCard.bind(this)
+    this.unPin = this.unPin.bind(this)
   }
 
   flipCard = () => {
@@ -38,6 +39,9 @@ class DynamicCard extends Component {
     } else this.setState({ pinned: true, showingToolTip: true  })  
   }
 
+  unPin = () => {
+    this.setState({ pinned: false })
+  }
   removeCard = async () => {
     const remove = {}
     remove.id = this.props.id
@@ -72,8 +76,8 @@ class DynamicCard extends Component {
       <div className="dynamiccard">
         <img className={showingToolTip ? "mixedspread-view__img2 hovered" :"mixedspread-view__img2" }
           src={this.props.src} name={this.props.name} 
-          onMouseEnter={hoverEnabled ? (evt) => this.handleHoverIn(evt) : ""}
-          onMouseLeave={hoverEnabled ? (evt) => this.handleHoverOut(evt) : ""}
+          onMouseEnter={hoverEnabled ? (evt) => this.handleHoverIn(evt) : () => {} }
+          onMouseLeave={hoverEnabled ? (evt) => this.handleHoverOut(evt) : () => {} }
           onClick={() => this.pinCard()}
         />
       
