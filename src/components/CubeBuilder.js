@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from "axios";
 import { BrowserRouter as Router, Route,  Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faCube } from '@fortawesome/free-solid-svg-icons'
@@ -8,7 +9,8 @@ import StatusLight from './buttons/StatusLight'
 import MixedSpreadView from './MixedSpreadView';
 import ModalMassUpload from './ModalMassUpload';
 import ModalSampleHand from './ModalSampleHand'
-import axios from "axios";
+import Footer from './Footer'
+
 
 class CubeBuilder extends Component {
   constructor(props) {
@@ -69,6 +71,7 @@ class CubeBuilder extends Component {
     const sampleHand = this.state.toggleSampleHandModal 
     const minLengthMet = this.state.cubeContents.length > 15
     return (
+      <>
       <div className="tempmain">
       <div className="App-header" id="viewsettings">
         <Logo />
@@ -117,6 +120,8 @@ class CubeBuilder extends Component {
           />                     
         </div>
       </div>
+      <Footer />
+      </>
     )
   }
 }

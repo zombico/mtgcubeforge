@@ -7,6 +7,7 @@ import Logo from './buttons/Logo'
 import Logout from './Logout'
 import ToolTip from './ToolTip'
 import ModalNewCube from './ModalNewCube'
+import Footer from './Footer'
 
 class Dashboard extends Component {  
   state={
@@ -92,7 +93,7 @@ class Dashboard extends Component {
     })
 
     return (
-      
+      <>
       <div className="tempmain">
         <header className="App-header">
           <Logo />
@@ -133,7 +134,8 @@ class Dashboard extends Component {
           </div>
         </div>
       </div>
-      
+      <Footer />
+      </>
     )
   
   }

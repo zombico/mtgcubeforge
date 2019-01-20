@@ -6,6 +6,7 @@ import MixedSpreadView from './MixedSpreadView';
 import SearchCard from './SearchCard'
 import ModalSampleHand from './ModalSampleHand';
 import StatusLight from './buttons/StatusLight'
+import Footer from './Footer'
 
 class CubeViewer extends Component {
   constructor(props) {
@@ -59,6 +60,7 @@ class CubeViewer extends Component {
     const minLengthMet = this.state.cubeContents.length > 15
     
     return (
+      <>
       <div className="tempmain">
       <div className="App-header"  id="viewsettings">
     
@@ -71,9 +73,11 @@ class CubeViewer extends Component {
           hasControls={false}          
         />
         <div className="view-header">
-          <h1>{this.state.cubename}</h1>
-          <h2>Maintained by {this.state.username}</h2>
-          <h2 className="view-header__count" id="multicolorsection">{this.state.cubeContents.length} cards</h2>
+          <div className="view-header__titlebox">
+            <h1>{this.state.cubename}</h1>
+          </div>
+          <h2 className="view-header__count">Maintained by {this.state.username}</h2>
+          <h3 className="view-header__count" id="multicolorsection">{this.state.cubeContents.length} cards</h3>
           { minLengthMet && 
               <button className="buttontransparent" onClick={(e) => this.toggleSampleHandModal(e)}>
                 Sample Pack
@@ -95,6 +99,8 @@ class CubeViewer extends Component {
           />
         </div>
       </div>
+      <Footer />
+      </>
     )
   }
 }

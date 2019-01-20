@@ -79,8 +79,10 @@ ol {
 .view-header {
   padding-left: 8vh;
   padding-bottom: 4vh;
+  padding-top: 4vh;
+  border-bottom: 9px solid slategray;
   &__count {
-    // color: cadetblue;
+    font-family: 'Nunito Sans', sans-serif;
   }
 }
 
@@ -193,6 +195,7 @@ ol {
 }  
 
 .searchbar {
+  z-index: 3;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -204,8 +207,8 @@ ol {
   top: 0px;
   background-color: #282c34;
   padding-left: 40px;
-  padding-top: 12px;
-  z-index: 3;
+  padding-top: 12px;  
+  box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.45);
   .leftside {
     width: 700px;
   }
@@ -217,7 +220,7 @@ ol {
     max-width: 600px; 
     position: fixed;    
     right: 12vh;
-    top: 15vh;
+    top: 8vh;
     background: ghostwhite;
     box-shadow: 3px 5px 9px 0px rgba(0, 0, 0, 0.45);
     border-radius: 6px;
@@ -303,6 +306,12 @@ ol {
 
       }
     }
+    &-cog {      
+      transition: 90ms;
+      &:hover {
+        transform: rotate(90deg);
+      }
+    }
     &-shim {
       padding: 7px;
       visibility: hidden;
@@ -333,7 +342,7 @@ ol {
     border: none;
     padding: 4px 8px;
     font-size: 1.2em;
-    background: ghostwhite;
+    background: ghostwhite;    
     color: black;
     font-family: 'Nunito Sans', sans-serif;
   }

@@ -39,15 +39,15 @@ class BuildControls extends Component {
           <nav className="searchbar__buildcontrols__shortcut-container">
             {/* <ol className="searchbar__buildcontrols__label"> */}
             <ol className="searchbar__buildcontrols__shortcut">
-            <li><a href="/#" onClick={(e) => this.toTop(e)}><FontAwesomeIcon icon={faCog} /> </a></li>
+            <li><a href="/#" onClick={(e) => this.toTop(e)}><FontAwesomeIcon icon={faCog} className="searchbar__buildcontrols-cog"/> </a></li>
             <li><a href="/#" onClick={(e) => this.colorShortcut('Multicolor', e)}>Multicolor</a></li>
             <li><a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>Blue</a></li>
-            <li><a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>Black</a></li>
-            <li><a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>White</a></li>
-            <li><a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>Red</a></li>
-            <li><a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>Green</a></li>
-            <li><a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>Colorless</a></li>
-            <li><a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>Land</a></li>
+            <li><a href="/#" onClick={(e) => this.colorShortcut('Black', e)}>Black</a></li>
+            <li><a href="/#" onClick={(e) => this.colorShortcut('White', e)}>White</a></li>
+            <li><a href="/#" onClick={(e) => this.colorShortcut('Red', e)}>Red</a></li>
+            <li><a href="/#" onClick={(e) => this.colorShortcut('Green', e)}>Green</a></li>
+            <li><a href="/#" onClick={(e) => this.colorShortcut('Colorless', e)}>Colorless</a></li>
+            <li><a href="/#" onClick={(e) => this.colorShortcut('Land', e)}>Land</a></li>
             </ol>
           </nav>  
         </div>

@@ -74,7 +74,13 @@ ol {
 .view-header {
   padding-left: 8vh;
   padding-bottom: 4vh;
+  padding-top: 4vh;
+  border-bottom: 9px solid slategray;
 }
+.view-header__count {
+  font-family: "Nunito Sans", sans-serif;
+}
+
 .tempmain {
   min-height: 100vh;
 }
@@ -170,6 +176,7 @@ ol {
 }
 
 .searchbar {
+  z-index: 3;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -182,7 +189,7 @@ ol {
   background-color: #282c34;
   padding-left: 40px;
   padding-top: 12px;
-  z-index: 3;
+  box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.45);
 }
 .searchbar .leftside {
   width: 700px;
@@ -195,7 +202,7 @@ ol {
   max-width: 600px;
   position: fixed;
   right: 12vh;
-  top: 15vh;
+  top: 8vh;
   background: ghostwhite;
   box-shadow: 3px 5px 9px 0px rgba(0, 0, 0, 0.45);
   border-radius: 6px;
@@ -269,6 +276,12 @@ ol {
 .searchbar__buildcontrols__shortcut a:active {
   color: darkslateblue;
   text-decoration: underline;
+}
+.searchbar__buildcontrols-cog {
+  transition: 90ms;
+}
+.searchbar__buildcontrols-cog:hover {
+  transform: rotate(90deg);
 }
 .searchbar__buildcontrols-shim {
   padding: 7px;

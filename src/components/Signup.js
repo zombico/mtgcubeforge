@@ -7,6 +7,7 @@ import {
 import axios from "axios";
 import { setToken } from "../services/tokenService";
 import Logo from './buttons/Logo'
+import Footer from './Footer'
 
 class Signup extends Component {
   state = {
@@ -42,6 +43,7 @@ class Signup extends Component {
   render() {
     if(this.state.isDone) {
     return(
+      <>
       <div className="tempmain">
         <div className="App-header" ><Logo /></div> 
         <div className="homepage">
@@ -50,10 +52,13 @@ class Signup extends Component {
           <Link className="buttontransparent" to="/login"><a>Log in for the first time</a></Link>
         </div>        
       </div>
+      <Footer />
+      </>
     )
     }
     if (!this.state.isDone ) {
     return (
+      <>
       <div className="tempmain">
       <div className="App-header" ><Logo /></div> 
         <form onSubmit={this.handleSubmit}>
@@ -92,6 +97,8 @@ class Signup extends Component {
             </div>
         </form>
       </div>  
+      <Footer />
+      </>
     );
     }
   }
