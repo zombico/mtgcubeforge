@@ -3,7 +3,7 @@ const Forge = (reqst) => {
   // left.side reqstCard is mine, reqst right.side is scryfall's
   
   // basic search case
-  if(reqst.layout ==="normal" || reqst.layout ==="saga" || reqst.layout==="leveler" || reqst.layout==="meld") {
+  if(reqst.layout ==="normal" || reqst.layout ==="saga" || reqst.layout==="leveler" || reqst.layout==="meld" || reqst.layout==="host" || reqst.layout==="augment" ) {
     reqstCard.id = reqst.id;
     reqstCard.name = reqst.name;
     reqstCard.colors = reqst.colors;
