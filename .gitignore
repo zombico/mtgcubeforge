@@ -11,6 +11,14 @@
 # production
 /build
 
+# dns
+server.csr
+server.key
+server.pass.key
+www_mtgcubeforge_com.crt
+www_mtgcubeforge_com.ca-bundle
+www_mtgcubeforge_com.p7b
+
 # misc
 .DS_Store
 .env.local
