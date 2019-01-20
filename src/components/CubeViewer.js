@@ -5,6 +5,7 @@ import Logo from './buttons/Logo'
 import MixedSpreadView from './MixedSpreadView';
 import SearchCard from './SearchCard'
 import ModalSampleHand from './ModalSampleHand';
+import StatusLight from './buttons/StatusLight'
 
 class CubeViewer extends Component {
   constructor(props) {
@@ -62,7 +63,7 @@ class CubeViewer extends Component {
       <div className="App-header"  id="viewsettings">
     
         <Logo />
-
+        <StatusLight text="View mode" light="view" />
       </div>      
       <SearchCard 
           loadCube={() => this.loadCube()} 

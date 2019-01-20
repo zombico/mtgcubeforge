@@ -258,9 +258,12 @@ ol {
       display: flex;
       align-self: flex-end;
     }
+    &__filler {
+      width: 240px;
+    }
     &__container {
       display: flex;
-      justify-content: flex-end;
+      // justify-content: flex-end;
       max-width: 1020px;
       flex-wrap: wrap;
     }
@@ -369,6 +372,14 @@ ol {
 .dynamiccard {
   margin-top: -180px;
   margin-right: 39px;
+  &.packview {
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-left: -60px;
+    &:hover {
+      z-index: 2;
+    }
+  }
   &__container {
     padding-left: 40px;
   }
@@ -382,7 +393,7 @@ ol {
     max-width: 244px;
     border-radius: 12px;
     box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
-    // transition: 0.5s;
+    transition: 0.5s;
     &.rotated {
       transform: rotate(90deg) translate(-36px, 42px);      
     }
@@ -458,29 +469,24 @@ ol {
   }
   &__img2 {
     border-radius: 8px;
-    transition: 60ms;
+    transition: 90ms;
     &.hovered {
-      margin-left: -10px;
-      
+      margin-left: -12px;      
     }
     &:hover {
       border-radius: 8px;
-      margin-left: -10px;
-      
+      margin-left: -12px;      
     }
   }
-  &__img {
+  &__imgPack {
     border-radius: 8px;
-    position: relative;
-    margin-left: -100px;
-    // &:first-child {
-    //   margin-left: 0px;
+    transition: 60ms;
+    // &.hovered {
+    //   margin-top: -30px;      
     // }
-    &:hover {
-      // box-shadow: inset 2px -4px 80px 6px rgba(175,240,237,1);
-      border: 1px solid white;
-      // margin-top: -10px;
-    }
+    // &:hover {
+    //   margin-top: -30px;
+    // }
   }
 }
 
@@ -646,6 +652,7 @@ ol {
     display: flex;
     margin-left: 102px;    
     margin-top: 12px;
+    flex-wrap: wrap;
   }
   & .buttonpanel {
 
@@ -683,10 +690,9 @@ ol {
 
 .statuslight {
   display: flex;
-  margin-top: 3px;
-  margin-right: 5vw;
+  align-self: flex-end;
   padding: 3px 6px;
-  border: 1px solid brown;
+  
   border-radius: 3px;
   font-family: "Nunito Sans", sans-serif;
   font-size: 0.5em;
@@ -697,8 +703,19 @@ ol {
     padding: 3px;
     margin-right: 6px;
     width: 1px;
-    height: 1px;
-    background: brown;
+    height: 1px;    
+    &.edit {
+      background: brown;
+    }
+    &.view {
+      background: lightseagreen;
+    }
+  }
+  &.view {
+    border: 1px solid lightseagreen;  
+  }
+  &.edit {
+    border: 1px solid brown;  
   }
 }
 .tooltip {
@@ -960,7 +977,7 @@ ol {
 
 .smallheader {
   font-family: 'Major Mono Display', monospace;
-  font-size: 0.75em;
+  font-size: 0.7em;
   font-weight: 700;
   color: slategray;
   margin-right: 1vw;

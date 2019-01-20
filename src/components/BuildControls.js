@@ -17,7 +17,7 @@ class BuildControls extends Component {
     return (
       <div className="searchbar__buildcontrols">
         <div className="searchbar__buildcontrols__container">
-        
+        <div className="searchbar__buildcontrols__filler" /> 
         {
           this.props.hasControls ?
             <div className="searchbar__buildcontrols__panel">

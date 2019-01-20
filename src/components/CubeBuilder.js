@@ -72,7 +72,7 @@ class CubeBuilder extends Component {
       <div className="tempmain">
       <div className="App-header" id="viewsettings">
         <Logo />
-        <StatusLight text="Now editing" />
+        <StatusLight text="Now editing" light="edit" />
         {/* <Link to="/dashboard" className="App-header__builder">
           <FontAwesomeIcon icon={faUser} />
           <span className="App-header__builder-user">{this.state.username}</span>

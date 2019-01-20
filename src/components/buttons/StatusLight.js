@@ -2,13 +2,22 @@ import React, { Component } from 'react';
 
 
 class StatusLight extends Component {    
+  
   render() {
-    return (      
-      <div className="statuslight">
-        <div className="statuslight-light" />
-        {this.props.text}
-      </div>              
-    )
+    // if (this.props.light === "edit") {
+    //   return (      
+    //     <div className="statuslight edit">
+          // <div className="statuslight-light edit" />
+          // {this.props.text}
+    //     </div>              
+    //   )
+    // }
+    return (
+      <div className={`statuslight ${this.props.light}`}>
+        <div className={`statuslight-light ${this.props.light}`} />
+            {this.props.text}
+      </div>
+    )    
   }
 }
 

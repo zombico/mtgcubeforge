@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faSyncAlt, faUndo, faThumbtack } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt, faSyncAlt, faUndo, faTimes } from '@fortawesome/free-solid-svg-icons'
 import ScryfallLogo from './buttons/ScryfallLogo'
 
 class DynamicCard extends Component {
@@ -70,16 +70,26 @@ class DynamicCard extends Component {
     const split = this.props.layout === 'split'
     const pinned = this.state.pinned
     const hoverEnabled = this.props.hoverEnabled
+    const packView = this.props.packView
 
     return (
       <>
-      <div className="dynamiccard">
-        <img className={showingToolTip ? "mixedspread-view__img2 hovered" :"mixedspread-view__img2" }
+      <div className={!packView ? "dynamiccard" : "dynamiccard packview"}>
+       { !packView  ?
+          <img className={showingToolTip ? "mixedspread-view__img2 hovered" :"mixedspread-view__img2" }
           src={this.props.src} name={this.props.name} 
           onMouseEnter={hoverEnabled ? (evt) => this.handleHoverIn(evt) : () => {} }
           onMouseLeave={hoverEnabled ? (evt) => this.handleHoverOut(evt) : () => {} }
           onClick={() => this.pinCard()}
-        />
+          /> :
+          <img className={showingToolTip ? "mixedspread-view__imgPack hovered" :"mixedspread-view__imgPack" }
+          src={this.props.src} name={this.props.name} 
+          onMouseEnter={hoverEnabled ? (evt) => this.handleHoverIn(evt) : () => {} }
+          onMouseLeave={hoverEnabled ? (evt) => this.handleHoverOut(evt) : () => {} }
+          onClick={() => this.pinCard()}
+          />
+        }
+        
       
         {showingToolTip && 
           <>
@@ -99,6 +109,7 @@ class DynamicCard extends Component {
             id={this.props.id} 
             onMouseEnter={(evt) => this.handleHoverIn(evt)}
             onMouseLeave={(evt) => this.handleHoverOut(evt)}            
+            onClick={() => this.pinCard()}
             />
           }
           
@@ -108,8 +119,8 @@ class DynamicCard extends Component {
               onMouseLeave={(evt) => this.handleHoverOut(evt)}
             >
             
-             <FontAwesomeIcon icon={faThumbtack}
-                className={!pinned ? "icon icon-panel unpinned" : "icon icon-panel unpinned pinned"}
+             <FontAwesomeIcon icon={faTimes}
+                className={!pinned ? "icon icon-panel " : "icon icon-panel  "}
                 onClick={() => this.pinCard()}
               />     
             

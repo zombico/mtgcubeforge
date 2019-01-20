@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import SamplePackCard from './SamplePackCard';
+// import SamplePackCard from './SamplePackCard';
+import DynamicCard from './DynamicCard'
 
 class ModalSampleHand extends Component {
   state = {
@@ -43,7 +44,26 @@ class ModalSampleHand extends Component {
     const view = sampleHand.map((card => 
       
       // <img className="samplehand-img" src={card.imgsm} />
-      <SamplePackCard card={card} />
+      // <SamplePackCard card={card} />
+      <DynamicCard card={card} 
+      packView={true}
+      name={card.name} 
+      nameFlip={card.nameFlip}
+      src={card.imgsm}
+      imgsmFlip={card.imgsmFlip} 
+      tooltip={card.imgmd} 
+      imgmdFlip={card.imgmdFlip}
+      colors={card.colors}
+      type={card.type}
+      id={card.id} 
+      oracleid={card.oracleid}
+      cmc={card.cmc}
+      manacost={card.manacost}
+      layout={card.layout}
+      aftermath={card.aftermath}
+      // loadCube={() => props.loadCube()}
+      // hasControls={props.hasControls}
+            />
       
       ))
       return (
