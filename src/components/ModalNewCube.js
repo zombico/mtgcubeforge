@@ -29,6 +29,10 @@ class ModalNewCube extends Component {
     }
   }
 
+  componentDidMount() {
+    document.getElementById("new-cube-button").focus()
+  }
+
   render() {    
       return (
         <div className="modal__overlay">

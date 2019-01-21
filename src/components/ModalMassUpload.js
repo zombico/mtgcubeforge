@@ -56,6 +56,10 @@ class ModalMassUpload extends Component {
     .catch(error => console.error('Error', error))    
   }
 
+  componentDidMount() {
+    document.getElementById("massupload").focus()
+  }
+
   render() {    
     const submitted = this.state.isSubmitted
       return (
