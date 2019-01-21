@@ -2,6 +2,8 @@ import React from 'react';
 import DynamicCard from './DynamicCard';
 // import DynamicListItem  from './DynamicListItem';
 import AlphabeticSort  from './operations/AlphabeticSort';
+import GetStats from './operations/GetStats';
+import ModalButtonStats from './ModalButtonStats';
 
 const MixedSpreadView = (props) => {
   // if (props.cubeContents.data && props.viewType === "list") {
@@ -19,7 +21,7 @@ const MixedSpreadView = (props) => {
   //   )) 
   // return view } 
   
-  if (props.cubeContents && props.viewType === "card") {    
+  if (props.cubeContents && props.viewType === "card") {
     const view = props.cubeContents.map((card => 
 
     <DynamicCard      
@@ -56,7 +58,7 @@ const MixedSpreadView = (props) => {
 
     const containerClass = view.length > 500 ? "dynamiccard__color large" : "dynamiccard__color"
     const colorSection = (color, colorstring) => (
-      <div className={!color.length && "hidden"}>
+      <div className={!color.length ? "hidden" : ""}>
         <div className="dynamiccard__color-focuser" />
         <h2 className="dynamiccard__header"  >{colorstring} <span>- {color.length}</span> </h2>
         <div className={containerClass}>                                
@@ -66,10 +68,20 @@ const MixedSpreadView = (props) => {
       </div>
     )
 
-    
+    const stats = {}
+      stats.all = GetStats(view)
+      stats.multicolor = GetStats(multicolor)
+      stats.blue = GetStats(blue)
+      stats.black = GetStats(black)
+      stats.white = GetStats(white)
+      stats.red = GetStats(red)
+      stats.green = GetStats(green)
+      stats.colorless = GetStats(colorless)
+      stats.land = GetStats(land)
+    console.log(stats)
 
   return <div className="dynamiccard__container">            
-            
+            <ModalButtonStats color="all" display="button" stats={stats} />
             <div id="Multicolorsection" className="dynamiccard__color-spacer" />
             {colorSection(multicolor, 'Multicolor')}
             <div id="Bluesection" className="dynamiccard__color-spacer" />

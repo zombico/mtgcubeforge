@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faHammer } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 
 class ModalNewCube extends Component {
   state = {
-    cubename: null,
+    cubename: '',
     isSubmitted: false,
     cubeId: ''    
   }
@@ -54,7 +54,10 @@ class ModalNewCube extends Component {
                   autoComplete="off"
                 />
                 <div className="modal__buttonpanel">
-                  <input className="buttonsecondary" type="submit" value="Start Building" />            
+                  <button className={this.state.cubename === '' ? "buttonsecondary disabled" : "buttonsecondary"} type="submit">
+                  {/* <button disabled={this.state.cubename === null } className="buttonsecondary" type="submit"> */}
+                    <FontAwesomeIcon icon={faHammer} /> Start building 
+                  </button>            
                 </div>
               </form>
               :

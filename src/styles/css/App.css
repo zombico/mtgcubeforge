@@ -553,7 +553,7 @@ ol {
   z-index: 3;
 }
 .modal__newcube-title {
-  font-family: "Nunito", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-weight: 700;
   font-size: 1.4em;
   display: flex;
@@ -576,6 +576,26 @@ ol {
   font-family: "Nunito", sans-serif;
   font-size: 1em;
   margin-top: 10px;
+}
+.modal__newcube.stats {
+  display: flex;
+  max-width: 600px;
+  width: 100%;
+  top: 50%;
+}
+.modal__newcube.stats-row {
+  text-align: center;
+}
+.modal__newcube.stats-row:first-child {
+  text-align: left;
+}
+.modal__newcube td {
+  text-align: center;
+  background: white;
+}
+.modal__newcube td:first-child {
+  text-align: left;
+  background: transparent;
 }
 .modal__newcube.samplehand {
   display: flex;
@@ -611,6 +631,13 @@ ol {
   margin-top: 12px;
   flex-wrap: wrap;
 }
+.statsTable {
+  max-width: 570px;
+  margin-left: 12px;
+  margin-top: 21px;
+  margin-bottom: 21px;
+}
+
 .cubelist {
   list-style-type: none;
   padding: 5px 15px 5px 5px;
@@ -793,7 +820,7 @@ ol {
   border: none;
   padding: 6px;
   width: 100%;
-  max-width: 120px;
+  max-width: 148px;
   margin-left: 12px;
   border-radius: 4px;
   text-decoration: none;
@@ -818,6 +845,9 @@ ol {
   color: ghostwhite;
   transition: 99ms;
   cursor: pointer;
+}
+.buttonsecondary.disabled {
+  background: slategray;
 }
 
 .buttonprimary {
@@ -920,6 +950,10 @@ ol {
   font-size: 0.6em;
   color: slateblue;
   margin-left: -10px;
+}
+
+.heavy {
+  font-weight: 700;
 }
 
 h1 {
