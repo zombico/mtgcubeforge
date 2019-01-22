@@ -39,7 +39,7 @@ class ModalSampleHand extends Component {
   }
 
   render() {    
-    console.log(this.props)
+    
     const sampleHand = this.state.sampleHand
     const view = sampleHand.map((card => 
       

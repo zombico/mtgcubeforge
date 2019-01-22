@@ -1,14 +1,14 @@
 
 const GetStats = (color) => {
   let stats = {}
-  console.log(color)
+  
   stats.totalCards = color.length
   stats.planeswalkers = color.filter(card => card.props.type.includes("Planeswalker")).length 
   stats.creatures = color.filter(card => card.props.type.includes("Creature")).length
   stats.instants = color.filter(card => card.props.type.includes("Instant")).length 
   stats.sorceries = color.filter(card => card.props.type.includes("Sorcery")).length 
-  stats.enchantments = color.filter(card => card.props.type.includes("Enchantment")).length 
-  stats.artifacts = color.filter(card => card.props.type.includes("Artifact")).length
+  stats.enchantments = color.filter(card => card.props.type.includes("Enchantment") && !card.props.type.includes("Creature") && !card.props.type.includes("Artifact")).length 
+  stats.artifacts = color.filter(card => card.props.type.includes("Artifact") && !card.props.type.includes("Creature") && !card.props.type.includes("Land")).length
   stats.equipments = color.filter(card => card.props.type.includes("Equipment")).length 
   stats.vehicle = color.filter(card => card.props.type.includes("Vehicle")).length
   stats.land = color.filter(card => card.props.type.includes("Land")).length

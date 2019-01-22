@@ -23,7 +23,7 @@ class ModalMassUpload extends Component {
   async makeArray(string, e) {
     e.preventDefault()    
     const array = string.split(/\n/) 
-    console.log(array)
+    
     this.setState({ searchTerm: array })
 
     await array.forEach(element => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes, faSyncAlt } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faSyncAlt, faUndo } from '@fortawesome/free-solid-svg-icons'
 import Forge from './ForgeCardObject';
 import BuildControls from './BuildControls';
 import ToolTip from './ToolTip';
@@ -22,7 +22,8 @@ class SearchCard extends Component {
       versions: [],
       currentVersion: '',
       versionChangerActive: false,
-      showFront: true
+      showFront: true,
+      rotated: false
     }
     this.focusCard = this.focusCard.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -41,6 +42,7 @@ class SearchCard extends Component {
     this.firstSearch = this.firstSearch.bind(this);
     this.firstResult = React.createRef();    
     this.flipCard = this.flipCard.bind(this)
+    this.rotateCard = this.rotateCard.bind(this)
   }
 
   
@@ -191,6 +193,8 @@ class SearchCard extends Component {
     const type = this.state.stateReqstCard.type
     if (colors.length > 1) {
       return document.getElementById(`Multicolorsection`).scrollIntoView();
+    } else if (type === "Land") {
+      return document.getElementById(`Landsection`).scrollIntoView();
     } else if (colors[0] === 'B' && colors.length === 1) {
       return document.getElementById(`Blacksection`).scrollIntoView();
     } else if (colors[0] === 'U' && colors.length === 1) {
@@ -201,10 +205,8 @@ class SearchCard extends Component {
       return document.getElementById(`Whitesection`).scrollIntoView();
     } else if (colors[0] === 'G' && colors.length === 1) {
       return document.getElementById(`Greensection`).scrollIntoView();
-    } else if (colors.length === 0 && type != "Land") {
+    } else if (colors.length === 0 && type !== "Land") {
       return document.getElementById(`Colorlesssection`).scrollIntoView();
-    } else if (colors.length === 0 && type === "Land") {
-      return document.getElementById(`Landsection`).scrollIntoView();
     } 
 
     
@@ -296,6 +298,12 @@ class SearchCard extends Component {
     } else this.setState({ showFront: true })
   }
   
+  rotateCard = () => {
+    if(this.state.rotated) {
+      this.setState({ rotated: false })
+    } else this.setState({ rotated: true })
+  }
+
   render() {
     const card = this.state.stateReqstCard
     const suggestions = this.state.autoQueryOut;
@@ -349,7 +357,7 @@ class SearchCard extends Component {
               <img alt="" className="preview-img-med" src={card.imgmd} />
             }
             { card.aftermath &&
-              <img alt="" className="preview-img-med aftermath" src={card.imgmd} />
+              <img alt="" className={!this.state.rotated ? "preview-img-med": "preview-img-med aftermath"} src={card.imgmd} />
             }
             { card.layout === "split" && !card.aftermath &&
               <img alt="" className="preview-img-med split" src={card.imgmd} />
@@ -369,6 +377,14 @@ class SearchCard extends Component {
             >
               See reverse side <FontAwesomeIcon icon={faSyncAlt} />
             </button> 
+            }
+            { card.aftermath && 
+              <button
+              className="addtocube inoverlay changeEdition"    
+              onClick={this.rotateCard}          
+             >
+               Rotate card <FontAwesomeIcon icon={faUndo} />
+             </button> 
             }
             { versions && versions.length > 1 && 
               <button

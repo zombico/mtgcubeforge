@@ -46,13 +46,13 @@ const MixedSpreadView = (props) => {
     ))
 
     const multicolor = view.filter(card => card.props.colors.length > 1)
-    const blue = view.filter(card => card.props.colors[0]=== "U" && card.props.colors.length === 1)
-    const black = view.filter(card => card.props.colors[0]=== "B" && card.props.colors.length === 1)
-    const white = view.filter(card => card.props.colors[0]=== "W" && card.props.colors.length === 1)
-    const red = view.filter(card => card.props.colors[0]=== "R" && card.props.colors.length === 1)
-    const green = view.filter(card => card.props.colors[0]=== "G" && card.props.colors.length === 1)
+    const blue = view.filter(card => card.props.colors[0]=== "U" && card.props.colors.length === 1 && !card.props.type.includes("Land"))
+    const black = view.filter(card => card.props.colors[0]=== "B" && card.props.colors.length === 1 && !card.props.type.includes("Land"))
+    const white = view.filter(card => card.props.colors[0]=== "W" && card.props.colors.length === 1 && !card.props.type.includes("Land"))
+    const red = view.filter(card => card.props.colors[0]=== "R" && card.props.colors.length === 1 && !card.props.type.includes("Land"))
+    const green = view.filter(card => card.props.colors[0]=== "G" && card.props.colors.length === 1 && !card.props.type.includes("Land"))
     const colorless = view.filter(card => card.props.colors.length === 0 && !card.props.type.includes("Land"))
-    const land = view.filter(card => card.props.colors.length === 0 && card.props.type.includes("Land"))
+    const land = view.filter(card => card.props.type.includes("Land"))
     
     props.sort === 'alphabetic' && AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
 
@@ -78,7 +78,7 @@ const MixedSpreadView = (props) => {
       stats.green = GetStats(green)
       stats.colorless = GetStats(colorless)
       stats.land = GetStats(land)
-    console.log(stats)
+    
 
   return <div className="dynamiccard__container">            
             <ModalButtonStats color="all" display="button" stats={stats} />

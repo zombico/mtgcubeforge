@@ -18,6 +18,12 @@ class ToolTip extends Component {
         onMouseLeave={(evt) => this.handleHoverOut(evt)}
       >
         {this.props.icon}
+        {this.props.string}
+        {this.props.symbol && 
+          <div className="manasymbol noimg">
+            {this.props.symbol}
+          </div>
+        }
         {this.state.showing && 
           <div className="tooltip">{this.props.text}
           </div>

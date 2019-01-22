@@ -47,6 +47,7 @@ class DynamicCard extends Component {
     remove.id = this.props.id
     try {
       await axios.patch(`/cubes/${this.props.cubeId}/remove`, remove)
+      this.pinCard()
       this.props.loadCube()
     } catch (e){
       console.log(e)
@@ -114,10 +115,7 @@ class DynamicCard extends Component {
           }
           
           
-            <div className="dynamiccard__buttonpanel"
-              onMouseEnter={(evt) => this.handleHoverIn(evt)}
-              onMouseLeave={(evt) => this.handleHoverOut(evt)}
-            >
+            <div className="dynamiccard__buttonpanel">
             
              <FontAwesomeIcon icon={faTimes}
                 className={!pinned ? "icon icon-panel " : "icon icon-panel  "}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes, prefix } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
+import ToolTip from './ToolTip'
 
 class ModalButtonStats extends Component {
   state = {
@@ -23,18 +24,28 @@ class ModalButtonStats extends Component {
 
   render() {    
     const stats = this.props.stats
-    console.log(this.props)
+    
     const summary = () => {
       return (
         <>
           <h1 className="modal__newcube-title">Cube Statistics</h1>          
-          <button onClick={() => this.toggleStatOption()} className="buttonsecondary transparent">
-           {this.state.statOption === "type"? "See CMC stats" : "See card type stats" }
-          </button>
+          { this.state.statOption === "type" ?
+            <h2>Type and color <ToolTip icon={<FontAwesomeIcon icon={faQuestionCircle} />} text="Only one type is assigned to each card. Creatures are not counted in the artifacts and enchantments, and artifact lands are counted as lands." /> </h2> :
+            <h2>Mana cost and color </h2>
+          }
           <table className="statsTable">
             <tbody>
               <tr>
-                <th></th><th>M</th><th>U</th><th>B</th><th>W</th><th>R</th><th>G</th><th>C</th><th>L</th><th>Total</th>
+                <th></th>
+                <th><ToolTip symbol="M" text="Multi-color" /></th>
+                <th><ToolTip icon={<img className="manasymbol" src="/symbols/bluemana.svg" alt="bluemanasymbol" />} text="Blue" /></th>
+                <th><ToolTip icon={<img className="manasymbol" src="/symbols/blackmana.svg" alt="blackmanasymbol" />} text="Black" /></th>
+                <th><ToolTip icon={<img className="manasymbol" src="/symbols/whitemana.svg" alt="whitemanasymbol"/>} text="White" /></th>
+                <th><ToolTip icon={<img className="manasymbol" src="/symbols/redmana.svg" alt="redmanasymbol" />} text="Red" /> </th>
+                <th><ToolTip icon={<img className="manasymbol" src="/symbols/greenmana.svg" alt="greenmanasymbol"/>} text="Green" /></th>
+                <th><ToolTip icon={<img className="manasymbol" src="/symbols/colorlessmana.svg" alt="colorlessmanasymbol" />} text="Colorless" /></th>
+                <th><ToolTip symbol="L" text="Land" /></th>
+                <th>Total</th>
               </tr>
               {
                 this.state.statOption === "type" &&
@@ -90,12 +101,16 @@ class ModalButtonStats extends Component {
                   <td>6 cmc</td><td>{stats.multicolor.by6cc}</td><td>{stats.blue.by6cc}</td><td>{stats.black.by6cc}</td><td>{stats.white.by6cc}</td><td>{stats.red.by6cc}</td><td>{stats.green.by6cc}</td><td>{stats.colorless.by6cc}</td><td>{stats.land.by6cc}</td><td>{stats.all.by6cc}</td>
                 </tr>
                 <tr>
-                  <td>7 cmc +</td><td>{stats.multicolor.by7ccplus}</td><td>{stats.blue.by7ccplus}</td><td>{stats.black.by7ccplus}</td><td>{stats.white.by7ccplus}</td><td>{stats.red.by7ccplus}</td><td>{stats.green.by7ccplus}</td><td>{stats.colorless.by7ccplus}</td><td>{stats.land.by7ccplus}</td><td>{stats.all.by7ccplus}</td>
+                  <td>7 cmc + above </td><td>{stats.multicolor.by7ccplus}</td><td>{stats.blue.by7ccplus}</td><td>{stats.black.by7ccplus}</td><td>{stats.white.by7ccplus}</td><td>{stats.red.by7ccplus}</td><td>{stats.green.by7ccplus}</td><td>{stats.colorless.by7ccplus}</td><td>{stats.land.by7ccplus}</td><td>{stats.all.by7ccplus}</td>
+                </tr>
+                <tr className="heavy">
+                  <td>Total Cards</td><td>{stats.multicolor.totalCards}</td><td>{stats.blue.totalCards}</td><td>{stats.black.totalCards}</td><td>{stats.white.totalCards}</td><td>{stats.red.totalCards}</td><td>{stats.green.totalCards}</td><td>{stats.colorless.totalCards}</td><td>{stats.land.totalCards}</td><td>{stats.all.totalCards}</td>
                 </tr>
                 </>
               }
             </tbody>
           </table>
+          
         </>
       )
     }
@@ -115,15 +130,19 @@ class ModalButtonStats extends Component {
                
             
             {this.props.color === "all" && summary()}
-            
-
+            <div className="modal__buttonpanel">
+              <button onClick={() => this.toggleStatOption()} className="buttonsecondary ">
+              {this.state.statOption === "type"? "See CMC stats" : "See card type stats" }
+              </button>  
+              <button className="buttonsecondary transparent" onClick={() => this.toggleModal()} >Return to cube</button>
+            </div>
           </div>
         </div>
         </>
       )}
       else if(this.state.showModal === false && this.props.display === "button") {
        return (
-        <button className="buttontransparent" onClick={() => this.toggleModal()}>Show Stats</button>
+        <button className="buttonprimary" onClick={() => this.toggleModal()}>Show Stats</button>
        ) 
     }
   }

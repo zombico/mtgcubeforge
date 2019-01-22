@@ -150,20 +150,24 @@ ol {
   max-height: 360px;
   margin-bottom: 9px;
   margin-top: 9px;
+  transition: 0.5s;
   // margin-top: -39px;
   // margin-left: -27px;
   // margin-right: -27px;
   // box-shadow: 1px 7px 19px -3px rgba(0, 0, 0, 0.75);
   &.split {
-    transform: rotate(90deg);
-    margin-right: 21px;
+    transform: rotate(90deg);    
+    margin-right: 48px;
+    margin-top: -21px;
   }
   &.aftermath {
-    transition: 0.5s;
-    &:hover {
+    
+    
       transform: rotate(-90deg);
       margin-left: 30px;
-    }
+      margin-right: 48px;
+      margin-top: -21px;
+    
   }
   &.flip {
     transition: 0.5s;
@@ -643,6 +647,8 @@ ol {
     &:first-child {
       text-align: left;
       background: transparent;
+      padding-left: 9px;
+      border-bottom: 1px solid ghostwhite;
     }
   }
   &.samplehand {
@@ -693,6 +699,8 @@ ol {
   margin-left: 12px;
   margin-top: 21px;
   margin-bottom: 21px;
+  background: gainsboro;
+  border-radius:3px;
 }
 
 
@@ -885,7 +893,17 @@ ol {
   height: 300px;
 }
 
-
+.manasymbol {
+  height: 24px;
+  width: 24px;
+  padding-top: 6px;
+  &.noimg {
+    padding: 3px;
+    border-radius: 60px;
+    background: gold;
+    margin: auto;
+  }
+}
 
 // buttons 
 .buttonsecondary {
@@ -1043,6 +1061,7 @@ h2 {
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
   font-size: 1.4em;
+  margin: 0;
 }
 h3 {
   font-family: 'Nunito', sans-serif;
