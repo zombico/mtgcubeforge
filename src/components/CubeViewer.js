@@ -17,7 +17,7 @@ class CubeViewer extends Component {
       cubeContents : [],
       hasError: false,
       viewType: "card",
-      username: "",
+      username: "...",
       toggleSampleHandModal: false
     }
   this.loadCube = this.loadCube.bind(this);  

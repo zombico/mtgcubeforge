@@ -7,13 +7,13 @@ import {
 } from "react-router-dom"
 import axios from "axios";
 import './styles/css/App.css';
-// import SearchCard from './components/SearchCard';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import CubeBuilder from './components/CubeBuilder';
 import CubeViewer from './components/CubeViewer';
 import Dashboard from './components/Dashboard';
 import HomePage from './components/HomePage';
+import About from './components/About';
 
 import { getToken } from './services/tokenService'
 
@@ -84,7 +84,10 @@ class App extends Component {
               )
              }}
           />
-          
+          <Route
+            exact path="/about"
+            render={() => <About /> }
+          />
           <Route 
             exact path ="/dashboard"
             render={() => (

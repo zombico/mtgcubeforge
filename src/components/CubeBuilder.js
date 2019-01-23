@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import { BrowserRouter as Router, Route,  Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faCube } from '@fortawesome/free-solid-svg-icons'
+import { faCube } from '@fortawesome/free-solid-svg-icons'
 import Logo from './buttons/Logo'
 import SearchCard from './SearchCard';
 import StatusLight from './buttons/StatusLight'
@@ -21,7 +20,7 @@ class CubeBuilder extends Component {
       cubeContents: [],
       hasError: false,
       viewType: "card",
-      username: "",
+      username: "...",
       showMassUpload: false,
       toggleSampleHandModal: false
     }
@@ -30,11 +29,13 @@ class CubeBuilder extends Component {
   }
   
   async componentWillMount() {
+    
     const cubeId = this.props.location.pathname.split('/')[2]
     
     
     await this.setState({ cubeId })
     this.loadCube();
+    document.getElementById("viewsettings").scrollIntoView()
   }
 
   async loadCube() {
@@ -75,11 +76,7 @@ class CubeBuilder extends Component {
       <div className="tempmain">
       <div className="App-header" id="viewsettings">
         <Logo />
-        <StatusLight text="Now editing" light="edit" />
-        {/* <Link to="/dashboard" className="App-header__builder">
-          <FontAwesomeIcon icon={faUser} />
-          <span className="App-header__builder-user">{this.state.username}</span>
-        </Link>  */}
+        <StatusLight text="Now editing" light="edit" />        
       </div>
         <SearchCard 
           loadCube={() => this.loadCube()} 

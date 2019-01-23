@@ -73,7 +73,7 @@ ol {
 
 .view-header {
   padding-left: 8vh;
-  padding-bottom: 4vh;
+  padding-bottom: 66px;
   padding-top: 4vh;
   border-bottom: 9px solid slategray;
 }
@@ -107,8 +107,19 @@ ol {
 }
 .dashboard {
   margin: auto;
-  max-width: 1200px;
-  padding-left: 21px;
+  margin-top: 30px;
+  padding-top: 30px;
+  max-width: 720px;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  padding-bottom: 21px;
+  border: 1px solid lightgray;
+  background: ghostwhite;
+}
+.dashboard__dashline {
+  padding-bottom: 12px;
+  border-bottom: 3px solid lightseagreen;
+  max-width: 570px;
 }
 .dashboard__panel {
   display: flex;
@@ -116,14 +127,18 @@ ol {
   justify-content: space-between;
   margin-top: 40px;
 }
-.dashboard a {
-  text-decoration: none;
-  font-family: "Nunito", sans-serif;
-  font-weight: 300;
-  font-size: 1.2em;
+.dashboard__splitter {
+  display: flex;
+  flex-direction: column;
 }
-.dashboard a:hover {
-  text-decoration: underline;
+.dashboard__leftside {
+  width: 100%;
+  max-width: 480px;
+}
+.dashboard__rightside {
+  width: 100%;
+  margin-top: 42px;
+  border-top: 1px solid slateblue;
 }
 
 .newcardholder {
@@ -427,8 +442,12 @@ ol {
   margin-left: 273px;
 }
 
+.sneak-up {
+  margin-top: -63px;
+}
+
 .mixedspread-view {
-  padding: 20px 20px 250px 20px;
+  padding: 0px 20px 250px 20px;
   display: flex;
   align-content: flex-start;
   background: gainsboro;
@@ -619,6 +638,14 @@ ol {
   text-align: center;
 }
 
+.flavortext {
+  font-size: 0.9em;
+  color: slategray;
+  font-style: italic;
+  max-width: 300px;
+  word-break: keep-all;
+}
+
 .samplehand-element-container {
   margin-left: -102px;
 }
@@ -645,26 +672,53 @@ ol {
 
 .cubelist {
   list-style-type: none;
-  padding: 5px 15px 5px 5px;
-  border-bottom: 1px solid lightslategray;
+  padding-left: 12px;
+  border-bottom: 1px solid gainsboro;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  word-break: break-word;
 }
 .cubelist:last-child {
-  border-bottom: none;
+  border-bottom: 6px solid #282c34;
 }
 .cubelist__header {
   font-weight: 400;
-  padding: 0 0 20px 0;
+  padding: 9px 18px 9px 9px;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: space-between;
   margin: 0;
+  background: #282c34;
+  color: ghostwhite;
 }
 .cubelist__container {
   margin-top: 45px;
   margin-bottom: 90px;
-  max-width: 420px;
-  padding: 20px 0 20px 20px;
-  border: 1px solid lightslategray;
+  max-width: 720px;
+  padding: 0px 0px 0px 0px;
+  background: white;
+  border: 1px solid gainsboro;
+}
+.cubelist__buttonpanel {
+  display: flex;
+  max-width: 150px;
+  word-break: normal;
+  padding: 9px 15px 9px 15px;
+  width: 100%;
+  justify-content: space-between;
+  background: lightgray;
+  font-size: 0.9em;
+}
+.cubelist__buttonpanel > a {
+  text-decoration: none;
+  color: darkslategray;
+}
+.cubelist__buttonpanel > a:hover {
+  color: cadetblue;
+}
+.cubelist__buttonpanel > a > .icon {
+  margin-right: 3px;
 }
 
 .statuslight {
@@ -834,12 +888,12 @@ ol {
 
 .buttonsecondary {
   background: darkcyan;
-  border: none;
+  border: 1px solid darkcyan;
   padding: 6px;
   width: 100%;
   max-width: 148px;
   margin-left: 12px;
-  border-radius: 4px;
+  border-radius: 3px;
   text-decoration: none;
   color: ghostwhite;
   font-size: 0.9em;
@@ -850,6 +904,7 @@ ol {
   background: lightseagreen;
   transition: 99ms;
   cursor: pointer;
+  border: 1px solid lightseagreen;
 }
 .buttonsecondary.transparent {
   border: 1px solid darkcyan;
@@ -864,6 +919,7 @@ ol {
   cursor: pointer;
 }
 .buttonsecondary.disabled {
+  border: 1px solid slategray;
   background: slategray;
 }
 
@@ -876,7 +932,7 @@ ol {
   border-radius: 4px;
   text-decoration: none;
   color: ghostwhite;
-  font-size: 1em;
+  font-size: 0.9em;
   font-family: "Nunito", sans-serif;
   font-weight: 400;
 }
@@ -896,7 +952,7 @@ ol {
   border-radius: 4px;
   text-decoration: none;
   font-size: 1em;
-  font-family: "Nunito", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-weight: 400;
 }
 .buttontransparent:hover {
@@ -912,6 +968,10 @@ ol {
 }
 .buttontransparent.home {
   margin-bottom: 12px;
+}
+.buttontransparent.buttontransparent-list {
+  padding: 3px 6px;
+  font-size: 0.9em;
 }
 
 .vertical-buttonpanel {
@@ -976,6 +1036,7 @@ ol {
 h1 {
   font-family: "Nunito Sans", sans-serif;
   font-weight: 700;
+  margin: 0;
 }
 
 h2 {

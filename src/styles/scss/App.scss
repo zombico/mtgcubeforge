@@ -78,8 +78,8 @@ ol {
 
 .view-header {
   padding-left: 8vh;
-  padding-bottom: 4vh;
-  padding-top: 4vh;
+  padding-bottom: 66px;
+  padding-top: 4vh;  
   border-bottom: 9px solid slategray;
   &__count {
     font-family: 'Nunito Sans', sans-serif;
@@ -117,24 +117,37 @@ ol {
 
 .dashboard {
   margin: auto;
-  max-width: 1200px;
-  padding-left: 21px;
+  margin-top: 30px;
+  padding-top: 30px;
+  max-width: 720px;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  padding-bottom: 21px;
+  border: 1px solid lightgray;  
+  background: ghostwhite;
+  &__dashline {
+    padding-bottom: 12px;
+    border-bottom:3px solid lightseagreen;
+    max-width: 570px;
+  }
   &__panel {
     display: flex;
     max-width: 330px;
     justify-content: space-between;
     margin-top: 40px;
   }
-  a {
-    // color: ghostwhite;
-    text-decoration: none;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 300;
-    font-size: 1.2em;
-    &:hover {
-      // color: cyan;
-      text-decoration: underline;
-    }
+  &__splitter {
+    display: flex;
+    flex-direction: column;
+  }
+  &__leftside {
+    width: 100%;
+    max-width: 480px;
+  }
+  &__rightside {
+    width: 100%;
+    margin-top: 42px;
+    border-top: 1px solid slateblue;
   }
 }
 
@@ -466,9 +479,12 @@ ol {
   }
 }
 
+.sneak-up {
+  margin-top: -63px;
+}
 
 .mixedspread-view {
-  padding: 20px 20px 250px 20px;
+  padding: 0px 20px 250px 20px;
   display: flex;
   align-content: flex-start;
   background: gainsboro;
@@ -671,6 +687,13 @@ ol {
   }
 }
 
+.flavortext{
+  font-size: .9em;
+  color: slategray;
+  font-style: italic;
+  max-width: 300px;
+  word-break: keep-all;
+}
 
 .samplehand {
   &-element-container {
@@ -706,27 +729,54 @@ ol {
 
 .cubelist {
   list-style-type: none;
-  padding: 5px 15px 5px 5px;
-  border-bottom: 1px solid lightslategray;
+  // padding: 6px 18px 6px 12px;
+  padding-left: 12px;
+  border-bottom: 1px solid gainsboro;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  word-break: break-word;
   &:last-child {
-    border-bottom: none;
+    border-bottom: 6px solid #282c34;
   }
   &__header {
     font-weight: 400;
-    // color: honeydew;
-    padding: 0 0 20px 0;
+    padding: 9px 18px 9px 9px;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: space-between;
     margin: 0;
+    background: #282c34;
+    color: ghostwhite;
   }
   &__container {
     margin-top: 45px;
     margin-bottom: 90px;
-    max-width: 420px;
-    padding: 20px 0 20px 20px;
-    // background: lightslategray;
-    border: 1px solid lightslategray;
+    max-width: 720px;
+    padding: 0px 0px 0px 0px;
+    background: white;
+    border: 1px solid gainsboro;
+  }
+  &__buttonpanel {
+    display: flex;
+    max-width: 150px;
+    word-break: normal;
+    padding: 9px 15px 9px 15px;
+    width: 100%;
+    justify-content: space-between;
+    background: lightgray;
+    font-size: .9em;
+    > a {
+      text-decoration: none;
+      color: darkslategray;
+      &:hover {
+        color: cadetblue;
+      }
+      > .icon {
+      margin-right: 3px;
+      }
+    }
+    
   }
 }
 
@@ -908,12 +958,12 @@ ol {
 // buttons 
 .buttonsecondary {
   background: darkcyan;
-  border: none;
+  border: 1px solid darkcyan;
   padding: 6px;
   width: 100%;
   max-width: 148px;
   margin-left: 12px;
-  border-radius: 4px;  
+  border-radius: 3px;  
   text-decoration: none;
   color: ghostwhite;
   font-size: .9em;
@@ -923,6 +973,7 @@ ol {
     background: lightseagreen;
     transition: 99ms;
     cursor: pointer;
+    border: 1px solid lightseagreen;
   }
   &.transparent {
     border: 1px solid darkcyan;
@@ -937,6 +988,7 @@ ol {
     }
   }
   &.disabled {
+    border: 1px solid slategray;
     background: slategray;
   }
 }
@@ -950,7 +1002,7 @@ ol {
   border-radius: 4px;  
   text-decoration: none;
   color: ghostwhite;
-  font-size: 1em;
+  font-size: .9em;
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
   &:hover {
@@ -971,7 +1023,7 @@ ol {
   border-radius: 4px;  
   text-decoration: none;
   font-size: 1em;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   font-weight: 400;
   &:hover {
     background: slateblue;
@@ -987,6 +1039,10 @@ ol {
   }
   &.home {
     margin-bottom: 12px; 
+   }
+   &.buttontransparent-list {
+     padding: 3px 6px;
+     font-size: .9em;
    }
 }
 
@@ -1056,6 +1112,7 @@ ol {
 h1 {
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 700;
+  margin: 0;
 }
 h2 {
   font-family: 'Nunito', sans-serif;

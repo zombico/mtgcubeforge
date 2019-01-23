@@ -7,7 +7,7 @@ class Footer extends Component {
       <>      
       <footer className="footer">
         <div className="footer-nav">
-          <Link to="/">About</Link>
+          <Link to="/about">About</Link>
           <Link to="/">Contact</Link>
           <a target="_blank" href="https://www.paypal.me/mtgcubeforge">Donate</a>
         </div>

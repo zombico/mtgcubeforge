@@ -31,7 +31,7 @@ class ModalButtonStats extends Component {
           <h1 className="modal__newcube-title">Cube Statistics</h1>          
           { this.state.statOption === "type" ?
             <h2>Type and color <ToolTip icon={<FontAwesomeIcon icon={faQuestionCircle} />} text="Only one type is assigned to each card. Creatures are not counted in the artifacts and enchantments, and artifact lands are counted as lands." /> </h2> :
-            <h2>Mana cost and color </h2>
+            <h2>Mana cost and color <ToolTip icon={<FontAwesomeIcon icon={faQuestionCircle} />} text="Cards with multiple faces and mana costs have their cmc's added up as per current rules. " /> </h2>
           }
           <table className="statsTable">
             <tbody>
@@ -118,31 +118,33 @@ class ModalButtonStats extends Component {
     
     if(this.state.showModal === true && this.props.display === "button") {    
       return (
-        <>
-        <button className="buttonprimary" onClick={() => this.toggleModal()}>Show Stats</button>
-        <div className="modal__overlay">
-          <div className="modal__newcube stats"> 
-           
-           <FontAwesomeIcon icon={faTimes} 
-            onClick={() => this.toggleModal()}
-            className="modal__newcube-closeicon"
-           />         
-               
+        <div className="sneak-up">
+          <button className="buttonprimary" onClick={() => this.toggleModal()}>Show Stats</button>
+          <div className="modal__overlay">
+            <div className="modal__newcube stats"> 
             
-            {this.props.color === "all" && summary()}
-            <div className="modal__buttonpanel">
-              <button onClick={() => this.toggleStatOption()} className="buttonsecondary ">
-              {this.state.statOption === "type"? "See CMC stats" : "See card type stats" }
-              </button>  
-              <button className="buttonsecondary transparent" onClick={() => this.toggleModal()} >Return to cube</button>
+            <FontAwesomeIcon icon={faTimes} 
+              onClick={() => this.toggleModal()}
+              className="modal__newcube-closeicon"
+            />         
+                
+              
+              {this.props.color === "all" && summary()}
+              <div className="modal__buttonpanel">
+                <button onClick={() => this.toggleStatOption()} className="buttonsecondary ">
+                {this.state.statOption === "type"? "See CMC stats" : "See card type stats" }
+                </button>  
+                <button className="buttonsecondary transparent" onClick={() => this.toggleModal()} >Return to cube</button>
+              </div>
             </div>
           </div>
         </div>
-        </>
       )}
       else if(this.state.showModal === false && this.props.display === "button") {
        return (
-        <button className="buttonprimary" onClick={() => this.toggleModal()}>Show Stats</button>
+        <div className="sneak-up">
+          <button className="buttonprimary" onClick={() => this.toggleModal()}>Show Stats</button>
+        </div>
        ) 
     }
   }
