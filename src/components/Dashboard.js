@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom"
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faCube, faTrashAlt, faHammer } from '@fortawesome/free-solid-svg-icons'
+import { faCube, faTrashAlt, faHammer, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import Logo from './buttons/Logo'
 import Logout from './Logout'
 import ToolTip from './ToolTip'
@@ -93,7 +93,7 @@ class Dashboard extends Component {
           <Link to={`/cubebuilder/${cube._id}`}>{cube.cubename}</Link>
           <div className="cubelist__buttonpanel">
           <Link to={`/cubeviewer/${cube._id}`} target="_blank">              
-            <FontAwesomeIcon icon={faEye} className="icon" /> View              
+            <FontAwesomeIcon icon={faExternalLinkAlt} className="icon" /> View              
             </Link>  
           { !oneditmode ?
             <Link to={`/cubebuilder/${cube._id}`}>

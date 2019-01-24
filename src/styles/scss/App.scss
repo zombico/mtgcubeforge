@@ -27,7 +27,7 @@ ol {
     justify-content: space-evenly;
     margin-bottom: 3vh;
     width: 100%;
-    max-width: 40vw;    
+    max-width: 720px;    
     a {
       color: whitesmoke;
       text-decoration: none;
@@ -691,7 +691,7 @@ ol {
   font-size: .9em;
   color: slategray;
   font-style: italic;
-  max-width: 300px;
+  // max-width: 300px;
   word-break: keep-all;
 }
 

@@ -27,7 +27,7 @@ ol {
   justify-content: space-evenly;
   margin-bottom: 3vh;
   width: 100%;
-  max-width: 40vw;
+  max-width: 720px;
 }
 .footer-nav a {
   color: whitesmoke;
@@ -642,7 +642,6 @@ ol {
   font-size: 0.9em;
   color: slategray;
   font-style: italic;
-  max-width: 300px;
   word-break: keep-all;
 }
 
