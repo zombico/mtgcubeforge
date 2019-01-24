@@ -21,17 +21,19 @@ class About extends Component {
       <p>MtG CubeForge is a free-to-use tool that lets you build and manage your Magic: the Gathering cubes online.  
         It relies on Scryfall, Magic's fastest-growing api for card data, so you have access to consistently sized, high-resolution images from various sets.
       </p>
-      <p>You can send your questions and feedback to mtgcubeforge@gmail.com. Tell us what you think! </p>
+      <p>Send your questions & feedback to mtgcubeforge@gmail.com. Looking forward to hearing from you! </p>
 
         <br />
       <h2>For Magic players and cube builders</h2>
+      <p>I have been maintaining Magic: the Gathering cubes since Mirrodin, but it was only around Khans block that I came up with my sorting system, while staring at a pile of cards. 
+        Within the chaos lies inspiration, and that's the experience I wanted to bring to this app.</p>
+      
       <p>I have found that the  most helpful thing in balancing a cube is easy access to the stats of the cube. 
          I've been using a measure that counts each card as a single type to help create a feel for the cube's spread.  
          I also look at converted mana costs, and seeing how they spread out can tell you a lot about a cube's speed.</p>
       
       <Link to="/cubeviewer/5c466d7580fd9b00248e9202" target="_blank"> Check out my modern-ish cube</Link >
-      <p>I have been maintaining Magic: the Gathering cubes since Mirrodin, but it was only around Khans block that I came up with my sorting system, while staring at a pile of cards. 
-        Within the chaos lies inspiration, and that's the experience I wanted to bring to this app.</p>
+      
       
       <p>Designing a cube is to continuously cycle between knowing what you want and brainstorming, since each card opens up a new potential interaction with more cards. 
         While it is impossible to bring the physical element online, I was hoping that seeing a spread of cards would be the closest thing.

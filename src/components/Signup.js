@@ -61,41 +61,44 @@ class Signup extends Component {
       <>
       <div className="tempmain">
       <div className="App-header" ><Logo /></div> 
+      <div className="dashboard thinner">
+      <h1 className="centerizer">Sign up</h1>
         <form onSubmit={this.handleSubmit}>
-            <div className="gateway">
-              <label className="gateway-label" htmlFor="signup-email">Email </label>
-              <input
-                className="gateway-input"
-                type="email"
-                onChange={this.handleChange}
-                name="email"
-                id="signup-email"
-              />
-            
-              <label className="gateway-label" htmlFor="signup-password">Password </label>
-              <input
-                className="gateway-input"
-                type="password"
-                onChange={this.handleChange}
-                name="password"
-                id="signup-password"
-                
-              />
-            
-              <label className="gateway-label" htmlFor="signup-password">User Name </label>
-              <input
-                className="gateway-input"
-                type="name"
-                onChange={this.handleChange}
-                name="name"
-                id="signup-name"
-                
-              />
-              <div className="centerizer pushtop30">
-                <input className="buttonprimary" type="submit" value="Sign Up" />
-              </div>
+          <div className="gateway">
+            <label className="gateway-label" htmlFor="signup-email">Email </label>
+            <input
+              className="gateway-input"
+              type="email"
+              onChange={this.handleChange}
+              name="email"
+              id="signup-email"
+            />
+          
+            <label className="gateway-label" htmlFor="signup-password">Password </label>
+            <input
+              className="gateway-input"
+              type="password"
+              onChange={this.handleChange}
+              name="password"
+              id="signup-password"
+              
+            />
+          
+            <label className="gateway-label" htmlFor="signup-password">User Name </label>
+            <input
+              className="gateway-input"
+              type="name"
+              onChange={this.handleChange}
+              name="name"
+              id="signup-name"
+              
+            />
+            <div className="centerizer pushtop30">
+              <input className="buttonprimary" type="submit" value="Sign Up" />
             </div>
+          </div>
         </form>
+        </div>
       </div>  
       <Footer />
       </>

@@ -82,7 +82,7 @@ ol {
 }
 
 .tempmain {
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 .gateway {
@@ -91,7 +91,6 @@ ol {
   max-width: 300px;
   margin: auto;
   padding: 20px;
-  margin-top: 40px;
 }
 .gateway-label {
   padding: 12px 0 3px 0;
@@ -99,7 +98,7 @@ ol {
 }
 .gateway-input {
   font-family: "Nunito", sans-serif;
-  background: transparent;
+  background: white;
   font-size: 1em;
   padding: 6px;
   border: 1px solid slategray;
@@ -139,6 +138,9 @@ ol {
   width: 100%;
   margin-top: 42px;
   border-top: 1px solid slateblue;
+}
+.dashboard.thinner {
+  max-width: 320px;
 }
 
 .newcardholder {
@@ -766,6 +768,7 @@ ol {
   max-width: 720px;
   display: flex;
   margin: auto;
+  margin-top: 21px;
   border-radius: 6px;
   align-items: flex-start;
   justify-content: space-evenly;
@@ -1006,7 +1009,8 @@ ol {
   font-family: "Major Mono Display", monospace;
   font-size: 2.2em;
   color: darkslateblue;
-  margin-top: 6vh;
+  margin-top: 2vh;
+  margin-bottom: 4vh;
 }
 
 .smallheader {

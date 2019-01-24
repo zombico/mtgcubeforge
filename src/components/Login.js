@@ -7,6 +7,7 @@ import {
 import axios from "axios";
 import { setToken, getToken } from "../services/tokenService";
 import Logo from './buttons/Logo'
+import Footer from './Footer'
 
 class Login extends Component {
   state = {
@@ -42,39 +43,46 @@ class Login extends Component {
   render() {
     if(!this.state.submitted) {
       return (
+        <>
         <div className="tempmain">
           <div className="App-header" ><Logo /></div>
+            <div className="dashboard thinner">
+            <h1 className="centerizer">Log in</h1>
+              <form onSubmit={this.handleSubmit}>
+              <div className="gateway">
+              
+                <label className="gateway-label" htmlFor="login-email">Email: </label>
+                <input
+                  className="gateway-input"
+                  type="email"
+                  onChange={this.handleChange}
+                  name="email"
+                  id="login-email"          
+                />
+              
+                <label className="gateway-label" htmlFor="login-password">Password: </label>
+                <input
+                  className="gateway-input"
+                  type="password"
+                  onChange={this.handleChange}
+                  name="password"
+                  id="login-password"
+                />
+              
+                <div className="centerizer pushtop30">
+                <input 
+                  type="submit"
+                  value="Log In" 
+                  className="buttonprimary"
+                />
+                </div>                      
+              </div>
+            </form>  
+          </div>
           
-            <form onSubmit={this.handleSubmit}>
-            <div className="gateway">
-              <label className="gateway-label" htmlFor="login-email">Email: </label>
-              <input
-                className="gateway-input"
-                type="email"
-                onChange={this.handleChange}
-                name="email"
-                id="login-email"          
-              />
-            
-              <label className="gateway-label" htmlFor="login-password">Password: </label>
-              <input
-                className="gateway-input"
-                type="password"
-                onChange={this.handleChange}
-                name="password"
-                id="login-password"
-              />
-            
-              <div className="centerizer pushtop30">
-              <input 
-                type="submit"
-                value="Log In" 
-                className="buttonprimary"
-              />
-              </div>                      
-            </div>
-          </form>  
         </div>
+        <Footer />
+        </>
       );
     } else if(this.state.submitted) {
       return (
