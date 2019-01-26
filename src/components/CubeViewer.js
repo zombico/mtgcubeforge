@@ -16,12 +16,13 @@ class CubeViewer extends Component {
       cubename: 'Loading cube...',
       cubeContents : [],
       hasError: false,
-      viewType: "card",
+      viewType: "list",
       username: "...",
       toggleSampleHandModal: false
     }
   this.loadCube = this.loadCube.bind(this);  
   this.toggleSampleHandModal = this.toggleSampleHandModal.bind(this)
+  this.handleChange = this.handleChange.bind(this)
   }
   
   async componentWillMount() {
@@ -50,8 +51,11 @@ class CubeViewer extends Component {
   toggleSampleHandModal = () => {
     if(this.state.toggleSampleHandModal === false) {
       this.setState({ toggleSampleHandModal: true})
-    } else this.setState({ toggleSampleHandModal: false})
-    
+    } else this.setState({ toggleSampleHandModal: false})    
+  }
+
+  handleChange(event) {
+    this.setState({ viewType: event.target.value });
   }
   
 
@@ -68,16 +72,27 @@ class CubeViewer extends Component {
         <StatusLight text="View mode" light="view" />
       </div>      
       <SearchCard 
-          loadCube={() => this.loadCube()} 
-          cubeId={this.state.cubeId}
-          hasControls={false}          
-        />
+        loadCube={() => this.loadCube()} 
+        cubeId={this.state.cubeId}
+        hasControls={false}       
+        viewType={this.state.viewType}   
+      />
         <div className="view-header">
           <div className="view-header__titlebox">
             <h1>{this.state.cubename}</h1>
           </div>
-          <h2 className="view-header__count">Maintained by {this.state.username}</h2>
-          <h3 className="view-header__count" id="multicolorsection">{this.state.cubeContents.length} cards</h3>
+          <h2 className="view-header__count">{this.state.cubeContents.length} cards | Maintained by {this.state.username} </h2>
+          
+          <div className="sortcontrol">
+            <div className="sortcontrol-option">  
+              <label className="sortcontrol-label" for="changeviewtype">Show cube as</label>
+              <select id="changeviewtype" value={this.state.viewType} onChange={this.handleChange}>
+                <option value="list">List</option>
+                <option value="card">Card spread</option>
+              </select>
+            </div>
+          </div>
+
           { minLengthMet && 
               <button className="buttontransparent" onClick={(e) => this.toggleSampleHandModal(e)}>
                 Sample Pack

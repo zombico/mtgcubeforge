@@ -26,6 +26,7 @@ class CubeBuilder extends Component {
     }
   this.loadCube = this.loadCube.bind(this);  
   this.toggleMassUploadModal = this.toggleMassUploadModal.bind(this);
+  this.handleChange = this.handleChange.bind(this)
   }
   
   async componentWillMount() {
@@ -67,6 +68,10 @@ class CubeBuilder extends Component {
     this.loadCube()
   }
 
+  handleChange(event) {
+    this.setState({ viewType: event.target.value });
+  }
+
   render() {
     const showMassUpload = this.state.showMassUpload
     const sampleHand = this.state.toggleSampleHandModal 
@@ -82,10 +87,16 @@ class CubeBuilder extends Component {
           loadCube={() => this.loadCube()} 
           cubeId={this.state.cubeId}
           hasControls={true} 
+          viewType={this.state.viewType}
         />
         <div className="view-header" >
           <h1 ><FontAwesomeIcon icon={faCube} /> {this.state.cubename}</h1>
           <h2 className="view-header__count" id="multicolorsection">{this.state.cubeContents.length} cards</h2>
+          <label for="changeviewtype">Change view mode</label>
+          <select id="changeviewtype" value={this.state.viewType} onChange={this.handleChange}>
+            <option value="list">List View</option>
+            <option value="card">Card View</option>
+          </select>
           <div className="dashboard__panel">
           <button className="buttonprimary" onClick={this.toggleMassUploadModal}>Upload List</button>
           { minLengthMet && 

@@ -385,15 +385,28 @@ ol {
   }
 }
 
+
+.sortcontrol {
+  // padding: 15px;
+  margin: 30px 0px;
+  
+  &-option {
+    
+  }
+  &-label {
+    padding-right: 6px;
+  }
+}
+
 .tooltipzoom {
   position: absolute;
-  margin: 40px 0 0 -120px;
+  // margin: 40px 0 0 -120px;
   z-index: 2;
   max-width: 220px;
   border-radius: 12px;
   box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
   &.onlist {
-    margin: -100px 0 0 0;
+    // margin: -100px 0 0 0;
   }
 }
 
@@ -434,6 +447,18 @@ ol {
     &.samplehand {
       margin-left: -118px;
       margin-top: 99px;
+    }    
+    &.onlist {
+     margin-left: 150px; 
+     margin-top: -39px;
+     &.listrotated {
+      transform: rotate(90deg) translate(-36px, 42px);      
+      
+    }
+    &.listaftermath {
+      transform: rotate(-90deg) translate(36px, -42px);
+      
+    }
     }
   }  
   &__color {
@@ -477,6 +502,10 @@ ol {
     &.samplehand {
       margin-top: -83px;
       margin-left: 273px;
+    }
+    &.onlist {
+      margin: 0;
+      margin-left: 390px;
     }
   }
 }
@@ -538,6 +567,7 @@ ol {
     width: 200px;
   }  
 }
+
 
 
 

@@ -216,7 +216,7 @@ class SearchCard extends Component {
     event.preventDefault();
     this.focusCard();
     this.addCard();      
-    this.newcardShortcut();
+    this.props.viewType ==="card" && this.newcardShortcut();
     // this.clearSearch();
   }
 
@@ -321,6 +321,7 @@ class SearchCard extends Component {
           stateReqstCard={this.state.stateReqstCard}
           hasControls={this.props.hasControls}        
           clearSearch={this.clearSearch}  
+          viewType={this.props.viewType}
         />    
           <div className="searchbar__menu">
           
