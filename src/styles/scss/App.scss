@@ -387,11 +387,11 @@ ol {
 
 
 .sortcontrol {
-  // padding: 15px;
+  
   margin: 30px 0px;
   
   &-option {
-    
+  padding: 9px;  
   }
   &-label {
     padding-right: 6px;
@@ -561,12 +561,19 @@ ol {
 .dynamiclistitem {
   display: flex;
   flex-direction: column;
-  &__entry{
-    text-align: left;
-    font-size: 12px;
-    width: 200px;
+  &__entry {    
+    max-width: 201px;
+    font-size: .8em;
+    padding-right: 18px;
   }  
+  &__container {
+    display: flex;
+    padding-left: 5vh;
+    flex-wrap: wrap;
+  }
 }
+
+
 
 
 

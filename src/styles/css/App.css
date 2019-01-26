@@ -353,6 +353,9 @@ ol {
 .sortcontrol {
   margin: 30px 0px;
 }
+.sortcontrol-option {
+  padding: 9px;
+}
 .sortcontrol-label {
   padding-right: 6px;
 }
@@ -504,9 +507,14 @@ ol {
   flex-direction: column;
 }
 .dynamiclistitem__entry {
-  text-align: left;
-  font-size: 12px;
-  width: 200px;
+  max-width: 201px;
+  font-size: 0.8em;
+  padding-right: 18px;
+}
+.dynamiclistitem__container {
+  display: flex;
+  padding-left: 5vh;
+  flex-wrap: wrap;
 }
 
 .addtocube {

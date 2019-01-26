@@ -70,7 +70,9 @@ class DynamicListItem extends Component {
     
     return (
       <div >
-      <div onClick={this.pinCard}
+      <div 
+        className="dynamiclistitem__entry"
+        onClick={this.pinCard}
         onMouseEnter={hoverEnabled ? (evt) => this.handleHoverIn(evt) : () => {} }
         onMouseLeave={hoverEnabled ? (evt) => this.handleHoverOut(evt) : () => {} }
         >{this.props.name} { hasBack && "// "+ this.props.nameFlip} { split && "// "+ this.props.nameFlip}

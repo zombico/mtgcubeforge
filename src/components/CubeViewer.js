@@ -17,12 +17,14 @@ class CubeViewer extends Component {
       cubeContents : [],
       hasError: false,
       viewType: "list",
+      enableHoverZoom: false,
       username: "...",
       toggleSampleHandModal: false
     }
   this.loadCube = this.loadCube.bind(this);  
   this.toggleSampleHandModal = this.toggleSampleHandModal.bind(this)
   this.handleChange = this.handleChange.bind(this)
+  this.toggleAutoZoom = this.toggleAutoZoom.bind(this)
   }
   
   async componentWillMount() {
@@ -52,6 +54,12 @@ class CubeViewer extends Component {
     if(this.state.toggleSampleHandModal === false) {
       this.setState({ toggleSampleHandModal: true})
     } else this.setState({ toggleSampleHandModal: false})    
+  }
+
+  toggleAutoZoom = () => {
+    if(this.state.enableHoverZoom === false) {
+      this.setState({ enableHoverZoom: true })
+    } else this.setState({ enableHoverZoom: false })
   }
 
   handleChange(event) {
@@ -85,11 +93,19 @@ class CubeViewer extends Component {
           
           <div className="sortcontrol">
             <div className="sortcontrol-option">  
-              <label className="sortcontrol-label" for="changeviewtype">Show cube as</label>
+              <label className="sortcontrol-label">Show cube as</label>
               <select id="changeviewtype" value={this.state.viewType} onChange={this.handleChange}>
                 <option value="list">List</option>
                 <option value="card">Card spread</option>
               </select>
+            </div>
+            <div className="sortcontrol-option">
+              <label className="sortcontrol-label">Zoom in on hover</label>
+              <input 
+                type="checkbox" 
+                checked={this.state.enableHoverZoom}
+                onChange={this.toggleAutoZoom}
+              />              
             </div>
           </div>
 
@@ -111,6 +127,7 @@ class CubeViewer extends Component {
             cubeId={this.state.cubeId}
             hasControls={false}
             sort={'alphabetic'}
+            enableHoverZoom={this.state.enableHoverZoom}
           />
         </div>
       </div>

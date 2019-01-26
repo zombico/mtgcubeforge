@@ -27,6 +27,7 @@ const MixedSpreadView = (props) => {
         aftermath={card.aftermath}
         loadCube={() => props.loadCube()}
         hasControls={props.hasControls}
+        hoverEnabled={props.enableHoverZoom}
       />      
       
     )) 
@@ -66,9 +67,15 @@ const MixedSpreadView = (props) => {
       stats.land = GetStats(land)
 
     
-  return <div className="dynamiclistitem">
-          {multicolor}
-        </div> } 
+  return <div className="dynamiclistitem__container">
+    <div className="dynamiclistitem">
+      {multicolor}
+    </div> 
+    <div className="dynamiclistitem">
+      {blue}
+    </div>
+        </div>
+  } 
   
 
 
@@ -94,6 +101,7 @@ const MixedSpreadView = (props) => {
       aftermath={card.aftermath}
       loadCube={() => props.loadCube()}
       hasControls={props.hasControls}      
+      hoverEnabled={props.enableHoverZoom}
     />
     ))
 
