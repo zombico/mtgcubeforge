@@ -27,7 +27,7 @@ ol {
   justify-content: space-evenly;
   margin-bottom: 3vh;
   width: 100%;
-  max-width: 40vw;
+  max-width: 720px;
 }
 .footer-nav a {
   color: whitesmoke;
@@ -73,7 +73,7 @@ ol {
 
 .view-header {
   padding-left: 8vh;
-  padding-bottom: 4vh;
+  padding-bottom: 66px;
   padding-top: 4vh;
   border-bottom: 9px solid slategray;
 }
@@ -82,7 +82,7 @@ ol {
 }
 
 .tempmain {
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 .gateway {
@@ -91,7 +91,6 @@ ol {
   max-width: 300px;
   margin: auto;
   padding: 20px;
-  margin-top: 40px;
 }
 .gateway-label {
   padding: 12px 0 3px 0;
@@ -99,7 +98,7 @@ ol {
 }
 .gateway-input {
   font-family: "Nunito", sans-serif;
-  background: transparent;
+  background: white;
   font-size: 1em;
   padding: 6px;
   border: 1px solid slategray;
@@ -107,14 +106,41 @@ ol {
 }
 .dashboard {
   margin: auto;
-  max-width: 1200px;
-  padding-left: 21px;
+  margin-top: 30px;
+  padding-top: 30px;
+  max-width: 720px;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  padding-bottom: 21px;
+  border: 1px solid lightgray;
+  background: ghostwhite;
+}
+.dashboard__dashline {
+  padding-bottom: 12px;
+  border-bottom: 3px solid lightseagreen;
+  max-width: 570px;
 }
 .dashboard__panel {
   display: flex;
   max-width: 330px;
   justify-content: space-between;
   margin-top: 40px;
+}
+.dashboard__splitter {
+  display: flex;
+  flex-direction: column;
+}
+.dashboard__leftside {
+  width: 100%;
+  max-width: 480px;
+}
+.dashboard__rightside {
+  width: 100%;
+  margin-top: 42px;
+  border-top: 1px solid slateblue;
+}
+.dashboard.thinner {
+  max-width: 320px;
 }
 
 .newcardholder {
@@ -324,18 +350,30 @@ ol {
   background: #cfcfcf;
 }
 
+.sortcontrol {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px 0px;
+  max-width: 540px;
+  border: 1px solid slategray;
+  border-radius: 3px;
+  padding: 24px 12px;
+}
+.sortcontrol-option {
+  padding: 6px 24px;
+  width: 210px;
+}
+.sortcontrol-label {
+  padding-right: 6px;
+}
+
 .tooltipzoom {
   position: absolute;
-  margin: 40px 0 0 -120px;
   z-index: 2;
   max-width: 220px;
   border-radius: 12px;
   box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
 }
-.tooltipzoom.onlist {
-  margin: -100px 0 0 0;
-}
-
 .dynamiccard {
   margin-top: -180px;
   margin-right: 39px;
@@ -375,6 +413,16 @@ ol {
 .dynamiccard__tooltip.samplehand {
   margin-left: -118px;
   margin-top: 99px;
+}
+.dynamiccard__tooltip.onlist {
+  margin-left: 150px;
+  margin-top: -39px;
+}
+.dynamiccard__tooltip.onlist.listrotated {
+  transform: rotate(90deg) translate(-36px, 42px);
+}
+.dynamiccard__tooltip.onlist.listaftermath {
+  transform: rotate(-90deg) translate(36px, -42px);
 }
 .dynamiccard__color {
   max-height: 300px;
@@ -417,9 +465,17 @@ ol {
   margin-top: -83px;
   margin-left: 273px;
 }
+.dynamiccard__buttonpanel.onlist {
+  margin: 0;
+  margin-left: 390px;
+}
+
+.sneak-up {
+  margin-top: -63px;
+}
 
 .mixedspread-view {
-  padding: 20px 20px 250px 20px;
+  padding: 0px 20px 250px 20px;
   display: flex;
   align-content: flex-start;
   background: gainsboro;
@@ -458,9 +514,27 @@ ol {
   flex-direction: column;
 }
 .dynamiclistitem__entry {
-  text-align: left;
-  font-size: 12px;
-  width: 200px;
+  max-width: 201px;
+  font-size: 0.8em;
+  padding-right: 21px;
+  cursor: pointer;
+}
+.dynamiclistitem__entry:hover {
+  color: blue;
+  text-decoration: underline;
+}
+.dynamiclistitem__entry-pinned {
+  padding-left: 6px;
+  color: blue;
+  border: 1px solid blue;
+}
+.dynamiclistitem__entry-pinned:hover {
+  text-decoration: none;
+}
+.dynamiclistitem__container {
+  display: flex;
+  padding-left: 5vh;
+  flex-wrap: wrap;
 }
 
 .addtocube {
@@ -610,6 +684,13 @@ ol {
   text-align: center;
 }
 
+.flavortext {
+  font-size: 0.9em;
+  color: slategray;
+  font-style: italic;
+  word-break: keep-all;
+}
+
 .samplehand-element-container {
   margin-left: -102px;
 }
@@ -636,11 +717,12 @@ ol {
 
 .cubelist {
   list-style-type: none;
-  padding: 6px 18px 6px 12px;
+  padding-left: 12px;
   border-bottom: 1px solid gainsboro;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  word-break: break-word;
 }
 .cubelist:last-child {
   border-bottom: 6px solid #282c34;
@@ -658,16 +740,30 @@ ol {
 .cubelist__container {
   margin-top: 45px;
   margin-bottom: 90px;
-  max-width: 531px;
+  max-width: 720px;
   padding: 0px 0px 0px 0px;
   background: white;
   border: 1px solid gainsboro;
 }
 .cubelist__buttonpanel {
   display: flex;
-  max-width: 180px;
+  max-width: 150px;
+  word-break: normal;
+  padding: 9px 15px 9px 15px;
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  background: lightgray;
+  font-size: 0.9em;
+}
+.cubelist__buttonpanel > a {
+  text-decoration: none;
+  color: darkslategray;
+}
+.cubelist__buttonpanel > a:hover {
+  color: cadetblue;
+}
+.cubelist__buttonpanel > a > .icon {
+  margin-right: 3px;
 }
 
 .statuslight {
@@ -716,6 +812,7 @@ ol {
   max-width: 720px;
   display: flex;
   margin: auto;
+  margin-top: 21px;
   border-radius: 6px;
   align-items: flex-start;
   justify-content: space-evenly;
@@ -881,7 +978,7 @@ ol {
   border-radius: 4px;
   text-decoration: none;
   color: ghostwhite;
-  font-size: 1em;
+  font-size: 0.9em;
   font-family: "Nunito", sans-serif;
   font-weight: 400;
 }
@@ -901,7 +998,7 @@ ol {
   border-radius: 4px;
   text-decoration: none;
   font-size: 1em;
-  font-family: "Nunito", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-weight: 400;
 }
 .buttontransparent:hover {
@@ -917,6 +1014,10 @@ ol {
 }
 .buttontransparent.home {
   margin-bottom: 12px;
+}
+.buttontransparent.buttontransparent-list {
+  padding: 3px 6px;
+  font-size: 0.9em;
 }
 
 .vertical-buttonpanel {
@@ -952,7 +1053,8 @@ ol {
   font-family: "Major Mono Display", monospace;
   font-size: 2.2em;
   color: darkslateblue;
-  margin-top: 6vh;
+  margin-top: 2vh;
+  margin-bottom: 4vh;
 }
 
 .smallheader {
@@ -981,6 +1083,7 @@ ol {
 h1 {
   font-family: "Nunito Sans", sans-serif;
   font-weight: 700;
+  margin: 0;
 }
 
 h2 {

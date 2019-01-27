@@ -87,7 +87,7 @@ ol {
 }
 
 .tempmain {
-  min-height: 80vh;
+  min-height: 80vh;  
 }
 
 .gateway {
@@ -387,11 +387,16 @@ ol {
 
 
 .sortcontrol {
-  
+  display: flex;
+  flex-wrap: wrap;
   margin: 30px 0px;
-  
+  max-width: 540px;
+  border: 1px solid slategray;
+  border-radius: 3px;
+  padding: 24px 12px;
   &-option {
-  padding: 9px;  
+    padding: 6px 24px;  
+    width: 210px;
   }
   &-label {
     padding-right: 6px;
@@ -561,15 +566,49 @@ ol {
 .dynamiclistitem {
   display: flex;
   flex-direction: column;
+  background: white;
+  border-right: .5px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  border-left: .5px solid lightgray;
+  &:first-child {
+    padding-left: 9px;
+  }
+    
+  &__header {
+    text-decoration: underline;
+    padding-bottom: 15px;
+    font-size: 1em;
+  }
+  &__column {
+    
+    padding: 15px 12px;
+  }
   &__entry {    
-    max-width: 201px;
+    width: 141px;
     font-size: .8em;
-    padding-right: 18px;
+    padding-bottom: 3px;
+    
+    cursor: pointer;
+    &:hover {
+      color: blue;
+      text-decoration: underline;
+    }
+    &-pinned {
+      padding-left: 6px;
+      padding-top: 3px;
+      color: blue;
+      border: 1px solid blue;
+      border-radius: 6px;
+      background: whitesmoke;
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }  
   &__container {
     display: flex;
-    padding-left: 5vh;
-    flex-wrap: wrap;
+    padding-left: 2vh;
+    // flex-wrap: wrap;
   }
 }
 
@@ -1164,6 +1203,7 @@ h2 {
 h3 {
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
+  margin: 0;
 }
 p {
   font-family: 'Nunito', sans-serif;

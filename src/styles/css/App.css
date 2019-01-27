@@ -351,10 +351,17 @@ ol {
 }
 
 .sortcontrol {
+  display: flex;
+  flex-wrap: wrap;
   margin: 30px 0px;
+  max-width: 540px;
+  border: 1px solid slategray;
+  border-radius: 3px;
+  padding: 24px 12px;
 }
 .sortcontrol-option {
-  padding: 9px;
+  padding: 6px 24px;
+  width: 210px;
 }
 .sortcontrol-label {
   padding-right: 6px;
@@ -505,16 +512,46 @@ ol {
 .dynamiclistitem {
   display: flex;
   flex-direction: column;
+  background: white;
+  border-right: 0.5px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  border-left: 0.5px solid lightgray;
+}
+.dynamiclistitem:first-child {
+  padding-left: 9px;
+}
+.dynamiclistitem__header {
+  text-decoration: underline;
+  padding-bottom: 15px;
+  font-size: 1em;
+}
+.dynamiclistitem__column {
+  padding: 15px 12px;
 }
 .dynamiclistitem__entry {
-  max-width: 201px;
+  width: 141px;
   font-size: 0.8em;
-  padding-right: 18px;
+  padding-bottom: 3px;
+  cursor: pointer;
+}
+.dynamiclistitem__entry:hover {
+  color: blue;
+  text-decoration: underline;
+}
+.dynamiclistitem__entry-pinned {
+  padding-left: 6px;
+  padding-top: 3px;
+  color: blue;
+  border: 1px solid blue;
+  border-radius: 6px;
+  background: whitesmoke;
+}
+.dynamiclistitem__entry-pinned:hover {
+  text-decoration: none;
 }
 .dynamiclistitem__container {
   display: flex;
-  padding-left: 5vh;
-  flex-wrap: wrap;
+  padding-left: 2vh;
 }
 
 .addtocube {
@@ -1076,6 +1113,7 @@ h2 {
 h3 {
   font-family: "Nunito", sans-serif;
   font-weight: 400;
+  margin: 0;
 }
 
 p {

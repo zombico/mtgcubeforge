@@ -2,6 +2,7 @@ import React from 'react';
 import DynamicCard from './DynamicCard';
 import DynamicListItem  from './DynamicListItem';
 import AlphabeticSort  from './operations/AlphabeticSort';
+import ConvertedManaSort  from './operations/ConvertedManaSort';
 import GetStats from './operations/GetStats';
 import ModalButtonStats from './ModalButtonStats';
 
@@ -42,15 +43,15 @@ const MixedSpreadView = (props) => {
     const land = view.filter(card => card.props.type.includes("Land"))
     
     props.sort === 'alphabetic' && AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
+    props.sort === 'cmc' && ConvertedManaSort(multicolor, blue, black, white, red, green, colorless, land)
 
-    const containerClass = view.length > 500 ? "dynamiccard__color large" : "dynamiccard__color"
+    // const containerClass = view.length > 500 ? "dynamiccard__color large" : "dynamiccard__color"
     const colorSection = (color, colorstring) => (
-      <div className={!color.length ? "hidden" : ""}>
-        <div className="dynamiccard__color-focuser" />
-        <h2 className="dynamiccard__header"  >{colorstring} <span>- {color.length}</span> </h2>
-        <div className={containerClass}>                                
-          {color}
-          <button className="newcardholder" id={`newcardholder${colorstring}`} />
+      <div className={!color.length ? "hidden" : "dynamiclistitem__column"}>
+        
+        <h3 className="dynamiclistitem__header"  >{colorstring} <span>- {color.length}</span> </h3>
+        <div className={""}>                                
+          {color}        
         </div>
       </div>
     )
@@ -69,10 +70,28 @@ const MixedSpreadView = (props) => {
     
   return <div className="dynamiclistitem__container">
     <div className="dynamiclistitem">
-      {multicolor}
+      {colorSection(multicolor, "Multicolor")}
     </div> 
     <div className="dynamiclistitem">
-      {blue}
+      {colorSection(blue, "Blue")}
+    </div>
+    <div className="dynamiclistitem">
+      {colorSection(black, "Black")}
+    </div>
+    <div className="dynamiclistitem">
+      {colorSection(white, "White")}
+    </div>
+    <div className="dynamiclistitem">
+      {colorSection(red, "Red")}
+    </div>
+    <div className="dynamiclistitem">
+      {colorSection(green, "Green")}
+    </div>
+    <div className="dynamiclistitem">
+      {colorSection(colorless, "Colorless")}
+    </div>
+    <div className="dynamiclistitem">
+      {colorSection(land, "Land")}
     </div>
         </div>
   } 
@@ -115,12 +134,13 @@ const MixedSpreadView = (props) => {
     const land = view.filter(card => card.props.type.includes("Land"))
     
     props.sort === 'alphabetic' && AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
+    props.sort === 'cmc' && ConvertedManaSort(multicolor, blue, black, white, red, green, colorless, land)
 
     const containerClass = view.length > 500 ? "dynamiccard__color large" : "dynamiccard__color"
     const colorSection = (color, colorstring) => (
       <div className={!color.length ? "hidden" : ""}>
         <div className="dynamiccard__color-focuser" />
-        <h2 className="dynamiccard__header"  >{colorstring} <span>- {color.length}</span> </h2>
+        <h3 className="dynamiccard__header"  >{colorstring} <span>- {color.length}</span> </h3>
         <div className={containerClass}>                                
           {color}
           <button className="newcardholder" id={`newcardholder${colorstring}`} />

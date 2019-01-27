@@ -69,9 +69,9 @@ class DynamicListItem extends Component {
     
     
     return (
-      <div >
+      <>
       <div 
-        className="dynamiclistitem__entry"
+        className={pinned ? "dynamiclistitem__entry dynamiclistitem__entry-pinned" :"dynamiclistitem__entry"}
         onClick={this.pinCard}
         onMouseEnter={hoverEnabled ? (evt) => this.handleHoverIn(evt) : () => {} }
         onMouseLeave={hoverEnabled ? (evt) => this.handleHoverOut(evt) : () => {} }
@@ -133,7 +133,7 @@ class DynamicListItem extends Component {
         
 
       
-      </div>
+      </>
     )
   }
 }

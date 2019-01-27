@@ -17,13 +17,15 @@ class CubeViewer extends Component {
       cubeContents : [],
       hasError: false,
       viewType: "list",
+      sortType: "cmc",
       enableHoverZoom: false,
       username: "...",
-      toggleSampleHandModal: false
+      toggleSampleHandModal: false,
     }
   this.loadCube = this.loadCube.bind(this);  
   this.toggleSampleHandModal = this.toggleSampleHandModal.bind(this)
-  this.handleChange = this.handleChange.bind(this)
+  this.handleViewChange = this.handleViewChange.bind(this)
+  this.handleSortChange = this.handleSortChange.bind(this)
   this.toggleAutoZoom = this.toggleAutoZoom.bind(this)
   }
   
@@ -62,10 +64,12 @@ class CubeViewer extends Component {
     } else this.setState({ enableHoverZoom: false })
   }
 
-  handleChange(event) {
+  handleViewChange(event) {
     this.setState({ viewType: event.target.value });
   }
-  
+  handleSortChange(event) {
+    this.setState({ sortType: event.target.value });
+  }
 
   render() {
     const sampleHand = this.state.toggleSampleHandModal 
@@ -94,12 +98,19 @@ class CubeViewer extends Component {
           <div className="sortcontrol">
             <div className="sortcontrol-option">  
               <label className="sortcontrol-label">Show cube as</label>
-              <select id="changeviewtype" value={this.state.viewType} onChange={this.handleChange}>
+              <select id="changeviewtype" value={this.state.viewType} onChange={this.handleViewChange}>
                 <option value="list">List</option>
                 <option value="card">Card spread</option>
               </select>
             </div>
-            <div className="sortcontrol-option">
+            <div className="sortcontrol-option">  
+              <label className="sortcontrol-label">Sort cards by</label>
+              <select id="changesorttype" value={this.state.sortType} onChange={this.handleSortChange}>
+                <option value="cmc">CMC</option>
+                <option value="alphabetic">Alphabetic</option>
+              </select>
+            </div>
+            <div className="sortcontrol-option fullwidth">
               <label className="sortcontrol-label">Zoom in on hover</label>
               <input 
                 type="checkbox" 
@@ -126,7 +137,7 @@ class CubeViewer extends Component {
             viewType={this.state.viewType}
             cubeId={this.state.cubeId}
             hasControls={false}
-            sort={'alphabetic'}
+            sort={this.state.sortType}
             enableHoverZoom={this.state.enableHoverZoom}
           />
         </div>
