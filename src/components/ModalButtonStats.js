@@ -143,7 +143,7 @@ class ModalButtonStats extends Component {
       else if(this.state.showModal === false && this.props.display === "button") {
        return (
         <div className="sneak-up">
-          <button className="buttonprimary" onClick={() => this.toggleModal()}>Show Stats</button>
+          <button className="buttonprimary primarysmaller" onClick={() => this.toggleModal()}>Show Stats</button>
         </div>
        ) 
     }

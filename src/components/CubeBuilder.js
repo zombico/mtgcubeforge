@@ -132,10 +132,10 @@ class CubeBuilder extends Component {
             </div>
           </div>
 
-          <div className="dashboard__panel">
-          <button className="buttonprimary" onClick={this.toggleMassUploadModal}>Upload List</button>
+          <div className="">
+          <button className="buttonprimary primarysmaller" onClick={this.toggleMassUploadModal}>Upload List</button>
           { minLengthMet && 
-              <button className="buttontransparent" onClick={(e) => this.toggleSampleHandModal(e)}>
+              <button className="buttontransparent primarysmaller" onClick={(e) => this.toggleSampleHandModal(e)}>
                 Sample Pack
               </button>
           }

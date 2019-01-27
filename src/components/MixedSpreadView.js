@@ -68,7 +68,9 @@ const MixedSpreadView = (props) => {
       stats.land = GetStats(land)
 
     
-  return <div className="dynamiclistitem__container">
+  return <>
+    <div className="statsTable__listbuttoncontainer"> <ModalButtonStats color="all" display="button" stats={stats} /></div>
+    <div className="dynamiclistitem__container">
     <div className="dynamiclistitem">
       {colorSection(multicolor, "Multicolor")}
     </div> 
@@ -94,6 +96,7 @@ const MixedSpreadView = (props) => {
       {colorSection(land, "Land")}
     </div>
         </div>
+        </>
   } 
   
 
