@@ -214,7 +214,7 @@ ol {
 }  
 
 .searchbar {
-  z-index: 3;
+  z-index: 2;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -435,7 +435,7 @@ ol {
   &__tooltip {
     position: absolute;
     margin: -20px 0 0 -81px;
-    z-index: 2;
+    // z-index: 1;
     max-width: 244px;
     border-radius: 12px;
     box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
@@ -492,7 +492,7 @@ ol {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 1;
+    // z-index: 1;
     position: absolute;
     margin-top: -225px;    
     margin-left: 297px;    
@@ -510,7 +510,7 @@ ol {
     }
     &.onlist {
       margin: 0;
-      margin-left: 381px;
+      margin-left: 385px;
     }
   }
 }
@@ -793,6 +793,20 @@ ol {
   }
   & .buttonpanel {
 
+  }
+}
+
+.modal__reassign {
+  &-label {
+    margin-right: 6px;
+  }
+  &-option {
+    padding: 6px 24px;
+  }
+  &-input {
+    max-width: 30px;
+    padding: 6px;
+    
   }
 }
 
