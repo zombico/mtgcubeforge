@@ -35,7 +35,9 @@ class BuildControls extends Component {
             <button className="addtocube transparent" onClick={this.props.clearSearch}>Clear Search</button>
             </div>
         }
-          
+         {
+
+          this.props.viewType === "card" && 
           <nav className="searchbar__buildcontrols__shortcut-container">
             {/* <ol className="searchbar__buildcontrols__label"> */}
             <ol className="searchbar__buildcontrols__shortcut">
@@ -50,6 +52,7 @@ class BuildControls extends Component {
             <li><a href="/#" onClick={(e) => this.colorShortcut('Land', e)}>Land</a></li>
             </ol>
           </nav>  
+         }
         </div>
         
       </div>

@@ -16,12 +16,17 @@ class CubeViewer extends Component {
       cubename: 'Loading cube...',
       cubeContents : [],
       hasError: false,
-      viewType: "card",
+      viewType: "list",
+      sortType: "cmc",
+      enableHoverZoom: false,
       username: "...",
-      toggleSampleHandModal: false
+      toggleSampleHandModal: false,
     }
   this.loadCube = this.loadCube.bind(this);  
   this.toggleSampleHandModal = this.toggleSampleHandModal.bind(this)
+  this.handleViewChange = this.handleViewChange.bind(this)
+  this.handleSortChange = this.handleSortChange.bind(this)
+  this.toggleAutoZoom = this.toggleAutoZoom.bind(this)
   }
   
   async componentWillMount() {
@@ -50,10 +55,21 @@ class CubeViewer extends Component {
   toggleSampleHandModal = () => {
     if(this.state.toggleSampleHandModal === false) {
       this.setState({ toggleSampleHandModal: true})
-    } else this.setState({ toggleSampleHandModal: false})
-    
+    } else this.setState({ toggleSampleHandModal: false})    
   }
-  
+
+  toggleAutoZoom = () => {
+    if(this.state.enableHoverZoom === false) {
+      this.setState({ enableHoverZoom: true })
+    } else this.setState({ enableHoverZoom: false })
+  }
+
+  handleViewChange(event) {
+    this.setState({ viewType: event.target.value });
+  }
+  handleSortChange(event) {
+    this.setState({ sortType: event.target.value });
+  }
 
   render() {
     const sampleHand = this.state.toggleSampleHandModal 
@@ -68,18 +84,44 @@ class CubeViewer extends Component {
         <StatusLight text="View mode" light="view" />
       </div>      
       <SearchCard 
-          loadCube={() => this.loadCube()} 
-          cubeId={this.state.cubeId}
-          hasControls={false}          
-        />
+        loadCube={() => this.loadCube()} 
+        cubeId={this.state.cubeId}
+        hasControls={false}       
+        viewType={this.state.viewType}   
+      />
         <div className="view-header">
           <div className="view-header__titlebox">
             <h1>{this.state.cubename}</h1>
           </div>
-          <h2 className="view-header__count">Maintained by {this.state.username}</h2>
-          <h3 className="view-header__count" id="multicolorsection">{this.state.cubeContents.length} cards</h3>
+          <h2 className="view-header__count">{this.state.cubeContents.length} cards | Maintained by {this.state.username} </h2>
+          
+          <div className="sortcontrol">
+            <div className="sortcontrol-option">  
+              <label className="sortcontrol-label">Show cube as</label>
+              <select id="changeviewtype" value={this.state.viewType} onChange={this.handleViewChange}>
+                <option value="list">List</option>
+                <option value="card">Card spread</option>
+              </select>
+            </div>
+            <div className="sortcontrol-option">  
+              <label className="sortcontrol-label">Sort cards by</label>
+              <select id="changesorttype" value={this.state.sortType} onChange={this.handleSortChange}>
+                <option value="cmc">CMC</option>
+                <option value="alphabetic">Alphabetic</option>
+              </select>
+            </div>
+            <div className="sortcontrol-option fullwidth">
+              <label className="sortcontrol-label">Zoom in on hover</label>
+              <input 
+                type="checkbox" 
+                checked={this.state.enableHoverZoom}
+                onChange={this.toggleAutoZoom}
+              />              
+            </div>
+          </div>
+
           { minLengthMet && 
-              <button className="buttontransparent" onClick={(e) => this.toggleSampleHandModal(e)}>
+              <button className="buttontransparent primarysmaller" onClick={(e) => this.toggleSampleHandModal(e)}>
                 Sample Pack
               </button>
           }
@@ -95,7 +137,8 @@ class CubeViewer extends Component {
             viewType={this.state.viewType}
             cubeId={this.state.cubeId}
             hasControls={false}
-            sort={'alphabetic'}
+            sort={this.state.sortType}
+            enableHoverZoom={this.state.enableHoverZoom}
           />
         </div>
       </div>

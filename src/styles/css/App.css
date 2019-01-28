@@ -350,18 +350,30 @@ ol {
   background: #cfcfcf;
 }
 
+.sortcontrol {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px 0px;
+  max-width: 540px;
+  border: 1px solid slategray;
+  border-radius: 3px;
+  padding: 24px 12px;
+}
+.sortcontrol-option {
+  padding: 6px 24px;
+  width: 210px;
+}
+.sortcontrol-label {
+  padding-right: 6px;
+}
+
 .tooltipzoom {
   position: absolute;
-  margin: 40px 0 0 -120px;
   z-index: 2;
   max-width: 220px;
   border-radius: 12px;
   box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
 }
-.tooltipzoom.onlist {
-  margin: -100px 0 0 0;
-}
-
 .dynamiccard {
   margin-top: -180px;
   margin-right: 39px;
@@ -401,6 +413,16 @@ ol {
 .dynamiccard__tooltip.samplehand {
   margin-left: -118px;
   margin-top: 99px;
+}
+.dynamiccard__tooltip.onlist {
+  margin-left: 141px;
+  margin-top: -39px;
+}
+.dynamiccard__tooltip.onlist.listrotated {
+  transform: rotate(90deg) translate(-36px, 42px);
+}
+.dynamiccard__tooltip.onlist.listaftermath {
+  transform: rotate(-90deg) translate(36px, -42px);
 }
 .dynamiccard__color {
   max-height: 300px;
@@ -442,6 +464,10 @@ ol {
 .dynamiccard__buttonpanel.samplehand {
   margin-top: -83px;
   margin-left: 273px;
+}
+.dynamiccard__buttonpanel.onlist {
+  margin: 0;
+  margin-left: 381px;
 }
 
 .sneak-up {
@@ -486,11 +512,47 @@ ol {
 .dynamiclistitem {
   display: flex;
   flex-direction: column;
+  background: white;
+  border-right: 0.5px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  border-left: 0.5px solid lightgray;
+}
+.dynamiclistitem:first-child {
+  padding-left: 9px;
+}
+.dynamiclistitem__header {
+  text-decoration: underline;
+  padding-bottom: 15px;
+  font-size: 1em;
+}
+.dynamiclistitem__column {
+  padding: 15px 12px;
 }
 .dynamiclistitem__entry {
-  text-align: left;
-  font-size: 12px;
-  width: 200px;
+  width: 141px;
+  font-size: 0.8em;
+  padding-bottom: 3px;
+  cursor: pointer;
+}
+.dynamiclistitem__entry:hover {
+  color: blue;
+  text-decoration: underline;
+}
+.dynamiclistitem__entry-pinned {
+  padding-left: 6px;
+  margin-left: -6px;
+  padding-top: 3px;
+  color: blue;
+  border: 1px solid blue;
+  border-radius: 6px;
+  background: whitesmoke;
+}
+.dynamiclistitem__entry-pinned:hover {
+  text-decoration: none;
+}
+.dynamiclistitem__container {
+  display: flex;
+  padding-left: 2vh;
 }
 
 .addtocube {
@@ -644,6 +706,7 @@ ol {
   font-size: 0.9em;
   color: slategray;
   font-style: italic;
+  padding-bottom: 21px;
   word-break: keep-all;
 }
 
@@ -669,6 +732,11 @@ ol {
   margin-bottom: 21px;
   background: gainsboro;
   border-radius: 3px;
+}
+.statsTable__listbuttoncontainer {
+  position: absolute;
+  left: 60px;
+  width: 100%;
 }
 
 .cubelist {
@@ -943,6 +1011,10 @@ ol {
   transition: 99ms;
   cursor: pointer;
 }
+.buttonprimary.primarysmaller {
+  max-width: 130px;
+  margin-right: 21px;
+}
 
 .buttontransparent {
   background: transparent;
@@ -974,6 +1046,10 @@ ol {
 .buttontransparent.buttontransparent-list {
   padding: 3px 6px;
   font-size: 0.9em;
+}
+.buttontransparent.primarysmaller {
+  max-width: 130px;
+  margin-right: 12px;
 }
 
 .vertical-buttonpanel {
@@ -1052,6 +1128,7 @@ h2 {
 h3 {
   font-family: "Nunito", sans-serif;
   font-weight: 400;
+  margin: 0;
 }
 
 p {

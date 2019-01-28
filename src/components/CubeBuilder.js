@@ -19,13 +19,18 @@ class CubeBuilder extends Component {
       cubename: 'Loading cube...',
       cubeContents: [],
       hasError: false,
-      viewType: "card",
+      viewType: "list",
+      sortType: "cmc",
+      enableHoverZoom: false,
       username: "...",
       showMassUpload: false,
       toggleSampleHandModal: false
     }
   this.loadCube = this.loadCube.bind(this);  
   this.toggleMassUploadModal = this.toggleMassUploadModal.bind(this);
+  this.handleViewChange = this.handleViewChange.bind(this)
+  this.handleSortChange = this.handleSortChange.bind(this)
+  this.toggleAutoZoom = this.toggleAutoZoom.bind(this)
   }
   
   async componentWillMount() {
@@ -67,6 +72,20 @@ class CubeBuilder extends Component {
     this.loadCube()
   }
 
+  handleViewChange(event) {
+    this.setState({ viewType: event.target.value });
+  }
+  handleSortChange(event) {
+    console.log('i changed')
+    this.setState({ sortType: event.target.value });
+  }
+
+  toggleAutoZoom = () => {
+    if(this.state.enableHoverZoom === false) {
+      this.setState({ enableHoverZoom: true })
+    } else this.setState({ enableHoverZoom: false })
+  }
+
   render() {
     const showMassUpload = this.state.showMassUpload
     const sampleHand = this.state.toggleSampleHandModal 
@@ -82,14 +101,41 @@ class CubeBuilder extends Component {
           loadCube={() => this.loadCube()} 
           cubeId={this.state.cubeId}
           hasControls={true} 
+          viewType={this.state.viewType}
         />
         <div className="view-header" >
           <h1 ><FontAwesomeIcon icon={faCube} /> {this.state.cubename}</h1>
           <h2 className="view-header__count" id="multicolorsection">{this.state.cubeContents.length} cards</h2>
-          <div className="dashboard__panel">
-          <button className="buttonprimary" onClick={this.toggleMassUploadModal}>Upload List</button>
+          
+          <div className="sortcontrol">
+            <div className="sortcontrol-option">  
+              <label className="sortcontrol-label">Show cube as</label>
+              <select id="changeviewtype" value={this.state.viewType} onChange={this.handleViewChange}>
+                <option value="list">List</option>
+                <option value="card">Card spread</option>
+              </select>
+            </div>
+            <div className="sortcontrol-option">  
+              <label className="sortcontrol-label">Sort cards by</label>
+              <select id="changesorttype" value={this.state.sortType} onChange={this.handleSortChange}>
+                <option value="cmc">CMC</option>
+                <option value="alphabetic">Alphabetic</option>
+              </select>
+            </div>
+            <div className="sortcontrol-option fullwidth">
+              <label className="sortcontrol-label">Zoom in on hover</label>
+              <input 
+                type="checkbox" 
+                checked={this.state.enableHoverZoom}
+                onChange={this.toggleAutoZoom}
+              />              
+            </div>
+          </div>
+
+          <div className="">
+          <button className="buttonprimary primarysmaller" onClick={this.toggleMassUploadModal}>Upload List</button>
           { minLengthMet && 
-              <button className="buttontransparent" onClick={(e) => this.toggleSampleHandModal(e)}>
+              <button className="buttontransparent primarysmaller" onClick={(e) => this.toggleSampleHandModal(e)}>
                 Sample Pack
               </button>
           }
@@ -113,7 +159,8 @@ class CubeBuilder extends Component {
             viewType={this.state.viewType}
             cubeId={this.state.cubeId}
             hasControls={true}
-            sort={'alphabetic'}
+            sort={this.state.sortType}
+            enableHoverZoom={this.state.enableHoverZoom}
           />                     
         </div>
       </div>
