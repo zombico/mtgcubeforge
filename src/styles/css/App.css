@@ -415,7 +415,7 @@ ol {
   margin-top: 99px;
 }
 .dynamiccard__tooltip.onlist {
-  margin-left: 150px;
+  margin-left: 141px;
   margin-top: -39px;
 }
 .dynamiccard__tooltip.onlist.listrotated {
@@ -467,7 +467,7 @@ ol {
 }
 .dynamiccard__buttonpanel.onlist {
   margin: 0;
-  margin-left: 390px;
+  margin-left: 381px;
 }
 
 .sneak-up {
@@ -540,6 +540,7 @@ ol {
 }
 .dynamiclistitem__entry-pinned {
   padding-left: 6px;
+  margin-left: -6px;
   padding-top: 3px;
   color: blue;
   border: 1px solid blue;
@@ -705,6 +706,7 @@ ol {
   font-size: 0.9em;
   color: slategray;
   font-style: italic;
+  padding-bottom: 21px;
   word-break: keep-all;
 }
 

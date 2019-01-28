@@ -454,7 +454,7 @@ ol {
       margin-top: 99px;
     }    
     &.onlist {
-     margin-left: 150px; 
+     margin-left: 141px; 
      margin-top: -39px;
      &.listrotated {
       transform: rotate(90deg) translate(-36px, 42px);      
@@ -510,7 +510,7 @@ ol {
     }
     &.onlist {
       margin: 0;
-      margin-left: 390px;
+      margin-left: 381px;
     }
   }
 }
@@ -595,6 +595,7 @@ ol {
     }
     &-pinned {
       padding-left: 6px;
+      margin-left: -6px;
       padding-top: 3px;
       color: blue;
       border: 1px solid blue;
@@ -769,7 +770,7 @@ ol {
   font-size: .9em;
   color: slategray;
   font-style: italic;
-  // max-width: 300px;
+  padding-bottom: 21px;
   word-break: keep-all;
 }
 
