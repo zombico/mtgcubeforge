@@ -32,7 +32,8 @@ const MixedSpreadView = (props) => {
       />      
       
     )) 
-    console.log(view)
+    const errantLands = view.filter(card => card.props.colors.length > 0 && card.props.type.includes("Land")).map((card) => card.props.id).toString()
+    
     const multicolor = view.filter(card => card.props.colors.length > 1)
     const blue = view.filter(card => card.props.colors[0]=== "U" && card.props.colors.length === 1)
     const black = view.filter(card => card.props.colors[0]=== "B" && card.props.colors.length === 1)
@@ -40,7 +41,7 @@ const MixedSpreadView = (props) => {
     const red = view.filter(card => card.props.colors[0]=== "R" && card.props.colors.length === 1 )
     const green = view.filter(card => card.props.colors[0]=== "G" && card.props.colors.length === 1)
     const colorless = view.filter(card => card.props.colors.length === 0 && !card.props.type.includes("Land"))
-    const land = view.filter(card => card.props.type.includes("Land"))
+    const land = view.filter(card => card.props.type.includes("Land") && !errantLands.includes(card.props.id) )
     
     const azorious = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "U" && card.props.colors[1]=== "W")
     const boros = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "R" && card.props.colors[1]=== "W")
@@ -53,7 +54,9 @@ const MixedSpreadView = (props) => {
     const selesnya = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "G" && card.props.colors[1]=== "W")
     const simic = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "G" && card.props.colors[1]=== "U")
 
-    console.log(simic)
+    
+
+    console.log(errantLands)
 
     props.sort === 'alphabetic' && AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
     props.sort === 'cmc' && ConvertedManaSort(multicolor, blue, black, white, red, green, colorless, land)
@@ -139,15 +142,27 @@ const MixedSpreadView = (props) => {
       hoverEnabled={props.enableHoverZoom}
     />
     ))
+    const errantLands = view.filter(card => card.props.colors.length > 0 && card.props.type.includes("Land")).map((card) => card.props.id).toString()
 
     const multicolor = view.filter(card => card.props.colors.length > 1)
-    const blue = view.filter(card => card.props.colors[0]=== "U" && card.props.colors.length === 1 && !card.props.type.includes("Land"))
-    const black = view.filter(card => card.props.colors[0]=== "B" && card.props.colors.length === 1 && !card.props.type.includes("Land"))
-    const white = view.filter(card => card.props.colors[0]=== "W" && card.props.colors.length === 1 && !card.props.type.includes("Land"))
-    const red = view.filter(card => card.props.colors[0]=== "R" && card.props.colors.length === 1 && !card.props.type.includes("Land"))
-    const green = view.filter(card => card.props.colors[0]=== "G" && card.props.colors.length === 1 && !card.props.type.includes("Land"))
+    const blue = view.filter(card => card.props.colors[0]=== "U" && card.props.colors.length === 1)
+    const black = view.filter(card => card.props.colors[0]=== "B" && card.props.colors.length === 1)
+    const white = view.filter(card => card.props.colors[0]=== "W" && card.props.colors.length === 1)
+    const red = view.filter(card => card.props.colors[0]=== "R" && card.props.colors.length === 1 )
+    const green = view.filter(card => card.props.colors[0]=== "G" && card.props.colors.length === 1)
     const colorless = view.filter(card => card.props.colors.length === 0 && !card.props.type.includes("Land"))
-    const land = view.filter(card => card.props.type.includes("Land"))
+    const land = view.filter(card => card.props.type.includes("Land") && !errantLands.includes(card.props.id) )
+    
+    const azorious = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "U" && card.props.colors[1]=== "W")
+    const boros = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "R" && card.props.colors[1]=== "W")
+    const dimir = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "B" && card.props.colors[1]=== "U")
+    const golgari = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "B" && card.props.colors[1]=== "G")
+    const gruul = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "G" && card.props.colors[1]=== "R")
+    const izzet = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "R" && card.props.colors[1]=== "U")
+    const orzhov = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "B" && card.props.colors[1]=== "W")
+    const rakdos = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "B" && card.props.colors[1]=== "R")
+    const selesnya = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "G" && card.props.colors[1]=== "W")
+    const simic = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "G" && card.props.colors[1]=== "U")
     
     props.sort === 'alphabetic' && AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
     props.sort === 'cmc' && ConvertedManaSort(multicolor, blue, black, white, red, green, colorless, land)

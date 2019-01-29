@@ -30,6 +30,9 @@ class ModalReassignIcon extends Component {
       const mycolors = colors.toString()
       return mycolors
     }
+    else if (colors.length === 0) {
+      return ''
+    }
   }
 
 
@@ -135,7 +138,7 @@ class ModalReassignIcon extends Component {
                 <option value="W">White</option>
                 <option value="R">Red</option>
                 <option value="G">Green</option>
-                <option value="C">Colorless</option>
+                <option value="">Colorless</option>
                 <option value={`U,W`}>Azorius</option>
                 <option value={`R,W`}>Boros</option>
                 <option value={`B,U`}>Dimir</option>
