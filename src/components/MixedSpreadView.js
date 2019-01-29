@@ -57,12 +57,14 @@ const MixedSpreadView = (props) => {
 
     console.log(errantLands)
 
-    props.sort === 'alphabetic' && AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
+    AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
     props.sort === 'cmc' && ConvertedManaSort(multicolor, blue, black, white, red, green, colorless, land)
+    // props.sort === 'alphabetic' && AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
+    
 
     const colorSection = (color, colorstring) => (
       <div className={!color.length ? "hidden" : "dynamiclistitem__column"}>
-        <div className="centerizer">
+        <div className="dynamiclistitem__column-mana centerizer">
         { color !== land && color !== multicolor &&          
           <img className="manasymbol" src={`/symbols/${colorstring}mana.svg`} alt={`${color}manasymbol`} />          
         }
@@ -76,7 +78,7 @@ const MixedSpreadView = (props) => {
         }
         </div>
         <h3 className="dynamiclistitem__header centerizer"  >{colorstring} <span>- {color.length}</span> </h3>
-        <div className={""}>                                
+        <div className={"dynamiclistitem__listcontainer"}>                                
           {color !== multicolor && color}    
           
           { color===multicolor && guildSubSection(azorious, "Azorious")}

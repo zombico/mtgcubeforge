@@ -576,19 +576,30 @@ ol {
     
   &__header {
     border-bottom: 1px solid gainsboro;
-    margin-bottom: 12px;
-    padding-bottom: 9px;
+    margin: 6px 0px 12px 0px;
+    padding-bottom: 6px;
     font-size: 1em;
   }
   &__column {
+    height: 100%;
     
-    padding: 15px 12px;
+    &-mana {
+      padding: 9px 0px;
+      background: floralwhite;
+      position: sticky;
+      top: 60px;
+      border-bottom: 1px solid gainsboro;
+      border-right: .5px solid lightgray;
+    }
     &-subsectionhead {
       font-size: .9em;
       font-weight: 700;
       margin-top: 12px;
       color: darkslategray;
     }
+  }
+  &__listcontainer {
+    padding: 0px 12px 15px 12px;
   }
   &__entry {    
     width: 141px;

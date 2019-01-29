@@ -185,10 +185,13 @@ class ModalReassignIcon extends Component {
           <div className="versionchanger-preview">
             <img className="preview-img-med" src={this.state.stateReqstCard.imgmd} />  
           </div>
+          {
+              this.props.hasControls &&
           <div className="dashboard__panel">
             <button className="buttonsecondary" onClick={this.addCard}>Modify card</button>
             <button className="buttontransparent" onClick={this.props.removeCard} >Delete card</button>
           </div>
+          }
           </div>
         </div>
       </div>
