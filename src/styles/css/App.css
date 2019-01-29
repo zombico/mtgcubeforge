@@ -536,10 +536,14 @@ ol {
   border-right: 0.5px solid lightgray;
 }
 .dynamiclistitem__column-subsectionhead {
+  display: flex;
+  align-items: center;
   font-size: 0.9em;
   font-weight: 700;
   margin-top: 12px;
-  color: darkslategray;
+  padding-bottom: 6px;
+  color: darkgoldenrod;
+  text-decoration: underline;
 }
 .dynamiclistitem__listcontainer {
   padding: 0px 12px 15px 12px;
@@ -981,6 +985,12 @@ ol {
   height: 24px;
   width: 24px;
   padding-top: 6px;
+}
+.manasymbol.smaller {
+  height: 18px;
+  width: 18px;
+  padding-right: 6px;
+  padding-top: 0px;
 }
 .manasymbol.noimg {
   padding: 3px;

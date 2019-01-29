@@ -98,7 +98,10 @@ const MixedSpreadView = (props) => {
     
     const guildSubSection = (color, colorstring) => (
       <div className={!color.length ? "hidden" : "dynamiclistitem__guild"}>
-        <div className="dynamiclistitem__column-subsectionhead">{colorstring}</div>
+        <div className="dynamiclistitem__column-subsectionhead">
+        <img className="manasymbol smaller" src={`/symbols/${colorstring}mana.svg`} alt={`${color}manasymbol`} /> 
+          {colorstring}
+        </div>
         {color}
       </div>
     )

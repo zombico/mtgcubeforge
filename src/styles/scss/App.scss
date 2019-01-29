@@ -592,10 +592,14 @@ ol {
       border-right: .5px solid lightgray;
     }
     &-subsectionhead {
+      display: flex;
+      align-items: center;
       font-size: .9em;
       font-weight: 700;
       margin-top: 12px;
-      color: darkslategray;
+      padding-bottom: 6px;
+      color: darkgoldenrod;
+      text-decoration: underline;
     }
   }
   &__listcontainer {
@@ -1068,6 +1072,12 @@ ol {
   height: 24px;
   width: 24px;
   padding-top: 6px;
+  &.smaller {
+    height: 18px;
+    width: 18px;
+    padding-right: 6px;
+    padding-top: 0px;
+  }
   &.noimg {
     padding: 3px;
     border-radius: 60px;
