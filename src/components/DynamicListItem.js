@@ -120,7 +120,19 @@ class DynamicListItem extends Component {
                 onClick={() => this.rotateCard()}
               />
             }
+            <ModalReassignIcon 
+              oracleid={this.props.oracleid}
+              id={this.props.id}
+              cubeid={this.props.cubeId}
+              onClick={() => this.pinCard()}
+              cmc={this.props.cmc}
+              colors={this.props.colors}
+              removeCard={() => this.removeCard()}
+              loadCube={this.props.loadCube}
+              hasControls={this.props.hasControls}
+            />    
             <ScryfallLogo id={this.props.id}/>
+            
             { hasControls && 
               <>
               
@@ -130,15 +142,7 @@ class DynamicListItem extends Component {
               />
               </>
             }
-            <ModalReassignIcon 
-                oracleid={this.props.oracleid}
-                id={this.props.id}
-                cubeid={this.props.cubeId}
-                onClick={() => this.pinCard()}
-                cmc={this.props.cmc}
-                colors={this.props.colors}
-                removeCard={() => this.removeCard()}
-              />     
+             
           </div>
           
           </>  

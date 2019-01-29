@@ -13,10 +13,13 @@ class ModalReassignIcon extends Component {
     versions: [],
     stateReqstCard: ''
   }
+
   toggleModal = () => {    
     if(this.state.showModal === false) {
       this.setState({ showModal: true })
-    } else this.setState({ showModal: false })
+    } else 
+      this.setState({ showModal: false })
+      this.props.loadCube()
   }
   
   parseColors(colors) {
@@ -32,9 +35,9 @@ class ModalReassignIcon extends Component {
 
   componentWillMount() {
     this.getVersions(this.props.oracleid)
+    this.getCard(this.props.id)
     const mycolors = this.parseColors(this.props.colors)
-    
-
+  
     this.setState({
       colors: mycolors,
       cmc: this.props.cmc
@@ -50,6 +53,16 @@ class ModalReassignIcon extends Component {
     event.preventDefault()
     this.setState({ cmc: event.target.value });
   }
+
+  getCard(id) {
+    fetch(`https://api.scryfall.com/cards/${id}`, {
+    })
+    .then(res => res.json())
+    .then(result => {        
+      const newCard = result.id && Forge(result)      
+      this.setState({ stateReqstCard: newCard })  
+    }
+  )}
 
   getVersions(oracleId) {
     fetch(`https://api.scryfall.com/cards/search?order=released&q=oracleid%3A${oracleId}&unique=prints`, {
@@ -72,6 +85,25 @@ class ModalReassignIcon extends Component {
     }        
   }
 
+  addCard = async () => {
+    const modifiedCard = await this.state.stateReqstCard
+    modifiedCard.cmc = this.state.cmc
+    modifiedCard.colors = this.state.colors
+    await this.props.removeCard()
+    this.props.loadCube()
+
+    const layout = this.state.stateReqstCard.layout
+      if (layout === "emblem" || layout === "vanguard" || layout === "planar" ) {
+        return console.log('error')
+      } else try {
+        this.state.stateReqstCard && axios.patch(`/cubes/${this.props.cubeid}/add`, modifiedCard)
+        this.props.loadCube()
+        
+      } catch(e) {
+        console.log(e)
+      }
+  }
+
   render(){
     const versions = this.state.versions
     const cmc = this.state.cmc
@@ -81,50 +113,61 @@ class ModalReassignIcon extends Component {
     if(this.state.showModal === true ){   
     return (
       <div>
-         <FontAwesomeIcon 
+        <FontAwesomeIcon 
           className="icon icon-panel"
           icon={faCog}
         />
         <div className="modal__overlay">
-            <div className="modal__newcube stats"> 
+          <div className="modal__newcube stats"> 
             <FontAwesomeIcon icon={faTimes} 
               onClick={() => this.toggleModal()}
               className="modal__newcube-closeicon"
             />         
+            {
+              this.props.hasControls &&
+            <>
             <form>
             <div className="modal__reassign-option">
-            <label className="modal__reassign-label">Change color to</label>
-            <select value={colors} onChange={(event)=>this.handleColorChange(event)}>
-              <option value="U">Blue</option>
-              <option value="B">Black</option>
-              <option value="W">White</option>
-              <option value="R">Red</option>
-              <option value="G">Green</option>
-              <option value="C">Colorless</option>
-              <option value={`U,W`}>Azorius</option>
-              <option value={`R,W`}>Boros</option>
-              <option value={`B,U`}>Dimir</option>
-              <option value={`B,G`}>Golgari</option>
-              <option value={`G,R`}>Gruul</option>
-              <option value={`R,U`}>Izzet</option>
-              <option value={`B,W`}>Orzhov</option>
-              <option value={`B,R`}>Rakdos</option>
-              <option value={`G,W`}>Selesnya</option>
-              <option value={`G,U`}>Simic</option>
-            </select>
+              <label className="modal__reassign-label">Change color to</label>
+              <select value={colors} onChange={(event)=>this.handleColorChange(event)}>
+                <option value="U">Blue</option>
+                <option value="B">Black</option>
+                <option value="W">White</option>
+                <option value="R">Red</option>
+                <option value="G">Green</option>
+                <option value="C">Colorless</option>
+                <option value={`U,W`}>Azorius</option>
+                <option value={`R,W`}>Boros</option>
+                <option value={`B,U`}>Dimir</option>
+                <option value={`B,G`}>Golgari</option>
+                <option value={`G,R`}>Gruul</option>
+                <option value={`R,U`}>Izzet</option>
+                <option value={`B,W`}>Orzhov</option>
+                <option value={`B,R`}>Rakdos</option>
+                <option value={`G,W`}>Selesnya</option>
+                <option value={`G,U`}>Simic</option>
+              </select>
             </div>  
-            <div className="modal__reassign-option">
-            <label className="modal__reassign-label">Change converted mana cost to</label>
-            <input
-              type="number"
-              className="modal__reassign-input"
-              value={cmc}
-              onChange={(event)=>this.handleCmcChange(event)}
-            />
-            </div>  
-            </form>
             
-            <button onClick={this.props.removeCard} >remove</button>
+            <div className="modal__reassign__options">
+              <div className="modal__reassign-option">
+                <label className="modal__reassign-label">Change converted mana cost to</label>
+                <input
+                  type="number"
+                  className="modal__reassign-input"
+                  value={cmc}
+                  onChange={(event)=>this.handleCmcChange(event)}
+                />
+              </div>  
+            </div>
+            </form>
+
+            <div className="dashboard__panel">
+              <button className="buttonsecondary" onClick={this.addCard}>Modify card</button>
+              <button className="buttontransparent" onClick={this.props.removeCard} >Delete card</button>
+            </div>
+            </>
+            }
             <div className="versionchanger-box">
               <div className="versionchanger-label">Available versions</div>
               <div className="versionchanger">
@@ -139,9 +182,11 @@ class ModalReassignIcon extends Component {
               
               </div>
             </div>
-            
+          <div className="versionchanger-preview">
+            <img className="preview-img-med" src={this.state.stateReqstCard.imgmd} />  
+          </div>
+          </div>
         </div>
-      </div>
       </div>
       )
     }

@@ -877,6 +877,12 @@ ol {
 .versionchanger-box {
   min-width: 202px;
   margin-top: 36px;
+  max-width: 360px;
+}
+.versionchanger-preview {
+  position: absolute;
+  right: 15px;
+  top: 39px;
 }
 .versionchanger-label {
   margin: 0 0 0px 0px;

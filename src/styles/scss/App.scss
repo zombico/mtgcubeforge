@@ -956,7 +956,12 @@ ol {
   &-box {
     min-width: 202px;
     margin-top: 36px;
-    // margin-left: 27px;  
+    max-width: 360px;
+  }
+  &-preview {
+    position: absolute;
+    right: 15px;
+    top: 39px;
   }
   &-label {
     margin: 0 0 0px 0px;
