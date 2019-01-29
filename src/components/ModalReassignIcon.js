@@ -165,10 +165,7 @@ class ModalReassignIcon extends Component {
             </div>
             </form>
 
-            <div className="dashboard__panel">
-              <button className="buttonsecondary" onClick={this.addCard}>Modify card</button>
-              <button className="buttontransparent" onClick={this.props.removeCard} >Delete card</button>
-            </div>
+            
             </>
             }
             <div className="versionchanger-box">
@@ -187,6 +184,10 @@ class ModalReassignIcon extends Component {
             </div>
           <div className="versionchanger-preview">
             <img className="preview-img-med" src={this.state.stateReqstCard.imgmd} />  
+          </div>
+          <div className="dashboard__panel">
+            <button className="buttonsecondary" onClick={this.addCard}>Modify card</button>
+            <button className="buttontransparent" onClick={this.props.removeCard} >Delete card</button>
           </div>
           </div>
         </div>

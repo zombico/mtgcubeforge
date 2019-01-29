@@ -566,7 +566,7 @@ ol {
 .dynamiclistitem {
   display: flex;
   flex-direction: column;
-  background: white;
+  background: floralwhite;
   border-right: .5px solid lightgray;
   border-bottom: 1px solid lightgray;
   border-left: .5px solid lightgray;
@@ -808,7 +808,7 @@ ol {
     margin-right: 6px;
   }
   &-option {
-    padding: 6px 24px;
+    padding: 6px 0px;
   }
   &-input {
     max-width: 30px;
@@ -954,7 +954,7 @@ ol {
 
 .versionchanger {
   overflow-y: auto;
-  max-height: 60vh;
+  max-height: 33vh;
   // font-family: "Nunito", sans-serif;  
   border-left: 1px solid lightslategray;
   border-right: 1px solid lightslategray;
@@ -963,7 +963,7 @@ ol {
   &-box {
     min-width: 202px;
     margin-top: 36px;
-    max-width: 360px;
+    max-width: 330px;
   }
   &-preview {
     position: absolute;
