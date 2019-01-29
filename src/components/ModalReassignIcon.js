@@ -8,7 +8,7 @@ import Forge from './ForgeCardObject';
 class ModalReassignIcon extends Component {
   state = {
     showModal: false,
-    colors: '',
+    colors: [],
     cmc: '',
     versions: [],
     stateReqstCard: ''

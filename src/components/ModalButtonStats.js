@@ -119,7 +119,7 @@ class ModalButtonStats extends Component {
     if(this.state.showModal === true && this.props.display === "button") {    
       return (
         <div className="sneak-up">
-          <button className="buttonprimary" onClick={() => this.toggleModal()}>Show Stats</button>
+          <button className="buttontransparent primarysmaller" onClick={() => this.toggleModal()}>Show Stats</button>
           <div className="modal__overlay">
             <div className="modal__newcube stats"> 
             
@@ -143,7 +143,7 @@ class ModalButtonStats extends Component {
       else if(this.state.showModal === false && this.props.display === "button") {
        return (
         <div className="sneak-up">
-          <button className="buttonprimary primarysmaller" onClick={() => this.toggleModal()}>Show Stats</button>
+          <button className="buttontransparent primarysmaller" onClick={() => this.toggleModal()}>Show Stats</button>
         </div>
        ) 
     }

@@ -977,7 +977,7 @@ ol {
   padding: 6px;
   width: 100%;
   max-width: 148px;
-  margin-left: 12px;
+  margin-right: 12px;
   border-radius: 3px;
   text-decoration: none;
   color: ghostwhite;
@@ -1003,10 +1003,6 @@ ol {
   transition: 99ms;
   cursor: pointer;
 }
-.buttonsecondary.disabled {
-  border: 1px solid slategray;
-  background: slategray;
-}
 
 .buttonprimary {
   background: darkslateblue;
@@ -1027,8 +1023,12 @@ ol {
   cursor: pointer;
 }
 .buttonprimary.primarysmaller {
-  max-width: 130px;
+  max-width: 148px;
   margin-right: 21px;
+}
+.buttonprimary.disabled {
+  border: 1px solid slategray;
+  background: slategray;
 }
 
 .buttontransparent {
@@ -1063,7 +1063,7 @@ ol {
   font-size: 0.9em;
 }
 .buttontransparent.primarysmaller {
-  max-width: 130px;
+  max-width: 148px;
   margin-right: 12px;
 }
 

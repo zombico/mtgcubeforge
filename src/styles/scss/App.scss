@@ -1065,7 +1065,8 @@ ol {
   padding: 6px;
   width: 100%;
   max-width: 148px;
-  margin-left: 12px;
+  // margin-left: 12px;
+  margin-right: 12px;
   border-radius: 3px;  
   text-decoration: none;
   color: ghostwhite;
@@ -1090,10 +1091,7 @@ ol {
       cursor: pointer;
     }
   }
-  &.disabled {
-    border: 1px solid slategray;
-    background: slategray;
-  }
+  
 }
 
 .buttonprimary {
@@ -1114,8 +1112,12 @@ ol {
     cursor: pointer;
   }
   &.primarysmaller {
-    max-width: 130px;
+    max-width: 148px;
     margin-right: 21px;
+  }
+  &.disabled {
+    border: 1px solid slategray;
+    background: slategray;
   }
 }
 
@@ -1151,7 +1153,7 @@ ol {
     font-size: .9em;
   }
   &.primarysmaller {
-    max-width: 130px;
+    max-width: 148px;
     margin-right: 12px;
   }
 }

@@ -54,7 +54,7 @@ class ModalNewCube extends Component {
                   autoComplete="off"
                 />
                 <div className="modal__buttonpanel">
-                  <button className={this.state.cubename === '' ? "buttonsecondary disabled" : "buttonsecondary"} type="submit">
+                  <button className={this.state.cubename === '' ? "buttonprimary disabled" : "buttonprimary"} type="submit">
                   {/* <button disabled={this.state.cubename === null } className="buttonsecondary" type="submit"> */}
                     <FontAwesomeIcon icon={faHammer} /> Start building 
                   </button>            
