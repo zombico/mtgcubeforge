@@ -575,13 +575,20 @@ ol {
   }
     
   &__header {
-    text-decoration: underline;
-    padding-bottom: 15px;
+    border-bottom: 1px solid gainsboro;
+    margin-bottom: 12px;
+    padding-bottom: 9px;
     font-size: 1em;
   }
   &__column {
     
     padding: 15px 12px;
+    &-subsectionhead {
+      font-size: .9em;
+      font-weight: 700;
+      margin-top: 12px;
+      color: darkslategray;
+    }
   }
   &__entry {    
     width: 141px;
@@ -1055,6 +1062,9 @@ ol {
     border-radius: 60px;
     background: gold;
     margin: auto;
+    &-inlist{
+      margin-bottom: 6px;
+    }
   }
 }
 

@@ -91,7 +91,7 @@ class ModalReassignIcon extends Component {
   addCard = async () => {
     const modifiedCard = await this.state.stateReqstCard
     modifiedCard.cmc = this.state.cmc
-    modifiedCard.colors = this.state.colors
+    modifiedCard.colors = this.state.colors.split(",")
     await this.props.removeCard()
     this.props.loadCube()
 
@@ -99,7 +99,7 @@ class ModalReassignIcon extends Component {
       if (layout === "emblem" || layout === "vanguard" || layout === "planar" ) {
         return console.log('error')
       } else try {
-        this.state.stateReqstCard && axios.patch(`/cubes/${this.props.cubeid}/add`, modifiedCard)
+        await this.state.stateReqstCard && axios.patch(`/cubes/${this.props.cubeid}/add`, modifiedCard)
         this.props.loadCube()
         
       } catch(e) {
@@ -131,7 +131,7 @@ class ModalReassignIcon extends Component {
             <>
             <form>
             <div className="modal__reassign-option">
-              <label className="modal__reassign-label">Change color to</label>
+              <label className="modal__reassign-label">Reassign to color section</label>
               <select value={colors} onChange={(event)=>this.handleColorChange(event)}>
                 <option value="U">Blue</option>
                 <option value="B">Black</option>

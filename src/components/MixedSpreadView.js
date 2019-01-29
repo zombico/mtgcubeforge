@@ -11,6 +11,7 @@ const MixedSpreadView = (props) => {
     const view = props.cubeContents.map((card => 
       
       <DynamicListItem 
+        
         cubeId={props.cubeId}
         name={card.name} 
         nameFlip={card.nameFlip}
@@ -54,21 +55,49 @@ const MixedSpreadView = (props) => {
     const selesnya = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "G" && card.props.colors[1]=== "W")
     const simic = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "G" && card.props.colors[1]=== "U")
 
-    
-
     console.log(errantLands)
 
     props.sort === 'alphabetic' && AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
     props.sort === 'cmc' && ConvertedManaSort(multicolor, blue, black, white, red, green, colorless, land)
 
-    // const containerClass = view.length > 500 ? "dynamiccard__color large" : "dynamiccard__color"
     const colorSection = (color, colorstring) => (
       <div className={!color.length ? "hidden" : "dynamiclistitem__column"}>
-        
-        <h3 className="dynamiclistitem__header"  >{colorstring} <span>- {color.length}</span> </h3>
-        <div className={""}>                                
-          {color}        
+        <div className="centerizer">
+        { color !== land && color !== multicolor &&          
+          <img className="manasymbol" src={`/symbols/${colorstring}mana.svg`} alt={`${color}manasymbol`} />          
+        }
+        {
+          color === land &&
+          <div className="manasymbol noimg noimg-inlist">L</div>
+        }
+        {
+          color === multicolor &&
+          <div className="manasymbol noimg noimg-inlist">M</div>
+        }
         </div>
+        <h3 className="dynamiclistitem__header centerizer"  >{colorstring} <span>- {color.length}</span> </h3>
+        <div className={""}>                                
+          {color !== multicolor && color}    
+          
+          { color===multicolor && guildSubSection(azorious, "Azorious")}
+          { color===multicolor && guildSubSection(boros, "Boros")}
+          { color===multicolor && guildSubSection(dimir, "Dimir")}
+          { color===multicolor && guildSubSection(golgari, "Golgari")}
+          { color===multicolor && guildSubSection(gruul, "Gruul")}
+          { color===multicolor && guildSubSection(izzet, "Izzet")}
+          { color===multicolor && guildSubSection(orzhov, "Orzhov")}
+          { color===multicolor && guildSubSection(rakdos, "Rakdos")}
+          { color===multicolor && guildSubSection(selesnya, "Selesnya")}
+          { color===multicolor && guildSubSection(simic, "Simic")}
+              
+        </div>
+      </div>
+    )
+    
+    const guildSubSection = (color, colorstring) => (
+      <div className={!color.length ? "hidden" : "dynamiclistitem__guild"}>
+        <div className="dynamiclistitem__column-subsectionhead">{colorstring}</div>
+        {color}
       </div>
     )
 
@@ -121,7 +150,8 @@ const MixedSpreadView = (props) => {
   if (props.cubeContents && props.viewType === "card") {
     const view = props.cubeContents.map((card => 
 
-    <DynamicCard      
+    <DynamicCard 
+           
       cubeId={props.cubeId}
       name={card.name} 
       nameFlip={card.nameFlip}
