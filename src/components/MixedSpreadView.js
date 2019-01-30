@@ -55,14 +55,27 @@ const MixedSpreadView = (props) => {
     const selesnya = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "G" && card.props.colors[1]=== "W")
     const simic = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "G" && card.props.colors[1]=== "U")
 
-    console.log(errantLands)
+    const abzan = multicolor.filter(card => card.props.colors.length === 3 && card.props.colors[0] === "B" && card.props.colors[1] === "G" && card.props.colors[2] === "W")
+    const bant = multicolor.filter(card => card.props.colors.length === 3 && card.props.colors[0] === "G" && card.props.colors[1] === "U" && card.props.colors[2] === "W")
+    const esper= multicolor.filter(card => card.props.colors.length === 3 && card.props.colors[0] === "B" && card.props.colors[1] === "U" && card.props.colors[2] === "W")
+    const grixis = multicolor.filter(card => card.props.colors.length === 3 && card.props.colors[0] === "B" && card.props.colors[1] === "R" && card.props.colors[2] === "U")
+    const jeskai = multicolor.filter(card => card.props.colors.length === 3 && card.props.colors[0] === "R" && card.props.colors[1] === "U" && card.props.colors[2] === "W")
+    const jund = multicolor.filter(card => card.props.colors.length === 3 && card.props.colors[0] === "B" && card.props.colors[1] === "G" && card.props.colors[2] === "R")
+    const mardu = multicolor.filter(card => card.props.colors.length === 3 && card.props.colors[0] === "B" && card.props.colors[1] === "R" && card.props.colors[2] === "W")
+    const naya = multicolor.filter(card => card.props.colors.length === 3 && card.props.colors[0] === "G" && card.props.colors[1] === "R" && card.props.colors[2] === "W")
+    const sultai = multicolor.filter(card => card.props.colors.length === 3 && card.props.colors[0] === "B" && card.props.colors[1] === "G" && card.props.colors[2] === "U")  
+    const temur = multicolor.filter(card => card.props.colors.length === 3 && card.props.colors[0] === "G" && card.props.colors[1] === "R" && card.props.colors[2] === "U")
+    
+    const unalignedGold = multicolor.filter((card => card.props.colors.length > 3))
+    
 
     AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
     props.sort === 'cmc' && ConvertedManaSort(multicolor, blue, black, white, red, green, colorless, land)
-    // props.sort === 'alphabetic' && AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
+    
     
 
     const colorSection = (color, colorstring) => (
+      <>
       <div className={!color.length ? "hidden" : "dynamiclistitem__column"}>
         <div className="dynamiclistitem__column-mana centerizer">
         { color !== land && color !== multicolor &&          
@@ -80,7 +93,8 @@ const MixedSpreadView = (props) => {
         <h3 className="dynamiclistitem__header centerizer"  >{colorstring} <span>- {color.length}</span> </h3>
         <div className={"dynamiclistitem__listcontainer"}>                                
           {color !== multicolor && color}    
-          
+          { color===multicolor && shardSubSection(unalignedGold, "Gold 4c & 5c", "", "", "")}
+
           { color===multicolor && guildSubSection(azorious, "Azorious")}
           { color===multicolor && guildSubSection(boros, "Boros")}
           { color===multicolor && guildSubSection(dimir, "Dimir")}
@@ -91,11 +105,42 @@ const MixedSpreadView = (props) => {
           { color===multicolor && guildSubSection(rakdos, "Rakdos")}
           { color===multicolor && guildSubSection(selesnya, "Selesnya")}
           { color===multicolor && guildSubSection(simic, "Simic")}
-              
+          
+          { color===multicolor && shardSubSection(abzan, "Abzan", "white", "black", "green")}
+          { color===multicolor && shardSubSection(bant, "Bant", "green", "white", "blue")}
+          { color===multicolor && shardSubSection(esper, "Esper", "white", "blue", "black" )}
+          { color===multicolor && shardSubSection(grixis, "Grixis", "blue", "black", "red" )}
+          { color===multicolor && shardSubSection(jeskai, "Jeskai", "blue", "red", "white")}
+          { color===multicolor && shardSubSection(jund, "Jund", "black", "red", "green")}
+          { color===multicolor && shardSubSection(mardu, "Mardu", "red", "white", "black")}
+          { color===multicolor && shardSubSection(naya, "Naya", "red", "green", "white")}
+          { color===multicolor && shardSubSection(sultai, "Sultai", "black", "green", "blue")}
+          { color===multicolor && shardSubSection(temur, "Temur", "green", "blue", "red")}
+      
         </div>
+        
       </div>
+      
+      </>
     )
     
+    const shardSubSection = (color, colorstring, color1, color2, color3) => (
+      <div className={!color.length ? "hidden" : "dynamiclistitem__guild"}>
+        <div className="dynamiclistitem__column-subsectionhead">
+        {
+          color1 &&
+        <>
+        <img className="manasymbol smaller shard" src={`/symbols/${color1}mana.svg`} alt={`${color1}manasymbol`} /> 
+        <img className="manasymbol smaller shard" src={`/symbols/${color2}mana.svg`} alt={`${color2}manasymbol`} /> 
+        <img className="manasymbol smaller shard" src={`/symbols/${color3}mana.svg`} alt={`${color3}manasymbol`} /> 
+        </>
+        }
+          {colorstring}
+        </div>
+        {color}
+      </div>
+    )
+
     const guildSubSection = (color, colorstring) => (
       <div className={!color.length ? "hidden" : "dynamiclistitem__guild"}>
         <div className="dynamiclistitem__column-subsectionhead">
@@ -105,6 +150,8 @@ const MixedSpreadView = (props) => {
         {color}
       </div>
     )
+
+
 
     const stats = {}
       stats.all = GetStats(view)
@@ -126,24 +173,31 @@ const MixedSpreadView = (props) => {
     </div> 
     <div className="dynamiclistitem">
       {colorSection(blue, "Blue")}
+      
     </div>
     <div className="dynamiclistitem">
       {colorSection(black, "Black")}
+      {/* <div id="Blacksection" className="dynamiccard__color-spacer" /> */}
     </div>
     <div className="dynamiclistitem">
       {colorSection(white, "White")}
+      {/* <div id="Whitesection" className="dynamiccard__color-spacer" /> */}
     </div>
     <div className="dynamiclistitem">
       {colorSection(red, "Red")}
+      {/* <div id="Redsection" className="dynamiccard__color-spacer" /> */}
     </div>
     <div className="dynamiclistitem">
       {colorSection(green, "Green")}
+      {/* <div id="Greensection" className="dynamiccard__color-spacer" /> */}
     </div>
     <div className="dynamiclistitem">
       {colorSection(colorless, "Colorless")}
+      {/* <div id="Colorlesssection" className="dynamiccard__color-spacer" /> */}
     </div>
     <div className="dynamiclistitem">
       {colorSection(land, "Land")}
+      {/* <div id="Landsection" className="dynamiccard__color-spacer" /> */}
     </div>
         </div>
         </>

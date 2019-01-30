@@ -80,7 +80,7 @@ ol {
   padding-left: 8vh;
   padding-bottom: 66px;
   padding-top: 4vh;  
-  border-bottom: 9px solid slategray;
+  border-bottom: 9px solid white;
   &__count {
     font-family: 'Nunito Sans', sans-serif;
   }
@@ -566,13 +566,13 @@ ol {
 .dynamiclistitem {
   display: flex;
   flex-direction: column;
-  background: floralwhite;
+  background: ghostwhite;
   border-right: .5px solid lightgray;
   border-bottom: 1px solid lightgray;
   border-left: .5px solid lightgray;
-  &:first-child {
-    padding-left: 9px;
-  }
+  // &:first-child {
+  //   padding-left: 9px;
+  // }
     
   &__header {
     border-bottom: 1px solid gainsboro;
@@ -584,8 +584,8 @@ ol {
     height: 100%;
     
     &-mana {
-      padding: 9px 0px;
-      background: floralwhite;
+      padding: 3px 0px;
+      background: slategray;
       position: sticky;
       top: 60px;
       border-bottom: 1px solid gainsboro;
@@ -606,7 +606,7 @@ ol {
     padding: 0px 12px 15px 12px;
   }
   &__entry {    
-    width: 141px;
+    width: 147px;
     font-size: .8em;
     padding-bottom: 3px;
     
@@ -622,7 +622,7 @@ ol {
       color: blue;
       border: 1px solid blue;
       border-radius: 6px;
-      background: whitesmoke;
+      background: lavender;
       &:hover {
         text-decoration: none;
       }
@@ -1069,8 +1069,8 @@ ol {
 }
 
 .manasymbol {
-  height: 24px;
-  width: 24px;
+  height: 20px;
+  width: 20px;
   padding-top: 6px;
   &.smaller {
     height: 18px;
@@ -1078,13 +1078,24 @@ ol {
     padding-right: 6px;
     padding-top: 0px;
   }
+  &.shard {
+    // margin-left: -8px;
+    height: 15px;
+    width: 15px;
+    padding-right: 1px;
+    &:last-child {
+      padding-right: 6px;
+    } 
+  }
   &.noimg {
-    padding: 3px;
+    padding: 1px;
     border-radius: 60px;
+    
     background: gold;
     margin: auto;
     &-inlist{
-      margin-bottom: 6px;
+      margin-bottom: 5px;
+      margin-top: 5px;
     }
   }
 }

@@ -31,7 +31,7 @@ class ModalButtonStats extends Component {
           <h1 className="modal__newcube-title">Cube Statistics</h1>          
           { this.state.statOption === "type" ?
             <h2>Type and color <ToolTip icon={<FontAwesomeIcon icon={faQuestionCircle} />} text="Only one type is assigned to each card. Creatures are not counted in the artifacts and enchantments, and artifact lands are counted as lands." /> </h2> :
-            <h2>Mana cost and color <ToolTip icon={<FontAwesomeIcon icon={faQuestionCircle} />} text="Cards with multiple faces and mana costs have their cmc's added up as per current rules. " /> </h2>
+            <h2>Mana cost and color <ToolTip icon={<FontAwesomeIcon icon={faQuestionCircle} />} text="By default, cards with multiple faces and mana costs have their cmc's added up as per current rules. " /> </h2>
           }
           <table className="statsTable">
             <tbody>

@@ -91,7 +91,7 @@ class ModalReassignIcon extends Component {
   addCard = async () => {
     const modifiedCard = await this.state.stateReqstCard
     modifiedCard.cmc = this.state.cmc
-    modifiedCard.colors = this.state.colors.split(",")
+    modifiedCard.colors = this.state.colors !== "" ? this.state.colors.split(",") : []
     await this.props.removeCard()
     this.props.loadCube()
 

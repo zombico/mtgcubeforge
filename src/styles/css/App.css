@@ -75,7 +75,7 @@ ol {
   padding-left: 8vh;
   padding-bottom: 66px;
   padding-top: 4vh;
-  border-bottom: 9px solid slategray;
+  border-bottom: 9px solid white;
 }
 .view-header__count {
   font-family: "Nunito Sans", sans-serif;
@@ -510,13 +510,10 @@ ol {
 .dynamiclistitem {
   display: flex;
   flex-direction: column;
-  background: floralwhite;
+  background: ghostwhite;
   border-right: 0.5px solid lightgray;
   border-bottom: 1px solid lightgray;
   border-left: 0.5px solid lightgray;
-}
-.dynamiclistitem:first-child {
-  padding-left: 9px;
 }
 .dynamiclistitem__header {
   border-bottom: 1px solid gainsboro;
@@ -528,8 +525,8 @@ ol {
   height: 100%;
 }
 .dynamiclistitem__column-mana {
-  padding: 9px 0px;
-  background: floralwhite;
+  padding: 3px 0px;
+  background: slategray;
   position: sticky;
   top: 60px;
   border-bottom: 1px solid gainsboro;
@@ -549,7 +546,7 @@ ol {
   padding: 0px 12px 15px 12px;
 }
 .dynamiclistitem__entry {
-  width: 141px;
+  width: 147px;
   font-size: 0.8em;
   padding-bottom: 3px;
   cursor: pointer;
@@ -565,7 +562,7 @@ ol {
   color: blue;
   border: 1px solid blue;
   border-radius: 6px;
-  background: whitesmoke;
+  background: lavender;
 }
 .dynamiclistitem__entry-pinned:hover {
   text-decoration: none;
@@ -982,8 +979,8 @@ ol {
 }
 
 .manasymbol {
-  height: 24px;
-  width: 24px;
+  height: 20px;
+  width: 20px;
   padding-top: 6px;
 }
 .manasymbol.smaller {
@@ -992,14 +989,23 @@ ol {
   padding-right: 6px;
   padding-top: 0px;
 }
+.manasymbol.shard {
+  height: 15px;
+  width: 15px;
+  padding-right: 1px;
+}
+.manasymbol.shard:last-child {
+  padding-right: 6px;
+}
 .manasymbol.noimg {
-  padding: 3px;
+  padding: 1px;
   border-radius: 60px;
   background: gold;
   margin: auto;
 }
 .manasymbol.noimg-inlist {
-  margin-bottom: 6px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .buttonsecondary {
