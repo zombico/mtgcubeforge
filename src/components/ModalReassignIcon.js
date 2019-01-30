@@ -149,6 +149,17 @@ class ModalReassignIcon extends Component {
                 <option value={`B,R`}>Rakdos</option>
                 <option value={`G,W`}>Selesnya</option>
                 <option value={`G,U`}>Simic</option>
+                <option value={`B,G,W`}>Abzan</option>
+                <option value={`G,U,W`}>Bant</option>
+                <option value={`B,U,W`}>Esper</option>
+                <option value={`B,R,U`}>Grixis</option>
+                <option value={`R,U,W`}>Jeskai</option>
+                <option value={`B,G,R`}>Jund</option>
+                <option value={`B,R,W`}>Mardu</option>
+                <option value={`G,R,W`}>Naya</option>
+                <option value={`B,G,U`}>Sultai</option>
+                <option value={`G,R,U`}>Temur</option>
+                <option value={`W,B,G,R,U`}>Unaligned</option>
               </select>
             </div>  
             
