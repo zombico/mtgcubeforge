@@ -69,8 +69,7 @@ const MixedSpreadView = (props) => {
     const unalignedGold = multicolor.filter((card => card.props.colors.length > 3))
     
 
-    AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
-    props.sort === 'cmc' && ConvertedManaSort(multicolor, blue, black, white, red, green, colorless, land)
+    
     
     
 
@@ -93,7 +92,7 @@ const MixedSpreadView = (props) => {
         <h3 className="dynamiclistitem__header centerizer"  >{colorstring} <span>- {color.length}</span> </h3>
         <div className={"dynamiclistitem__listcontainer"}>                                
           {color !== multicolor && color}    
-          { color===multicolor && shardSubSection(unalignedGold, "Gold 4c & 5c", "", "", "")}
+          { color===multicolor && shardSubSection(unalignedGold, "Unaligned 4c 5c", "", "", "")}
 
           { color===multicolor && guildSubSection(azorious, "Azorious")}
           { color===multicolor && guildSubSection(boros, "Boros")}
@@ -151,7 +150,8 @@ const MixedSpreadView = (props) => {
       </div>
     )
 
-
+    AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
+    props.sort === 'cmc' && ConvertedManaSort(multicolor, blue, black, white, red, green, colorless, land)
 
     const stats = {}
       stats.all = GetStats(view)
