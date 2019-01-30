@@ -217,6 +217,7 @@ class SearchCard extends Component {
     this.focusCard();
     this.addCard();      
     this.props.viewType ==="card" && this.newcardShortcut();
+    // this.newcardShortcut()
     // this.clearSearch();
   }
 

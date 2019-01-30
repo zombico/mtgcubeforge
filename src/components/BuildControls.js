@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog } from '@fortawesome/free-solid-svg-icons'
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 
 class BuildControls extends Component {
   colorShortcut(color, e) {
@@ -41,7 +41,7 @@ class BuildControls extends Component {
           <nav className="searchbar__buildcontrols__shortcut-container">
             {/* <ol className="searchbar__buildcontrols__label"> */}
             <ol className="searchbar__buildcontrols__shortcut">
-            <li><a href="/#" onClick={(e) => this.toTop(e)}><FontAwesomeIcon icon={faCog} className="searchbar__buildcontrols-cog"/> </a></li>
+            <li><a href="/#" onClick={(e) => this.toTop(e)}><FontAwesomeIcon icon={faArrowUp}/> </a></li>
             <li><a href="/#" onClick={(e) => this.colorShortcut('Multicolor', e)}>Multicolor</a></li>
             <li><a href="/#" onClick={(e) => this.colorShortcut('Blue', e)}>Blue</a></li>
             <li><a href="/#" onClick={(e) => this.colorShortcut('Black', e)}>Black</a></li>

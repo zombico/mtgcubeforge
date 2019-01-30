@@ -3,6 +3,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faSyncAlt, faUndo, faTimes } from '@fortawesome/free-solid-svg-icons'
 import ScryfallLogo from './buttons/ScryfallLogo'
+import ModalReassignIcon from './ModalReassignIcon'
 
 class DynamicListItem extends Component {
   constructor(props) {
@@ -103,7 +104,7 @@ class DynamicListItem extends Component {
             <div className="dynamiccard__buttonpanel onlist">
             
              <FontAwesomeIcon icon={faTimes}
-                className={!pinned ? "icon icon-panel " : "icon icon-panel  "}
+                className="icon icon-panel"
                 onClick={() => this.pinCard()}
               />     
             
@@ -119,13 +120,29 @@ class DynamicListItem extends Component {
                 onClick={() => this.rotateCard()}
               />
             }
+            <ModalReassignIcon 
+              oracleid={this.props.oracleid}
+              id={this.props.id}
+              cubeid={this.props.cubeId}
+              onClick={() => this.pinCard()}
+              cmc={this.props.cmc}
+              colors={this.props.colors}
+              removeCard={() => this.removeCard()}
+              loadCube={this.props.loadCube}
+              hasControls={this.props.hasControls}
+            />    
             <ScryfallLogo id={this.props.id}/>
+            
             { hasControls && 
+              <>
+              
               <FontAwesomeIcon icon={faTrashAlt} 
               className="icon icon-panel"
               onClick={() => this.removeCard()}            
               />
-            }     
+              </>
+            }
+             
           </div>
           
           </>  

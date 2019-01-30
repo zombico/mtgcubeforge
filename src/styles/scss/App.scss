@@ -80,7 +80,7 @@ ol {
   padding-left: 8vh;
   padding-bottom: 66px;
   padding-top: 4vh;  
-  border-bottom: 9px solid slategray;
+  border-bottom: 9px solid white;
   &__count {
     font-family: 'Nunito Sans', sans-serif;
   }
@@ -214,7 +214,7 @@ ol {
 }  
 
 .searchbar {
-  z-index: 3;
+  z-index: 2;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -435,7 +435,7 @@ ol {
   &__tooltip {
     position: absolute;
     margin: -20px 0 0 -81px;
-    z-index: 2;
+    // z-index: 1;
     max-width: 244px;
     border-radius: 12px;
     box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
@@ -492,7 +492,7 @@ ol {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 1;
+    // z-index: 1;
     position: absolute;
     margin-top: -225px;    
     margin-left: 297px;    
@@ -510,7 +510,7 @@ ol {
     }
     &.onlist {
       margin: 0;
-      margin-left: 381px;
+      margin-left: 385px;
     }
   }
 }
@@ -566,25 +566,47 @@ ol {
 .dynamiclistitem {
   display: flex;
   flex-direction: column;
-  background: white;
+  background: ghostwhite;
   border-right: .5px solid lightgray;
   border-bottom: 1px solid lightgray;
   border-left: .5px solid lightgray;
-  &:first-child {
-    padding-left: 9px;
-  }
+  // &:first-child {
+  //   padding-left: 9px;
+  // }
     
   &__header {
-    text-decoration: underline;
-    padding-bottom: 15px;
+    border-bottom: 1px solid gainsboro;
+    margin: 6px 0px 12px 0px;
+    padding-bottom: 6px;
     font-size: 1em;
   }
   &__column {
+    height: 100%;
     
-    padding: 15px 12px;
+    &-mana {
+      padding: 3px 0px;
+      background: slategray;
+      position: sticky;
+      top: 60px;
+      border-bottom: 1px solid gainsboro;
+      border-right: .5px solid lightgray;
+    }
+    &-subsectionhead {
+      display: flex;
+      align-items: center;
+      font-size: .9em;
+      font-weight: 700;
+      margin-top: 12px;
+      padding-bottom: 6px;
+      color: darkgoldenrod;
+      text-decoration: underline;
+    }
+  }
+  &__listcontainer {
+    padding: 0px 12px 15px 12px;
   }
   &__entry {    
-    width: 141px;
+    width: 147px;
     font-size: .8em;
     padding-bottom: 3px;
     
@@ -600,7 +622,7 @@ ol {
       color: blue;
       border: 1px solid blue;
       border-radius: 6px;
-      background: whitesmoke;
+      background: lavender;
       &:hover {
         text-decoration: none;
       }
@@ -796,6 +818,20 @@ ol {
   }
 }
 
+.modal__reassign {
+  &-label {
+    margin-right: 6px;
+  }
+  &-option {
+    padding: 6px 0px;
+  }
+  &-input {
+    max-width: 30px;
+    padding: 6px;
+    
+  }
+}
+
 .statsTable {
   max-width: 570px;
   margin-left: 12px;
@@ -933,7 +969,7 @@ ol {
 
 .versionchanger {
   overflow-y: auto;
-  max-height: 60vh;
+  max-height: 33vh;
   // font-family: "Nunito", sans-serif;  
   border-left: 1px solid lightslategray;
   border-right: 1px solid lightslategray;
@@ -942,7 +978,12 @@ ol {
   &-box {
     min-width: 202px;
     margin-top: 36px;
-    // margin-left: 27px;  
+    max-width: 330px;
+  }
+  &-preview {
+    position: absolute;
+    right: 15px;
+    top: 39px;
   }
   &-label {
     margin: 0 0 0px 0px;
@@ -1028,14 +1069,34 @@ ol {
 }
 
 .manasymbol {
-  height: 24px;
-  width: 24px;
+  height: 20px;
+  width: 20px;
   padding-top: 6px;
+  &.smaller {
+    height: 18px;
+    width: 18px;
+    padding-right: 6px;
+    padding-top: 0px;
+  }
+  &.shard {
+    // margin-left: -8px;
+    height: 15px;
+    width: 15px;
+    padding-right: 1px;
+    &:last-child {
+      padding-right: 6px;
+    } 
+  }
   &.noimg {
-    padding: 3px;
+    padding: 1px;
     border-radius: 60px;
+    
     background: gold;
     margin: auto;
+    &-inlist{
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
   }
 }
 
@@ -1046,7 +1107,8 @@ ol {
   padding: 6px;
   width: 100%;
   max-width: 148px;
-  margin-left: 12px;
+  // margin-left: 12px;
+  margin-right: 12px;
   border-radius: 3px;  
   text-decoration: none;
   color: ghostwhite;
@@ -1071,10 +1133,7 @@ ol {
       cursor: pointer;
     }
   }
-  &.disabled {
-    border: 1px solid slategray;
-    background: slategray;
-  }
+  
 }
 
 .buttonprimary {
@@ -1095,8 +1154,12 @@ ol {
     cursor: pointer;
   }
   &.primarysmaller {
-    max-width: 130px;
+    max-width: 148px;
     margin-right: 21px;
+  }
+  &.disabled {
+    border: 1px solid slategray;
+    background: slategray;
   }
 }
 
@@ -1132,7 +1195,7 @@ ol {
     font-size: .9em;
   }
   &.primarysmaller {
-    max-width: 130px;
+    max-width: 148px;
     margin-right: 12px;
   }
 }

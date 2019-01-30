@@ -121,7 +121,7 @@ class CubeViewer extends Component {
           </div>
 
           { minLengthMet && 
-              <button className="buttontransparent primarysmaller" onClick={(e) => this.toggleSampleHandModal(e)}>
+              <button className="buttonsecondary" onClick={(e) => this.toggleSampleHandModal(e)}>
                 Sample Pack
               </button>
           }

@@ -75,7 +75,7 @@ ol {
   padding-left: 8vh;
   padding-bottom: 66px;
   padding-top: 4vh;
-  border-bottom: 9px solid slategray;
+  border-bottom: 9px solid white;
 }
 .view-header__count {
   font-family: "Nunito Sans", sans-serif;
@@ -194,7 +194,7 @@ ol {
 }
 
 .searchbar {
-  z-index: 3;
+  z-index: 2;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -395,7 +395,6 @@ ol {
 .dynamiccard__tooltip {
   position: absolute;
   margin: -20px 0 0 -81px;
-  z-index: 2;
   max-width: 244px;
   border-radius: 12px;
   box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
@@ -450,7 +449,6 @@ ol {
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 1;
   position: absolute;
   margin-top: -225px;
   margin-left: 297px;
@@ -467,7 +465,7 @@ ol {
 }
 .dynamiccard__buttonpanel.onlist {
   margin: 0;
-  margin-left: 381px;
+  margin-left: 385px;
 }
 
 .sneak-up {
@@ -512,24 +510,43 @@ ol {
 .dynamiclistitem {
   display: flex;
   flex-direction: column;
-  background: white;
+  background: ghostwhite;
   border-right: 0.5px solid lightgray;
   border-bottom: 1px solid lightgray;
   border-left: 0.5px solid lightgray;
 }
-.dynamiclistitem:first-child {
-  padding-left: 9px;
-}
 .dynamiclistitem__header {
-  text-decoration: underline;
-  padding-bottom: 15px;
+  border-bottom: 1px solid gainsboro;
+  margin: 6px 0px 12px 0px;
+  padding-bottom: 6px;
   font-size: 1em;
 }
 .dynamiclistitem__column {
-  padding: 15px 12px;
+  height: 100%;
+}
+.dynamiclistitem__column-mana {
+  padding: 3px 0px;
+  background: slategray;
+  position: sticky;
+  top: 60px;
+  border-bottom: 1px solid gainsboro;
+  border-right: 0.5px solid lightgray;
+}
+.dynamiclistitem__column-subsectionhead {
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+  font-weight: 700;
+  margin-top: 12px;
+  padding-bottom: 6px;
+  color: darkgoldenrod;
+  text-decoration: underline;
+}
+.dynamiclistitem__listcontainer {
+  padding: 0px 12px 15px 12px;
 }
 .dynamiclistitem__entry {
-  width: 141px;
+  width: 147px;
   font-size: 0.8em;
   padding-bottom: 3px;
   cursor: pointer;
@@ -545,7 +562,7 @@ ol {
   color: blue;
   border: 1px solid blue;
   border-radius: 6px;
-  background: whitesmoke;
+  background: lavender;
 }
 .dynamiclistitem__entry-pinned:hover {
   text-decoration: none;
@@ -725,6 +742,17 @@ ol {
   margin-top: 12px;
   flex-wrap: wrap;
 }
+.modal__reassign-label {
+  margin-right: 6px;
+}
+.modal__reassign-option {
+  padding: 6px 0px;
+}
+.modal__reassign-input {
+  max-width: 30px;
+  padding: 6px;
+}
+
 .statsTable {
   max-width: 570px;
   margin-left: 12px;
@@ -860,7 +888,7 @@ ol {
 
 .versionchanger {
   overflow-y: auto;
-  max-height: 60vh;
+  max-height: 33vh;
   border-left: 1px solid lightslategray;
   border-right: 1px solid lightslategray;
   border-bottom: 3px solid #282c34;
@@ -868,6 +896,12 @@ ol {
 .versionchanger-box {
   min-width: 202px;
   margin-top: 36px;
+  max-width: 330px;
+}
+.versionchanger-preview {
+  position: absolute;
+  right: 15px;
+  top: 39px;
 }
 .versionchanger-label {
   margin: 0 0 0px 0px;
@@ -945,15 +979,33 @@ ol {
 }
 
 .manasymbol {
-  height: 24px;
-  width: 24px;
+  height: 20px;
+  width: 20px;
   padding-top: 6px;
 }
+.manasymbol.smaller {
+  height: 18px;
+  width: 18px;
+  padding-right: 6px;
+  padding-top: 0px;
+}
+.manasymbol.shard {
+  height: 15px;
+  width: 15px;
+  padding-right: 1px;
+}
+.manasymbol.shard:last-child {
+  padding-right: 6px;
+}
 .manasymbol.noimg {
-  padding: 3px;
+  padding: 1px;
   border-radius: 60px;
   background: gold;
   margin: auto;
+}
+.manasymbol.noimg-inlist {
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .buttonsecondary {
@@ -962,7 +1014,7 @@ ol {
   padding: 6px;
   width: 100%;
   max-width: 148px;
-  margin-left: 12px;
+  margin-right: 12px;
   border-radius: 3px;
   text-decoration: none;
   color: ghostwhite;
@@ -988,10 +1040,6 @@ ol {
   transition: 99ms;
   cursor: pointer;
 }
-.buttonsecondary.disabled {
-  border: 1px solid slategray;
-  background: slategray;
-}
 
 .buttonprimary {
   background: darkslateblue;
@@ -1012,8 +1060,12 @@ ol {
   cursor: pointer;
 }
 .buttonprimary.primarysmaller {
-  max-width: 130px;
+  max-width: 148px;
   margin-right: 21px;
+}
+.buttonprimary.disabled {
+  border: 1px solid slategray;
+  background: slategray;
 }
 
 .buttontransparent {
@@ -1048,7 +1100,7 @@ ol {
   font-size: 0.9em;
 }
 .buttontransparent.primarysmaller {
-  max-width: 130px;
+  max-width: 148px;
   margin-right: 12px;
 }
 
