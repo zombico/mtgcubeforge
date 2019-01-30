@@ -78,7 +78,7 @@ const MixedSpreadView = (props) => {
       <div className={!color.length ? "hidden" : "dynamiclistitem__column"}>
         <div className="dynamiclistitem__column-mana centerizer">
         { color !== land && color !== multicolor &&          
-          <img className="manasymbol" src={`/symbols/${colorstring}mana.svg`} alt={`${color}manasymbol`} />          
+          <img className="manasymbol" src={`/symbols/${colorstring.toLowerCase()}mana.svg`}  />          
         }
         {
           color === land &&
@@ -143,7 +143,7 @@ const MixedSpreadView = (props) => {
     const guildSubSection = (color, colorstring) => (
       <div className={!color.length ? "hidden" : "dynamiclistitem__guild"}>
         <div className="dynamiclistitem__column-subsectionhead">
-        <img className="manasymbol smaller" src={`/symbols/${colorstring}mana.svg`} alt={`${color}manasymbol`} /> 
+        <img className="manasymbol smaller" src={`/symbols/${colorstring.toLowerCase()}mana.svg`} alt={`${colorstring.toLowerCase()}manasymbol`} /> 
           {colorstring}
         </div>
         {color}
@@ -177,27 +177,27 @@ const MixedSpreadView = (props) => {
     </div>
     <div className="dynamiclistitem">
       {colorSection(black, "Black")}
-      {/* <div id="Blacksection" className="dynamiccard__color-spacer" /> */}
+      
     </div>
     <div className="dynamiclistitem">
       {colorSection(white, "White")}
-      {/* <div id="Whitesection" className="dynamiccard__color-spacer" /> */}
+      
     </div>
     <div className="dynamiclistitem">
       {colorSection(red, "Red")}
-      {/* <div id="Redsection" className="dynamiccard__color-spacer" /> */}
+      
     </div>
     <div className="dynamiclistitem">
       {colorSection(green, "Green")}
-      {/* <div id="Greensection" className="dynamiccard__color-spacer" /> */}
+      
     </div>
     <div className="dynamiclistitem">
       {colorSection(colorless, "Colorless")}
-      {/* <div id="Colorlesssection" className="dynamiccard__color-spacer" /> */}
+      
     </div>
     <div className="dynamiclistitem">
       {colorSection(land, "Land")}
-      {/* <div id="Landsection" className="dynamiccard__color-spacer" /> */}
+      
     </div>
         </div>
         </>
