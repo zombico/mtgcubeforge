@@ -30,9 +30,13 @@ const MixedSpreadView = (props) => {
         loadCube={() => props.loadCube()}
         hasControls={props.hasControls}
         hoverEnabled={props.enableHoverZoom}
+
       />      
       
-    )) 
+    ))
+    
+    
+
     const errantLands = view.filter(card => card.props.colors.length > 0 && card.props.type.includes("Land")).map((card) => card.props.id).toString()
     
     const multicolor = view.filter(card => card.props.colors.length > 1)
@@ -71,7 +75,6 @@ const MixedSpreadView = (props) => {
 
     
     
-    
 
     const colorSection = (color, colorstring) => (
       <>
@@ -91,7 +94,15 @@ const MixedSpreadView = (props) => {
         </div>
         <h3 className="dynamiclistitem__header centerizer"  >{colorstring} <span>- {color.length}</span> </h3>
         <div className={"dynamiclistitem__listcontainer"}>                                
-          {color !== multicolor && color}    
+          {color !== multicolor && !props.showTypes && color}    
+          { color !== multicolor && props.showTypes && typeSplitter(color, "Creature", "Creatures") }
+          { color !== multicolor && props.showTypes && typeSplitter(color, "Planeswalker", "Planeswalkers") }          
+          { color !== multicolor && props.showTypes && typeSplitter(color, "Instant", "Instants") }
+          { color !== multicolor && props.showTypes && typeSplitter(color, "Sorcery", "Sorceries") }
+          { color !== multicolor && props.showTypes && typeSplitter(color, "Enchantment", "Enchantments", "Artifact", "Creature") }
+          { color !== multicolor && props.showTypes && typeSplitter(color, "Artifact", "Artifacts", "Creature") }
+          { color !== multicolor && props.showTypes && typeSplitter(color, "Land", "Land") }
+
           { color===multicolor && shardSubSection(unalignedGold, "Unaligned 4c 5c", "", "", "")}
 
           { color===multicolor && guildSubSection(azorious, "Azorious")}
@@ -116,10 +127,15 @@ const MixedSpreadView = (props) => {
           { color===multicolor && shardSubSection(sultai, "Sultai", "black", "green", "blue")}
           { color===multicolor && shardSubSection(temur, "Temur", "green", "blue", "red")}
       
-        </div>
-        
-      </div>
-      
+        </div>        
+      </div>      
+      </>
+    )
+
+    const typeSplitter = (color, typestring, displayname, excludetype, excludetype1) => (      
+      <>      
+      <div className={color.filter(card => card.props.type.includes(typestring) && !card.props.type.includes(excludetype) && !card.props.type.includes(excludetype1)).length ?"dynamiclistitem__column-typehead" : "hidden"}> {displayname}</div>
+      {typeSplitter.array = color.filter(card => card.props.type.includes(typestring) && !card.props.type.includes(excludetype) && !card.props.type.includes(excludetype1))}
       </>
     )
     
@@ -258,8 +274,7 @@ const MixedSpreadView = (props) => {
 
     const containerClass = view.length > 500 ? "dynamiccard__color large" : "dynamiccard__color"
     const colorSection = (color, colorstring) => (
-      <div className={!color.length ? "hidden" : ""}>
-        <div className="dynamiccard__color-focuser" />
+      <div className={!color.length ? "hidden" : ""}>       
         <h3 className="dynamiccard__header"  >{colorstring} <span>- {color.length}</span> </h3>
         <div className={containerClass}>                                
           {color}
