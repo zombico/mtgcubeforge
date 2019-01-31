@@ -19,6 +19,7 @@ class CubeViewer extends Component {
       viewType: "list",
       sortType: "cmc",
       enableHoverZoom: false,
+      showTypes: true,
       username: "...",
       toggleSampleHandModal: false,
     }
@@ -27,6 +28,7 @@ class CubeViewer extends Component {
   this.handleViewChange = this.handleViewChange.bind(this)
   this.handleSortChange = this.handleSortChange.bind(this)
   this.toggleAutoZoom = this.toggleAutoZoom.bind(this)
+  this.toggleShowTypes = this.toggleShowTypes.bind(this)
   }
   
   async componentWillMount() {
@@ -62,6 +64,12 @@ class CubeViewer extends Component {
     if(this.state.enableHoverZoom === false) {
       this.setState({ enableHoverZoom: true })
     } else this.setState({ enableHoverZoom: false })
+  }
+
+  toggleShowTypes = () => {
+    if(this.state.showTypes === false) {
+      this.setState({ showTypes: true })
+    } else this.setState({ showTypes: false })
   }
 
   handleViewChange(event) {
@@ -110,12 +118,20 @@ class CubeViewer extends Component {
                 <option value="alphabetic">Alphabetic</option>
               </select>
             </div>
-            <div className="sortcontrol-option fullwidth">
+            <div className="sortcontrol-option ">
               <label className="sortcontrol-label">Zoom in on hover</label>
               <input 
                 type="checkbox" 
                 checked={this.state.enableHoverZoom}
                 onChange={this.toggleAutoZoom}
+              />              
+            </div>
+            <div className="sortcontrol-option ">
+              <label className="sortcontrol-label">Separate card types</label>
+              <input 
+                type="checkbox" 
+                checked={this.state.showTypes}
+                onChange={this.toggleShowTypes}
               />              
             </div>
           </div>
@@ -139,6 +155,8 @@ class CubeViewer extends Component {
             hasControls={false}
             sort={this.state.sortType}
             enableHoverZoom={this.state.enableHoverZoom}
+            showTypes={this.state.showTypes}
+            sortType={this.state.sortType}
           />
         </div>
       </div>
