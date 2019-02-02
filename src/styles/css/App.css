@@ -848,11 +848,17 @@ ol {
 .statuslight-light.view {
   background: lightseagreen;
 }
+.statuslight-light.draft {
+  background: goldenrod;
+}
 .statuslight.view {
   border: 1px solid lightseagreen;
 }
 .statuslight.edit {
   border: 1px solid brown;
+}
+.statuslight.draft {
+  border: 1px solid goldenrod;
 }
 
 .tooltip {
@@ -1073,6 +1079,7 @@ ol {
 .buttonprimary.disabled {
   border: 1px solid slategray;
   background: slategray;
+  cursor: not-allowed;
 }
 
 .buttontransparent {
