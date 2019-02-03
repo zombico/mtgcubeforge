@@ -12,10 +12,11 @@ class DraftSimulator extends Component {
       cubeId: 'banana',
       cubename: 'Loading cube...',
       cubeContents : [],
-      draftContents: [],
+      draftContents: [],      
       players: "0",
       packs: 3,      
-      draftPacks: []
+      draftPacks: [],
+      draftStarted: false
     }
   this.loadCube = this.loadCube.bind(this);    
   this.handleChange = this.handleChange.bind(this)
@@ -58,37 +59,36 @@ class DraftSimulator extends Component {
   startDraft = () => {
     this.shuffleArray(this.state.cubeContents)
     this.makePacks()
+    this.setState({ draftStarted: true })
   }
 
   makePacks = async () => {
     const packsToMake = this.state.players * this.state.packs
-    const cardsNeeded = packsToMake * 15
-    const players = this.state.players
+    const cardsNeeded = packsToMake * 15  
     const draftContents = []
     const draftPacks = []
-
+    
     for (let i = 0; i < cardsNeeded; i++) {
       draftContents.push(this.state.cubeContents[i])
-    }
-    await this.setState({ draftContents })
+      await this.setState({ draftContents })    
+    }    
 
     for (let i = 0; i < packsToMake; i++) {
       let pack = []
       for (let o = 0; o < 15; o++) {        
-        pack.push(this.state.draftContents[o])
-        draftContents.shift()        
-        pack.length === 15 && draftPacks.push(pack)        
+        await pack.push(this.state.draftContents[o])                
+        pack.length === 15 && draftPacks.push(pack)                
       }
       this.setState({ draftPacks })
     }    
   }
 
-  render() {
+  render() {    
+    const draftPacks = this.state.draftPacks
+    const draftStarted = this.state.draftStarted
     const cubelength = this.state.cubeContents.length
     const players = this.state.players
-    // const packs = this.state.packs
-    // const minCardsPerPack = cubelength/players/packs 
-    // console.log(minCardsPerPack, cubelength)
+    
     return (
       <>
       <div className="tempmain">
@@ -130,6 +130,11 @@ class DraftSimulator extends Component {
               <button className={players === "0" ? "buttonprimary disabled" : "buttonprimary"} onClick={this.startDraft} >Start draft</button>
             </div>
           </div>
+          { draftStarted && 
+            <div className="draft__currentpack">
+            {draftPacks.length > 0 && draftPacks[0].map((card => <div>{card.name}</div>))}
+            </div>
+          }
         </div>
         <Footer />
       </div>
