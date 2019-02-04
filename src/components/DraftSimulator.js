@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route,  Link } from "react-router-dom"
 import Logo from './buttons/Logo'
 import StatusLight from './buttons/StatusLight'
 import Footer from './Footer'
+import DraftPackViewer from './DraftPackViewer';
 
 class DraftSimulator extends Component {
   constructor(props) {
@@ -16,13 +17,15 @@ class DraftSimulator extends Component {
       players: "0",
       packs: 3,      
       draftPacks: [],
-      draftStarted: false
+      draftStarted: false,
+      myPicks: []
     }
   this.loadCube = this.loadCube.bind(this);    
   this.handleChange = this.handleChange.bind(this)
   this.startDraft = this.startDraft.bind(this)
   this.makePacks = this.makePacks.bind(this)
   this.shuffleArray = this.shuffleArray.bind(this)
+  this.draftCard = this.draftCard.bind(this)
   }
   
   async componentWillMount() {
@@ -75,12 +78,28 @@ class DraftSimulator extends Component {
 
     for (let i = 0; i < packsToMake; i++) {
       let pack = []
+      
       for (let o = 0; o < 15; o++) {        
         await pack.push(this.state.draftContents[o])                
-        pack.length === 15 && draftPacks.push(pack)                
+        pack.length === 15 && pack.push(`pack${i}`) 
+        pack.length === 16 && draftPacks.push(pack)               
       }
       this.setState({ draftPacks })
     }    
+  }
+
+  draftCard = (card, packNumber) => {
+    const picks = this.state.myPicks
+    picks.push(card)
+    const currentPack = this.state.draftPacks[packNumber]
+    const updatedPack = currentPack.filter(pick=> pick.id !== card.id)
+    const allPacks = this.state.draftPacks
+    allPacks[packNumber] = updatedPack
+    
+    this.setState({ 
+      myPicks: picks,
+      draftPacks: allPacks
+     })
   }
 
   render() {    
@@ -131,9 +150,13 @@ class DraftSimulator extends Component {
             </div>
           </div>
           { draftStarted && 
-            <div className="draft__currentpack">
-            {draftPacks.length > 0 && draftPacks[0].map((card => <div>{card.name}</div>))}
-            </div>
+            <DraftPackViewer 
+              packNumber={0}
+              draftPack={draftPacks.length >0 && draftPacks[0]}        
+              players={players}
+              rounds={this.state.packs}
+              draftCard={this.draftCard}
+            />
           }
         </div>
         <Footer />
