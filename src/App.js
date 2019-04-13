@@ -14,6 +14,7 @@ import CubeViewer from './components/CubeViewer';
 import Dashboard from './components/Dashboard';
 import HomePage from './components/HomePage';
 import About from './components/About';
+import DraftSimulator from './components/DraftSimulator';
 
 import { getToken } from './services/tokenService'
 
@@ -59,7 +60,15 @@ class App extends Component {
                 <CubeViewer {...props} />  
               )
             }}
-          />  
+          /> 
+          <Route
+            path="/draft"
+            render={(props) => {                
+              return (
+                <DraftSimulator {...props} />  
+              )
+            }}
+          />
           <Route 
             exact path="/"
             render={() => <Redirect to="/home" /> }

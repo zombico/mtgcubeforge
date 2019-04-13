@@ -929,12 +929,18 @@ ol {
     &.view {
       background: lightseagreen;
     }
+    &.draft {
+      background: goldenrod;
+    }
   }
   &.view {
     border: 1px solid lightseagreen;  
   }
   &.edit {
     border: 1px solid brown;  
+  }
+  &.draft {
+    border: 1px solid goldenrod  
   }
 }
 .tooltip {
@@ -1108,6 +1114,11 @@ ol {
   }
 }
 
+.packlist {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 // buttons 
 .buttonsecondary {
   background: darkcyan;
@@ -1168,6 +1179,7 @@ ol {
   &.disabled {
     border: 1px solid slategray;
     background: slategray;
+    cursor: not-allowed;
   }
 }
 

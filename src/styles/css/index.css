@@ -510,7 +510,7 @@ ol {
 .dynamiclistitem {
   display: flex;
   flex-direction: column;
-  background: floralwhite;
+  background: ghostwhite;
   border-right: 0.5px solid lightgray;
   border-bottom: 1px solid lightgray;
   border-left: 0.5px solid lightgray;
@@ -542,11 +542,18 @@ ol {
   color: darkgoldenrod;
   text-decoration: underline;
 }
+.dynamiclistitem__column-typehead {
+  font-size: 0.8em;
+  font-weight: 700;
+  margin-top: 6px;
+  padding-bottom: 3px;
+  font-style: italic;
+}
 .dynamiclistitem__listcontainer {
   padding: 0px 12px 15px 12px;
 }
 .dynamiclistitem__entry {
-  width: 141px;
+  width: 147px;
   font-size: 0.8em;
   padding-bottom: 3px;
   cursor: pointer;
@@ -562,7 +569,7 @@ ol {
   color: blue;
   border: 1px solid blue;
   border-radius: 6px;
-  background: whitesmoke;
+  background: lavender;
 }
 .dynamiclistitem__entry-pinned:hover {
   text-decoration: none;
@@ -841,11 +848,17 @@ ol {
 .statuslight-light.view {
   background: lightseagreen;
 }
+.statuslight-light.draft {
+  background: goldenrod;
+}
 .statuslight.view {
   border: 1px solid lightseagreen;
 }
 .statuslight.edit {
   border: 1px solid brown;
+}
+.statuslight.draft {
+  border: 1px solid goldenrod;
 }
 
 .tooltip {
@@ -979,8 +992,8 @@ ol {
 }
 
 .manasymbol {
-  height: 24px;
-  width: 24px;
+  height: 20px;
+  width: 20px;
   padding-top: 6px;
 }
 .manasymbol.smaller {
@@ -990,8 +1003,8 @@ ol {
   padding-top: 0px;
 }
 .manasymbol.shard {
-  height: 12px;
-  width: 12px;
+  height: 15px;
+  width: 15px;
   padding-right: 1px;
 }
 .manasymbol.shard:last-child {
@@ -1006,6 +1019,11 @@ ol {
 .manasymbol.noimg-inlist {
   margin-bottom: 5px;
   margin-top: 5px;
+}
+
+.packlist {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .buttonsecondary {
@@ -1066,6 +1084,7 @@ ol {
 .buttonprimary.disabled {
   border: 1px solid slategray;
   background: slategray;
+  cursor: not-allowed;
 }
 
 .buttontransparent {
