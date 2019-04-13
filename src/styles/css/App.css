@@ -1021,6 +1021,11 @@ ol {
   margin-top: 5px;
 }
 
+.packlist {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .buttonsecondary {
   background: darkcyan;
   border: 1px solid darkcyan;

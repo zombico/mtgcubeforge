@@ -70,7 +70,7 @@ class About extends Component {
         this site is worthy of the time they spent building their cubes.  
       </p>
       
-      <p>You can support directly by donating via <a target="_blank" href="https://www.paypal.me/mtgcubeforge">Paypal</a>, or via <a target="_blank" href="https://www.patreon.com/mtgcubeforge">Patreon</a>.</p>
+      <p>You can support directly by donating via <a target="_blank" href="https://www.paypal.me/mtgcubeforge">Paypal</a></p>
 
       <p>Your donation will help pay for server and hosting costs, as well as a heck of a way to get my attention for feature requests.</p>
 

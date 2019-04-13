@@ -18,14 +18,17 @@ class DraftSimulator extends Component {
       packs: 3,      
       draftPacks: [],
       draftStarted: false,
-      myPicks: []
+      myPicks: [],
+      viewPackNumber: 0
     }
   this.loadCube = this.loadCube.bind(this);    
   this.handleChange = this.handleChange.bind(this)
   this.startDraft = this.startDraft.bind(this)
   this.makePacks = this.makePacks.bind(this)
+  this.showPacks = this.showPacks.bind(this)
   this.shuffleArray = this.shuffleArray.bind(this)
   this.draftCard = this.draftCard.bind(this)
+  this.getPassedPack = this.getPassedPack.bind(this)
   }
   
   async componentWillMount() {
@@ -59,6 +62,11 @@ class DraftSimulator extends Component {
     }
   }
 
+  showPacks = () => {
+    this.shuffleArray(this.state.cubeContents)
+    this.makePacks()
+  }
+
   startDraft = () => {
     this.shuffleArray(this.state.cubeContents)
     this.makePacks()
@@ -77,12 +85,13 @@ class DraftSimulator extends Component {
     }    
 
     for (let i = 0; i < packsToMake; i++) {
-      let pack = []
-      
-      for (let o = 0; o < 15; o++) {        
-        await pack.push(this.state.draftContents[o])                
-        pack.length === 15 && pack.push(`pack${i}`) 
-        pack.length === 16 && draftPacks.push(pack)               
+      let pack = {}
+      pack.number = `pack${i}`
+      pack.contents = []
+
+      for (let o = 15 * i; o < 15 * i + 15; o++) {                
+        await pack.contents.push(this.state.draftContents[o])                        
+        pack.contents.length === 15 && draftPacks.push(pack.contents)               
       }
       this.setState({ draftPacks })
     }    
@@ -95,14 +104,26 @@ class DraftSimulator extends Component {
     const updatedPack = currentPack.filter(pick=> pick.id !== card.id)
     const allPacks = this.state.draftPacks
     allPacks[packNumber] = updatedPack
-    
+    const newPackNumber = this.state.viewPackNumber + 1
+
     this.setState({ 
       myPicks: picks,
-      draftPacks: allPacks
+      draftPacks: allPacks,
+      viewPackNumber: newPackNumber 
      })
+    
+     this.getPassedPack(newPackNumber)
+  }
+
+  getPassedPack = (i) => {
+    const pack = this.state.draftPacks[i]
+    this.shuffleArray(pack)
+    for (let i = 0; i < this.state.viewPackNumber; i++) {pack.shift()}
+    
   }
 
   render() {    
+    const viewPackNumber = this.state.viewPackNumber
     const draftPacks = this.state.draftPacks
     const draftStarted = this.state.draftStarted
     const cubelength = this.state.cubeContents.length
@@ -146,18 +167,30 @@ class DraftSimulator extends Component {
               </select>
             </div>
             <div className="dashboard__panel">
-              <button className={players === "0" ? "buttonprimary disabled" : "buttonprimary"} onClick={this.startDraft} >Start draft</button>
+              {/* <button className={players === "0" ? "buttonprimary disabled" : "buttonprimary"} onClick={this.startDraft} >Start draft</button> */}
+              <button className={players === "0" ? "buttonprimary disabled" : "buttonprimary"} onClick={this.showPacks} >Make Packs</button>
             </div>
           </div>
           { draftStarted && 
             <DraftPackViewer 
-              packNumber={0}
-              draftPack={draftPacks.length >0 && draftPacks[0]}        
+              packNumber={viewPackNumber}
+              draftPack={draftPacks.length >0 && draftPacks[viewPackNumber]}        
               players={players}
               rounds={this.state.packs}
               draftCard={this.draftCard}
             />
           }
+          <div className="packlist">
+          {
+            draftPacks.length > 0 &&            
+            draftPacks.map((pack) => 
+              // <div> {pack[0].name}</div>
+              <ul>                
+                {pack.map((card) => <li>{card.name} - {card.manacost}</li>)}
+              </ul>
+            )
+          }
+          </div>
         </div>
         <Footer />
       </div>

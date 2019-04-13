@@ -1114,6 +1114,11 @@ ol {
   }
 }
 
+.packlist {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 // buttons 
 .buttonsecondary {
   background: darkcyan;
