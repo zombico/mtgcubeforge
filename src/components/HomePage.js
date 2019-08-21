@@ -36,7 +36,7 @@ class HomePage extends Component {
           
           
           <div className="spacer5" />
-          <h3>First time here?  <Link target="_blank" to="/cubeviewer/5c466d7580fd9b00248e9202"> Check out my cube!</Link> </h3>   
+          <h3>First time here?  <Link target="_blank" to="/cubeviewer/5d5cce438fa8940024fff885"> Check out my cube!</Link> </h3>   
           <a href="https://magic.wizards.com/en/articles/archive/how-build/building-your-first-cube-2016-05-19" target="_blank">
           <h3>Learn how to build a cube!</h3>
           </a>
