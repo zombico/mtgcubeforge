@@ -45,7 +45,7 @@ class CubeBuilder extends Component {
   this.toggleShowTypes = this.toggleShowTypes.bind(this)
   }
   
-  async componentDidMount() {    
+  async componentWillMount() {    
     const cubeId = this.props.location.pathname.split('/')[2]
     await this.setState({ cubeId })
     this.loadCube();
