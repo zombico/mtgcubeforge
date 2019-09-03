@@ -98,6 +98,7 @@ class ModalMassUpload extends Component {
                 close={this.props.close} 
                 length={this.state.searchTerm.length}
                 reset={this.reset}
+                type="massupload"
               />
           }
           </div>

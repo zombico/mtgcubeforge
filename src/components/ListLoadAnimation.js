@@ -17,7 +17,7 @@ class ListLoadAnimation extends Component {
     , lengthvar)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.waitingToFinish()
   }
 
@@ -27,6 +27,11 @@ class ListLoadAnimation extends Component {
     const futureButtons = (
       <div className="modal__buttonpanel">        
         <button className="buttonsecondary" onClick={this.props.reset}>Add more cards</button>
+        <button className="buttonsecondary transparent" onClick={this.props.close}>Return to cube</button>
+      </div>
+    )
+    const closer = (
+      <div className="modal__buttonpanel">        
         <button className="buttonsecondary transparent" onClick={this.props.close}>Return to cube</button>
       </div>
     )  
@@ -48,7 +53,8 @@ class ListLoadAnimation extends Component {
           </div>
           </>
         }
-        {finishedLoading && futureButtons}        
+        {finishedLoading && this.props.type === "massupload" && futureButtons}
+        {finishedLoading && this.props.type === "refresher" && closer}        
       </>
     )
   }
