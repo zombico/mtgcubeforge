@@ -221,7 +221,7 @@ class CubeBuilder extends Component {
                 Sample Pack
               </button>
           }
-          <button className="buttontransparent primarysmaller" onClick={(e) => this.refreshImages(e)} >Refresh Images</button>
+          {/* <button className="buttontransparent primarysmaller" onClick={(e) => this.refreshImages(e)} >Refresh Images</button> */}
           { this.state.stateReqstList.length > 0 &&
           <div className="modal__overlay">
             <div className="modal__newcube massupload"> 

@@ -297,6 +297,7 @@ const MixedSpreadView = (props) => {
 
   return <div className="dynamiccard__container">            
             <ModalButtonStats color="all" display="button" stats={stats} />
+            <br></br>
             <div id="Multicolorsection" className="dynamiccard__color-spacer" />
             {colorSection(multicolor, 'Multicolor')}
             <div id="Bluesection" className="dynamiccard__color-spacer" />

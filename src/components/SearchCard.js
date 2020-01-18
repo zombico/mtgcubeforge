@@ -358,6 +358,9 @@ class SearchCard extends Component {
             { card.layout === "normal" &&
               <img alt="" className="preview-img-med" src={card.imgmd} />
             }
+            { card.layout === "adventure" &&
+              <img alt="" className="preview-img-med" src={card.imgmd} />
+            }
             { card.aftermath &&
               <img alt="" className={!this.state.rotated ? "preview-img-med": "preview-img-med aftermath"} src={card.imgmd} />
             }

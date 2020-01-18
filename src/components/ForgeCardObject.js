@@ -80,6 +80,25 @@ const Forge = (reqst) => {
     reqstCard.manacost = reqst.mana_cost;
     reqstCard.set = reqst.set_name;
   }
+
+  // case for adventures
+  if (reqst.layout === "adventure") {
+    reqstCard.id = reqst.id;
+    reqstCard.name = reqst.card_faces[0].name;
+    reqstCard.nameQuest = reqst.card_faces[1].name;
+    reqstCard.colors = reqst.colors;
+    reqstCard.type = reqst.card_faces[0].type_line;
+    reqstCard.text = reqst.card_faces[0].oracle_text;
+    reqstCard.typeQuest = reqst.card_faces[1].type_line;
+    reqstCard.textQuest = reqst.card_faces[1].oracle_text;
+    reqstCard.layout = reqst.layout;
+    reqstCard.imgsm = reqst.image_uris.small;
+    reqstCard.imgmd = reqst.image_uris.normal;
+    reqstCard.oracleid = reqst.oracle_id;
+    reqstCard.cmc = reqst.cmc;
+    reqstCard.manacost = reqst.mana_cost;
+    reqstCard.set = reqst.set_name;
+  }
   
   return reqstCard
 }

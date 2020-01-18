@@ -73,6 +73,7 @@ class DynamicCard extends Component {
     const pinned = this.state.pinned
     const hoverEnabled = this.props.hoverEnabled
     const packView = this.props.packView
+    const hidePanel = this.props.hidePanel
 
     return (
       <>
@@ -93,7 +94,7 @@ class DynamicCard extends Component {
         }
         
       
-        {showingToolTip && 
+        {showingToolTip &&
           <>
           { aftermath ?
             <img className={rotated ? "dynamiccard__tooltip aftermath" : "dynamiccard__tooltip" }
@@ -115,7 +116,7 @@ class DynamicCard extends Component {
             />
           }
           
-          
+          { !hidePanel  &&
             <div className="dynamiccard__buttonpanel">
             
              <FontAwesomeIcon icon={faTimes}
@@ -154,6 +155,7 @@ class DynamicCard extends Component {
               />
             }     
           </div>
+          }
           
           </>  
         }
