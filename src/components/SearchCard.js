@@ -370,12 +370,12 @@ class SearchCard extends Component {
             { card.layout === "flip" &&
               <img alt="" className="preview-img-med flip" src={card.imgmd} />
             }
-            { card.layout === "transform" && 
+            { card.layout === "transform" || card.layout === "modal_dfc" && 
             <div className="searchbar__images">              
               <img alt="" className="preview-img-med" src={showFront ? card.imgmd : card.imgmdFlip} />                        
             </div> 
             }
-            { card.layout === "transform" && 
+            { card.layout === "transform" || card.layout === "modal_dfc" && 
             <button
              className="addtocube inoverlay changeEdition"    
              onClick={this.flipCard}          
