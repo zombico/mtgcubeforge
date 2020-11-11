@@ -13,7 +13,7 @@ class HomePage extends Component {
       <div className="App-header"><Logo /></div>
       <div className="dashboard">
         <h1 className="splashheader"><FontAwesomeIcon icon={faCube} /> MtGcubeforGe</h1> 
-        <h2>The best tool to view and build your Magic cubes. </h2>   
+        <h2>The simplest tool to view and build your Magic cubes. </h2>   
         
         
         <br/>
