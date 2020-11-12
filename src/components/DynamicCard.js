@@ -78,6 +78,7 @@ class DynamicCard extends Component {
     return (
       <>
       <div className={!packView ? "dynamiccard" : "dynamiccard packview"}>
+      
        { !packView  ?
           <img className={showingToolTip ? "mixedspread-view__img2 hovered" :"mixedspread-view__img2" }
           src={this.props.src} name={this.props.name} 
@@ -159,6 +160,7 @@ class DynamicCard extends Component {
           
           </>  
         }
+        <div style={{ position: 'absolute', opacity: '0'}}>{this.props.name}</div>
       </div>
       </>
     )

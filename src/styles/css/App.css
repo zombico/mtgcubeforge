@@ -375,8 +375,8 @@ ol {
   box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
 }
 .dynamiccard {
-  margin-top: -180px;
-  margin-right: 39px;
+  /* margin-top: -180px;
+  margin-right: 39px; */
 }
 .dynamiccard.packview {
   margin-top: 0px;
@@ -390,7 +390,7 @@ ol {
   padding-left: 40px;
 }
 .dynamiccard__header {
-  margin-bottom: 200px;
+  margin: 40px 0 20px 0;
 }
 .dynamiccard__tooltip {
   position: absolute;
@@ -424,9 +424,8 @@ ol {
   transform: rotate(-90deg) translate(36px, -42px);
 }
 .dynamiccard__color {
-  max-height: 300px;
+  /* max-height: 300px; */
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
 }
 .dynamiccard__color-spacer {
@@ -443,20 +442,20 @@ ol {
   max-height: 240px;
 }
 .dynamiccard__color.large {
-  max-height: 510px;
+  /* max-height: 100%; */
 }
 .dynamiccard__buttonpanel {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: absolute;
-  margin-top: -225px;
-  margin-left: 297px;
-  padding: 15px 15px 15px 15px;
+  margin-top: -180px;
+  /* margin-left: 283px; */
+  padding: 9px;
   background: ghostwhite;
   border-top: 1px solid slateblue;
   border-bottom: 1px solid slateblue;
-  border-right: 6px solid slateblue;
+  border-left: 6px solid #282c34;
   border-radius: 3px;
 }
 .dynamiccard__buttonpanel.samplehand {
@@ -486,13 +485,16 @@ ol {
 .mixedspread-view__img2 {
   border-radius: 8px;
   transition: 90ms;
+  max-width: 120px;
+  cursor: pointer;
 }
 .mixedspread-view__img2.hovered {
-  margin-left: -12px;
+  /* margin-left: -12px; */
 }
 .mixedspread-view__img2:hover {
-  border-radius: 8px;
-  margin-left: -12px;
+  /* border-radius: 8px;
+  margin-left: -12px; */
+  transform: scale(1.1)
 }
 .mixedspread-view__imgPack {
   border-radius: 8px;

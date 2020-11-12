@@ -268,6 +268,10 @@ const MixedSpreadView = (props) => {
     const rakdos = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "B" && card.props.colors[1]=== "R")
     const selesnya = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "G" && card.props.colors[1]=== "W")
     const simic = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "G" && card.props.colors[1]=== "U")
+
+    
+    const unalignedGold = multicolor.filter((card => card.props.colors.length > 2))
+    
     
     props.sort === 'alphabetic' && AlphabeticSort(multicolor, blue, black, white, red, green, colorless, land) 
     props.sort === 'cmc' && ConvertedManaSort(multicolor, blue, black, white, red, green, colorless, land)
@@ -281,6 +285,11 @@ const MixedSpreadView = (props) => {
           <button className="newcardholder" id={`newcardholder${colorstring}`} />
         </div>
       </div>
+    )
+    const guild = (guild) => (
+      <div className={!guild.length ? "hidden" : 'dynamiccard__color'}>                                    
+          {guild}
+        </div>
     )
 
     const stats = {}
@@ -299,7 +308,21 @@ const MixedSpreadView = (props) => {
             <ModalButtonStats color="all" display="button" stats={stats} />
             <br></br>
             <div id="Multicolorsection" className="dynamiccard__color-spacer" />
-            {colorSection(multicolor, 'Multicolor')}
+            <h3 className="dynamiccard__header">Multicolor</h3>
+            <div>
+            {guild(unalignedGold)}
+            {guild(azorious)}
+            {guild(boros)}
+            {guild(dimir)}
+            {guild(golgari)}
+            {guild(gruul)}
+            {guild(izzet)}
+            {guild(orzhov)}
+            {guild(rakdos)}
+            {guild(selesnya)}
+            {guild(simic)}
+            </div>
+            
             <div id="Bluesection" className="dynamiccard__color-spacer" />
             {colorSection(blue, 'Blue')}
             <div id="Blacksection" className="dynamiccard__color-spacer" />
