@@ -286,11 +286,7 @@ const MixedSpreadView = (props) => {
         </div>
       </div>
     )
-    const guild = (guild) => (
-      <div className={!guild.length ? "hidden" : 'dynamiccard__color'}>                                    
-          {guild}
-        </div>
-    )
+    const guild = (guild) => (<>{guild}</>)
 
     const stats = {}
       stats.all = GetStats(view)
@@ -309,18 +305,18 @@ const MixedSpreadView = (props) => {
             <br></br>
             <div id="Multicolorsection" className="dynamiccard__color-spacer" />
             <h3 className="dynamiccard__header">Multicolor</h3>
-            <div>
-            {guild(unalignedGold)}
-            {guild(azorious)}
-            {guild(boros)}
-            {guild(dimir)}
-            {guild(golgari)}
-            {guild(gruul)}
-            {guild(izzet)}
-            {guild(orzhov)}
-            {guild(rakdos)}
-            {guild(selesnya)}
-            {guild(simic)}
+            <div style={{display: 'flex', flexWrap: 'wrap'}}>
+              {guild(unalignedGold)}
+              {guild(azorious)}
+              {guild(boros)}
+              {guild(dimir)}
+              {guild(golgari)}
+              {guild(gruul)}
+              {guild(izzet)}
+              {guild(orzhov)}
+              {guild(rakdos)}
+              {guild(selesnya)}
+              {guild(simic)}
             </div>
             
             <div id="Bluesection" className="dynamiccard__color-spacer" />

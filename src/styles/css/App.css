@@ -375,8 +375,7 @@ ol {
   box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
 }
 .dynamiccard {
-  /* margin-top: -180px;
-  margin-right: 39px; */
+  margin-top: 1px;
 }
 .dynamiccard.packview {
   margin-top: 0px;
@@ -424,7 +423,6 @@ ol {
   transform: rotate(-90deg) translate(36px, -42px);
 }
 .dynamiccard__color {
-  /* max-height: 300px; */
   display: flex;
   flex-wrap: wrap;
 }
@@ -440,9 +438,6 @@ ol {
 }
 .dynamiccard__color.multi {
   max-height: 240px;
-}
-.dynamiccard__color.large {
-  /* max-height: 100%; */
 }
 .dynamiccard__buttonpanel {
   display: flex;
@@ -488,13 +483,8 @@ ol {
   max-width: 120px;
   cursor: pointer;
 }
-.mixedspread-view__img2.hovered {
-  /* margin-left: -12px; */
-}
 .mixedspread-view__img2:hover {
-  /* border-radius: 8px;
-  margin-left: -12px; */
-  transform: scale(1.1)
+  transform: scale(1.1);
 }
 .mixedspread-view__imgPack {
   border-radius: 8px;
@@ -555,7 +545,7 @@ ol {
   padding: 0px 12px 15px 12px;
 }
 .dynamiclistitem__entry {
-  width: 147px;
+  width: 10vw;
   font-size: 0.8em;
   padding-bottom: 3px;
   cursor: pointer;

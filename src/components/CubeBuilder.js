@@ -21,7 +21,7 @@ class CubeBuilder extends Component {
       cubename: 'Loading cube...',
       cubeContents: [],
       hasError: false,
-      viewType: "card",
+      viewType: "list",
       sortType: "cmc",
       enableHoverZoom: false,
       showTypes: true,
