@@ -10,6 +10,8 @@ class ModalReassignIcon extends Component {
     showModal: false,
     colors: [],
     cmc: '',
+    isFoil: "false",
+    showAllLangs: true,
     versions: [],
     stateReqstCard: ''
   }
@@ -57,6 +59,21 @@ class ModalReassignIcon extends Component {
     this.setState({ cmc: event.target.value });
   }
 
+  // handleFoil(e) {
+  //   e.preventDefault()
+  //   if (!this.state.isFoil) {
+  //     this.setState({ isFoil: "true" })  
+  //   } else this.setState({ isFoil: "false" })
+  // }
+
+  // handleLangs(e) {
+  //   e.preventDefault()
+  //   this.getVersions(this.props.oracleid)
+  //   if (!this.state.showAllLangs) {
+  //     this.setState({ showAllLangs: true })  
+  //   } else this.setState({ showAllLangs: false })
+  // }
+
   getCard(id) {
     fetch(`https://api.scryfall.com/cards/${id}`, {
     })
@@ -68,15 +85,16 @@ class ModalReassignIcon extends Component {
   )}
 
   getVersions(oracleId) {
-    fetch(`https://api.scryfall.com/cards/search?order=released&q=oracleid%3A${oracleId}&unique=prints`, {
+    if (this.state.showAllLangs) {
+      fetch(`https://api.scryfall.com/cards/search?order=released&q=oracleid%3A${oracleId}&unique=prints&include_multilingual=true`, {
       })
       .then(res => res.json())
       .then(result => {  
         this.setState({
           versions: result.data        
         }) 
-    })
-    .catch(error => console.error('Error', error))
+      }).catch(error => console.error('Error', error))
+    } 
   }
 
   changeVersion = (version) => {
@@ -108,10 +126,7 @@ class ModalReassignIcon extends Component {
   }
 
   render(){
-    const versions = this.state.versions
-    const cmc = this.state.cmc
-    const colors = this.state.colors
-    const stateReqstCard = this.state.stateReqstCard
+    const { versions, cmc, colors, showAllLangs, stateReqstCard, isFoil } = this.state
 
     if(this.state.showModal === true ){   
     return (
@@ -172,7 +187,8 @@ class ModalReassignIcon extends Component {
                   value={cmc}
                   onChange={(event)=>this.handleCmcChange(event)}
                 />
-              </div>  
+              </div>
+                
             </div>
             </form>
 
@@ -188,7 +204,7 @@ class ModalReassignIcon extends Component {
                   key={version.id} 
                   onClick={() => this.changeVersion(version)} 
                   className={stateReqstCard.id === version.id ? 'container active' : 'container idle' }
-                >{version.set_name}</div>                           
+                >{version.set_name} - {version.lang.toUpperCase()}</div>                           
               )}
               
               </div>
