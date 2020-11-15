@@ -80,7 +80,6 @@ ol {
   padding-left: 8vh;
   padding-bottom: 66px;
   padding-top: 4vh;  
-  border-bottom: 9px solid white;
   &__count {
     font-family: 'Nunito Sans', sans-serif;
   }
@@ -441,10 +440,10 @@ ol {
     box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
     transition: 0.5s;
     &.rotated {
-      transform: rotate(90deg) translate(-36px, 42px);      
+      transform: rotate(90deg) translate(-36px, -50px);      
     }
     &.aftermath {
-      transform: rotate(-90deg) translate(36px, -42px);
+      transform: rotate(-90deg) translate(36px, 48px);
     }
     &.latestpinned {
       z-index: 3;
@@ -454,15 +453,16 @@ ol {
       margin-top: 99px;
     }    
     &.onlist {
-     margin-left: -7px; 
+     margin-left: 0px; 
      margin-top: 0px;
      &.listrotated {
-      transform: rotate(90deg) translate(-36px, 42px);      
+      transform: rotate(90deg) translate(-36px, 42px);
+      margin-left: 82px;      
       
     }
     &.listaftermath {
       transform: rotate(-90deg) translate(36px, -42px);
-      
+      margin-left: 82px;
     }
     }
   }  
@@ -507,7 +507,7 @@ ol {
     }
     &.onlist {
       margin: 0;    
-      margin-left: -50px;
+      margin-left: -43px;
       margin-top: 13px;
     }
   }
@@ -566,12 +566,13 @@ ol {
   display: flex;
   flex-direction: column;
   background: ghostwhite;
-  border-right: .5px solid lightgray;
+  // border-right: .5px solid darkslategray;
   border-bottom: 1px solid lightgray;
-  border-left: .5px solid lightgray;
-  // &:first-child {
-  //   padding-left: 9px;
-  // }
+  border-left: 1px solid darkslategray;
+  border-bottom: 3px solid darkslategray;
+  &:last-child {
+    border-right: 1px solid darkslategray;
+  }
     
   &__header {
     border-bottom: 1px solid gainsboro;
@@ -588,8 +589,8 @@ ol {
       background: slategray;
       position: sticky;
       top: 60px;
-      border-bottom: 1px solid gainsboro;
-      border-right: .5px solid lightgray;
+      // border-bottom: 1px solid gainsboro;
+      // border-right: .5px solid lightgray;
     }
     &-subsectionhead {
       display: flex;
@@ -604,19 +605,23 @@ ol {
     &-typehead {
       font-size: .8em;
       font-weight: 700;
-      margin-top: 6px;
-      padding-bottom: 3px;
-      // color: lightseagreen;
-      font-style: italic;
+      margin: 9px 0;
+      padding: 5px 7px;
+      color: whitesmoke;
+      background: #282c34;
+      display: flex;
     }
   }
   &__listcontainer {
-    padding: 0px 12px 15px 12px;
+    // margin-top: -5px;
+    // padding: 0 3px;
   }
   &__entry {    
-    width: 10vw;
+    width: 10.5vw;
     font-size: .8em;
-    padding-bottom: 3px;
+    padding: 3px 7px;
+    background: white;
+    border-bottom: 1px solid gainsboro;
     
     cursor: pointer;
     &:hover {
@@ -625,7 +630,7 @@ ol {
     }
     &-pinned {
       padding-left: 6px;
-      margin-left: -6px;
+      // margin-left: -6px;
       padding-top: 3px;
       color: blue;
       border: 1px solid blue;

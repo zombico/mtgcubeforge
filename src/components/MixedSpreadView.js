@@ -92,7 +92,7 @@ const MixedSpreadView = (props) => {
           <div className="manasymbol noimg noimg-inlist">M</div>
         }
         </div>
-        <h3 className="dynamiclistitem__header centerizer"  >{colorstring} <span>- {color.length}</span> </h3>
+        {/* <h3 className="dynamiclistitem__header centerizer"  >{colorstring} <span>- {color.length}</span> </h3> */}
         <div className={"dynamiclistitem__listcontainer"}>                                
           {color !== multicolor && !props.showTypes && color}    
           { color !== multicolor && props.showTypes && typeSplitter(color, "Creature", "Creatures") }
@@ -141,7 +141,7 @@ const MixedSpreadView = (props) => {
     
     const shardSubSection = (color, colorstring, color1, color2, color3) => (
       <div className={!color.length ? "hidden" : "dynamiclistitem__guild"}>
-        <div className="dynamiclistitem__column-subsectionhead">
+        <div className="dynamiclistitem__column-typehead">
         {
           color1 &&
         <>
@@ -158,7 +158,7 @@ const MixedSpreadView = (props) => {
 
     const guildSubSection = (color, colorstring) => (
       <div className={!color.length ? "hidden" : "dynamiclistitem__guild"}>
-        <div className="dynamiclistitem__column-subsectionhead">
+        <div className="dynamiclistitem__column-typehead">
         <img className="manasymbol smaller" src={`/symbols/${colorstring.toLowerCase()}mana.svg`} alt={`${colorstring.toLowerCase()}manasymbol`} /> 
           {colorstring}
         </div>

@@ -1,6 +1,7 @@
 function getUrl(query) {
   console.log(query)
   const array = query.split(' ')
+  array.push('MTG')
   const keyed = array.map((e, index) => {
     if (index === 0) return `%3D${e}`
     else return `%2B${e}`

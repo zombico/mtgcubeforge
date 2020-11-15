@@ -75,7 +75,6 @@ ol {
   padding-left: 8vh;
   padding-bottom: 66px;
   padding-top: 4vh;
-  border-bottom: 9px solid white;
 }
 .view-header__count {
   font-family: "Nunito Sans", sans-serif;
@@ -395,10 +394,10 @@ ol {
   transition: 0.5s;
 }
 .dynamiccard__tooltip.rotated {
-  transform: rotate(90deg) translate(-36px, 42px);
+  transform: rotate(90deg) translate(-36px, -50px);
 }
 .dynamiccard__tooltip.aftermath {
-  transform: rotate(-90deg) translate(36px, -42px);
+  transform: rotate(-90deg) translate(36px, 48px);
 }
 .dynamiccard__tooltip.latestpinned {
   z-index: 3;
@@ -408,14 +407,16 @@ ol {
   margin-top: 99px;
 }
 .dynamiccard__tooltip.onlist {
-  margin-left: -7px;
+  margin-left: 0px;
   margin-top: 0px;
 }
 .dynamiccard__tooltip.onlist.listrotated {
   transform: rotate(90deg) translate(-36px, 42px);
+  margin-left: 82px;
 }
 .dynamiccard__tooltip.onlist.listaftermath {
   transform: rotate(-90deg) translate(36px, -42px);
+  margin-left: 82px;
 }
 .dynamiccard__color {
   display: flex;
@@ -454,7 +455,7 @@ ol {
 }
 .dynamiccard__buttonpanel.onlist {
   margin: 0;
-  margin-left: -50px;
+  margin-left: -43px;
   margin-top: 13px;
 }
 
@@ -499,9 +500,12 @@ ol {
   display: flex;
   flex-direction: column;
   background: ghostwhite;
-  border-right: 0.5px solid lightgray;
   border-bottom: 1px solid lightgray;
-  border-left: 0.5px solid lightgray;
+  border-left: 1px solid darkslategray;
+  border-bottom: 3px solid darkslategray;
+}
+.dynamiclistitem:last-child {
+  border-right: 1px solid darkslategray;
 }
 .dynamiclistitem__header {
   border-bottom: 1px solid gainsboro;
@@ -518,8 +522,6 @@ ol {
   background: slategray;
   position: sticky;
   top: 60px;
-  border-bottom: 1px solid gainsboro;
-  border-right: 0.5px solid lightgray;
 }
 .dynamiclistitem__column-subsectionhead {
   display: flex;
@@ -534,17 +536,18 @@ ol {
 .dynamiclistitem__column-typehead {
   font-size: 0.8em;
   font-weight: 700;
-  margin-top: 6px;
-  padding-bottom: 3px;
-  font-style: italic;
-}
-.dynamiclistitem__listcontainer {
-  padding: 0px 12px 15px 12px;
+  margin: 9px 0;
+  padding: 5px 7px;
+  color: whitesmoke;
+  background: #282c34;
+  display: flex;
 }
 .dynamiclistitem__entry {
-  width: 10vw;
+  width: 10.5vw;
   font-size: 0.8em;
-  padding-bottom: 3px;
+  padding: 3px 7px;
+  background: white;
+  border-bottom: 1px solid gainsboro;
   cursor: pointer;
 }
 .dynamiclistitem__entry:hover {
@@ -553,7 +556,6 @@ ol {
 }
 .dynamiclistitem__entry-pinned {
   padding-left: 6px;
-  margin-left: -6px;
   padding-top: 3px;
   color: blue;
   border: 1px solid blue;
