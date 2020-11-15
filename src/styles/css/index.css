@@ -467,7 +467,6 @@ ol {
   padding: 0px 4vw 250px 20px;
   display: flex;
   align-content: flex-start;
-  background: gainsboro;
 }
 .mixedspread-view__emptymsg {
   border: 1px solid white;
@@ -500,12 +499,9 @@ ol {
   display: flex;
   flex-direction: column;
   background: ghostwhite;
-  border-bottom: 1px solid lightgray;
-  border-left: 1px solid darkslategray;
+  margin-right: 5px;
+  border: 1px solid darkgray;
   border-bottom: 3px solid darkslategray;
-}
-.dynamiclistitem:last-child {
-  border-right: 1px solid darkslategray;
 }
 .dynamiclistitem__header {
   border-bottom: 1px solid gainsboro;
@@ -558,8 +554,7 @@ ol {
   padding-left: 6px;
   padding-top: 3px;
   color: blue;
-  border: 1px solid blue;
-  border-radius: 6px;
+  border: 1px solid darkslateblue;
   background: lavender;
 }
 .dynamiclistitem__entry-pinned:hover {

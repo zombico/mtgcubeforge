@@ -521,7 +521,7 @@ ol {
   padding: 0px 4vw 250px 20px;
   display: flex;
   align-content: flex-start;
-  background: gainsboro;
+  // background: gainsboro;
   &__header {
     
   }
@@ -566,12 +566,12 @@ ol {
   display: flex;
   flex-direction: column;
   background: ghostwhite;
-  // border-right: .5px solid darkslategray;
-  border-bottom: 1px solid lightgray;
-  border-left: 1px solid darkslategray;
+  margin-right: 5px;
+  border: 1px solid darkgray;
+  // border-left: 1px solid darkslategray;
   border-bottom: 3px solid darkslategray;
   &:last-child {
-    border-right: 1px solid darkslategray;
+    // border-right: 1px solid darkslategray;
   }
     
   &__header {
@@ -633,8 +633,8 @@ ol {
       // margin-left: -6px;
       padding-top: 3px;
       color: blue;
-      border: 1px solid blue;
-      border-radius: 6px;
+      border: 1px solid darkslateblue;
+      // border-radius: 6px;
       background: lavender;
       &:hover {
         text-decoration: none;
