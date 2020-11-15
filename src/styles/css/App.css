@@ -377,11 +377,6 @@ ol {
 .dynamiccard {
   margin-top: 1px;
 }
-.dynamiccard.packview {
-  margin-top: 0px;
-  margin-right: 0px;
-  margin-left: -60px;
-}
 .dynamiccard.packview:hover {
   z-index: 2;
 }
@@ -701,7 +696,7 @@ ol {
 }
 .modal__newcube.samplehand {
   display: flex;
-  max-width: 810px;
+  max-width: 760px;
   width: 100%;
   top: 50%;
 }
@@ -737,7 +732,6 @@ ol {
 }
 .samplehand-container {
   display: flex;
-  margin-left: 102px;
   margin-top: 12px;
   flex-wrap: wrap;
 }

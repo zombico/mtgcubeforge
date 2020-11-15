@@ -419,9 +419,9 @@ ol {
   margin-top: 1px;
   // margin-right: 39px;
   &.packview {
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-left: -60px;
+    // margin-top: 0px;
+    // margin-right: 0px;
+    // margin-left: -60px;
     &:hover {
       z-index: 2;
     }
@@ -776,7 +776,7 @@ ol {
   }
   &.samplehand {
     display: flex;
-    max-width: 810px;
+    max-width: 760px;
     width: 100%;
     top: 50%;
   }
@@ -815,7 +815,7 @@ ol {
   }
   &-container {
     display: flex;
-    margin-left: 102px;    
+    // margin-left: 102px;    
     margin-top: 12px;
     flex-wrap: wrap;
   }
