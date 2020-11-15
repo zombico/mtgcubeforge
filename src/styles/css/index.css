@@ -388,7 +388,7 @@ ol {
 }
 .dynamiccard__tooltip {
   position: absolute;
-  margin: -20px 0 0 -81px;
+  margin: -20px 0 0 -130px;
   max-width: 244px;
   border-radius: 12px;
   box-shadow: 3px 10px 25px -2px rgba(0, 0, 0, 0.75);
@@ -408,8 +408,8 @@ ol {
   margin-top: 99px;
 }
 .dynamiccard__tooltip.onlist {
-  margin-left: 141px;
-  margin-top: -39px;
+  margin-left: -7px;
+  margin-top: 0px;
 }
 .dynamiccard__tooltip.onlist.listrotated {
   transform: rotate(90deg) translate(-36px, 42px);
@@ -440,7 +440,7 @@ ol {
   align-items: center;
   position: absolute;
   margin-top: -180px;
-  /* margin-left: 283px; */
+  margin-left: -51px;
   padding: 9px;
   background: ghostwhite;
   border-top: 1px solid slateblue;
@@ -454,7 +454,8 @@ ol {
 }
 .dynamiccard__buttonpanel.onlist {
   margin: 0;
-  margin-left: 102px;
+  margin-left: -50px;
+  margin-top: 13px;
 }
 
 .sneak-up {
@@ -462,7 +463,7 @@ ol {
 }
 
 .mixedspread-view {
-  padding: 0px 20px 250px 20px;
+  padding: 0px 4vw 250px 20px;
   display: flex;
   align-content: flex-start;
   background: gainsboro;
