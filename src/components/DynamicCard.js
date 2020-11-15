@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faSyncAlt, faUndo, faTimes } from '@fortawesome/free-solid-svg-icons'
+import GetEbayUrl from './operations/GetEbayUrl'
+import { faTrashAlt, faSyncAlt, faUndo, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import ScryfallLogo from './buttons/ScryfallLogo'
 import ModalReassignIcon from './ModalReassignIcon'
 
@@ -74,7 +75,7 @@ class DynamicCard extends Component {
     const hoverEnabled = this.props.hoverEnabled
     const packView = this.props.packView
     const hidePanel = this.props.hidePanel
-
+    const ebayLink = GetEbayUrl(this.props.name)
     return (
       <>
       <div className={!packView ? "dynamiccard" : "dynamiccard packview"}>
@@ -149,6 +150,12 @@ class DynamicCard extends Component {
               hasControls={this.props.hasControls}
             />    
             <ScryfallLogo id={this.props.id}/>
+            <a href={ebayLink} target="_blank">
+              <FontAwesomeIcon icon={faShoppingCart}
+                className="icon icon-panel"
+                onClick={() => this.pinCard()}
+              />   
+            </a>
             { hasControls && 
               <FontAwesomeIcon icon={faTrashAlt} 
               className="icon icon-panel"

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faSyncAlt, faUndo, faTimes } from '@fortawesome/free-solid-svg-icons'
+import GetEbayUrl from './operations/GetEbayUrl'
+import { faTrashAlt, faSyncAlt, faUndo, faTimes, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import ScryfallLogo from './buttons/ScryfallLogo'
 import ModalReassignIcon from './ModalReassignIcon'
 
@@ -57,6 +58,19 @@ class DynamicListItem extends Component {
       this.setState({ showingToolTip: false })
     }   
   }
+
+  // getUrl(query) {
+  //   console.log(query)
+  //   const array = query.split(' ')
+  //   const keyed = array.map((e, index) => {
+  //     if (index === 0) return `%3D${e}`
+  //     else return `%2B${e}`
+  //   })
+  //   const ebay = keyed.join('')
+  //   // console.log(ebay)
+  //   const url = `https://rover.ebay.com/rover/1/711-53200-19255-0/1?mpre=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313%26_nkw${ebay}%26_sacat%3D0&campid=5338460844&toolid=10001&customid=`
+  //   return url
+  // }
   render() {
     const showingToolTip = this.state.showingToolTip
     const hasControls = this.props.hasControls
@@ -68,6 +82,7 @@ class DynamicListItem extends Component {
     const pinned = this.state.pinned
     const hoverEnabled = this.props.hoverEnabled
     
+    const ebayLink = GetEbayUrl(this.props.name)
     
     return (
       <>
@@ -103,10 +118,7 @@ class DynamicListItem extends Component {
           
             <div className="dynamiccard__buttonpanel onlist">
             
-             {/* <FontAwesomeIcon icon={faTimes}
-                className="icon icon-panel"
-                onClick={() => this.pinCard()}
-              />      */}
+               
             
             { hasBack &&  
               <FontAwesomeIcon icon={faSyncAlt}
@@ -132,7 +144,12 @@ class DynamicListItem extends Component {
               hasControls={this.props.hasControls}
             />    
             <ScryfallLogo id={this.props.id}/>
-            
+            <a href={ebayLink} target="_blank">
+              <FontAwesomeIcon icon={faShoppingCart}
+                className="icon icon-panel"
+                onClick={() => this.pinCard()}
+              />   
+            </a>
             { hasControls && 
               <>
               
