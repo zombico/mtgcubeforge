@@ -120,10 +120,10 @@ class DynamicCard extends Component {
           { !hidePanel  &&
             <div className="dynamiccard__buttonpanel">
             
-             <FontAwesomeIcon icon={faTimes}
+             {/* <FontAwesomeIcon icon={faTimes}
                 className={!pinned ? "icon icon-panel " : "icon icon-panel  "}
                 onClick={() => this.pinCard()}
-              />     
+              />      */}
             
             { hasBack &&  
               <FontAwesomeIcon icon={faSyncAlt}

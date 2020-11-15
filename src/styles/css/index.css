@@ -454,7 +454,7 @@ ol {
 }
 .dynamiccard__buttonpanel.onlist {
   margin: 0;
-  margin-left: 385px;
+  margin-left: 102px;
 }
 
 .sneak-up {
@@ -512,6 +512,7 @@ ol {
   height: 100%;
 }
 .dynamiclistitem__column-mana {
+  z-index: 1;
   padding: 3px 0px;
   background: slategray;
   position: sticky;
@@ -677,6 +678,8 @@ ol {
   max-width: 600px;
   width: 100%;
   top: 50%;
+  border-bottom: 45px solid #282c34;
+  padding-bottom: 40px;
 }
 .modal__newcube.stats-row {
   text-align: center;

@@ -103,10 +103,10 @@ class DynamicListItem extends Component {
           
             <div className="dynamiccard__buttonpanel onlist">
             
-             <FontAwesomeIcon icon={faTimes}
+             {/* <FontAwesomeIcon icon={faTimes}
                 className="icon icon-panel"
                 onClick={() => this.pinCard()}
-              />     
+              />      */}
             
             { hasBack &&  
               <FontAwesomeIcon icon={faSyncAlt}
