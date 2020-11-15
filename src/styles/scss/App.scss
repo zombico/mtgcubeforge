@@ -565,7 +565,7 @@ ol {
 .dynamiclistitem {
   display: flex;
   flex-direction: column;
-  background: ghostwhite;
+  background: white;
   margin-right: 5px;
   border: 1px solid darkgray;
   // border-left: 1px solid darkslategray;
@@ -605,10 +605,13 @@ ol {
     &-typehead {
       font-size: .8em;
       font-weight: 700;
-      margin: 9px 0;
-      padding: 5px 7px;
-      color: whitesmoke;
-      background: #282c34;
+      // margin: 6px 0;
+      padding: 10px 7px;
+      text-decoration: underline;
+      border-bottom: 1px solid lightgray;
+      // border-top: 2px solid darkgray;
+      font-style: italic;
+      background: white;
       display: flex;
     }
   }
@@ -622,7 +625,7 @@ ol {
     padding: 3px 7px;
     background: white;
     border-bottom: 1px solid gainsboro;
-    
+    font-size:.78em;
     cursor: pointer;
     &:hover {
       color: blue;
@@ -634,6 +637,7 @@ ol {
       padding-top: 3px;
       color: blue;
       border: 1px solid darkslateblue;
+      border-left: 4px solid darkslateblue;
       // border-radius: 6px;
       background: lavender;
       &:hover {
