@@ -5,6 +5,7 @@ import GetEbayUrl from './operations/GetEbayUrl'
 import { faTrashAlt, faSyncAlt, faUndo, faTimes, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import ScryfallLogo from './buttons/ScryfallLogo'
 import ModalReassignIcon from './ModalReassignIcon'
+import ToolTip from './ToolTip';
 
 class DynamicListItem extends Component {
   constructor(props) {
@@ -145,10 +146,14 @@ class DynamicListItem extends Component {
             />    
             <ScryfallLogo id={this.props.id}/>
             <a href={ebayLink} target="_blank">
-              <FontAwesomeIcon icon={faShoppingCart}
+            <ToolTip 
+              text="See eBay listings"
+              icon={<FontAwesomeIcon 
+                icon={faShoppingCart}
                 className="icon icon-panel"
                 onClick={() => this.pinCard()}
-              />   
+              />}
+            />   
             </a>
             { hasControls && 
               <>
