@@ -32,7 +32,7 @@ class About extends Component {
          I've been using a measure that counts each card as a single type to help create a feel for the cube's spread.  
          I also look at converted mana costs, and seeing how they spread out can tell you a lot about a cube's speed.</p>
       
-      <Link to="/cubeviewer/5c466d7580fd9b00248e9202" target="_blank"> Check out my modern-ish cube</Link >
+      <Link to="/cubeviewer/5e686c3198499500243fba41" target="_blank"> Check out my modern-ish cube</Link >
       
       
       <p>Designing a cube is to continuously cycle between knowing what you want and brainstorming, since each card opens up a new potential interaction with more cards. 
