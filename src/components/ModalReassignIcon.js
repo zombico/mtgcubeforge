@@ -3,6 +3,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faCog } from '@fortawesome/free-solid-svg-icons'
 import Forge from './ForgeCardObject';
+import DisplayPrices from './DisplayPrices';
 // import ToolTip from './ToolTip'
 
 class ModalReassignIcon extends Component {
@@ -38,7 +39,7 @@ class ModalReassignIcon extends Component {
   }
 
 
-  componentWillMount() {
+  componentDidMount() {
     this.getVersions(this.props.oracleid)
     this.getCard(this.props.id)
     const mycolors = this.parseColors(this.props.colors)
@@ -127,7 +128,11 @@ class ModalReassignIcon extends Component {
 
   render(){
     const { versions, cmc, colors, showAllLangs, stateReqstCard, isFoil } = this.state
-
+    const id = stateReqstCard.id
+    const match = versions && versions.length > 0 && versions.filter(e => e.id === id)
+    const prices = match && match[0] && match[0].prices
+    const priceArray = prices && Object.entries(prices) || []
+    console.log(priceArray)
     if(this.state.showModal === true ){   
     return (
       <div>
@@ -141,7 +146,22 @@ class ModalReassignIcon extends Component {
               onClick={() => this.toggleModal()}
               className="modal__newcube-closeicon"
             />         
-            {
+            
+          <div style={{display: 'flex'}}>
+            <div className="versionchanger-box" style={{flexGrow: 1}}>
+              <div className="versionchanger-label">Available versions</div>
+              <div className="versionchanger">
+              
+              { versions && versions.map((version) =>               
+                <div
+                  key={version.id} 
+                  onClick={() => this.changeVersion(version)} 
+                  className={stateReqstCard.id === version.id ? 'container active' : 'container idle' }
+                >{version.set_name} - {version.lang.toUpperCase()}</div>                           
+              )}
+              
+              </div>
+              {
               this.props.hasControls &&
             <>
             <form>
@@ -195,23 +215,13 @@ class ModalReassignIcon extends Component {
             
             </>
             }
-            <div className="versionchanger-box">
-              <div className="versionchanger-label">Available versions</div>
-              <div className="versionchanger">
-              
-              { versions && versions.map((version) =>               
-                <div
-                  key={version.id} 
-                  onClick={() => this.changeVersion(version)} 
-                  className={stateReqstCard.id === version.id ? 'container active' : 'container idle' }
-                >{version.set_name} - {version.lang.toUpperCase()}</div>                           
-              )}
-              
-              </div>
             </div>
-          <div className="versionchanger-preview">
-            <img className="preview-img-med" src={this.state.stateReqstCard.imgmd} />  
-          </div>
+              
+            <div className="versionchanger-preview">
+              <img className="preview-img-med" src={this.state.stateReqstCard.imgmd} />  
+              <div>{DisplayPrices(priceArray)}</div>
+            </div>
+          </div>      
           {
               this.props.hasControls &&
           <div className="dashboard__panel">

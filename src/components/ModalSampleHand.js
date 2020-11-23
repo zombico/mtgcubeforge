@@ -28,7 +28,7 @@ class ModalSampleHand extends Component {
     this.setState({ sampleHand })
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.shuffleArray(this.props.cubeContents)
     this.getSampleHand()
   }

@@ -407,8 +407,8 @@ ol {
   margin-top: 99px;
 }
 .dynamiccard__tooltip.onlist {
-  margin-left: 0px;
-  margin-top: 0px;
+  margin-left: 80px;
+  margin-top: -50px;
 }
 .dynamiccard__tooltip.onlist.listrotated {
   transform: rotate(90deg) translate(-36px, 42px);
@@ -446,7 +446,7 @@ ol {
   background: ghostwhite;
   border-top: 1px solid slateblue;
   border-bottom: 1px solid slateblue;
-  border-left: 6px solid #282c34;
+  border-left: 2px solid #282c34;
   border-radius: 3px;
 }
 .dynamiccard__buttonpanel.samplehand {
@@ -455,8 +455,8 @@ ol {
 }
 .dynamiccard__buttonpanel.onlist {
   margin: 0;
-  margin-left: -43px;
-  margin-top: 13px;
+  margin-left: 42px;
+  margin-top: 0px;
 }
 
 .sneak-up {
@@ -597,7 +597,7 @@ ol {
   border: 1px solid darkslateblue;
 }
 .addtocube.changeEdition:hover {
-  background: darkslateblue;
+  background: slateblue;
   color: ghostwhite;
 }
 .addtocube.changeEdition:active {
@@ -700,6 +700,11 @@ ol {
   display: flex;
   max-width: 760px;
   width: 100%;
+  top: 50%;
+}
+.modal__newcube.listView {
+  display: flex;
+  max-width: 90vw;
   top: 50%;
 }
 .modal__newcube.massupload {
@@ -894,6 +899,7 @@ ol {
   border-left: 1px solid lightslategray;
   border-right: 1px solid lightslategray;
   border-bottom: 3px solid #282c34;
+  margin-bottom: 15px;
 }
 .versionchanger-box {
   min-width: 202px;
@@ -901,9 +907,8 @@ ol {
   max-width: 330px;
 }
 .versionchanger-preview {
-  position: absolute;
-  right: 15px;
-  top: 39px;
+  padding-right: 15px;
+  margin-left: 20px;
 }
 .versionchanger-label {
   margin: 0 0 0px 0px;
@@ -1013,6 +1018,55 @@ ol {
 .packlist {
   display: flex;
   flex-wrap: wrap;
+}
+
+.exportList {
+  overflow-y: scroll;
+  width: 100%;
+}
+.exportList-cards {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 80vh;
+  background: white;
+  width: 100%;
+}
+.exportList-cardItem {
+  padding: 0 8px;
+  border-left: 1px solid darkgray;
+  font-size: 0.6em;
+}
+
+.prices-container {
+  display: flex;
+  justify-content: space-between;
+  width: 220px;
+  margin: auto;
+  background: white;
+  border: 1px solid darkgray;
+}
+.prices-finish {
+  color: darkslateblue;
+  margin: 4px;
+  font-size: 0.7em;
+  width: 100px;
+  text-align: center;
+  font-weight: 600;
+}
+.prices-finish:first-child {
+  border-right: 1px solid darkgray;
+}
+.prices-foil {
+  color: darkgoldenrod;
+}
+.prices-price {
+  margin: 2px;
+}
+.prices-disclaimer {
+  padding: 6px 15px 0 0;
+  font-size: 0.7em;
+  text-align: right;
 }
 
 .buttonsecondary {

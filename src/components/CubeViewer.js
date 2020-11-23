@@ -5,6 +5,7 @@ import Logo from './buttons/Logo'
 import MixedSpreadView from './MixedSpreadView';
 import SearchCard from './SearchCard'
 import ModalSampleHand from './ModalSampleHand';
+import ModalExportList from './ModalExportList'
 import StatusLight from './buttons/StatusLight'
 import Footer from './Footer'
 
@@ -31,7 +32,7 @@ class CubeViewer extends Component {
   this.toggleShowTypes = this.toggleShowTypes.bind(this)
   }
   
-  async componentWillMount() {
+  async componentDidMount() {
     console.log(this.props)
     const cubeId = this.props.location.pathname.split('/')[2]
     
@@ -141,6 +142,9 @@ class CubeViewer extends Component {
                 Sample Pack
               </button>
           }
+          < ModalExportList 
+            contents={this.state.cubeContents}
+          />
         </div>
         {sampleHand && <ModalSampleHand 
           close={this.toggleSampleHandModal} 

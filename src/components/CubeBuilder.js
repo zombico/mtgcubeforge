@@ -9,6 +9,7 @@ import StatusLight from './buttons/StatusLight'
 import ListLoadAnimation from './ListLoadAnimation'
 import MixedSpreadView from './MixedSpreadView';
 import ModalMassUpload from './ModalMassUpload';
+import ModalExportList from './ModalExportList'
 import ModalSampleHand from './ModalSampleHand'
 import Footer from './Footer'
 
@@ -45,7 +46,7 @@ class CubeBuilder extends Component {
   this.toggleShowTypes = this.toggleShowTypes.bind(this)
   }
   
-  async componentWillMount() {    
+  async componentDidMount() {    
     const cubeId = this.props.location.pathname.split('/')[2]
     await this.setState({ cubeId })
     this.loadCube();
@@ -216,6 +217,9 @@ class CubeBuilder extends Component {
 
           <div className="">
           <button className="buttonprimary primarysmaller" onClick={this.toggleMassUploadModal}>Upload List</button>
+          < ModalExportList 
+            contents={this.state.cubeContents}
+          />
           { minLengthMet && 
               <button className="buttontransparent primarysmaller" onClick={(e) => this.toggleSampleHandModal(e)}>
                 Sample Pack

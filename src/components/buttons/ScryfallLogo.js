@@ -8,7 +8,7 @@ class ScryfallLogo extends Component {
     uri: ''
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getUri()
   }
   getUri() {

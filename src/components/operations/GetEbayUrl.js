@@ -1,8 +1,11 @@
 function getUrl(query) {
-  console.log(query)
+  // console.log(query)
   const array = query.split(' ')
-  array.push('MTG')
-  const keyed = array.map((e, index) => {
+  array.filter(e => e !== "Limited" && e !== "Edition")
+  const filtered = array.filter(e => e !== "Limited" && e !== "Edition")
+  // console.log(filtered)
+  filtered.push('MTG')
+  const keyed = filtered.map((e, index) => {
     if (index === 0) return `%3D${e}`
     else return `%2B${e}`
   })

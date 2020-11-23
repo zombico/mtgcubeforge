@@ -453,8 +453,8 @@ ol {
       margin-top: 99px;
     }    
     &.onlist {
-     margin-left: 0px; 
-     margin-top: 0px;
+     margin-left: 80px; 
+     margin-top: -50px;
      &.listrotated {
       transform: rotate(90deg) translate(-36px, 42px);
       margin-left: 82px;      
@@ -498,7 +498,7 @@ ol {
     background: ghostwhite;
     border-top: 1px solid slateblue;
     border-bottom: 1px solid slateblue;
-    border-left: 6px solid #282c34;
+    border-left: 2px solid #282c34;
     border-radius: 3px;
     // box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
     &.samplehand {
@@ -507,8 +507,8 @@ ol {
     }
     &.onlist {
       margin: 0;    
-      margin-left: -43px;
-      margin-top: 13px;
+      margin-left: 42px;
+      margin-top: 0px;
     }
   }
 }
@@ -687,7 +687,7 @@ ol {
     color: darkslateblue;    
     border: 1px solid darkslateblue;
     &:hover {
-      background: darkslateblue;
+      background: slateblue;
       color: ghostwhite;    
     }
     &:active {
@@ -791,6 +791,12 @@ ol {
     display: flex;
     max-width: 760px;
     width: 100%;
+    top: 50%;
+  }
+  &.listView {
+    display: flex;
+    max-width: 90vw;
+    // width: 100%;
     top: 50%;
   }
   &.massupload {
@@ -1000,16 +1006,17 @@ ol {
   border-left: 1px solid lightslategray;
   border-right: 1px solid lightslategray;
   border-bottom: 3px solid #282c34;
-  // border-radius: 0 0 3px 0px;
+  margin-bottom: 15px;
   &-box {
     min-width: 202px;
     margin-top: 36px;
     max-width: 330px;
   }
   &-preview {
-    position: absolute;
-    right: 15px;
-    top: 39px;
+    // position: absolute;
+    padding-right: 15px;
+    margin-left: 20px;
+    // padding-top: 39px;
   }
   &-label {
     margin: 0 0 0px 0px;
@@ -1129,6 +1136,61 @@ ol {
 .packlist {
   display: flex;
   flex-wrap: wrap;
+}
+
+.exportList {
+  overflow-y: scroll;
+  width: 100%;
+  &-cards {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 80vh; 
+    background: white;
+    width: 100%;
+  }
+  &-cardItem {
+    padding: 0 8px;
+    border-left: 1px solid darkgray;
+    font-size: .6em;
+  }
+}
+
+.prices {
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    width: 220px;
+    margin: auto;
+    background: white;
+    border: 1px solid darkgray;
+  }
+  &-finish {
+    color: darkslateblue;
+    // border: 1px solid darkslateblue;
+    // border-radius: 3px;
+    margin: 4px;
+    // padding: 4px;
+    font-size: .7em;
+    width: 100px;
+    text-align: center;
+    font-weight: 600;
+    &:first-child {
+      border-right: 1px solid darkgray;
+    }
+  }
+  &-foil {
+    // border: 1px solid darkgoldenrod;
+    color: darkgoldenrod;
+  }
+  &-price {
+    margin: 2px;
+  }
+  &-disclaimer {
+    padding: 6px 15px 0 0;
+    font-size: .7em;
+    text-align: right;
+  }
 }
 
 // buttons 

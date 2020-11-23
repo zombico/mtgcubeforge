@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes, faSyncAlt, faUndo } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faSyncAlt, faUndo, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import Forge from './ForgeCardObject';
 import BuildControls from './BuildControls';
 import ToolTip from './ToolTip';
-// import GetVersions from './operations/GetVersions';
+import GetEbayUrl from './operations/GetEbayUrl';
+import DisplayPrices from './DisplayPrices';
 import axios from "axios";
 
 class SearchCard extends Component {
@@ -114,9 +115,10 @@ class SearchCard extends Component {
     fetch(`https://api.scryfall.com/cards/search?order=released&q=oracleid%3A${oracleId}&unique=prints`, {
       })
       .then(res => res.json())
-      .then(result => {  
+      .then(result => {
+        const valid = result.data.filter(e => e.digital === false)  
         this.setState({
-          versions: result.data        
+          versions: valid        
         }) 
     })
     .catch(error => console.error('Error', error))
@@ -305,6 +307,8 @@ class SearchCard extends Component {
     } else this.setState({ rotated: true })
   }
 
+  
+
   render() {
     const card = this.state.stateReqstCard
     const suggestions = this.state.autoQueryOut;
@@ -312,7 +316,14 @@ class SearchCard extends Component {
     const versions = this.state.versions;
     const showFront = this.state.showFront
     const versionChangerActive = this.state.versionChangerActive;
-    
+    const ebayString = `${this.state.stateReqstCard.name} ${this.state.stateReqstCard.set}`
+    const ebayLink = GetEbayUrl(ebayString)
+
+    const id = card.id
+    const match = versions && versions.length > 0 && versions.filter(e => e.id === id)
+    const prices = match && match[0] && match[0].prices
+    const priceArray = prices && Object.entries(prices) || []
+    // this.displayPrices(priceArray)
     return (
       <div className="searchbar">  
         
@@ -375,6 +386,7 @@ class SearchCard extends Component {
               <img alt="" className="preview-img-med" src={showFront ? card.imgmd : card.imgmdFlip} />                        
             </div> 
             }
+            
             { card.layout === "transform" && 
             <button
              className="addtocube inoverlay changeEdition"    
@@ -420,6 +432,14 @@ class SearchCard extends Component {
             Add to Cube
             </button>            
             }
+            <div className="prices-backgroundColor">                
+              {!versionChangerActive && card && DisplayPrices(priceArray)}
+            </div>
+
+            <div style={{padding: '10px 0', display: 'flex'}}>
+             <a href={ebayLink} target="_blank" className="addtocube inoverlay changeEdition"> Shop ebay <FontAwesomeIcon icon={faShoppingCart} /> </a>
+             <div target="_blank" className="addtocube inoverlay changeEdition"> Coming soon <FontAwesomeIcon icon={faShoppingCart} /> </div>
+            </div>
             
             
           </div>
@@ -437,8 +457,11 @@ class SearchCard extends Component {
                 >{version.set_name}</div>                           
               )}
               </div>
+              
+              {card && <div style={{marginTop: 16}} className="prices-backgroundColor">{DisplayPrices(priceArray)}</div>}
             </div>
             }
+            
 
           </div>
           
