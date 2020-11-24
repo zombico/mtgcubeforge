@@ -22,9 +22,9 @@ class BuildControls extends Component {
           this.props.hasControls ?
             <div className="searchbar__buildcontrols__panel">
             <form className="searchbar__buildcontrols__mainbutton" onSubmit={this.props.handleAdd}>            
-            {this.props.stateReqstCard && <button className="addtocube" id="addtocube">Add to Cube</button> }
-            {!this.props.stateReqstCard && <button className="searchbar__buildcontrols-shim">hi</button>}
-            {!this.props.stateReqstCard && <button disabled className="addtocube disabled">Add to Cube</button> } 
+            {this.props.stateReqstCard && this.props.stateReqstCard.name && <button className="addtocube" id="addtocube">Add to Cube</button> }
+            {!this.props.stateReqstCard && this.props.stateReqstCard.name && <button disabled className="addtocube disabled">Add to Cube</button> } 
+            {!this.props.stateReqstCard.name && <button disabled className="addtocube disabled">Add to Cube</button> } 
                  
             </form> 
             <button className="addtocube transparent" onClick={this.props.clearSearch}>Clear Search</button>    

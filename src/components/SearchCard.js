@@ -96,10 +96,12 @@ class SearchCard extends Component {
   }
 
   getCard(card) {
-    fetch(`https://api.scryfall.com/cards/named?exact=${card}`, {
+    const sanitizedCard = card.replace('&', '')
+    fetch(`https://api.scryfall.com/cards/named?exact=${sanitizedCard}`, {
     })
     .then(res => res.json())
-    .then(result => {  
+    .then(result => { 
+      // console.log(result) 
       this.setState({
         tempCard: result        
       }) 
@@ -226,7 +228,8 @@ class SearchCard extends Component {
   handleChange(event) {
     const newStroke = event.target.value    
     this.setState({
-      searchTerm: newStroke
+      searchTerm: newStroke,
+      stateReqstCard: '',
     })
     setTimeout(this.autoComplete(newStroke), 300)
   }
@@ -363,7 +366,7 @@ class SearchCard extends Component {
             </div>      
           </div>            
         </div>
-        { this.state.stateReqstCard !== '' && 
+        { this.state.stateReqstCard && this.state.stateReqstCard.name && this.state.searchTerm !== '' &&  
         <div className="rightside">           
           <div className="rightside-displayleft">
             { card.layout === "normal" &&

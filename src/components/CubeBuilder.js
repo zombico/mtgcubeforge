@@ -20,7 +20,7 @@ class CubeBuilder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cubeId: 'banana',
+      cubeId: this.props.location.pathname.split('/')[2],
       cubename: 'Loading cube...',
       cubeContents: [],
       hasError: false,
