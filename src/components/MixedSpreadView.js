@@ -48,7 +48,7 @@ const MixedSpreadView = (props) => {
     const colorless = view.filter(card => card.props.colors.length === 0 && !card.props.type.includes("Land"))
     const land = view.filter(card => card.props.type.includes("Land") && !errantLands.includes(card.props.id) )
     
-    const azorious = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "U" && card.props.colors[1]=== "W")
+    const azorius = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "U" && card.props.colors[1]=== "W")
     const boros = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "R" && card.props.colors[1]=== "W")
     const dimir = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "B" && card.props.colors[1]=== "U")
     const golgari = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "B" && card.props.colors[1]=== "G")
@@ -105,7 +105,7 @@ const MixedSpreadView = (props) => {
 
           { color===multicolor && shardSubSection(unalignedGold, "Unaligned 4c 5c", "", "", "")}
 
-          { color===multicolor && guildSubSection(azorious, "Azorious")}
+          { color===multicolor && guildSubSection(azorius, "Azorius")}
           { color===multicolor && guildSubSection(boros, "Boros")}
           { color===multicolor && guildSubSection(dimir, "Dimir")}
           { color===multicolor && guildSubSection(golgari, "Golgari")}
@@ -258,7 +258,7 @@ const MixedSpreadView = (props) => {
     const colorless = view.filter(card => card.props.colors.length === 0 && !card.props.type.includes("Land"))
     const land = view.filter(card => card.props.type.includes("Land") && !errantLands.includes(card.props.id) )
     
-    const azorious = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "U" && card.props.colors[1]=== "W")
+    const azorius = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "U" && card.props.colors[1]=== "W")
     const boros = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "R" && card.props.colors[1]=== "W")
     const dimir = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "B" && card.props.colors[1]=== "U")
     const golgari = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "B" && card.props.colors[1]=== "G")
@@ -307,7 +307,7 @@ const MixedSpreadView = (props) => {
             <h3 className="dynamiccard__header">Multicolor</h3>
             <div style={{display: 'flex', flexWrap: 'wrap'}}>
               {guild(unalignedGold)}
-              {guild(azorious)}
+              {guild(azorius)}
               {guild(boros)}
               {guild(dimir)}
               {guild(golgari)}
