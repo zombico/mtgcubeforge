@@ -24,7 +24,15 @@ class About extends Component {
       <p>Send your questions & feedback to mtgcubeforge@gmail.com. Looking forward to hearing from you! </p>
 
         <br />
-      <h2>For Magic players and cube builders</h2>
+
+      <h2>November 2020 Updates</h2>
+      <ul />
+      <li>Pricing and shopping support</li>
+      <li>Export list to clipboard</li>
+      <li>Error messages for login/signup</li>
+      <li>Link to share button on cube builder</li>
+      
+      {/* <h2>For Magic players and cube builders</h2>
       <p>I have been maintaining Magic: the Gathering cubes since Mirrodin, but it was only around Khans block that I came up with my sorting system, while staring at a pile of cards. 
         Within the chaos lies inspiration, and that's the experience I wanted to bring to this app.</p>
       
@@ -72,7 +80,7 @@ class About extends Component {
       
       <p>You can support directly by donating via <a target="_blank" href="https://www.paypal.me/mtgcubeforge">Paypal</a></p>
 
-      <p>Your donation will help pay for server and hosting costs, as well as a heck of a way to get my attention for feature requests.</p>
+      <p>Your donation will help pay for server and hosting costs, as well as a heck of a way to get my attention for feature requests.</p> */}
 
       </div>
       <Footer />

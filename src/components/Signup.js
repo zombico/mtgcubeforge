@@ -14,7 +14,8 @@ class Signup extends Component {
     email: "",
     password: "",
     name: "",
-    isDone: false
+    isDone: false,
+    error409: false,
   }
   
   handleChange = e => {
@@ -34,6 +35,8 @@ class Signup extends Component {
       this.setState({ isDone: true })
     } catch(e) {
       console.error(e)
+      const err = e.toString()
+      if (err.includes('409')) this.setState({ error409: true })
     }
     // 2. If we receive a successful response:
     //  - grab the token from the response
@@ -41,6 +44,7 @@ class Signup extends Component {
     //  - call getCurrentUser
   };
   render() {
+    const {error409} = this.state
     if(this.state.isDone) {
     return(
       <>
@@ -93,6 +97,7 @@ class Signup extends Component {
               id="signup-name"
               
             />
+            {error409 && <div className="gateway-error">Username already taken</div>}
             <div className="centerizer pushtop30">
               <input className="buttonprimary" type="submit" value="Sign Up" />
             </div>

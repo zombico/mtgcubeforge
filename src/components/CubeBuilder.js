@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCube } from '@fortawesome/free-solid-svg-icons'
 import Logo from './buttons/Logo'
@@ -12,6 +13,7 @@ import ModalMassUpload from './ModalMassUpload';
 import ModalExportList from './ModalExportList'
 import ModalSampleHand from './ModalSampleHand'
 import Footer from './Footer'
+import ToolTip from './ToolTipSmall';
 
 
 class CubeBuilder extends Component {
@@ -31,7 +33,8 @@ class CubeBuilder extends Component {
       toggleSampleHandModal: false,
       stateReqstCard: '',
       stateReqstList: [],
-      isSubmitting: false      
+      isSubmitting: false,
+      copied: false      
     }
   this.loadCube = this.loadCube.bind(this);  
   this.refreshImages = this.refreshImages.bind(this);
@@ -165,12 +168,26 @@ class CubeBuilder extends Component {
     const showMassUpload = this.state.showMassUpload
     const sampleHand = this.state.toggleSampleHandModal 
     const minLengthMet = this.state.cubeContents.length > 15
+    const viewurl = `https://www.mtgcubeforge.com/cubeviewer/${this.state.cubeId}`
     return (
       <>
       <div className="tempmain">
       <div className="App-header" id="viewsettings">
         <Logo />
-        <StatusLight text="Now editing" light="edit" />        
+        <StatusLight text="Now editing" light="edit" />      
+        <CopyToClipboard text={viewurl}
+          onCopy={() => this.setState({copied: true})}>
+          <div className="tooltip-small-container"> 
+          <ToolTip 
+            text="Copy link to clipboard"
+            contents={
+            <a href="#" style={{marginLeft: 20}}>
+              <StatusLight text="Share" light="draft" noLight={true} />  
+            </a>
+            }
+          />
+          </div>
+        </CopyToClipboard>   
       </div>
         <SearchCard 
           loadCube={() => this.loadCube()} 

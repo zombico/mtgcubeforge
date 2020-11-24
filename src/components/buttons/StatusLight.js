@@ -14,7 +14,7 @@ class StatusLight extends Component {
     // }
     return (
       <div className={`statuslight ${this.props.light}`}>
-        <div className={`statuslight-light ${this.props.light}`} />
+        {!this.props.noLight && <div className={`statuslight-light ${this.props.light}`} />}
             {this.props.text}
       </div>
     )    

@@ -103,6 +103,11 @@ ol {
   border: 1px solid slategray;
   border-radius: 3px;
 }
+.gateway-error {
+  color: darkred;
+  font-size: 0.8em;
+}
+
 .dashboard {
   margin: auto;
   margin-top: 30px;
@@ -852,6 +857,7 @@ ol {
 }
 .statuslight.draft {
   border: 1px solid goldenrod;
+  color: goldenrod;
 }
 
 .tooltip {
@@ -864,6 +870,19 @@ ol {
   padding: 8px;
   font-size: 0.8em;
   box-shadow: 0px 3px 12px -2px rgba(0, 0, 0, 0.75);
+}
+.tooltip-small {
+  background: white;
+  position: absolute;
+  margin-left: 59px;
+  margin-top: 3px;
+  font-size: 0.6em;
+  padding: 3px;
+  background: beige;
+}
+.tooltip-small-container {
+  display: flex;
+  align-self: flex-end;
 }
 
 .pitch {

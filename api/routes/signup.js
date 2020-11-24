@@ -13,6 +13,7 @@ router.post('/', async (req, res, next) => {
       })
   } catch(e) {
     console.log(e)
+    if (e.errmsg.includes('E11000') ) res.status(409).send('user exists')
     next(e)
   }
 })

@@ -103,6 +103,11 @@ ol {
   border: 1px solid slategray;
   border-radius: 3px;
 }
+.gateway-error {
+  color: darkred;
+  font-size: 0.8em;
+}
+
 .dashboard {
   margin: auto;
   margin-top: 30px;
@@ -852,6 +857,7 @@ ol {
 }
 .statuslight.draft {
   border: 1px solid goldenrod;
+  color: goldenrod;
 }
 
 .tooltip {

@@ -66,7 +66,7 @@ class Login extends Component {
                   name="email"
                   id="login-email"          
                 />
-                {error404 && <div>No user name found</div>}
+                {error404 && <div className="gateway-error">No user name found</div>}
               
                 <label className="gateway-label" htmlFor="login-password">Password: </label>
                 <input
@@ -77,7 +77,7 @@ class Login extends Component {
                   id="login-password"
                 />
 
-                {error401 && <div>Incorrect password</div>}
+                {error401 && <div className="gateway-error">Incorrect password</div>}
               
                 <div className="centerizer pushtop30">
                 <input 
