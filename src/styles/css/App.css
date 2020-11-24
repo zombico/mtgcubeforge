@@ -1062,6 +1062,7 @@ ol {
   justify-content: space-between;
   width: 220px;
   margin: auto;
+  margin-top: 10px;
   background: white;
   border: 1px solid darkgray;
 }
