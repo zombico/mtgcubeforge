@@ -13,7 +13,9 @@ class Login extends Component {
   state = {
     email: "",
     password: "",
-    submitted: false
+    submitted: false,
+    error401: false,
+    error404: false,
   }
   
   handleChange = e => {
@@ -25,13 +27,17 @@ class Login extends Component {
     const { email, password } = this.state;
     // 1. POST to /auth/login, passing in the email and password in the body
     try {
+      
       const res = await axios.post('/login', { email, password })
       const token = res.data.token
       await setToken(token)
       this.props.getCurrentUser()      
       
     } catch(e) {
-      console.error(e)
+      const err = e.toString()
+      if (err.includes('401')) this.setState({ error401: true })
+      if (err.includes('404')) this.setState({ error404: true })
+      
     }
     // 2. If we receive a successful response:
     //  - grab the token from the response
@@ -41,6 +47,7 @@ class Login extends Component {
   
 
   render() {
+    const {error401, error404} = this.state
     if(!this.state.submitted) {
       return (
         <>
@@ -59,6 +66,7 @@ class Login extends Component {
                   name="email"
                   id="login-email"          
                 />
+                {error404 && <div>No user name found</div>}
               
                 <label className="gateway-label" htmlFor="login-password">Password: </label>
                 <input
@@ -68,6 +76,8 @@ class Login extends Component {
                   name="password"
                   id="login-password"
                 />
+
+                {error401 && <div>Incorrect password</div>}
               
                 <div className="centerizer pushtop30">
                 <input 

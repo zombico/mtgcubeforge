@@ -10,7 +10,10 @@ router.post('/', async (req, res, next) => {
     try {
       const user = await User.findOne({ email })
     
-      if (!user) return next(new Error('not found'))
+      if (!user) {
+        res.status(404).send('no user found')
+        next(new Error('not found'))
+      } 
       
       // compare user password against request body password, if they match, match = true, else match = false
       const match = await user.comparePassword(password)
@@ -21,6 +24,7 @@ router.post('/', async (req, res, next) => {
     
         res.status(200).send({ token })
       } else {
+        res.status(401).send('Incorrect password')
         next(new Error('unauthorized'))
       }
     } catch(e) {
