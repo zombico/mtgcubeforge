@@ -124,6 +124,11 @@ class App extends Component {
               <Signup getCurrentUser={this.getCurrentUser}/>
             )}
           />
+          {/* Hotfix for high rank page issue */}
+          <Route
+            path="/cubeviewer/5d86e2390ade3451f49d616b"
+            render={() => <Redirect to="/home"/> }
+          />
           </>
         </Router>  
         
