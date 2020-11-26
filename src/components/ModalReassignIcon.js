@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes, faCog } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faCog, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import Forge from './ForgeCardObject';
 import DisplayPrices from './DisplayPrices';
+import GetEbayUrl from './operations/GetEbayUrl';
 // import ToolTip from './ToolTip'
 
 class ModalReassignIcon extends Component {
@@ -90,9 +91,10 @@ class ModalReassignIcon extends Component {
       fetch(`https://api.scryfall.com/cards/search?order=released&q=oracleid%3A${oracleId}&unique=prints&include_multilingual=true`, {
       })
       .then(res => res.json())
-      .then(result => {  
+      .then(result => {
+        const valid = result.data.filter(e => e.digital === false)   
         this.setState({
-          versions: result.data        
+          versions: valid        
         }) 
       }).catch(error => console.error('Error', error))
     } 
@@ -132,7 +134,10 @@ class ModalReassignIcon extends Component {
     const match = versions && versions.length > 0 && versions.filter(e => e.id === id)
     const prices = match && match[0] && match[0].prices
     const priceArray = prices && Object.entries(prices) || []
-    console.log(priceArray)
+    const ebayString = `${stateReqstCard.name} ${stateReqstCard.set}`
+    const ebayLink = GetEbayUrl(ebayString)
+
+
     if(this.state.showModal === true ){   
     return (
       <div>
@@ -147,7 +152,15 @@ class ModalReassignIcon extends Component {
               className="modal__newcube-closeicon"
             />         
             
-          <div style={{display: 'flex'}}>
+          <div className="versionchanger-modal-contents">
+            <div className="versionchanger-preview">
+              <img className="preview-img-med" src={this.state.stateReqstCard.imgmd} />  
+              <div>{DisplayPrices(priceArray)}</div>
+              <div style={{padding: '10px 0', display: 'flex'}}>
+                <a href={ebayLink} target="_blank" className="addtocube inoverlay changeEdition"> Shop ebay <FontAwesomeIcon icon={faShoppingCart} /> </a>
+                <div target="_blank" className="addtocube inoverlay changeEdition"> Coming soon <FontAwesomeIcon icon={faShoppingCart} /> </div>
+              </div>
+            </div>
             <div className="versionchanger-box" style={{flexGrow: 1}}>
               <div className="versionchanger-label">Available versions</div>
               <div className="versionchanger">
@@ -165,50 +178,51 @@ class ModalReassignIcon extends Component {
               this.props.hasControls &&
             <>
             <form>
-            <div className="modal__reassign-option">
-              <label className="modal__reassign-label">Reassign to color section</label>
-              <select value={colors} onChange={(event)=>this.handleColorChange(event)}>
-                <option value="U">Blue</option>
-                <option value="B">Black</option>
-                <option value="W">White</option>
-                <option value="R">Red</option>
-                <option value="G">Green</option>
-                <option value="">Colorless</option>
-                <option value={`U,W`}>Azorius</option>
-                <option value={`R,W`}>Boros</option>
-                <option value={`B,U`}>Dimir</option>
-                <option value={`B,G`}>Golgari</option>
-                <option value={`G,R`}>Gruul</option>
-                <option value={`R,U`}>Izzet</option>
-                <option value={`B,W`}>Orzhov</option>
-                <option value={`B,R`}>Rakdos</option>
-                <option value={`G,W`}>Selesnya</option>
-                <option value={`G,U`}>Simic</option>
-                <option value={`B,G,W`}>Abzan</option>
-                <option value={`G,U,W`}>Bant</option>
-                <option value={`B,U,W`}>Esper</option>
-                <option value={`B,R,U`}>Grixis</option>
-                <option value={`R,U,W`}>Jeskai</option>
-                <option value={`B,G,R`}>Jund</option>
-                <option value={`B,R,W`}>Mardu</option>
-                <option value={`G,R,W`}>Naya</option>
-                <option value={`B,G,U`}>Sultai</option>
-                <option value={`G,R,U`}>Temur</option>
-                <option value={`W,B,G,R,U`}>Unaligned</option>
-              </select>
-            </div>  
-            
-            <div className="modal__reassign__options">
+            <div>  
               <div className="modal__reassign-option">
-                <label className="modal__reassign-label">Change converted mana cost to</label>
-                <input
-                  type="number"
-                  className="modal__reassign-input"
-                  value={cmc}
-                  onChange={(event)=>this.handleCmcChange(event)}
-                />
-              </div>
-                
+                <label className="modal__reassign-label">Reassign to color section</label>
+                <select value={colors} onChange={(event)=>this.handleColorChange(event)}>
+                  <option value="U">Blue</option>
+                  <option value="B">Black</option>
+                  <option value="W">White</option>
+                  <option value="R">Red</option>
+                  <option value="G">Green</option>
+                  <option value="">Colorless</option>
+                  <option value={`U,W`}>Azorius</option>
+                  <option value={`R,W`}>Boros</option>
+                  <option value={`B,U`}>Dimir</option>
+                  <option value={`B,G`}>Golgari</option>
+                  <option value={`G,R`}>Gruul</option>
+                  <option value={`R,U`}>Izzet</option>
+                  <option value={`B,W`}>Orzhov</option>
+                  <option value={`B,R`}>Rakdos</option>
+                  <option value={`G,W`}>Selesnya</option>
+                  <option value={`G,U`}>Simic</option>
+                  <option value={`B,G,W`}>Abzan</option>
+                  <option value={`G,U,W`}>Bant</option>
+                  <option value={`B,U,W`}>Esper</option>
+                  <option value={`B,R,U`}>Grixis</option>
+                  <option value={`R,U,W`}>Jeskai</option>
+                  <option value={`B,G,R`}>Jund</option>
+                  <option value={`B,R,W`}>Mardu</option>
+                  <option value={`G,R,W`}>Naya</option>
+                  <option value={`B,G,U`}>Sultai</option>
+                  <option value={`G,R,U`}>Temur</option>
+                  <option value={`W,B,G,R,U`}>Unaligned</option>
+                </select>
+              </div>  
+              
+              <div className="modal__reassign__options">
+                <div className="modal__reassign-option">
+                  <label className="modal__reassign-label">Change converted mana cost to</label>
+                  <input
+                    type="number"
+                    className="modal__reassign-input"
+                    value={cmc}
+                    onChange={(event)=>this.handleCmcChange(event)}
+                  />
+                </div>
+              </div>    
             </div>
             </form>
 
@@ -217,16 +231,13 @@ class ModalReassignIcon extends Component {
             }
             </div>
               
-            <div className="versionchanger-preview">
-              <img className="preview-img-med" src={this.state.stateReqstCard.imgmd} />  
-              <div>{DisplayPrices(priceArray)}</div>
-            </div>
+            
           </div>      
           {
               this.props.hasControls &&
-          <div className="dashboard__panel">
-            <button className="buttonsecondary" onClick={this.addCard}>Modify card</button>
+          <div style={{textAlign: 'right'}}>
             <button className="buttontransparent" onClick={this.props.removeCard} >Delete card</button>
+            <button className="buttonprimary" onClick={this.addCard} style={{marginLeft: 15}}>Modify card</button>
           </div>
           }
           </div>

@@ -266,7 +266,8 @@ ol {
     }
     &-displayright {
       width: 100%;
-      max-width: 270px;          
+      max-width: 270px;
+      margin: 36px 0 0 16px;
     }
   }
   .topside {
@@ -769,10 +770,10 @@ ol {
   }
   &.stats {
     display: flex;
-    max-width: 600px;    
+    max-width: 636px;    
     width: 100%;
     top: 50%;
-    border-bottom: 45px solid #282c34;
+    border-bottom: 3px solid #282c34;
     padding-bottom: 40px;
     &-row {
       text-align: center;
@@ -1025,15 +1026,19 @@ ol {
   border-right: 1px solid lightslategray;
   border-bottom: 3px solid #282c34;
   margin-bottom: 15px;
+  &-modal-contents {
+    display: flex;
+    margin: 12px 0;
+  }
   &-box {
-    min-width: 202px;
-    margin-top: 36px;
+    min-width: 202px;    
     max-width: 330px;
   }
   &-preview {
-    // position: absolute;
-    padding-right: 15px;
-    margin-left: 20px;
+    border: 1px solid lightgray;
+    background: white;
+    padding: 10px 15px;
+    margin-right: 20px;
     // padding-top: 39px;
   }
   &-label {

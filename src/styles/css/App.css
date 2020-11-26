@@ -247,6 +247,7 @@ ol {
 .searchbar .rightside-displayright {
   width: 100%;
   max-width: 270px;
+  margin: 36px 0 0 16px;
 }
 .searchbar .topside {
   width: 100%;
@@ -679,10 +680,10 @@ ol {
 }
 .modal__newcube.stats {
   display: flex;
-  max-width: 600px;
+  max-width: 636px;
   width: 100%;
   top: 50%;
-  border-bottom: 45px solid #282c34;
+  border-bottom: 3px solid #282c34;
   padding-bottom: 40px;
 }
 .modal__newcube.stats-row {
@@ -920,14 +921,19 @@ ol {
   border-bottom: 3px solid #282c34;
   margin-bottom: 15px;
 }
+.versionchanger-modal-contents {
+  display: flex;
+  margin: 12px 0;
+}
 .versionchanger-box {
   min-width: 202px;
-  margin-top: 36px;
   max-width: 330px;
 }
 .versionchanger-preview {
-  padding-right: 15px;
-  margin-left: 20px;
+  border: 1px solid lightgray;
+  background: white;
+  padding: 10px 15px;
+  margin-right: 20px;
 }
 .versionchanger-label {
   margin: 0 0 0px 0px;
