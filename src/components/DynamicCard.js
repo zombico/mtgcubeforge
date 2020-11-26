@@ -119,7 +119,7 @@ class DynamicCard extends Component {
             />
           }
           
-          { !hidePanel  &&
+          { !hidePanel && pinned &&
             <div className="dynamiccard__buttonpanel">
             
              {/* <FontAwesomeIcon icon={faTimes}

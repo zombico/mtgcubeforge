@@ -117,7 +117,7 @@ class DynamicListItem extends Component {
           }
           
           
-            <div className="dynamiccard__buttonpanel onlist">
+           { pinned && <div className="dynamiccard__buttonpanel onlist">
             
                
             
@@ -166,6 +166,7 @@ class DynamicListItem extends Component {
             }
              
           </div>
+      }
           
           </>  
         }
