@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route,  Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCube, faUserCheck, faListUl, faSearch } from '@fortawesome/free-solid-svg-icons'
-import Logo from './buttons/Logo'
-import Footer from './Footer'
+import Logo from '../components/buttons/Logo'
+import Footer from '../components/Footer'
 
 class HomePage extends Component {
   render() {

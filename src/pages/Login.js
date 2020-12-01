@@ -6,8 +6,8 @@ import {
 } from "react-router-dom"
 import axios from "axios";
 import { setToken, getToken } from "../services/tokenService";
-import Logo from './buttons/Logo'
-import Footer from './Footer'
+import Logo from '../components/buttons/Logo'
+import Footer from '../components/Footer'
 
 class Login extends Component {
   state = {
@@ -35,7 +35,7 @@ class Login extends Component {
       
     } catch(e) {
       const err = e.toString()
-      if (err.includes('401')) this.setState({ error401: true })
+      if (err.includes('401')) this.setState({ error401: true, error404: false })
       if (err.includes('404')) this.setState({ error404: true })
       
     }
@@ -64,7 +64,8 @@ class Login extends Component {
                   type="email"
                   onChange={this.handleChange}
                   name="email"
-                  id="login-email"          
+                  id="login-email"
+                  required          
                 />
                 {error404 && <div className="gateway-error">No user name found</div>}
               
@@ -75,6 +76,7 @@ class Login extends Component {
                   onChange={this.handleChange}
                   name="password"
                   id="login-password"
+                  required
                 />
 
                 {error401 && <div className="gateway-error">Incorrect password</div>}

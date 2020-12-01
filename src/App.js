@@ -7,13 +7,13 @@ import {
 } from "react-router-dom"
 import axios from "axios";
 import './styles/css/App.css';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import CubeBuilder from './components/CubeBuilder';
-import CubeViewer from './components/CubeViewer';
-import Dashboard from './components/Dashboard';
-import HomePage from './components/HomePage';
-import About from './components/About';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import CubeBuilder from './pages/CubeBuilder';
+import CubeViewer from './pages/CubeViewer';
+import Dashboard from './pages/Dashboard';
+import HomePage from './pages/HomePage';
+import About from './pages/About';
 import DraftSimulator from './components/DraftSimulator';
 
 import { getToken } from './services/tokenService'

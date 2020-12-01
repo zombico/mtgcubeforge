@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import {Helmet} from "react-helmet";
 import { BrowserRouter as Router, Route,  Link } from "react-router-dom"
-import Logo from './buttons/Logo'
-import MixedSpreadView from './MixedSpreadView';
-import SearchCard from './SearchCard'
-import ModalSampleHand from './ModalSampleHand';
-import ModalExportList from './ModalExportList'
-import StatusLight from './buttons/StatusLight'
-import Footer from './Footer'
+import Logo from '../components/buttons/Logo'
+import MixedSpreadView from '../components/MixedSpreadView';
+import SearchCard from '../components/SearchCard'
+import ModalSampleHand from '../components/ModalSampleHand';
+import ModalExportList from '../components/ModalExportList'
+import StatusLight from '../components/buttons/StatusLight'
+import Footer from '../components/Footer'
 
 class CubeViewer extends Component {
   constructor(props) {
@@ -86,6 +87,7 @@ class CubeViewer extends Component {
     
     return (
       <>
+      <Helmet><title>{this.state.cubename} - by {this.state.username}</title></Helmet>
       <div className="tempmain">
       <div className="App-header"  id="viewsettings">
     

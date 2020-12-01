@@ -6,8 +6,8 @@ import {
 } from "react-router-dom"
 import axios from "axios";
 import { setToken } from "../services/tokenService";
-import Logo from './buttons/Logo'
-import Footer from './Footer'
+import Logo from '../components/buttons/Logo'
+import Footer from '../components/Footer'
 
 class Signup extends Component {
   state = {

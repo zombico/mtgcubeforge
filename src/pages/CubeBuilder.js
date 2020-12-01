@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import {Helmet} from "react-helmet";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCube } from '@fortawesome/free-solid-svg-icons'
-import Logo from './buttons/Logo'
-import SearchCard from './SearchCard';
-import Forge from './ForgeCardObject';
-import StatusLight from './buttons/StatusLight'
-import ListLoadAnimation from './ListLoadAnimation'
-import MixedSpreadView from './MixedSpreadView';
-import ModalMassUpload from './ModalMassUpload';
-import ModalExportList from './ModalExportList'
-import ModalSampleHand from './ModalSampleHand'
-import Footer from './Footer'
-import ToolTip from './ToolTipSmall';
+import Logo from '../components/buttons/Logo'
+import SearchCard from '../components/SearchCard';
+import Forge from '../components/ForgeCardObject';
+import StatusLight from '../components/buttons/StatusLight'
+import ListLoadAnimation from '../components/ListLoadAnimation'
+import MixedSpreadView from '../components/MixedSpreadView';
+import ModalMassUpload from '../components/ModalMassUpload';
+import ModalExportList from '../components/ModalExportList'
+import ModalSampleHand from '../components/ModalSampleHand'
+import Footer from '../components/Footer'
+import ToolTip from '../components/ToolTipSmall';
 
 
 class CubeBuilder extends Component {
@@ -171,6 +172,7 @@ class CubeBuilder extends Component {
     const viewurl = `https://www.mtgcubeforge.com/cubeviewer/${this.state.cubeId}`
     return (
       <>
+      <Helmet><title>{this.state.cubename} - by {this.state.username}</title></Helmet>
       <div className="tempmain">
       <div className="App-header" id="viewsettings">
         <Logo />

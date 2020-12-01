@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import {Helmet} from "react-helmet";
 import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom"
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCube, faTrashAlt, faHammer, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
-import Logo from './buttons/Logo'
-import Logout from './Logout'
-import ToolTip from './ToolTip'
-import ModalNewCube from './ModalNewCube'
-import ModalDeleteCube from './ModalDeleteCube'
-import Footer from './Footer'
+import Logo from '../components/buttons/Logo'
+import Logout from '../components/Logout'
+import ToolTip from '../components/ToolTip'
+import ModalNewCube from '../components/ModalNewCube'
+import ModalDeleteCube from '../components/ModalDeleteCube'
+import Footer from '../components/Footer'
 
 class Dashboard extends Component {  
   state={
@@ -115,6 +116,7 @@ class Dashboard extends Component {
 
     return (
       <>
+      <Helmet><title>{user}'s dashboard</title></Helmet>
       <div className="tempmain">
         <header className="App-header">
           <Logo />

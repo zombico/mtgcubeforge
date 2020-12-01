@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import {Helmet} from "react-helmet";
 import { BrowserRouter as Router, Route,  Link } from "react-router-dom"
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faCube, faUserCheck, faListUl, faSearch } from '@fortawesome/free-solid-svg-icons'
-import Logo from './buttons/Logo'
-import Footer from './Footer'
+import Logo from '../components/buttons/Logo'
+import Footer from '../components/Footer'
 
 class About extends Component {  
   async componentDidMount() {
@@ -12,6 +13,7 @@ class About extends Component {
   render() {
     return (
       <>
+      <Helmet><title>About</title></Helmet>
       <div className="tempmain">
       <div className="App-header" id="viewsettings"><Logo /></div>
       <div className="dashboard">
@@ -19,7 +21,7 @@ class About extends Component {
       <br />
       <h2>What is MtG CubeForge?</h2>
       <p>MtG CubeForge is a free-to-use tool that lets you build and manage your Magic: the Gathering cubes online.  
-        It relies on Scryfall, Magic's fastest-growing api for card data, so you have access to consistently sized, high-resolution images from various sets.
+        It relies on Scryfall, Magic's leading api for card data, so you have access to consistently sized, high-resolution images from various sets, and sometimes from even other languages.
       </p>
       <p>Send your questions & feedback to mtgcubeforge@gmail.com. Looking forward to hearing from you! </p>
 
