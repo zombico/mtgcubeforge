@@ -76,6 +76,7 @@ class Signup extends Component {
               onChange={this.handleChange}
               name="email"
               id="signup-email"
+              required
             />
           
             <label className="gateway-label" htmlFor="signup-password">Password </label>
@@ -85,7 +86,7 @@ class Signup extends Component {
               onChange={this.handleChange}
               name="password"
               id="signup-password"
-              
+              required
             />
           
             <label className="gateway-label" htmlFor="signup-password">User Name </label>
@@ -95,7 +96,7 @@ class Signup extends Component {
               onChange={this.handleChange}
               name="name"
               id="signup-name"
-              
+              required
             />
             {error409 && <div className="gateway-error">Username already taken</div>}
             <div className="centerizer pushtop30">
