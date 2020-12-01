@@ -89,7 +89,7 @@ class App extends Component {
             path="/cubebuilder"
             render={(props) => {                
               return (
-                this.state.user ? <CubeBuilder {...props} /> : <Redirect to="/signup" /> 
+                this.state.user ? <CubeBuilder {...props} /> : <CubeViewer {...props} />  
               )
              }}
           />
