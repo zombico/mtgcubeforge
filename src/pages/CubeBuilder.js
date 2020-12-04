@@ -4,6 +4,7 @@ import {Helmet} from "react-helmet";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCube } from '@fortawesome/free-solid-svg-icons'
+import { getToken } from '../services/tokenService'
 import Logo from '../components/buttons/Logo'
 import SearchCard from '../components/SearchCard';
 import Forge from '../components/ForgeCardObject';
@@ -29,7 +30,7 @@ class CubeBuilder extends Component {
       sortType: "cmc",
       enableHoverZoom: false,
       showTypes: true,
-      username: "...",
+      username: "",
       showMassUpload: false,
       toggleSampleHandModal: false,
       stateReqstCard: '',
@@ -51,9 +52,11 @@ class CubeBuilder extends Component {
   }
   
   async componentDidMount() {    
+    
     const cubeId = this.props.location.pathname.split('/')[2]
     await this.setState({ cubeId })
     this.loadCube();
+    this.checkCurrentUser()
     document.getElementById("viewsettings").scrollIntoView()
   }
 
@@ -69,6 +72,28 @@ class CubeBuilder extends Component {
       console.log(error)
       this.setState({ hasError: true })
     }
+  }
+
+  checkCurrentUser = async () => {
+    
+    const token = getToken()    
+    if(token) {
+      try {
+        const res = await axios.get('/myaccount', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        // 4. If a successful response returns, store the user in state.        
+        const owner = res.data.data[0].name
+        if (owner !== this.state.username && this.state.username.length > 0) this.props.history.push(`/cubeviewer/${this.state.cubeId}`)
+
+      } catch(e) {
+        console.error(e)
+        // window.location('http://www.google.ca')
+      }
+    }
+    // 3. Pass the token as an Authorization Header    
   }
 
   getCard(id) {
