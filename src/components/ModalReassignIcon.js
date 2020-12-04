@@ -5,6 +5,7 @@ import { faTimes, faCog, faShoppingCart } from '@fortawesome/free-solid-svg-icon
 import Forge from './ForgeCardObject';
 import DisplayPrices from './DisplayPrices';
 import GetEbayUrl from './operations/GetEbayUrl';
+import GetTcgUrl from './operations/GetTcgUrl'
 // import ToolTip from './ToolTip'
 
 class ModalReassignIcon extends Component {
@@ -136,7 +137,7 @@ class ModalReassignIcon extends Component {
     const priceArray = prices && Object.entries(prices) || []
     const ebayString = `${stateReqstCard.name} ${stateReqstCard.set}`
     const ebayLink = GetEbayUrl(ebayString)
-
+    const tcgLink = GetTcgUrl(ebayString)
 
     if(this.state.showModal === true ){   
     return (
@@ -158,7 +159,7 @@ class ModalReassignIcon extends Component {
               <div>{DisplayPrices(priceArray)}</div>
               <div style={{padding: '10px 0', display: 'flex'}}>
                 <a href={ebayLink} target="_blank" className="addtocube inoverlay changeEdition"> Shop ebay <FontAwesomeIcon icon={faShoppingCart} /> </a>
-                <div target="_blank" className="addtocube inoverlay changeEdition"> Coming soon <FontAwesomeIcon icon={faShoppingCart} /> </div>
+                <a href={tcgLink} target="_blank" className="addtocube inoverlay changeEdition"> TCG Player <FontAwesomeIcon icon={faShoppingCart} /> </a>
               </div>
             </div>
             <div className="versionchanger-box" style={{flexGrow: 1}}>

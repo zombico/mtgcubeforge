@@ -5,6 +5,7 @@ import Forge from './ForgeCardObject';
 import BuildControls from './BuildControls';
 import ToolTip from './ToolTip';
 import GetEbayUrl from './operations/GetEbayUrl';
+import GetTcgUrl from './operations/GetTcgUrl'
 import DisplayPrices from './DisplayPrices';
 import axios from "axios";
 
@@ -321,6 +322,7 @@ class SearchCard extends Component {
     const versionChangerActive = this.state.versionChangerActive;
     const ebayString = `${this.state.stateReqstCard.name} ${this.state.stateReqstCard.set}`
     const ebayLink = GetEbayUrl(ebayString)
+    const tcgLink = GetTcgUrl(ebayString)
 
     const id = card.id
     const match = versions && versions.length > 0 && versions.filter(e => e.id === id)
@@ -441,7 +443,7 @@ class SearchCard extends Component {
 
             <div style={{padding: '10px 0', display: 'flex'}}>
              <a href={ebayLink} target="_blank" className="addtocube inoverlay changeEdition"> Shop ebay <FontAwesomeIcon icon={faShoppingCart} /> </a>
-             <div target="_blank" className="addtocube inoverlay changeEdition"> Coming soon <FontAwesomeIcon icon={faShoppingCart} /> </div>
+             <a href={tcgLink} target="_blank" className="addtocube inoverlay changeEdition"> TCG Player <FontAwesomeIcon icon={faShoppingCart} /> </a>
             </div>
             
             
