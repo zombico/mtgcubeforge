@@ -333,22 +333,21 @@ class SearchCard extends Component {
       <div className="searchbar">  
         
         <div className="topside">
-        <BuildControls 
-          handleAdd={this.handleAdd} 
-          stateReqstCard={this.state.stateReqstCard}
-          hasControls={this.props.hasControls}        
-          clearSearch={this.clearSearch}  
-          viewType={this.props.viewType}
-        />    
-          <div className="searchbar__menu">
-          
-          <input className="searchbar__input" type="text" id="searchcard" 
-            placeholder="search card"
-            value={searchTerm} onChange={this.handleChange}
-            onKeyDown={(e) => this.firstSearch(e)}
-            autoComplete="off" 
-          />
-          
+          <BuildControls 
+            handleAdd={this.handleAdd} 
+            stateReqstCard={this.state.stateReqstCard}
+            hasControls={this.props.hasControls}        
+            clearSearch={this.clearSearch}  
+            viewType={this.props.viewType}
+          />    
+
+          <div className="searchbar__menu">          
+            <input className="searchbar__input" type="text" id="searchcard" 
+              placeholder="search card"
+              value={searchTerm} onChange={this.handleChange}
+              onKeyDown={(e) => this.firstSearch(e)}
+              autoComplete="off" 
+            />          
             <div className="searchbar__resultbox">
             {  
               suggestions.length !==0 && searchTerm.length > 2 ? suggestions.map((card, index) => 
@@ -367,7 +366,9 @@ class SearchCard extends Component {
             }  
             </div>      
           </div>            
+
         </div>
+        
         { this.state.stateReqstCard && this.state.stateReqstCard.name && this.state.searchTerm !== '' &&  
         <div className="rightside">           
           <div className="rightside-displayleft">

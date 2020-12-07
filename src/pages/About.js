@@ -23,16 +23,26 @@ class About extends Component {
       <p>MtG CubeForge is a free-to-use tool that lets you build and manage your Magic: the Gathering cubes online.  
         It relies on Scryfall, Magic's leading api for card data, so you have access to consistently sized, high-resolution images from various sets, and sometimes from even other languages.
       </p>
-      <p>Send your questions & feedback to mtgcubeforge@gmail.com. Looking forward to hearing from you! </p>
+      
+      <p>If you are purchasing from TCG or ebay, please consider using our affiliate link by searching for the card on MtG CubeForge. </p>
+      <p>Send your questions & feedback to mtgcubeforge@gmail.com. Looking forward to hearing from you. </p>  
 
         <br />
+        <h2>December 2020 Updates</h2>
+      <ul>
+        <li>Cubeviewer now more accessible with phones by using the Explore feature</li>
+      </ul>
+      <p>Viewing experience on mobile was always going to be challening because of the size and nature of cubes.  Hopefully this feature allows you to view without having to scroll
+        through every single card and color.
+      </p>
 
       <h2>November 2020 Updates</h2>
-      <ul />
-      <li>Pricing and shopping support</li>
-      <li>Export list to clipboard</li>
-      <li>Error messages for login/signup</li>
-      <li>Link to share button on cube builder</li>
+      <ul>
+        <li>Pricing and shopping support</li>
+        <li>Export list to clipboard</li>
+        <li>Error messages for login/signup</li>
+        <li>Link to share button on cube builder</li>
+      </ul>
       
       {/* <h2>For Magic players and cube builders</h2>
       <p>I have been maintaining Magic: the Gathering cubes since Mirrodin, but it was only around Khans block that I came up with my sorting system, while staring at a pile of cards. 

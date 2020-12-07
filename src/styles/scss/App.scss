@@ -725,7 +725,7 @@ ol {
 }
 .modal__buttonpanel {
   display: flex;
-  justify-content: flex-end;
+  // justify-content: flex-end;
   padding-top: 12px;
 }
 .modal__newcube {
@@ -1326,6 +1326,93 @@ ol {
   align-items: center;
 }
 
+.explorer {
+  margin: 20px 0;
+  background: white;
+  // width: 80vw;
+  padding: 15px;
+  max-width: 650px;
+  border: 1px solid dimgray;
+  h3 {
+    font-weight: 600;
+    padding-bottom: 10px;
+    cursor: pointer;
+  }
+  &-colors {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;  
+    padding: 10px 0;
+    margin: 3px 0;
+    cursor: pointer;          
+  }
+  &-color {
+    padding: 10px;
+    border-radius: 4px;
+    margin: 3px;
+    border: 1px solid slateblue;
+    color: slateblue;
+    &:first-letter {
+      text-transform:capitalize;
+    }
+    &:hover:not(*.selected):not(*.type) {
+      background: lavender; 
+    }
+    &.type:hover {
+      background: honeydew;
+    }
+    &.selected {
+      border: 2px solid slateblue;
+      font-weight: 600;
+      color: darkslateblue;
+      
+      background: lavender;
+      &.type {
+        border: 2px solid darkcyan;
+        color: darkcyan;
+        background: honeydew; 
+      }
+    }
+    &.type {
+      color: darkcyan;
+      border: 1px solid darkcyan;
+    }  
+  }
+  &-result {
+    // max-height: 440px;
+    // overflow-y: scroll;
+    padding: 10px;
+    max-width: 400px;
+    &-item {
+      // margin: 0 20px;
+      padding: 3px 10px;
+      background: ghostwhite;
+      border-left: 1px solid slategray;
+      border-right: 1px solid slategray;
+      border-bottom: 1px solid lightgray;
+      &:first-child {
+        border-top: 1px solid slategray;
+      }
+      &:last-child {
+        border-bottom: 1px solid slategray;
+      }
+      
+    }
+  }
+  &-type {
+    &_border {
+      border-top: 1px solid slateblue;
+    }
+  }
+  &-preview {
+    padding: 3px 15px;
+    img {
+      max-width: 250px;
+    }
+  }
+  
+}
+
 // icons 
 
 .icon {
@@ -1402,4 +1489,23 @@ p {
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
   font-size: 1em;
+}
+
+select {
+  padding: 4px;
+}
+
+@media only screen and (max-width: 460px) {
+  .searchbar {
+    display: none;;
+  }
+  .view-header {
+    padding-left: 3vw;
+  }
+  .dynamiclistitem__entry {
+    width: 150px;
+  }
+  .dynamiclistitem__column-mana {
+    position: inherit;
+  }
 }

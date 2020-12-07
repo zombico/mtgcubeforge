@@ -633,7 +633,6 @@ ol {
 
 .modal__buttonpanel {
   display: flex;
-  justify-content: flex-end;
   padding-top: 12px;
 }
 
@@ -1200,6 +1199,84 @@ ol {
   align-items: center;
 }
 
+.explorer {
+  margin: 20px 0;
+  background: white;
+  padding: 15px;
+  max-width: 650px;
+  border: 1px solid dimgray;
+}
+.explorer h3 {
+  font-weight: 600;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+.explorer-colors {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 10px 0;
+  margin: 3px 0;
+  cursor: pointer;
+}
+.explorer-color {
+  padding: 10px;
+  border-radius: 4px;
+  margin: 3px;
+  border: 1px solid slateblue;
+  color: slateblue;
+}
+.explorer-color:first-letter {
+  text-transform: capitalize;
+}
+.explorer-color:hover:not(*.selected):not(*.type) {
+  background: lavender;
+}
+.explorer-color.type:hover {
+  background: honeydew;
+}
+.explorer-color.selected {
+  border: 2px solid slateblue;
+  font-weight: 600;
+  color: darkslateblue;
+  background: lavender;
+}
+.explorer-color.selected.type {
+  border: 2px solid darkcyan;
+  color: darkcyan;
+  background: honeydew;
+}
+.explorer-color.type {
+  color: darkcyan;
+  border: 1px solid darkcyan;
+}
+.explorer-result {
+  padding: 10px;
+  max-width: 400px;
+}
+.explorer-result-item {
+  padding: 3px 10px;
+  background: ghostwhite;
+  border-left: 1px solid slategray;
+  border-right: 1px solid slategray;
+  border-bottom: 1px solid lightgray;
+}
+.explorer-result-item:first-child {
+  border-top: 1px solid slategray;
+}
+.explorer-result-item:last-child {
+  border-bottom: 1px solid slategray;
+}
+.explorer-type_border {
+  border-top: 1px solid slateblue;
+}
+.explorer-preview {
+  padding: 3px 15px;
+}
+.explorer-preview img {
+  max-width: 250px;
+}
+
 .icon {
   cursor: pointer;
 }
@@ -1275,6 +1352,28 @@ p {
   font-family: "Nunito", sans-serif;
   font-weight: 400;
   font-size: 1em;
+}
+
+select {
+  padding: 4px;
+}
+
+@media only screen and (max-width: 460px) {
+  .searchbar {
+    display: none;
+  }
+
+  .view-header {
+    padding-left: 3vw;
+  }
+
+  .dynamiclistitem__entry {
+    width: 150px;
+  }
+
+  .dynamiclistitem__column-mana {
+    position: inherit;
+  }
 }
 
 /*# sourceMappingURL=App.css.map */

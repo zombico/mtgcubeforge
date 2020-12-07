@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route,  Link } from "react-router-dom"
 import Logo from '../components/buttons/Logo'
 import MixedSpreadView from '../components/MixedSpreadView';
 import SearchCard from '../components/SearchCard'
+import Explorer from '../components/Explorer'
 import ModalSampleHand from '../components/ModalSampleHand';
 import ModalExportList from '../components/ModalExportList'
 import StatusLight from '../components/buttons/StatusLight'
@@ -106,6 +107,10 @@ class CubeViewer extends Component {
           </div>
           <h2 className="view-header__count">{this.state.cubeContents.length} cards | Maintained by {this.state.username} </h2>
           
+          <Explorer 
+            cube={this.state.cubeContents}
+          />
+
           <div className="sortcontrol">
             <div className="sortcontrol-option">  
               <label className="sortcontrol-label">Show cube as</label>
@@ -138,6 +143,7 @@ class CubeViewer extends Component {
               />              
             </div>
           </div>
+          
 
           { minLengthMet && 
               <button className="buttonsecondary" onClick={(e) => this.toggleSampleHandModal(e)}>
