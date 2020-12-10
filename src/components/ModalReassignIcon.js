@@ -13,7 +13,7 @@ class ModalReassignIcon extends Component {
     showModal: false,
     colors: [],
     cmc: '',
-    isFoil: "false",
+    isFoil: false,
     showAllLangs: true,
     versions: [],
     stateReqstCard: ''
@@ -76,6 +76,14 @@ class ModalReassignIcon extends Component {
   //     this.setState({ showAllLangs: true })  
   //   } else this.setState({ showAllLangs: false })
   // }
+  toggleFoil() {
+    const isFoil = this.state.isFoil
+    const card = this.state.stateReqstCard
+    card.isFoil = !isFoil 
+    if (isFoil) {
+     this.setState({ isFoil: false, stateReqstCard: card }) 
+    } else this.setState({ isFoil: true, stateReqstCard: card})
+  }
 
   getCard(id) {
     fetch(`https://api.scryfall.com/cards/${id}`, {
@@ -106,6 +114,7 @@ class ModalReassignIcon extends Component {
      const newVersion = Forge(version)
      this.setState({
        stateReqstCard: newVersion,
+       
      })    
     }        
   }
@@ -138,6 +147,7 @@ class ModalReassignIcon extends Component {
     const ebayString = `${stateReqstCard.name} ${stateReqstCard.set}`
     const ebayLink = GetEbayUrl(ebayString)
     const tcgLink = GetTcgUrl(ebayString)
+    const hasFoilEdition = versions.filter(e => e.id === stateReqstCard.id) && versions.filter(e => e.id === stateReqstCard.id)[0] && versions.filter(e => e.id === stateReqstCard.id)[0].foil && versions.filter(e => e.id === stateReqstCard.id)[0].nonfoil
 
     if(this.state.showModal === true ){   
     return (
@@ -155,7 +165,9 @@ class ModalReassignIcon extends Component {
             
           <div className="versionchanger-modal-contents">
             <div className="versionchanger-preview">
-              <img className="preview-img-med" src={this.state.stateReqstCard.imgmd} />  
+              <div className={isFoil ? "foil-gradient modalReassign" : ""}>
+                <img className="preview-img-med" src={this.state.stateReqstCard.imgmd} />  
+              </div>
               <div>{DisplayPrices(priceArray)}</div>
               <div style={{padding: '10px 0', display: 'flex'}}>
                 <a href={ebayLink} target="_blank" className="addtocube inoverlay changeEdition"> Shop ebay <FontAwesomeIcon icon={faShoppingCart} /> </a>
@@ -223,6 +235,14 @@ class ModalReassignIcon extends Component {
                     onChange={(event)=>this.handleCmcChange(event)}
                   />
                 </div>
+                {hasFoilEdition && <div className="modal__reassign__options">
+                  <label>Is foil</label>
+                  <input type="checkbox" 
+                    value={this.state.isFoil}
+                    onChange={() => this.toggleFoil()}
+                  />
+                </div>
+                }
               </div>    
             </div>
             </form>

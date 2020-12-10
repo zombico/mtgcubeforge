@@ -3,7 +3,6 @@ import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import GetEbayUrl from './operations/GetEbayUrl'
 import { faTrashAlt, faSyncAlt, faUndo, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-import ScryfallLogo from './buttons/ScryfallLogo'
 import ModalReassignIcon from './ModalReassignIcon'
 import ToolTip from './ToolTip';
 
@@ -80,65 +79,43 @@ class DynamicCard extends Component {
     return (
       <>
       <div className={!packView ? "dynamiccard" : "dynamiccard packview"}>
-      
-       { !packView  ?
-          <img className={showingToolTip ? "mixedspread-view__img2 hovered" :"mixedspread-view__img2" }
-          src={this.props.src} name={this.props.name} 
-          onMouseEnter={hoverEnabled ? (evt) => this.handleHoverIn(evt) : () => {} }
-          onMouseLeave={hoverEnabled ? (evt) => this.handleHoverOut(evt) : () => {} }
+        <div 
           onClick={() => this.pinCard()}
-          /> :
-          <img className={showingToolTip ? "mixedspread-view__imgPack hovered" :"mixedspread-view__imgPack" }
-          src={this.props.src} name={this.props.name} 
-          onMouseEnter={hoverEnabled ? (evt) => this.handleHoverIn(evt) : () => {} }
-          onMouseLeave={hoverEnabled ? (evt) => this.handleHoverOut(evt) : () => {} }
-          onClick={() => this.pinCard()}
-          />
-        }
+          className={this.props.isFoil ? "foil-gradient mixedspreadthumb" : ""}>
+          { !packView  ?
+              <img className={showingToolTip ? "mixedspread-view__img2 hovered" :"mixedspread-view__img2" }
+              src={this.props.src} name={this.props.name} 
+              onMouseEnter={hoverEnabled ? (evt) => this.handleHoverIn(evt) : () => {} }
+              onMouseLeave={hoverEnabled ? (evt) => this.handleHoverOut(evt) : () => {} }
+              onClick={() => this.pinCard()}
+              /> :
+              <img className={showingToolTip ? "mixedspread-view__imgPack hovered" :"mixedspread-view__imgPack" }
+              src={this.props.src} name={this.props.name} 
+              onMouseEnter={hoverEnabled ? (evt) => this.handleHoverIn(evt) : () => {} }
+              onMouseLeave={hoverEnabled ? (evt) => this.handleHoverOut(evt) : () => {} }
+              onClick={() => this.pinCard()}
+              />
+            }
+          </div>
         
       
         {showingToolTip &&
           <>
-          { aftermath ?
-            <img className={rotated ? "dynamiccard__tooltip aftermath" : "dynamiccard__tooltip" }
+          <div 
+            className={this.props.isFoil ? "foil-gradient mixedspreadcards" : ""}
+            onClick={() => this.pinCard()} 
+          >
+            <img className="dynamiccard__tooltip"
             src={showFront ? this.props.tooltip : this.props.imgmdFlip} 
             name={this.props.name}
             id={this.props.id} 
             onMouseEnter={(evt) => this.handleHoverIn(evt)}
             onMouseLeave={(evt) => this.handleHoverOut(evt)}
-            onClick={() => this.pinCard()}
+            // onClick={() => this.pinCard()}
             />
-            : 
-            <img className={rotated ? "dynamiccard__tooltip rotated" : "dynamiccard__tooltip" }
-            src={showFront ? this.props.tooltip : this.props.imgmdFlip} 
-            name={this.props.name}
-            id={this.props.id} 
-            onMouseEnter={(evt) => this.handleHoverIn(evt)}
-            onMouseLeave={(evt) => this.handleHoverOut(evt)}            
-            onClick={() => this.pinCard()}
-            />
-          }
-          
+          </div>
           { !hidePanel && pinned &&
             <div className="dynamiccard__buttonpanel">
-            
-             {/* <FontAwesomeIcon icon={faTimes}
-                className={!pinned ? "icon icon-panel " : "icon icon-panel  "}
-                onClick={() => this.pinCard()}
-              />      */}
-            
-            { hasBack &&  
-              <FontAwesomeIcon icon={faSyncAlt}
-                className="icon icon-panel"
-                onClick={() => this.flipCard()}
-              />
-            }
-            { split &&  
-              <FontAwesomeIcon icon={faUndo}
-                className="icon icon-panel mirror"
-                onClick={() => this.rotateCard()}
-              />
-            }
             <ModalReassignIcon 
               oracleid={this.props.oracleid}
               id={this.props.id}
@@ -150,7 +127,19 @@ class DynamicCard extends Component {
               loadCube={this.props.loadCube}
               hasControls={this.props.hasControls}
             />    
-            <ScryfallLogo id={this.props.id}/>
+            { hasBack &&  
+              <FontAwesomeIcon icon={faSyncAlt}
+                className="icon icon-panel"
+                onClick={() => this.flipCard()}
+              />
+            }
+            {/* { split &&  
+              <FontAwesomeIcon icon={faUndo}
+                className="icon icon-panel mirror"
+                onClick={() => this.rotateCard()}
+              />
+            } */}
+            
             <a href={ebayLink} target="_blank">
               <ToolTip 
                 text="See eBay listings"

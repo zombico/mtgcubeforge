@@ -3,7 +3,6 @@ import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import GetEbayUrl from './operations/GetEbayUrl'
 import { faTrashAlt, faSyncAlt, faUndo, faTimes, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-import ScryfallLogo from './buttons/ScryfallLogo'
 import ModalReassignIcon from './ModalReassignIcon'
 import ToolTip from './ToolTip';
 
@@ -95,45 +94,26 @@ class DynamicListItem extends Component {
         >{this.props.name} { hasBack && "// "+ this.props.nameFlip} { split && "// "+ this.props.nameFlip}
       </div>
       {showingToolTip && 
-          <>
-          { aftermath ?
-            <img className={rotated ? "dynamiccard__tooltip onlist listaftermath" : "dynamiccard__tooltip onlist" }
-            src={showFront ? this.props.tooltip : this.props.imgmdFlip} 
-            name={this.props.name}
-            id={this.props.id} 
-            // onMouseEnter={(evt) => this.handleHoverIn(evt)}
-            // onMouseLeave={(evt) => this.handleHoverOut(evt)}
-            onClick={() => this.pinCard()}
-            />
-            : 
-            <img className={rotated ? "dynamiccard__tooltip onlist listrotated" : "dynamiccard__tooltip onlist" }
-            src={showFront ? this.props.tooltip : this.props.imgmdFlip} 
-            name={this.props.name}
-            id={this.props.id} 
-            // onMouseEnter={(evt) => this.handleHoverIn(evt)}
-            // onMouseLeave={(evt) => this.handleHoverOut(evt)}            
-            onClick={() => this.pinCard()}
-            />
-          }
+          <div>
+            <div
+              onClick={() => this.pinCard()} 
+              className={this.props.isFoil ? "foil-gradient mixedspreadlist" : ""}>
+              <img 
+                className="dynamiccard__tooltip onlist"
+                src={showFront ? this.props.tooltip : this.props.imgmdFlip} 
+                name={this.props.name}
+                id={this.props.id} 
+                
+              />
+            </div>
+          
+          
           
           
            { pinned && <div className="dynamiccard__buttonpanel onlist">
             
                
-            
-            { hasBack &&  
-              <FontAwesomeIcon icon={faSyncAlt}
-                className="icon icon-panel"
-                onClick={() => this.flipCard()}
-              />
-            }
-            { split &&  
-              <FontAwesomeIcon icon={faUndo}
-                className="icon icon-panel mirror"
-                onClick={() => this.rotateCard()}
-              />
-            }
-            <ModalReassignIcon 
+           <ModalReassignIcon 
               oracleid={this.props.oracleid}
               id={this.props.id}
               cubeid={this.props.cubeId}
@@ -143,8 +123,20 @@ class DynamicListItem extends Component {
               removeCard={() => this.removeCard()}
               loadCube={this.props.loadCube}
               hasControls={this.props.hasControls}
-            />    
-            <ScryfallLogo id={this.props.id}/>
+            />
+            { hasBack &&  
+              <FontAwesomeIcon icon={faSyncAlt}
+                className="icon icon-panel"
+                onClick={() => this.flipCard()}
+              />
+            }
+            {/* { split &&  
+              <FontAwesomeIcon icon={faUndo}
+                className="icon icon-panel mirror"
+                onClick={() => this.rotateCard()}
+              />
+            } */}
+                
             <a href={ebayLink} target="_blank">
             <ToolTip 
               text="See eBay listings"
@@ -168,7 +160,7 @@ class DynamicListItem extends Component {
           </div>
       }
           
-          </>  
+          </div>  
         }
         
 

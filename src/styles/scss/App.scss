@@ -224,8 +224,8 @@ ol {
   flex-wrap: wrap;
   align-items: center;
   width: 100%;
-  position: -webkit-sticky;
-  position: sticky;
+  // position: -webkit-sticky;
+  // position: sticky;
   top: 0px;
   background-color: #282c34;
   padding-left: 40px;
@@ -438,8 +438,8 @@ ol {
   }
   &__tooltip {
     position: absolute;
-    margin: -20px 0 0 -130px;
-    // z-index: 1;
+    margin: -210px 0 0 -10px;
+    z-index: 1;
     max-width: 244px;
     border-radius: 12px;
     box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
@@ -461,12 +461,12 @@ ol {
      margin-left: 80px; 
      margin-top: -50px;
      &.listrotated {
-      transform: rotate(90deg) translate(-36px, 42px);
+      transform: rotate(90deg) translate(-36px, -45px);
       margin-left: 82px;      
       
     }
     &.listaftermath {
-      transform: rotate(-90deg) translate(36px, -42px);
+      transform: rotate(-90deg) translate(36px, 45px);
       margin-left: 82px;
     }
     }
@@ -495,7 +495,7 @@ ol {
     display: flex;
     flex-direction: column;
     align-items: center;
-    // z-index: 1;
+    z-index: 1;
     position: absolute;
     margin-top: -180px;
     margin-left: -48px;
@@ -592,8 +592,8 @@ ol {
       z-index: 1;
       padding: 3px 0px;
       background: slategray;
-      position: sticky;
-      top: 60px;
+      // position: sticky;
+      // top: 60px;
       // border-bottom: 1px solid gainsboro;
       // border-right: .5px solid lightgray;
     }
@@ -1020,7 +1020,7 @@ ol {
 
 .versionchanger {
   overflow-y: auto;
-  max-height: 33vh;
+  max-height: 22vh;
   // font-family: "Nunito", sans-serif;  
   border-left: 1px solid lightslategray;
   border-right: 1px solid lightslategray;
@@ -1411,6 +1411,60 @@ ol {
     }
   }
   
+}
+
+.foil-gradient {  
+  &::after {
+    content: '';
+    background: linear-gradient(36deg, rgba(194,19,19,0.4150035014005602) 0%, rgba(66,29,187,0.1825105042016807) 14%, rgba(102,241,114,0.2329306722689075) 72%, rgba(243,251,142,0.24693627450980393) 100%);
+  }
+  &.searchCard::after {
+    width: 260px;
+    height: 361px;
+    border-radius: 15px;
+    top: 9px;
+    left: 14px;
+    position: absolute;
+  }
+  &.modalReassign::after {
+    width: 260px;
+    height: 361px;
+    border-radius: 15px;
+    top: 68px;
+    left: 35px;
+    position: absolute;
+  }
+  &.mixedspreadlist::after {
+    width: 246px;
+    height: 342px;
+    border-radius: 15px;
+    position: absolute;
+    margin-left: 78px;
+    margin-top: -51px;
+    z-index: 1;
+  }
+  &.mixedspreadcards::after {
+    width: 246px;
+    height: 342px;
+    border-radius: 15px;
+    position: absolute;
+    margin-left: -12px;
+    margin-top: -211px;
+    z-index: 1;
+  }
+  &.mixedspreadthumb:hover {
+    cursor: pointer;
+    transform: scale(1.1);      
+    transition: 90ms;
+  }
+  &.mixedspreadthumb::after {
+    width: 120px;
+    height: 166.67px;
+    border-radius: 5px;
+    position: absolute;
+    margin-left: -120px;
+    // margin-top: -211px;
+  }
 }
 
 // icons 

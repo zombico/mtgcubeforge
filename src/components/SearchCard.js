@@ -24,6 +24,7 @@ class SearchCard extends Component {
       versions: [],
       currentVersion: '',
       versionChangerActive: false,
+      isFoil: false,
       showFront: true,
       rotated: false
     }
@@ -45,6 +46,7 @@ class SearchCard extends Component {
     this.firstResult = React.createRef();    
     this.flipCard = this.flipCard.bind(this)
     this.rotateCard = this.rotateCard.bind(this)
+    this.toggleFoil = this.toggleFoil.bind(this)
   }
 
   
@@ -131,8 +133,12 @@ class SearchCard extends Component {
 
    if (version.layout !== "emblem" && version.layout !== "vanguard" && version.layout !== "planar") {
     const newVersion = Forge(version)
+    newVersion.isFoil = this.state.isFoil
+    const x = newVersion
+    console.log(x)
     this.setState({
       stateReqstCard: newVersion,
+      isFoil: false
     })    
    }
        
@@ -187,7 +193,7 @@ class SearchCard extends Component {
   clearSearch() {
     
     if(this.state.searchTerm.length > 0) {
-      this.setState({ searchTerm: '', stateReqstCard: '' })
+      this.setState({ searchTerm: '', stateReqstCard: '', isFoil: false })
       document.getElementById('searchcard').focus()
     }
     
@@ -299,6 +305,15 @@ class SearchCard extends Component {
     
   }
 
+  toggleFoil() {
+    const isFoil = this.state.isFoil
+    const card = this.state.stateReqstCard
+    card.isFoil = !isFoil 
+    if (isFoil) {
+     this.setState({ isFoil: false, stateReqstCard: card }) 
+    } else this.setState({ isFoil: true, stateReqstCard: card})
+  }
+
   flipCard = () => {
     if(this.state.showFront) {
       this.setState({ showFront: false })
@@ -316,10 +331,13 @@ class SearchCard extends Component {
   render() {
     const card = this.state.stateReqstCard
     const suggestions = this.state.autoQueryOut;
-    const searchTerm = this.state.searchTerm;
-    const versions = this.state.versions;
-    const showFront = this.state.showFront
-    const versionChangerActive = this.state.versionChangerActive;
+    // const searchTerm = this.state.searchTerm;
+    // const versions = this.state.versions;
+    // const showFront = this.state.showFront
+    // const versionChangerActive = this.state.versionChangerActive;
+    const { searchTerm, versions, showFront, versionChangerActive, isFoil, tempCard} = this.state
+    const hasFoilEdition = versions.filter(e => e.id === card.id) && versions.filter(e => e.id === card.id)[0] && versions.filter(e => e.id === card.id)[0].foil && versions.filter(e => e.id === card.id)[0].nonfoil
+    console.log(hasFoilEdition)
     const ebayString = `${this.state.stateReqstCard.name} ${this.state.stateReqstCard.set}`
     const ebayLink = GetEbayUrl(ebayString)
     const tcgLink = GetTcgUrl(ebayString)
@@ -372,55 +390,65 @@ class SearchCard extends Component {
         { this.state.stateReqstCard && this.state.stateReqstCard.name && this.state.searchTerm !== '' &&  
         <div className="rightside">           
           <div className="rightside-displayleft">
-            { card.layout === "normal" &&
-              <img alt="" className="preview-img-med" src={card.imgmd} />
-            }
-            { card.layout === "adventure" &&
-              <img alt="" className="preview-img-med" src={card.imgmd} />
-            }
-            { card.aftermath &&
-              <img alt="" className={!this.state.rotated ? "preview-img-med": "preview-img-med aftermath"} src={card.imgmd} />
-            }
-            { card.layout === "split" && !card.aftermath &&
-              <img alt="" className="preview-img-med split" src={card.imgmd} />
-            }
-            { card.layout === "flip" &&
-              <img alt="" className="preview-img-med flip" src={card.imgmd} />
-            }
-            { card.layout === "transform" &&  
-            <div className="searchbar__images">              
-              <img alt="" className="preview-img-med" src={showFront ? card.imgmd : card.imgmdFlip} />                        
-            </div> 
-            }
-            
-            { card.layout === "transform" && 
-            <button
-             className="addtocube inoverlay changeEdition"    
-             onClick={this.flipCard}          
-            >
-              See reverse side <FontAwesomeIcon icon={faSyncAlt} />
-            </button> 
-            }
-            { card.layout === "modal_dfc" && 
-            <div className="searchbar__images">              
-              <img alt="" className="preview-img-med" src={showFront ? card.imgmd : card.imgmdFlip} />                        
-            </div> 
-            }
-            { card.layout === "modal_dfc" && 
-            <button
-             className="addtocube inoverlay changeEdition"    
-             onClick={this.flipCard}          
-            >
-              See reverse side <FontAwesomeIcon icon={faSyncAlt} />
-            </button> 
-            }
-            { card.aftermath && 
+            <div className={isFoil ? "foil-gradient searchCard" : ""}>
+              { card.layout === "normal" &&
+                <img alt="" className={`preview-img-med`} src={card.imgmd} />
+              }
+              { card.layout === "adventure" &&
+                <img alt="" className="preview-img-med" src={card.imgmd} />
+              }
+              { card.aftermath &&
+                <img alt="" className={!this.state.rotated ? "preview-img-med": "preview-img-med aftermath"} src={card.imgmd} />
+              }
+              { card.layout === "split" && !card.aftermath &&
+                <img alt="" className="preview-img-med split" src={card.imgmd} />
+              }
+              { card.layout === "flip" &&
+                <img alt="" className="preview-img-med flip" src={card.imgmd} />
+              }
+              { card.layout === "transform" &&  
+              <div className="searchbar__images">              
+                <img alt="" className="preview-img-med" src={showFront ? card.imgmd : card.imgmdFlip} />                        
+              </div> 
+              }
+              
+              { card.layout === "transform" && 
               <button
               className="addtocube inoverlay changeEdition"    
-              onClick={this.rotateCard}          
-             >
-               Rotate card <FontAwesomeIcon icon={faUndo} />
-             </button> 
+              onClick={this.flipCard}          
+              >
+                See reverse side <FontAwesomeIcon icon={faSyncAlt} />
+              </button> 
+              }
+              { card.layout === "modal_dfc" && 
+              <div className="searchbar__images">              
+                <img alt="" className="preview-img-med" src={showFront ? card.imgmd : card.imgmdFlip} />                        
+              </div> 
+              }
+              { card.layout === "modal_dfc" && 
+              <button
+              className="addtocube inoverlay changeEdition"    
+              onClick={this.flipCard}          
+              >
+                See reverse side <FontAwesomeIcon icon={faSyncAlt} />
+              </button> 
+              }
+              { card.aftermath && 
+                <button
+                className="addtocube inoverlay changeEdition"    
+                onClick={this.rotateCard}          
+              >
+                Rotate card <FontAwesomeIcon icon={faUndo} />
+              </button> 
+              }
+              </div>
+            {
+              hasFoilEdition && <button 
+                className="addtocube inoverlay changeEdition"
+                onClick={this.toggleFoil}
+              >
+              { isFoil ? 'Switch to non-foil' : 'Switch to foil'}
+              </button>
             }
             { versions && versions.length > 1 && 
               <button

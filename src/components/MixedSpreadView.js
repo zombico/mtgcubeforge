@@ -31,7 +31,7 @@ const MixedSpreadView = (props) => {
         loadCube={() => props.loadCube()}
         hasControls={props.hasControls}
         hoverEnabled={props.enableHoverZoom}
-
+        isFoil={card.isFoil}
       />      
       
     ))
@@ -242,6 +242,7 @@ const MixedSpreadView = (props) => {
       oracleid={card.oracleid}
       cmc={card.cmc}
       manacost={card.manacost}
+      isFoil={card.isFoil}
       layout={card.layout}
       aftermath={card.aftermath}
       loadCube={() => props.loadCube()}

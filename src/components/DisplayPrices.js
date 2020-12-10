@@ -2,7 +2,7 @@ import React from 'react'
 
 const DisplayPrices = (array) => {
   if (array.length === 0) return null
-  console.log(array)
+  // console.log(array)
   const regUsd = array.filter(e => e[0] === 'usd')[0][1]
   const regEur = array.filter(e => e[0] === 'eur')[0][1]
   const foilUsd = array.filter(e => e[0] === 'usd_foil')[0][1]
