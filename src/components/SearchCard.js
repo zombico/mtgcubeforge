@@ -338,7 +338,7 @@ class SearchCard extends Component {
     const { searchTerm, versions, showFront, versionChangerActive, isFoil, tempCard} = this.state
     const hasFoilEdition = versions.filter(e => e.id === card.id) && versions.filter(e => e.id === card.id)[0] && versions.filter(e => e.id === card.id)[0].foil && versions.filter(e => e.id === card.id)[0].nonfoil
     console.log(hasFoilEdition)
-    const ebayString = `${this.state.stateReqstCard.name} ${this.state.stateReqstCard.set}`
+    const ebayString = `${this.state.stateReqstCard.name} ${this.state.stateReqstCard.set } ${isFoil ? 'foil' : ''}`
     const ebayLink = GetEbayUrl(ebayString)
     const tcgLink = GetTcgUrl(ebayString)
 

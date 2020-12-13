@@ -3,6 +3,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faCog, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import Forge from './ForgeCardObject';
+import FrameEffectParser from './operations/FrameEffectParser'
 import DisplayPrices from './DisplayPrices';
 import GetEbayUrl from './operations/GetEbayUrl';
 import GetTcgUrl from './operations/GetTcgUrl'
@@ -14,7 +15,7 @@ class ModalReassignIcon extends Component {
     colors: [],
     cmc: '',
     isFoil: false,
-    showAllLangs: true,
+    showAllLangs: false,
     versions: [],
     stateReqstCard: ''
   }
@@ -62,20 +63,12 @@ class ModalReassignIcon extends Component {
     this.setState({ cmc: event.target.value });
   }
 
-  // handleFoil(e) {
-  //   e.preventDefault()
-  //   if (!this.state.isFoil) {
-  //     this.setState({ isFoil: "true" })  
-  //   } else this.setState({ isFoil: "false" })
-  // }
+  toggleLangs() {
+    if (!this.state.showAllLangs) {
+      this.setState({ showAllLangs: true })  
+    } else this.setState({ showAllLangs: false })
+  }
 
-  // handleLangs(e) {
-  //   e.preventDefault()
-  //   this.getVersions(this.props.oracleid)
-  //   if (!this.state.showAllLangs) {
-  //     this.setState({ showAllLangs: true })  
-  //   } else this.setState({ showAllLangs: false })
-  // }
   toggleFoil() {
     const isFoil = this.state.isFoil
     const card = this.state.stateReqstCard
@@ -96,17 +89,13 @@ class ModalReassignIcon extends Component {
   )}
 
   getVersions(oracleId) {
-    if (this.state.showAllLangs) {
-      fetch(`https://api.scryfall.com/cards/search?order=released&q=oracleid%3A${oracleId}&unique=prints&include_multilingual=true`, {
-      })
-      .then(res => res.json())
-      .then(result => {
-        const valid = result.data.filter(e => e.digital === false)   
-        this.setState({
-          versions: valid        
-        }) 
-      }).catch(error => console.error('Error', error))
-    } 
+    fetch(`https://api.scryfall.com/cards/search?order=released&q=oracleid%3A${oracleId}&unique=prints&include_multilingual=true`, {
+    })
+    .then(res => res.json())
+    .then(result => {
+      const valid = result.data.filter(e => e.digital === false)   
+      this.setState({ versions: valid }) 
+    }).catch(error => console.error('Error', error))
   }
 
   changeVersion = (version) => {
@@ -144,11 +133,12 @@ class ModalReassignIcon extends Component {
     const match = versions && versions.length > 0 && versions.filter(e => e.id === id)
     const prices = match && match[0] && match[0].prices
     const priceArray = prices && Object.entries(prices) || []
-    const ebayString = `${stateReqstCard.name} ${stateReqstCard.set}`
+    const ebayString = `${stateReqstCard.name} ${stateReqstCard.set} ${isFoil  ? 'foil' : ''}`
     const ebayLink = GetEbayUrl(ebayString)
     const tcgLink = GetTcgUrl(ebayString)
     const hasFoilEdition = versions.filter(e => e.id === stateReqstCard.id) && versions.filter(e => e.id === stateReqstCard.id)[0] && versions.filter(e => e.id === stateReqstCard.id)[0].foil && versions.filter(e => e.id === stateReqstCard.id)[0].nonfoil
-
+    const frameEffect = versions.filter(e => e.id === stateReqstCard.id) && versions.filter(e => e.id === stateReqstCard.id)[0] && versions.filter(e => e.id === stateReqstCard.id)[0].frame_effects  
+    console.log(frameEffect)
     if(this.state.showModal === true ){   
     return (
       <div>
@@ -178,7 +168,15 @@ class ModalReassignIcon extends Component {
               <div className="versionchanger-label">Available versions</div>
               <div className="versionchanger">
               
-              { versions && versions.map((version) =>               
+              { versions && showAllLangs && versions.map((version) =>               
+                <div
+                  key={version.id} 
+                  onClick={() => this.changeVersion(version)} 
+                  className={stateReqstCard.id === version.id ? 'container active' : 'container idle' }
+                >{version.set_name} - {version.lang.toUpperCase()}</div>                           
+              )}
+
+              { versions && !showAllLangs && versions.filter(e=> e.lang === 'en').map((version) =>               
                 <div
                   key={version.id} 
                   onClick={() => this.changeVersion(version)} 
@@ -191,7 +189,14 @@ class ModalReassignIcon extends Component {
               this.props.hasControls &&
             <>
             <form>
-            <div>  
+            <div>
+              <div className="modal__reassign__options">
+                <label>Show printings in all languages</label>
+                <input type="checkbox" 
+                  value={this.state.showAllLangs}
+                  onChange={() => this.toggleLangs()}
+                />
+              </div>  
               <div className="modal__reassign-option">
                 <label className="modal__reassign-label">Reassign to color section</label>
                 <select value={colors} onChange={(event)=>this.handleColorChange(event)}>
@@ -243,6 +248,7 @@ class ModalReassignIcon extends Component {
                   />
                 </div>
                 }
+                
               </div>    
             </div>
             </form>

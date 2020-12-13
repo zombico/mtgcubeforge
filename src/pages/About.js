@@ -29,12 +29,21 @@ class About extends Component {
 
         <br />
         <h2>December 2020 Updates</h2>
-      <ul>
-        <li>Cubeviewer now more accessible with phones by using the Explore feature</li>
-      </ul>
-      <p>Viewing experience on mobile was always going to be challening because of the size and nature of cubes.  Hopefully this feature allows you to view without having to scroll
-        through every single card and color.
-      </p>
+        <ul>
+          <li>Cubeviewer now more accessible with phones by using the Explore feature</li>
+        </ul>
+        <p>Viewing experience on mobile was always going to be challening because of the size and nature of cubes.  Hopefully this feature allows you to view without having to scroll
+          through every single card and color.
+        </p>
+        <ul>
+          <li>Foil filter now available</li>
+        </ul>
+        <p>You can now choose to display a foil printing by selecting in the modify card settings, or while searching.</p>
+        <p>Cards that are default in foil won't get the filter, and neither will cards that did not have a foil printing.</p>
+        <ul>
+          <li>English cards set to default when reassigning versions</li>
+        </ul>
+        <p>Other languages are still available, just click the toggle to enable them.</p>
 
       <h2>November 2020 Updates</h2>
       <ul>
