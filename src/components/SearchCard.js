@@ -134,8 +134,6 @@ class SearchCard extends Component {
    if (version.layout !== "emblem" && version.layout !== "vanguard" && version.layout !== "planar") {
     const newVersion = Forge(version)
     newVersion.isFoil = this.state.isFoil
-    const x = newVersion
-    console.log(x)
     this.setState({
       stateReqstCard: newVersion,
       isFoil: false
@@ -331,13 +329,9 @@ class SearchCard extends Component {
   render() {
     const card = this.state.stateReqstCard
     const suggestions = this.state.autoQueryOut;
-    // const searchTerm = this.state.searchTerm;
-    // const versions = this.state.versions;
-    // const showFront = this.state.showFront
-    // const versionChangerActive = this.state.versionChangerActive;
     const { searchTerm, versions, showFront, versionChangerActive, isFoil, tempCard} = this.state
     const hasFoilEdition = versions.filter(e => e.id === card.id) && versions.filter(e => e.id === card.id)[0] && versions.filter(e => e.id === card.id)[0].foil && versions.filter(e => e.id === card.id)[0].nonfoil
-    console.log(hasFoilEdition)
+    
     const ebayString = `${this.state.stateReqstCard.name} ${this.state.stateReqstCard.set } ${isFoil ? 'foil' : ''}`
     const ebayLink = GetEbayUrl(ebayString)
     const tcgLink = GetTcgUrl(ebayString)

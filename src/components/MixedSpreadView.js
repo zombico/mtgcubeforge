@@ -72,7 +72,13 @@ const MixedSpreadView = (props) => {
     const temur = multicolor.filter(card => card.props.colors.length === 3 && card.props.colors[0] === "G" && card.props.colors[1] === "R" && card.props.colors[2] === "U")
     
     const unalignedGold = multicolor.filter((card => card.props.colors.length > 3))
-    
+    const fourColor = multicolor.filter((card => card.props.colors.length === 4))
+    const fourColorNoBlack = fourColor.filter(card => !card.props.colors.includes('B'))
+    const fourColorNoBlue = fourColor.filter(card => !card.props.colors.includes('U'))
+    const fourColorNoWhite = fourColor.filter(card => !card.props.colors.includes('W'))
+    const fourColorNoRed = fourColor.filter(card => !card.props.colors.includes('R'))
+    const fourColorNoGreen = fourColor.filter(card => !card.props.colors.includes('G'))
+    const fiveColor = multicolor.filter((card => card.props.colors.length === 5))
 
     
     
@@ -104,18 +110,24 @@ const MixedSpreadView = (props) => {
           { color !== multicolor && props.showTypes && typeSplitter(color, "Artifact", "Artifacts", "Creature") }
           { color !== multicolor && props.showTypes && typeSplitter(color, "Land", "Land") }
 
-          { color===multicolor && shardSubSection(unalignedGold, "Unaligned 4c 5c", "", "", "")}
+          { color===multicolor && shardSubSection(fiveColor, "", "white", "blue", "black", "red", "green")}
+          { color===multicolor && shardSubSection(fourColorNoBlack, "", "red", "green", "white", "blue")}
+          { color===multicolor && shardSubSection(fourColorNoWhite, "", "blue", "black", "green", "red")}
+          { color===multicolor && shardSubSection(fourColorNoGreen, "", "white", "blue", "black", "red")}
+          { color===multicolor && shardSubSection(fourColorNoBlue, "", "black", "red", "green","white")}
+          { color===multicolor && shardSubSection(fourColorNoRed, "", "green","white", "blue","black",)}
+          
 
-          { color===multicolor && guildSubSection(azorius, "Azorius")}
-          { color===multicolor && guildSubSection(boros, "Boros")}
-          { color===multicolor && guildSubSection(dimir, "Dimir")}
-          { color===multicolor && guildSubSection(golgari, "Golgari")}
-          { color===multicolor && guildSubSection(gruul, "Gruul")}
-          { color===multicolor && guildSubSection(izzet, "Izzet")}
-          { color===multicolor && guildSubSection(orzhov, "Orzhov")}
-          { color===multicolor && guildSubSection(rakdos, "Rakdos")}
-          { color===multicolor && guildSubSection(selesnya, "Selesnya")}
-          { color===multicolor && guildSubSection(simic, "Simic")}
+          { color===multicolor && guildSubSection(azorius, "Azorius", "white", "blue")}
+          { color===multicolor && guildSubSection(boros, "Boros", "red","white")}
+          { color===multicolor && guildSubSection(dimir, "Dimir", "blue", "black")}
+          { color===multicolor && guildSubSection(golgari, "Golgari", "black", "green")}
+          { color===multicolor && guildSubSection(gruul, "Gruul", "red", "green")}
+          { color===multicolor && guildSubSection(izzet, "Izzet", "blue", "red")}
+          { color===multicolor && guildSubSection(orzhov, "Orzhov", "white", "black")}
+          { color===multicolor && guildSubSection(rakdos, "Rakdos", "black", "red")}
+          { color===multicolor && guildSubSection(selesnya, "Selesnya", "green", "white")}
+          { color===multicolor && guildSubSection(simic, "Simic", "green","blue")}
           
           { color===multicolor && shardSubSection(abzan, "Abzan", "white", "black", "green")}
           { color===multicolor && shardSubSection(bant, "Bant", "green", "white", "blue")}
@@ -140,7 +152,7 @@ const MixedSpreadView = (props) => {
       </>
     )
     
-    const shardSubSection = (color, colorstring, color1, color2, color3) => (
+    const shardSubSection = (color, colorstring, color1, color2, color3, color4, color5) => (
       <div className={!color.length ? "hidden" : "dynamiclistitem__guild"}>
         <div className="dynamiclistitem__column-typehead">
         {
@@ -149,6 +161,8 @@ const MixedSpreadView = (props) => {
         <img className="manasymbol smaller shard" src={`/symbols/${color1}mana.svg`} alt={`${color1}manasymbol`} /> 
         <img className="manasymbol smaller shard" src={`/symbols/${color2}mana.svg`} alt={`${color2}manasymbol`} /> 
         <img className="manasymbol smaller shard" src={`/symbols/${color3}mana.svg`} alt={`${color3}manasymbol`} /> 
+        {color4 && <img className="manasymbol smaller shard" src={`/symbols/${color4}mana.svg`} alt={`${color4}manasymbol`} />  }
+        {color5 && <img className="manasymbol smaller shard" src={`/symbols/${color5}mana.svg`} alt={`${color5}manasymbol`} />  }
         </>
         }
           {colorstring}
@@ -157,13 +171,15 @@ const MixedSpreadView = (props) => {
       </div>
     )
 
-    const guildSubSection = (color, colorstring) => (
-      <div className={!color.length ? "hidden" : "dynamiclistitem__guild"}>
+    const guildSubSection = (guild, guildstring, color1, color2) => (
+      <div className={!guild.length ? "hidden" : "dynamiclistitem__guild"}>
         <div className="dynamiclistitem__column-typehead">
-        <img className="manasymbol smaller" src={`/symbols/${colorstring.toLowerCase()}mana.svg`} alt={`${colorstring.toLowerCase()}manasymbol`} /> 
-          {colorstring}
+        <img className="manasymbol smaller shard" src={`/symbols/${color1}mana.svg`} alt={`${color1}manasymbol`} /> 
+        <img className="manasymbol smaller shard" src={`/symbols/${color2}mana.svg`} alt={`${color2}manasymbol`} /> 
+        {/* <img className="manasymbol smaller" src={`/symbols/${guildstring.toLowerCase()}mana.svg`} alt={`${guildstring.toLowerCase()}manasymbol`} />  */}
+          {guildstring}
         </div>
-        {color}
+        {guild}
       </div>
     )
 
@@ -272,7 +288,8 @@ const MixedSpreadView = (props) => {
     const selesnya = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "G" && card.props.colors[1]=== "W")
     const simic = multicolor.filter(card => card.props.colors.length === 2 && card.props.colors[0]=== "G" && card.props.colors[1]=== "U")
 
-    
+    const fourColor = multicolor.filter((card => card.props.colors.length === 4))
+    const fiveColor = multicolor.filter((card => card.props.colors.length === 5))
     const unalignedGold = multicolor.filter((card => card.props.colors.length > 2))
     
     

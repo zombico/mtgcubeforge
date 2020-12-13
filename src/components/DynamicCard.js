@@ -126,6 +126,7 @@ class DynamicCard extends Component {
               removeCard={() => this.removeCard()}
               loadCube={this.props.loadCube}
               hasControls={this.props.hasControls}
+              isFoil={this.props.isFoil}
             />    
             { hasBack &&  
               <FontAwesomeIcon icon={faSyncAlt}

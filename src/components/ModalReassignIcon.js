@@ -14,7 +14,7 @@ class ModalReassignIcon extends Component {
     showModal: false,
     colors: [],
     cmc: '',
-    isFoil: false,
+    isFoil: this.props.isFoil,
     showAllLangs: false,
     versions: [],
     stateReqstCard: ''
@@ -181,7 +181,7 @@ class ModalReassignIcon extends Component {
                   key={version.id} 
                   onClick={() => this.changeVersion(version)} 
                   className={stateReqstCard.id === version.id ? 'container active' : 'container idle' }
-                >{version.set_name} - {version.lang.toUpperCase()}</div>                           
+                >{version.set_name}</div>                           
               )}
               
               </div>
@@ -190,7 +190,7 @@ class ModalReassignIcon extends Component {
             <>
             <form>
             <div>
-              <div className="modal__reassign__options">
+              <div className="modal__reassign__option">
                 <label>Show printings in all languages</label>
                 <input type="checkbox" 
                   value={this.state.showAllLangs}
@@ -240,9 +240,10 @@ class ModalReassignIcon extends Component {
                     onChange={(event)=>this.handleCmcChange(event)}
                   />
                 </div>
-                {hasFoilEdition && <div className="modal__reassign__options">
+                {hasFoilEdition && <div className="modal__reassign__option">
                   <label>Is foil</label>
                   <input type="checkbox" 
+                    checked={this.state.isFoil}
                     value={this.state.isFoil}
                     onChange={() => this.toggleFoil()}
                   />
