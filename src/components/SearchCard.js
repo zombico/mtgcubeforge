@@ -4,6 +4,7 @@ import { faTimes, faSyncAlt, faUndo, faShoppingCart } from '@fortawesome/free-so
 import Forge from './ForgeCardObject';
 import BuildControls from './BuildControls';
 import ToolTip from './ToolTip';
+import FrameEffectParser from './operations/FrameEffectParser'
 import GetEbayUrl from './operations/GetEbayUrl';
 import GetTcgUrl from './operations/GetTcgUrl'
 import DisplayPrices from './DisplayPrices';
@@ -331,8 +332,11 @@ class SearchCard extends Component {
     const suggestions = this.state.autoQueryOut;
     const { searchTerm, versions, showFront, versionChangerActive, isFoil, tempCard} = this.state
     const hasFoilEdition = versions.filter(e => e.id === card.id) && versions.filter(e => e.id === card.id)[0] && versions.filter(e => e.id === card.id)[0].foil && versions.filter(e => e.id === card.id)[0].nonfoil
+    const frameEffects = versions.filter(e => e.id === card.id) && versions.filter(e => e.id === card.id)[0] && versions.filter(e => e.id === card.id)[0].frame_effects  
+    const borderless = versions.filter(e => e.id === card.id) && versions.filter(e => e.id === card.id)[0] && versions.filter(e => e.id === card.id)[0].border_color === 'borderless'
+    const effectString = FrameEffectParser(frameEffects)
     
-    const ebayString = `${this.state.stateReqstCard.name} ${this.state.stateReqstCard.set } ${isFoil ? 'foil' : ''}`
+    const ebayString = `${card.name} ${card.set} ${isFoil  ? 'foil' : ''} ${effectString} ${borderless ? 'borderless' : ''}`
     const ebayLink = GetEbayUrl(ebayString)
     const tcgLink = GetTcgUrl(ebayString)
 

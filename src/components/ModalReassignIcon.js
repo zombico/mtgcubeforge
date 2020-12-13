@@ -133,12 +133,16 @@ class ModalReassignIcon extends Component {
     const match = versions && versions.length > 0 && versions.filter(e => e.id === id)
     const prices = match && match[0] && match[0].prices
     const priceArray = prices && Object.entries(prices) || []
-    const ebayString = `${stateReqstCard.name} ${stateReqstCard.set} ${isFoil  ? 'foil' : ''}`
+    
+    const hasFoilEdition = versions.filter(e => e.id === stateReqstCard.id) && versions.filter(e => e.id === stateReqstCard.id)[0] && versions.filter(e => e.id === stateReqstCard.id)[0].foil && versions.filter(e => e.id === stateReqstCard.id)[0].nonfoil
+    const frameEffects = versions.filter(e => e.id === stateReqstCard.id) && versions.filter(e => e.id === stateReqstCard.id)[0] && versions.filter(e => e.id === stateReqstCard.id)[0].frame_effects  
+    const borderless = versions.filter(e => e.id === stateReqstCard.id) && versions.filter(e => e.id === stateReqstCard.id)[0] && versions.filter(e => e.id === stateReqstCard.id)[0].border_color === 'borderless'
+    const effectString = FrameEffectParser(frameEffects)
+    // console.log(borderless)
+    const ebayString = `${stateReqstCard.name} ${stateReqstCard.set} ${isFoil  ? 'foil' : ''} ${effectString} ${borderless ? 'borderless' : ''}`
     const ebayLink = GetEbayUrl(ebayString)
     const tcgLink = GetTcgUrl(ebayString)
-    const hasFoilEdition = versions.filter(e => e.id === stateReqstCard.id) && versions.filter(e => e.id === stateReqstCard.id)[0] && versions.filter(e => e.id === stateReqstCard.id)[0].foil && versions.filter(e => e.id === stateReqstCard.id)[0].nonfoil
-    const frameEffect = versions.filter(e => e.id === stateReqstCard.id) && versions.filter(e => e.id === stateReqstCard.id)[0] && versions.filter(e => e.id === stateReqstCard.id)[0].frame_effects  
-    console.log(frameEffect)
+    
     if(this.state.showModal === true ){   
     return (
       <div>
