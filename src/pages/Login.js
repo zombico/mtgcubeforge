@@ -58,18 +58,18 @@ class Login extends Component {
               <form onSubmit={this.handleSubmit}>
               <div className="gateway">
               
-                <label className="gateway-label" htmlFor="login-email">Email: </label>
+                <label className="gateway-label" htmlFor="login-email">Username or Email </label>
                 <input
                   className="gateway-input"
-                  type="email"
+                  // type="email"
                   onChange={this.handleChange}
                   name="email"
                   id="login-email"
                   required          
                 />
-                {error404 && <div className="gateway-error">No user name found</div>}
+                {error404 && <div className="gateway-error">No user or email found</div>}
               
-                <label className="gateway-label" htmlFor="login-password">Password: </label>
+                <label className="gateway-label" htmlFor="login-password">Password </label>
                 <input
                   className="gateway-input"
                   type="password"

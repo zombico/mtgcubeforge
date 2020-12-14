@@ -8,7 +8,7 @@ router.post('/', async (req, res, next) => {
     const { email, password } = req.body;
     
     try {
-      const user = await User.findOne({ email })
+      const user = await User.findOne({ email: email }) || await User.findOne({ name: email })
     
       if (!user) {
         res.status(404).send('no user found')
