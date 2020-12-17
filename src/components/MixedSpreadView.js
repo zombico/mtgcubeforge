@@ -9,10 +9,10 @@ import ModalButtonStats from './ModalButtonStats';
 const MixedSpreadView = (props) => {
   if (props.cubeContents && props.viewType === "list") {
     const filtered = props.cubeContents.filter(e => e.name && e.name !== null)
-    const view = filtered.map((card => 
+    const view = filtered.map(((card,index) => 
       
       <DynamicListItem 
-        
+        index={index}
         cubeId={props.cubeId}
         name={card.name} 
         nameFlip={card.nameFlip}
@@ -241,10 +241,10 @@ const MixedSpreadView = (props) => {
 
   if (props.cubeContents && props.viewType === "card") {
     const filtered = props.cubeContents.filter(e => e.name && e.name !== null)
-    const view = filtered.map((card => 
+    const view = filtered.map(((card,index) => 
     
     <DynamicCard 
-           
+      index={index}     
       cubeId={props.cubeId}
       name={card.name} 
       nameFlip={card.nameFlip}

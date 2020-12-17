@@ -22,7 +22,7 @@ class DynamicListItem extends Component {
 
   removeCard = async () => {
     const remove = {}
-    remove.id = this.props.id
+    remove.index = this.props.index
     try {
       await axios.patch(`/cubes/${this.props.cubeId}/remove`, remove)
       this.pinCard()
@@ -113,7 +113,8 @@ class DynamicListItem extends Component {
            { pinned && <div className="dynamiccard__buttonpanel onlist">
             
                
-           <ModalReassignIcon 
+           <ModalReassignIcon
+              index={this.props.index}  
               oracleid={this.props.oracleid}
               id={this.props.id}
               cubeid={this.props.cubeId}

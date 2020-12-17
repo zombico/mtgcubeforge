@@ -46,7 +46,7 @@ class DynamicCard extends Component {
   }
   removeCard = async () => {
     const remove = {}
-    remove.id = this.props.id
+    remove.index = this.props.index
     try {
       await axios.patch(`/cubes/${this.props.cubeId}/remove`, remove)
       this.pinCard()
@@ -116,7 +116,8 @@ class DynamicCard extends Component {
           </div>
           { !hidePanel && pinned &&
             <div className="dynamiccard__buttonpanel">
-            <ModalReassignIcon 
+            <ModalReassignIcon
+              index={this.props.index} 
               oracleid={this.props.oracleid}
               id={this.props.id}
               cubeid={this.props.cubeId}

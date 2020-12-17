@@ -92,13 +92,12 @@ router.patch('/:cube_id/overwrite', async (req, res, next) => {
 
 router.patch('/:cube_id/remove', async (req, res, next) => {
   const cubeId = req.params.cube_id
-  const cardObject = req.body
+  const cardIndex = req.body.index
   
   try {
     const cube = await Cube.findById(cubeId)
+    cube.contents.splice(cardIndex, 1)
     
-    const updatedCube = cube.contents.filter(card => card.id !== cardObject.id)
-    cube.contents = updatedCube
     const doc = cube
     cube.save()
     
