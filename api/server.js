@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 
 const app = express();
-app.use(require('prerender-node'));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
