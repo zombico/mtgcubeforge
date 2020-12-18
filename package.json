@@ -19,6 +19,7 @@
     "mongoose": "^5.3.15",
     "node-sass": "^4.10.0",
     "nodemon": "^1.18.9",
+    "prerender-node": "^3.2.5",
     "react": "^16.14.0",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.14.0",
