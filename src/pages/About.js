@@ -29,11 +29,11 @@ class About extends Component {
 
         <br />
         <h2>December 2020 Updates</h2>
-        <ul>
+        {/* <ul>
           <li>Password reset now available for accounts with valid emails</li>
         </ul>
         <p>A unique link will be sent to your email that will let you change your password.
-        </p>
+        </p> */}
         <ul>
           <li>Cubeviewer now more accessible with phones by using the Explore feature</li>
         </ul>
