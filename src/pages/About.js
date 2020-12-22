@@ -30,6 +30,11 @@ class About extends Component {
         <br />
         <h2>December 2020 Updates</h2>
         <ul>
+          <li>Password reset now available for accounts with valid emails</li>
+        </ul>
+        <p>A unique link will be sent to your email that will let you change your password.
+        </p>
+        <ul>
           <li>Cubeviewer now more accessible with phones by using the Explore feature</li>
         </ul>
         <p>Viewing experience on mobile was always going to be challening because of the size and nature of cubes.  Hopefully this feature allows you to view without having to scroll

@@ -1,4 +1,5 @@
 'use strict';
+require('dotenv').config()
 
 const path = require('path')
 const bodyParser = require('body-parser');
@@ -16,6 +17,8 @@ app.use('/myaccount', require('./routes/myaccount').router);
 app.use('/users', require('./routes/users').router);
 app.use('/cubes', require('./routes/cubes').router);
 app.use('/cubebuilder', require('./routes/cubebuilder').router);
+app.use('/forgotpw', require('./routes/forgotpw').router);
+app.use('/resetpw', require('./routes/resetpw').router);
 app.use('/', express.static(
   path.join(__dirname, '../build'))
 )

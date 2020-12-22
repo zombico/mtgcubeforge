@@ -14,7 +14,9 @@ import CubeViewer from './pages/CubeViewer';
 import Dashboard from './pages/Dashboard';
 import HomePage from './pages/HomePage';
 import About from './pages/About';
+import Forgot from './pages/Forgot'
 import DraftSimulator from './components/DraftSimulator';
+import ResetPassword from './pages/ResetPassword';
 
 import { getToken } from './services/tokenService'
 
@@ -97,6 +99,15 @@ class App extends Component {
             exact path="/about"
             render={() => <About /> }
           />
+          <Route
+            exact path="/forgot"
+            render={() => <Forgot /> }
+          />
+          <Route
+            exact path="/reset"
+            render={(props) => <ResetPassword {...props}/> }
+          />
+          
           <Route 
             exact path ="/dashboard"
             render={() => (

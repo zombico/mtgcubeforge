@@ -1,6 +1,7 @@
 const express = require('express')
 const Router = express.Router
 const router = Router()
+const bcrypt = require('bcryptjs')
 const User = require('../models/User')
 
 // GET /users
@@ -32,6 +33,24 @@ router.get('/:user_id', async (req, res, next) => {
     })
   } catch (e) {
     // 4. If we don't, handle the error
+    next(e)
+  }
+})
+
+router.patch('/:email/:password', async (req, res, next) => {
+  const email = req.params.email
+  const password = req.params.password
+  console.log(email,password)
+  const user = await User.findOne({ email: email }) 
+  // const hash = await bcrypt.hash(password, 10)
+  user.password = password
+  try {
+    const doc = await user.save()
+    res.status(200).send({
+      data: 'password changed'
+    })
+
+  } catch (e) {
     next(e)
   }
 })

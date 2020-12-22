@@ -87,6 +87,7 @@ class Login extends Component {
                   value="Log In" 
                   className="buttonprimary"
                 />
+                <div style={{paddingTop: 20}}><a href="/forgot">Forgot password</a></div>
                 </div>                      
               </div>
             </form>  

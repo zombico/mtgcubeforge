@@ -20,6 +20,7 @@ www_mtgcubeforge_com.ca-bundle
 www_mtgcubeforge_com.p7b
 
 # misc
+.env
 .DS_Store
 .env.local
 .env.development.local
