@@ -439,7 +439,7 @@ ol {
   &__tooltip {
     position: absolute;
     margin: -210px 0 0 -10px;
-    // z-index: 1;
+    z-index: 1;
     max-width: 244px;
     border-radius: 12px;
     box-shadow: 3px 10px 25px -2px rgba(0,0,0,0.75);
@@ -495,7 +495,7 @@ ol {
     display: flex;
     flex-direction: column;
     align-items: center;
-    // z-index: 1;
+    z-index: 1;
     position: absolute;
     margin-top: -180px;
     margin-left: -48px;
