@@ -35,7 +35,7 @@ class CubeViewer extends Component {
   }
   
   async componentDidMount() {
-    // console.log(this.props)
+    console.log(this.props)
     const cubeId = this.props.location.pathname.split('/')[2]
     
     

@@ -91,7 +91,7 @@ class App extends Component {
             path="/cubebuilder"
             render={(props) => {                
               return (
-               <CubeBuilder user={this.state.user} {...props} />   
+               <CubeBuilder {...props} />   
               )
              }}
           />

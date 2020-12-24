@@ -75,13 +75,26 @@ class CubeBuilder extends Component {
     }
   }
 
-  checkCurrentUser = () => {
-    // console.log('hello checking')
-    const owner = this.state.username
-    if (owner !== this.props.user ){
-      // console.log('not matching')
-     this.props.history.push(`/cubeviewer/${this.state.cubeId}`)  
+  checkCurrentUser = async () => {
+    
+    const token = getToken()    
+    if(token) {
+      try {
+        const res = await axios.get('/myaccount', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        // 4. If a successful response returns, store the user in state.        
+        const owner = res.data.data[0].name
+        if (owner !== this.state.username && this.state.username.length > 0) this.props.history.push(`/cubeviewer/${this.state.cubeId}`)
+
+      } catch(e) {
+        console.error(e)
+        // window.location('http://www.google.ca')
+      }
     }
+    // 3. Pass the token as an Authorization Header    
   }
 
   getCard(id) {
