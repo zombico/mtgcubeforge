@@ -56,12 +56,13 @@ class CubeBuilder extends Component {
     const cubeId = this.props.location.pathname.split('/')[2]
     await this.setState({ cubeId })
     this.loadCube();
-    this.checkCurrentUser()
+    
     document.getElementById("viewsettings").scrollIntoView()
   }
 
   async loadCube() {
     try {
+      this.checkCurrentUser()
       const response = await axios.get(`/cubes/${this.state.cubeId}`)
       this.setState({ 
         cubeContents: response.data.data[0].contents,
